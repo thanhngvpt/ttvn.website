@@ -11,7 +11,7 @@ Any suggestions, feedback, or push requests are really welcome.
 
 First, you can clone this repository.
 
-`git clone git@github.com:thanhnt37/laravel-boilerplate.git`
+`https://github.com/hoanggiap/laravel-boylerplate`
 
 Then, change the directory name to your own project name.
 
