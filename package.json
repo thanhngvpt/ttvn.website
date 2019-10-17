@@ -45,7 +45,7 @@
     "font-awesome": "^4.7.0",
     "handlebars": "^4.0.10",
     "inputmask": "^4.0.0",
-    "ion-rangeslider": "^2.2.0",
+    "ion-rangeslider": "2.2.0",
     "jquery-form": "^4.2.2",
     "jquery-smooth-scroll": "^2.2.0",
     "jquery-validation": "^1.17.0",
