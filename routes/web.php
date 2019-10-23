@@ -25,3 +25,20 @@
 
     });
 });
+
+Route::get('contact', function () {
+    return view('pages.web.contact');
+});
+
+Route::get('job', function () {
+    return view('pages.web.job');
+});
+
+Route::get('list-job', function () {
+    return view('pages.web.list-job');
+});
+
+Route::get('job-detail', function () {
+    return view('pages.web.job-detail');
+});
+
