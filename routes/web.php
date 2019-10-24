@@ -42,3 +42,7 @@ Route::get('job-detail', function () {
     return view('pages.web.job-detail');
 });
 
+Route::get('news', function () {
+    return view('pages.web.news');
+});
+

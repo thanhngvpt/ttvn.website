@@ -431,6 +431,9 @@ footer {
         padding-right: 32px;
         cursor: pointer; }
 
+#news-page .nav-tabs {
+  justify-content: space-between; }
+
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1316px; } }
