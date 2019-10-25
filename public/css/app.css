@@ -452,6 +452,8 @@ footer {
           padding-top: 8px;
           background-color: #ffffff;
           margin-bottom: 27px; }
+        #news-page .nav-tabs .nav-item .nav-link:hover {
+          border-color: #ffffff; }
         #news-page .nav-tabs .nav-item .nav-link.active {
           color: #222222;
           border: none; }

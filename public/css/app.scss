@@ -607,6 +607,10 @@ footer {
 					margin-bottom: 27px;
 				}
 
+				&:hover {
+					border-color: #ffffff;
+				}
+
 				&.active {
 					color: #222222;
 					border: none;
