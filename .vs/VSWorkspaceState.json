@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\resources",
+    "\\resources\\views",
+    "\\resources\\views\\pages",
+    "\\resources\\views\\pages\\web",
+    "\\resources\\views\\pages\\web\\partials"
+  ],
+  "SelectedNode": "\\resources\\views\\pages\\web\\partials\\navbar.blade.php",
+  "PreviewInSolutionExplorer": false
+}
