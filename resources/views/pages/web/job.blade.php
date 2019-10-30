@@ -73,7 +73,7 @@
 		<div class="content-job-page">
 			<div class="cultural-job">
 				<div class="column-left">
-					<div class="title-cultural-job">
+					<div class="title-border-bottom">
 						Văn hóa TTVN
 					</div>
 					<div class="des-cultural-job">

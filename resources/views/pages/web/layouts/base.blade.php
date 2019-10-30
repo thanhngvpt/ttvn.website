@@ -12,7 +12,7 @@
   	@stack('styles')
   	@yield('page-styles')
 </head>
-<body>
+<body @yield('body-class')>
 	@yield('body')
 	@stack('scripts')
 	@yield('page-scripts')

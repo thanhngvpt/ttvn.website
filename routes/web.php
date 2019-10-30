@@ -46,3 +46,10 @@ Route::get('news', function () {
     return view('pages.web.news');
 });
 
+Route::get('news-detail', function () {
+    return view('pages.web.news-detail');
+});
+
+Route::get('introduce-company', function () {
+    return view('pages.web.introduce-company');
+});
