@@ -646,6 +646,214 @@ main .nav-tabs {
 .no-title-page .title-page {
   display: none; }
 
+.modal-backdrop {
+  background-color: #00263C; }
+  .modal-backdrop.show {
+    opacity: 0.88; }
+
+#introduce-page #company .cultural-job {
+  padding-top: 0;
+  padding-bottom: 88px; }
+#introduce-page #company .title-border-bottom {
+  margin-top: 130px;
+  margin-bottom: 64px; }
+#introduce-page #company .introduce-general {
+  padding: 176px 0;
+  background-color: #EFFCF1;
+  margin-left: calc(50vw - 658px);
+  margin-bottom: 276px;
+  position: relative; }
+  #introduce-page #company .introduce-general .view-more-intro {
+    width: 414px;
+    padding: 24px 28px 24px 102px;
+    background-color: #ffffff;
+    font-size: 16px;
+    line-height: 24px;
+    position: absolute;
+    bottom: 0;
+    left: 350px;
+    cursor: pointer; }
+#introduce-page #company .img-introduce {
+  position: relative; }
+  #introduce-page #company .img-introduce img {
+    position: absolute;
+    top: -96px;
+    right: 70px; }
+#introduce-page #company .column-text {
+  width: 383px; }
+  #introduce-page #company .column-text .title-border-bottom {
+    margin-top: initial;
+    margin-bottom: 56px; }
+#introduce-page #company .column-image {
+  width: 648px; }
+#introduce-page #company .history-develop {
+  background-color: #00263C;
+  padding-top: 88px;
+  padding-bottom: 56px; }
+  #introduce-page #company .history-develop .nav-tabs {
+    margin-bottom: 120px; }
+  #introduce-page #company .history-develop .nav-link {
+    font-size: 16px;
+    line-height: 25px;
+    color: #004A74;
+    background: none;
+    border: none; }
+    #introduce-page #company .history-develop .nav-link::before {
+      display: none; }
+    #introduce-page #company .history-develop .nav-link::after {
+      content: '';
+      display: block;
+      padding-top: 2px;
+      margin-top: 20px;
+      background-color: #004A74; }
+    #introduce-page #company .history-develop .nav-link.active {
+      color: #ffffff; }
+      #introduce-page #company .history-develop .nav-link.active::after {
+        background-color: #57AE5B; }
+  #introduce-page #company .history-develop .title-history-develop {
+    margin-bottom: 30px;
+    font-size: 56px;
+    font-weight: 600;
+    color: #ffffff;
+    font-family: "EB Garamond", serif; }
+  #introduce-page #company .history-develop .item-history-slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  #introduce-page #company .history-develop .text-history-slide {
+    width: 422px;
+    margin-left: 114px;
+    color: #B0D0E3; }
+  #introduce-page #company .history-develop .img-history-slide {
+    width: 648px;
+    position: relative;
+    padding-bottom: 32px; }
+    #introduce-page #company .history-develop .img-history-slide::before {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: rgba(0, 13, 0, 0.16);
+      width: 100%;
+      height: 100%;
+      top: 32px;
+      left: -32px; }
+    #introduce-page #company .history-develop .img-history-slide img {
+      position: inherit; }
+  #introduce-page #company .history-develop .prev-arrow {
+    top: initial;
+    bottom: 46px;
+    left: 114px;
+    z-index: 1;
+    cursor: pointer; }
+  #introduce-page #company .history-develop .next-arrow {
+    top: initial;
+    bottom: 46px;
+    left: 224px;
+    z-index: 1;
+    cursor: pointer; }
+#introduce-page #company .partner-intro {
+  padding-top: 112px;
+  padding-bottom: 180px;
+  border-bottom: 1px solid #dedede; }
+  #introduce-page #company .partner-intro .title-border-bottom {
+    font-size: 32px;
+    font-weight: 600;
+    font-family: "EB Garamond", serif;
+    color: #222222;
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 32px; }
+    #introduce-page #company .partner-intro .title-border-bottom::after {
+      margin: auto; }
+  #introduce-page #company .partner-intro .des-partner-intro {
+    width: 884px;
+    font-size: 16px;
+    line-height: 25px;
+    color: #515151;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 100px; }
+  #introduce-page #company .partner-intro .slick-dots {
+    text-align: center;
+    bottom: -64px; }
+#introduce-page #leader {
+  padding-bottom: 176px;
+  border-bottom: 1px solid #dedede; }
+  #introduce-page #leader .des-leader {
+    font-size: 16px;
+    line-height: 25px;
+    color: #515151;
+    margin-bottom: 120px; }
+  #introduce-page #leader .list-member {
+    position: relative;
+    padding-top: 88px; }
+    #introduce-page #leader .list-member .bg-list-member {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 70%;
+      height: 815px;
+      background-color: #EFFCF1; }
+  #introduce-page #leader .leader-slide .slick-dots {
+    text-align: center; }
+  #introduce-page #leader .row-leader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px; }
+    #introduce-page #leader .row-leader .item-leader-slide {
+      width: calc(50% - 20px);
+      background-color: #ffffff;
+      cursor: pointer; }
+      #introduce-page #leader .row-leader .item-leader-slide:hover {
+        background: #57AE5B; }
+        #introduce-page #leader .row-leader .item-leader-slide:hover .name-leader {
+          color: #ffffff; }
+        #introduce-page #leader .row-leader .item-leader-slide:hover .role-company {
+          color: #C1EAC5; }
+  #introduce-page #leader .info-leader {
+    padding: 40px 0;
+    text-align: center; }
+    #introduce-page #leader .info-leader .name-leader {
+      font-size: 20px;
+      font-weight: 600;
+      font-family: "EB Garamond", serif;
+      color: #222222;
+      margin-bottom: 16px; }
+    #introduce-page #leader .info-leader .role-company {
+      font-size: 16px;
+      line-height: 25px;
+      color: #7e7e7e; }
+  #introduce-page #leader .detail-leader {
+    font-size: 16px;
+    line-height: 32px;
+    color: #000000;
+    padding: 32px 112px 47px 112px;
+    text-align: left; }
+  #introduce-page #leader .modal-content {
+    border-radius: 8px; }
+    #introduce-page #leader .modal-content .modal-header {
+      border-bottom: none;
+      background-color: #57AE5B;
+      height: 72px; }
+      #introduce-page #leader .modal-content .modal-header button {
+        color: #ffffff;
+        opacity: 1; }
+    #introduce-page #leader .modal-content .modal-body {
+      padding: 0; }
+      #introduce-page #leader .modal-content .modal-body .img-detail-list {
+        position: relative;
+        width: 100%;
+        text-align: center; }
+        #introduce-page #leader .modal-content .modal-body .img-detail-list img {
+          position: inherit; }
+        #introduce-page #leader .modal-content .modal-body .img-detail-list::before {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 50%;
+          background-color: #57AE5B; }
+
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1316px;
@@ -688,28 +896,6 @@ main .nav-tabs {
 
   footer .title-col-footer {
     font-size: 16px; } }
-#introduce-page #company .title-border-bottom {
-  margin-top: 130px;
-  margin-bottom: 64px; }
-#introduce-page #company .introduce-general {
-  padding: 176px 0;
-  background-color: #EFFCF1;
-  margin-left: calc(50vw - 658px);
-  margin-bottom: 276px; }
-#introduce-page #company .img-introduce {
-  position: relative; }
-  #introduce-page #company .img-introduce img {
-    position: absolute;
-    top: -96px;
-    right: 70px; }
-#introduce-page #company .column-text {
-  width: 383px; }
-  #introduce-page #company .column-text .title-border-bottom {
-    margin-top: initial;
-    margin-bottom: 56px; }
-#introduce-page #company .column-image {
-  width: 648px; }
-
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .logo-img {
     margin-left: 8px; }
