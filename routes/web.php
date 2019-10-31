@@ -53,3 +53,7 @@ Route::get('news-detail', function () {
 Route::get('introduce-company', function () {
     return view('pages.web.introduce-company');
 });
+
+Route::get('scope-active', function () {
+    return view('pages.web.scope-active');
+});

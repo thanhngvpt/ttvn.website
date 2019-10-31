@@ -504,7 +504,8 @@ main .nav-tabs {
       line-height: 32px;
       font-weight: 600;
       color: #7E7E7E;
-      padding: 0; }
+      padding: 0;
+      border: none; }
       main .nav-tabs .nav-item .nav-link:before {
         content: '';
         display: block;
@@ -853,6 +854,79 @@ main .nav-tabs {
           width: 100%;
           height: 50%;
           background-color: #57AE5B; }
+
+#field-page {
+  padding-bottom: 100px; }
+  #field-page .title-border-bottom {
+    color: #ffffff; }
+  #field-page .des-tech-intro {
+    color: #ffffff; }
+  #field-page .nav-tabs {
+    margin-bottom: 0; }
+  #field-page .nav-link {
+    color: #A3D9A5;
+    background: none; }
+    #field-page .nav-link.active {
+      color: #ffffff; }
+      #field-page .nav-link.active::before {
+        background-color: #207227; }
+    #field-page .nav-link::before {
+      background-color: #C1EAC5; }
+  #field-page .tech-intro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 36px; }
+    #field-page .tech-intro .tech-left {
+      width: 33.3%; }
+    #field-page .tech-intro .tech-right {
+      width: 66.7%; }
+  #field-page .tech-list {
+    display: flex;
+    align-items: center;
+    position: relative; }
+    #field-page .tech-list .tech-column-one {
+      width: 33.33%;
+      margin-right: 64px; }
+    #field-page .tech-list .tech-column-two {
+      width: 33.33%; }
+    #field-page .tech-list .tech-column-three {
+      position: absolute;
+      left: calc(66.66% + 50px);
+      bottom: 0; }
+    #field-page .tech-list .tech-item-down {
+      margin-top: 64px; }
+  #field-page .tech-item {
+    padding: 48px;
+    background-color: #ffffff;
+    box-shadow: 0px 32px 56px rgba(0, 0, 0, 0.08);
+    border-radius: 8px; }
+    #field-page .tech-item .tech-line {
+      height: 8px;
+      background: #57AE5B;
+      border-radius: 9px;
+      width: 64px;
+      margin-bottom: 65px; }
+    #field-page .tech-item .tech-item-title {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 32px;
+      color: #222222;
+      margin-top: 56px;
+      margin-bottom: 24px; }
+    #field-page .tech-item .tech-item-des {
+      font-size: 14px;
+      line-height: 22px;
+      color: #515151; }
+  #field-page .field-project {
+    padding-top: 58px;
+    padding-bottom: 146px; }
+    #field-page .field-project .title-field-project {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      font-size: 56px;
+      line-height: 64px;
+      color: #222222;
+      text-align: center; }
 
 @media screen and (min-width: 1440px) {
   .container {

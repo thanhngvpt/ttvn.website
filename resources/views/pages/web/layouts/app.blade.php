@@ -6,6 +6,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('content-after')
     @include('pages.web.partials.footer')
     @yield('script')
 @endsection
