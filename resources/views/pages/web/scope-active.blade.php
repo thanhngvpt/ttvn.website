@@ -13,10 +13,10 @@ class="background-white"
     <div class="container">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#technology-tab">Công nghệ cao</a>
+          <a class="nav-link" data-toggle="tab" href="#technology-tab">Công nghệ cao</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#energy-tab">Năng lượng tái tạo</a>
+          <a class="nav-link active" data-toggle="tab" href="#energy-tab">Năng lượng tái tạo</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#leader">Bất động sản</a>
@@ -24,7 +24,7 @@ class="background-white"
       </ul>
     </div>
     <div class="tab-content">
-      <div class="tab-pane active" id="technology-tab">
+      <div class="tab-pane" id="technology-tab">
         <div class="container">
           <div class="tech-intro">
             <div class="tech-left">
@@ -79,174 +79,133 @@ class="background-white"
               <img src="{{ asset('images/item-tech-4.png') }}" class="img-fluid" />
             </div>
           </div>
-          <div class="field-project">
-            <div class="title-field-project">
-              Dự án
-            </div>
-          </div>
         </div>
       </div>
-      <div class="tab-pane" id="leader">
+      <div class="tab-pane active" id="energy-tab">
         <div class="container">
-          <div class="title-border-bottom">
-            Hội đồng quản trị và Ban lãnh đạo
-          </div>
-          <div class="row des-leader">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          <div class="tech-intro">
+            <div class="tech-left">
+              <div class="title-border-bottom">
+                Năng lượng xanh
+              </div>
+              <div class="des-tech-intro">
+                <p>Hướng tới mục tiêu bảo vệ môi trường, giảm bớt sự phụ thuộc vào các nguồn phát điện truyền thống và nắm bắt xu hướng phát triển năng lượng trên thế giới, TTVN luôn là một trong những tập đoàn tiên phong trong lĩnh vực công nghệ tái tạo.</p>
+                <p>Chúng tôi tận dụng  những nguồn năng lượng có sẵn từ thiên nhiên như mặt trời, gió,… đầu tư vào nhiều dự án năng lượng tái tạo với công nghệ tiên tiến tiến tới một môi trường xanh - sạch  và gắn liền với sự phát triển của cộng đồng, xã hội.</p>
+              </div>
             </div>
-            <div class="col-md-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            <div class="tech-right">
+              <img src="{{ asset('images/energy.png') }}" class="img-fluid" />
             </div>
           </div>
-        </div>
-        <div class="list-member">
-          <div class="bg-list-member"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4"></div>
-              <div class="col-md-8">
-                <div class="leader-slide">
-                  <div class="item-slide">
-                    <div class="row-leader">
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-2.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row-leader">
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-2.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-slide">
-                    <div class="row-leader">
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-2.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row-leader">
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-2.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          <div class="tech-list">
+            <div class="tech-column-one">
+              <div class="tech-item">
+                <div class="tech-line"></div>
+                <img src="{{ asset('images/item-tech-1.png') }}" class="img-fluid" />
+                <div class="tech-item-title">
+                  Khai thác tối đa tài nguyên
+                </div>
+                <div class="tech-item-des">
+                  Xây dựng giải pháp công nghệ gắn với nền kinh tế chia sẻ ( ứng dung tích điểm dùng chung Sen Point), giúp tiết kiêm tài nguyên, chi phí và tăng hiệu quả hoạt động doanh nghiệp
+                </div>
+              </div>
+              <div class="tech-item tech-item-down">
+                <div class="tech-line"></div>
+                <img src="{{ asset('images/item-tech-2.png') }}" class="img-fluid" />
+                <div class="tech-item-title">
+                  Khai thác tối đa tài nguyên
+                </div>
+                <div class="tech-item-des">
+                  Xây dựng giải pháp công nghệ gắn với nền kinh tế chia sẻ ( ứng dung tích điểm dùng chung Sen Point), giúp tiết kiêm tài nguyên, chi phí và tăng hiệu quả hoạt động doanh nghiệp
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="modal" id="show-detail-leader">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-
-              <!-- Modal body -->
-              <div class="modal-body">
-                <div class="img-detail-list">
-                  <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
+            <div class="tech-column-two">
+              <div class="tech-item">
+                <div class="tech-line"></div>
+                <img src="{{ asset('images/item-tech-3.png') }}" class="img-fluid" />
+                <div class="tech-item-title">
+                  Mang tiện ích đến khách hàng
                 </div>
-                <div class="info-leader">
-                  <div class="name-leader">
-                    Ông Đặng Trung Kiên
-                  </div>
-                  <div class="role-compay">
-                    CHỦ TỊCH HĐQT
-                  </div>
-                  <div class="detail-leader">
-                    <p>Ông Đặng Trung Kiên sinh năm 1973, là Chủ tịch Hội đồng quản trị Công ty Cổ phần Tập đoàn Trường Thành Việt Nam và là đại diện pháp luật của Công ty.</p>
-                    <p>Ông Đặng Trung Kiên tốt nghiệp Cao cấp lý luận chính trị - Học viện Chính trị Quốc gia Hồ Chí Minh, Thạc sỹ Quản lý Hành chính công – Học viện Hành chính Quốc gia, Cử nhân luật - Đại học Luật Hà Nội.</p>
-                    <p>Thực hiện chủ trương “Quy tụ nhân tài, gắn kết nhân tâm, nâng tầm trí tuệ và chia sẻ thành công”, bằng uy tín và khả năng của mình, ông Đặng Trung Kiên đã quy tụ được nhiều chuyên gia đầu ngành trong các lĩnh vực để cùng chung sức, đồng lòng thực hiện thành công các chiến lược đề ra, giúp Công ty có những bước phát triển vững chắc, khẳng định vị thế của mình trên thương trường.</p>
-                  </div>
+                <div class="tech-item-des">
+                  Chỉ với 1 thiết bị di động có kết nối internet, khách hàng có thể bắt kịp với xu hướng của nền công nghiệp 4.0, cải thiện cuộc sống hàng ngày và tiết kiệm thời gian
                 </div>
               </div>
+            </div>
+            <div class="tech-column-three">
+              <img src="{{ asset('images/item-tech-4.png') }}" class="img-fluid" />
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+@endsection
+
+@section('content-after')
+  <main>
+    <div class="field-project">
+      <div class="title-field-project">
+        Dự án
+      </div>
+      <div class="content-page">
+        <div class="slide-projects">
+          <a href="#" class="item-news">
+            <div class="img-news">
+              <img src="{{ asset('images/project-1.png') }}" class="img-fluid" />
+            </div>
+            <div class="content-news">
+              <div class="title-news">
+                Nhà máy điện mặt trời Bình Nguyên
+              </div>
+              <div class="des-news">
+                Địa điểm: xã Bình Nguyên, huyện Bình Sơn, tỉnh Quảng Ngãi
+              </div>
+            </div>
+          </a>
+          <a href="#" class="item-news">
+            <div class="img-news">
+              <img src="{{ asset('images/project-2.png') }}" class="img-fluid" />
+            </div>
+            <div class="content-news">
+              <div class="title-news">
+                Dự án thay thế đèn chiếu sáng công cộng bằng đèn led
+              </div>
+              <div class="des-news">
+                Địa điểm: xã Bình Nguyên, huyện Bình Sơn, tỉnh Quảng Ngãi
+              </div>
+            </div>
+          </a>
+          <a href="#" class="item-news">
+            <div class="img-news">
+              <img src="{{ asset('images/project-3.png') }}" class="img-fluid" />
+            </div>
+            <div class="content-news">
+              <div class="title-news">
+                Dự án xây dựng nhà máy xử lý rác tập trung
+              </div>
+              <div class="des-news">
+                Địa điểm: huyện Đức Trọng, tỉnh Lâm Đồng
+              </div>
+            </div>
+          </a>
+          <a href="#" class="item-news">
+            <div class="img-news">
+              <img src="{{ asset('images/project-1.png') }}" class="img-fluid" />
+            </div>
+            <div class="content-news">
+              <div class="title-news">
+                Fugiat ullamco reprehenderit Lorem nostrud
+              </div>
+              <div class="des-news">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
 @endsection
 
 @section('page-styles')
@@ -294,6 +253,17 @@ class="background-white"
           slidesToScroll: 1,
           dots: true
   			});
+		});
+
+    $(document).ready(function(){
+      $('.slide-projects').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: true,
+        prevArrow: '<img src="{{ asset("images/arrow-left-ad.png") }}" class="img-fluid prev-arrow" />',
+        nextArrow: '<img src="{{ asset("images/arrow-right-ad.png") }}" class="img-fluid next-arrow" />'
+      });
 		});
 	</script>
 @endsection
