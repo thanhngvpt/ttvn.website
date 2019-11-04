@@ -33,7 +33,9 @@
             </div>
         </div>
     </nav>
-    <div class="title-page">
-        @yield('title-navbar')
+    <div class="container">
+        <div class="title-page">
+            @yield('title-navbar')
+        </div>
     </div>
 </div>

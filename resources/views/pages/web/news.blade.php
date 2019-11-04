@@ -4,6 +4,10 @@
 	Tin tức - sự kiện
 @endsection
 
+@section('body-class')
+	class="background-white"
+@endsection
+
 @section('content')
 	<div id="news-page">
 		<div class="container">
@@ -21,59 +25,247 @@
 			        <a class="nav-link" data-toggle="tab" href="#energy_tab">Năng lượng</a>
 			    </li>
 			    <li class="nav-item">
-			        <a class="nav-link" data-toggle="tab" href="#menu2">Văn hoá</a>
+			        <a class="nav-link" data-toggle="tab" href="#cultural_tab">Văn hoá</a>
 			    </li>
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content">
-			    <div class="tab-pane container active" id="home">
+			    <div class="tab-pane container active" id="tab_all">
 			    	<div class="news-slide">
-						<div class="item-slide">
-							<div class="item-slide-news">
-								<div class="img-slide-news">
-									<img src="{{ asset('images/slide-news.png') }}" class="img-fluid">
-								</div>
-								<div class="content-slide-news">
-									<button class="btn tag-slide-news">
-										Văn hoá - sự kiện
-									</button>
-									<div class="title-slide-news">
-										Year End Party 2018: One TTVN - One Dream
+							<div class="item-slide">
+								<div class="item-slide-news">
+									<div class="img-slide-news">
+										<img src="{{ asset('images/slide-news.png') }}" class="img-fluid">
 									</div>
-									<div class="des-slide-news">
+									<div class="content-slide-news">
+										<button class="btn tag-news">
+											Văn hoá - sự kiện
+										</button>
+										<div class="title-slide-news">
+											Year End Party 2018: One TTVN - One Dream
+										</div>
+										<div class="des-slide-news">
+											Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+										</div>
+										<div class="date-slide-news">
+											27/09/2021
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item-slide">
+								<div class="item-slide-news">
+									<div class="img-slide-news">
+										<img src="{{ asset('images/slide-news.png') }}" class="img-fluid">
+									</div>
+									<div class="content-slide-news">
+										<button class="btn tag-news">
+											Văn hoá - sự kiện
+										</button>
+										<div class="title-slide-news">
+											Year End Party 2018: One TTVN - One Dream
+										</div>
+										<div class="des-slide-news">
+											Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+										</div>
+										<div class="date-slide-news">
+											27/09/2021
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row list-news">
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-1.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Fugiat ullamco reprehenderit Lorem nostrud
+									</div>
+									<div class="des-news">
 										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
 									</div>
-									<div class="date-slide-news">
+									<div class="date-news">
+										27/09/2021
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-2.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Sint excepteur labore exercitation labore
+									</div>
+									<div class="des-news">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+									</div>
+									<div class="date-news">
+										27/09/2021
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-3.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Nulla minim ullamco incididunt nisi adipisicing ad
+									</div>
+									<div class="des-news">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+									</div>
+									<div class="date-news">
+										27/09/2021
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-4.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Fugiat ullamco reprehenderit Lorem nostrud
+									</div>
+									<div class="des-news">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+									</div>
+									<div class="date-news">
+										27/09/2021
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-5.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Sint excepteur labore exercitation labore
+									</div>
+									<div class="des-news">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+									</div>
+									<div class="date-news">
+										27/09/2021
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-6.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Nulla minim ullamco incididunt nisi adipisicing ad
+									</div>
+									<div class="des-news">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+									</div>
+									<div class="date-news">
+										27/09/2021
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-7.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Fugiat ullamco reprehenderit Lorem nostrud
+									</div>
+									<div class="des-news">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+									</div>
+									<div class="date-news">
+										27/09/2021
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-8.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Sint excepteur labore exercitation labore
+									</div>
+									<div class="des-news">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+									</div>
+									<div class="date-news">
+										27/09/2021
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{{ asset('images/news-9.png') }}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+										Công nghệ cao
+									</div>
+									<div class="title-news">
+										Nulla minim ullamco incididunt nisi adipisicing ad
+									</div>
+									<div class="des-news">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+									</div>
+									<div class="date-news">
 										27/09/2021
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="item-slide">
-							<div class="item-slide-news">
-								<div class="img-slide-news">
-									<img src="{{ asset('images/slide-news.png') }}" class="img-fluid">
-								</div>
-								<div class="content-slide-news">
-									<button class="btn tag-slide-news">
-										Văn hoá - sự kiện
-									</button>
-									<div class="title-slide-news">
-										Year End Party 2018: One TTVN - One Dream
-									</div>
-									<div class="des-slide-news">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-									</div>
-									<div class="date-slide-news">
-										27/09/2021
-									</div>
-								</div>
-							</div>
-						</div>
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
+							<li class="page-item active"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#">4</a></li>
+							<li class="page-item"><a class="page-link" href="#">5</a></li>
+							<li class="page-item"><a class="page-link" href="#">6</a></li>
+							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+						</ul>
 					</div>
-			    </div>
-			    <div class="tab-pane container fade" id="menu1">...</div>
-			    <div class="tab-pane container fade" id="menu2">...</div>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane container fade" id="realty_tab">...</div>
+						<div class="tab-pane container fade" id="technology_tab">...</div>
+						<div class="tab-pane container fade" id="energy_tab">...</div>
+						<div class="tab-pane container fade" id="cultural_tab">...</div>
+					</div>
 			</div>
 		</div>
 	</div>
