@@ -30,7 +30,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.table_news')
+                                Tin tức
                             </span>
                         </span>
                     </span>
@@ -43,7 +43,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.banners')
+                                Banner
                             </span>
                         </span>
                     </span>
@@ -56,7 +56,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.videos')
+                                Video
                             </span>
                         </span>
                     </span>
@@ -69,7 +69,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.headings')
+                                Heading
                             </span>
                         </span>
                     </span>
@@ -82,7 +82,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.infor_groups')
+                                Thông tin tập đoàn
                             </span>
                         </span>
                     </span>
@@ -95,7 +95,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.data_high_lights')
+                                Số liệu nổi bật
                             </span>
                         </span>
                     </span>
@@ -108,7 +108,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.companies')
+                                Công ty
                             </span>
                         </span>
                     </span>
@@ -121,7 +121,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.introduces')
+                                Giới thiệu tập đoàn
                             </span>
                         </span>
                     </span>
@@ -134,7 +134,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.partners')
+                                Đối tác
                             </span>
                         </span>
                     </span>
@@ -147,7 +147,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.histories')
+                                Lịch sử phát triển
                             </span>
                         </span>
                     </span>
@@ -160,7 +160,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.leader_ships')
+                                Ban lãnh đạo
                             </span>
                         </span>
                     </span>
@@ -173,7 +173,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.fields')
+                                Lĩnh vực
                             </span>
                         </span>
                     </span>
@@ -186,7 +186,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.projects')
+                                Dự án
                             </span>
                         </span>
                     </span>
@@ -199,7 +199,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.new_categories')
+                                Danh mục tin tức
                             </span>
                         </span>
                     </span>
@@ -212,7 +212,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.cultural_companies')
+                                Văn hóa doanh nghiệp
                             </span>
                         </span>
                     </span>
@@ -225,7 +225,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.criteria_candidates')
+                                Tiêu chí ứng viên
                             </span>
                         </span>
                     </span>
@@ -238,7 +238,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.job_categories')
+                                Danh mục tuyển dụng
                             </span>
                         </span>
                     </span>
@@ -251,7 +251,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.jobs')
+                                Tuyển dụng
                             </span>
                         </span>
                     </span>
@@ -264,7 +264,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.meta')
+                                Meta
                             </span>
                         </span>
                     </span>
@@ -277,7 +277,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.footers')
+                               Footer
                             </span>
                         </span>
                     </span>
@@ -290,7 +290,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.contacts')
+                                Liên hệ
                             </span>
                         </span>
                     </span>
@@ -303,7 +303,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.cadidates')
+                                Ứng viên
                             </span>
                         </span>
                     </span>
@@ -316,7 +316,7 @@
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.save_values')
+                                Giá trị tích lũy
                             </span>
                         </span>
                     </span>
