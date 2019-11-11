@@ -88,6 +88,126 @@ class RepositoryBindServiceProvider extends ServiceProvider {
             \App\Repositories\OauthRefreshTokenRepositoryInterface::class,
             \App\Repositories\Eloquent\OauthRefreshTokenRepository::class
         );
+        $this->app->singleton(
+            \App\Repositories\TableNewRepositoryInterface::class,
+            \App\Repositories\Eloquent\TableNewRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\BannerRepositoryInterface::class,
+            \App\Repositories\Eloquent\BannerRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\VideoRepositoryInterface::class,
+            \App\Repositories\Eloquent\VideoRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\HeadingRepositoryInterface::class,
+            \App\Repositories\Eloquent\HeadingRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\InforGroupRepositoryInterface::class,
+            \App\Repositories\Eloquent\InforGroupRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\DataHighLightRepositoryInterface::class,
+            \App\Repositories\Eloquent\DataHighLightRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\CompanyRepositoryInterface::class,
+            \App\Repositories\Eloquent\CompanyRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\IntroduceRepositoryInterface::class,
+            \App\Repositories\Eloquent\IntroduceRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\PartnerRepositoryInterface::class,
+            \App\Repositories\Eloquent\PartnerRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\HistoryRepositoryInterface::class,
+            \App\Repositories\Eloquent\HistoryRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\LeaderShipRepositoryInterface::class,
+            \App\Repositories\Eloquent\LeaderShipRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\FieldRepositoryInterface::class,
+            \App\Repositories\Eloquent\FieldRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\ProjectRepositoryInterface::class,
+            \App\Repositories\Eloquent\ProjectRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\NewCategoryRepositoryInterface::class,
+            \App\Repositories\Eloquent\NewCategoryRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\CulturalCompanyRepositoryInterface::class,
+            \App\Repositories\Eloquent\CulturalCompanyRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\CriteriaCandidateRepositoryInterface::class,
+            \App\Repositories\Eloquent\CriteriaCandidateRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\JobCategoryRepositoryInterface::class,
+            \App\Repositories\Eloquent\JobCategoryRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\JobRepositoryInterface::class,
+            \App\Repositories\Eloquent\JobRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\MetaRepositoryInterface::class,
+            \App\Repositories\Eloquent\MetaRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\FooterRepositoryInterface::class,
+            \App\Repositories\Eloquent\FooterRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\ContactRepositoryInterface::class,
+            \App\Repositories\Eloquent\ContactRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\CadidateRepositoryInterface::class,
+            \App\Repositories\Eloquent\CadidateRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\SaveValueRepositoryInterface::class,
+            \App\Repositories\Eloquent\SaveValueRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\TableNewRepositoryInterface::class,
+            \App\Repositories\Eloquent\TableNewRepository::class
+        );
+
         /* NEW BINDING */
     }
 }

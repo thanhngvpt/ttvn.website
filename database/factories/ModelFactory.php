@@ -468,4 +468,22 @@ $factory->define(App\Models\SaveValue::class, function (Faker\Generator $faker) 
     ];
 });
 
+$factory->define(App\Models\TableNew::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'slug' => '',
+        'cover_image_id' => '',
+        'new_category_id' => '',
+        'display' => '',
+        'order' => '',
+        'meta_title' => '',
+        'meta_description' => '',
+        'sapo' => '',
+        'content' => '',
+        'auth' => '',
+        'is_enabled' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

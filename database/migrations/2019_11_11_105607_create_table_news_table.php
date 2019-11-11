@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use \App\Database\Migration;
 
-class CreatenewsTable extends Migration
+class CreatetableNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreatenewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('table_news', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->string('name')->nullable();
@@ -27,11 +27,11 @@ class CreatenewsTable extends Migration
             $table->text('content')->nullable();
             $table->string('auth')->nullable();
             $table->boolean('is_enabled')->default(true);
-            
+
             $table->timestamps();
         });
 
-        $this->updateTimestampDefaultValue('news', ['updated_at'], ['created_at']);
+        $this->updateTimestampDefaultValue('table_news', ['updated_at'], ['created_at']);
     }
 
     /**
@@ -41,6 +41,6 @@ class CreatenewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('table_news');
     }
 }

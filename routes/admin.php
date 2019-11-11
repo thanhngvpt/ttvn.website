@@ -46,6 +46,29 @@
 
         \Route::post('signout', 'Admin\AuthController@postSignOut');
 
+        \Route::resource('table-news', 'Admin\TableNewController');
+        \Route::resource('banners', 'Admin\BannerController');
+        \Route::resource('videos', 'Admin\VideoController');
+        \Route::resource('headings', 'Admin\HeadingController');
+        \Route::resource('infor-groups', 'Admin\InforGroupController');
+        \Route::resource('data-high-lights', 'Admin\DataHighLightController');
+        \Route::resource('companies', 'Admin\CompanyController');
+        \Route::resource('introduces', 'Admin\IntroduceController');
+        \Route::resource('partners', 'Admin\PartnerController');
+        \Route::resource('histories', 'Admin\HistoryController');
+        \Route::resource('leader-ships', 'Admin\LeaderShipController');
+        \Route::resource('fields', 'Admin\FieldController');
+        \Route::resource('projects', 'Admin\ProjectController');
+        \Route::resource('new-categories', 'Admin\NewCategoryController');
+        \Route::resource('cultural-companies', 'Admin\CulturalCompanyController');
+        \Route::resource('criteria-candidates', 'Admin\CriteriaCandidateController');
+        \Route::resource('job-categories', 'Admin\JobCategoryController');
+        \Route::resource('jobs', 'Admin\JobController');
+        \Route::resource('meta', 'Admin\MetaController');
+        \Route::resource('footers', 'Admin\FooterController');
+        \Route::resource('contacts', 'Admin\ContactController');
+        \Route::resource('cadidates', 'Admin\CadidateController');
+        \Route::resource('save-values', 'Admin\SaveValueController');
         /* NEW ADMIN RESOURCE ROUTE */
 
     });

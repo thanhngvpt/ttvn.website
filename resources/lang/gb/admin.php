@@ -211,6 +211,244 @@ return [
                 'revoked'                => 'Revoked',
             ],
         ],
+        'table-news'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'slug' => 'Slug',
+                'cover_image_id' => 'Cover_image_id',
+                'new_category_id' => 'New_category_id',
+                'display' => 'Display',
+                'order' => 'Order',
+                'meta_title' => 'Meta_title',
+                'meta_description' => 'Meta_description',
+                'sapo' => 'Sapo',
+                'content' => 'Content',
+                'auth' => 'Auth',
+                'is_enabled' => 'Is_enabled',
+            ],
+        ],
+        'banners'   => [
+            'columns'  => [
+                'cover_image_id' => 'Cover_image_id',
+                'title' => 'Title',
+                'description' => 'Description',
+                'admin_user_id' => 'Admin_user_id',
+                'order' => 'Order',
+                'is_enabled' => 'Is_enabled',
+            ],
+        ],
+        'videos'   => [
+            'columns'  => [
+                'cover_image_id' => 'Cover_image_id',
+                'video_url' => 'Video_url',
+            ],
+        ],
+        'headings'   => [
+            'columns'  => [
+                'title_heading' => 'Title_heading',
+                'heading_description' => 'Heading_description',
+                'title_group' => 'Title_group',
+                'title_data_highlight' => 'Title_data_highlight',
+                'title_news' => 'Title_news',
+                'title_company' => 'Title_company',
+                'title_support' => 'Title_support',
+                'support_description' => 'Support_description',
+            ],
+        ],
+        'infor-groups'   => [
+            'columns'  => [
+                'cover_image_id' => 'Cover_image_id',
+                'thumbnail_image_id' => 'Thumbnail_image_id',
+                'description' => 'Description',
+            ],
+        ],
+        'data-high-lights'   => [
+            'columns'  => [
+            ],
+        ],
+        'companies'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'cover_image_id' => 'Cover_image_id',
+                'link' => 'Link',
+                'is_enabled' => 'Is_enabled',
+            ],
+        ],
+        'introduces'   => [
+            'columns'  => [
+                'title_introduce' => 'Title_introduce',
+                'title_leader_ship' => 'Title_leader_ship',
+                'content_image_id' => 'Content_image_id',
+                'mission_image_id' => 'Mission_image_id',
+                'content' => 'Content',
+                'mission' => 'Mission',
+                'content_intro' => 'Content_intro',
+                'overview_intro' => 'Overview_intro',
+                'diagram_image_id' => 'Diagram_image_id',
+            ],
+        ],
+        'partners'   => [
+            'columns'  => [
+                'cover_image_id' => 'Cover_image_id',
+                'name' => 'Name',
+                'link' => 'Link',
+            ],
+        ],
+        'histories'   => [
+            'columns'  => [
+                'date_start' => 'Date_start',
+                'cover_image_id' => 'Cover_image_id',
+                'content' => 'Content',
+            ],
+        ],
+        'leader-ships'   => [
+            'columns'  => [
+                'cover_image_id' => 'Cover_image_id',
+                'name' => 'Name',
+                'position' => 'Position',
+                'file' => 'File',
+                'order' => 'Order',
+                'is_enabled' => 'Is_enabled',
+            ],
+        ],
+        'fields'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'slug' => 'Slug',
+                'meta_title' => 'Meta_title',
+                'meta_description' => 'Meta_description',
+                'cover_image_id' => 'Cover_image_id',
+                'title' => 'Title',
+                'content' => 'Content',
+                'icon1_image_id' => 'Icon1_image_id',
+                'charact_1' => 'Charact_1',
+                'des_1' => 'Des_1',
+                'icon2_image_id' => 'Icon2_image_id',
+                'charact_2' => 'Charact_2',
+                'des_2' => 'Des_2',
+                'icon3_image_id' => 'Icon3_image_id',
+                'charact_3' => 'Charact_3',
+                'des_3' => 'Des_3',
+                'order' => 'Order',
+                'is_enabled' => 'Is_enabled',
+            ],
+        ],
+        'projects'   => [
+            'columns'  => [
+                'cover_image_id' => 'Cover_image_id',
+                'name' => 'Name',
+                'address' => 'Address',
+                'link' => 'Link',
+                'order' => 'Order',
+            ],
+        ],
+        'new-categories'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'slug' => 'Slug',
+                'meta_title' => 'Meta_title',
+                'meta_description' => 'Meta_description',
+                'order' => 'Order',
+            ],
+        ],
+        'cultural-companies'   => [
+            'columns'  => [
+                'title_page' => 'Title_page',
+                'introduce' => 'Introduce',
+                'content' => 'Content',
+                'meta_title' => 'Meta_title',
+                'meta_description1' => 'Meta_description1',
+                'meta_description2' => 'Meta_description2',
+                'icon1_image_id' => 'Icon1_image_id',
+                'reason1' => 'Reason1',
+                'detail1' => 'Detail1',
+                'icon2_image_id' => 'Icon2_image_id',
+                'reason2' => 'Reason2',
+                'detail2' => 'Detail2',
+                'icon3_image_id' => 'Icon3_image_id',
+                'reason3' => 'Reason3',
+                'detail3' => 'Detail3',
+                'ttvn_image_id' => 'Ttvn_image_id',
+                'ttvn_title' => 'Ttvn_title',
+                'ttvn_content' => 'Ttvn_content',
+                'we_find_introduce' => 'We_find_introduce',
+            ],
+        ],
+        'criteria-candidates'   => [
+            'columns'  => [
+                'icon_image_id' => 'Icon_image_id',
+                'name' => 'Name',
+                'content' => 'Content',
+            ],
+        ],
+        'job-categories'   => [
+            'columns'  => [
+                'name' => 'Name',
+            ],
+        ],
+        'jobs'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'job_category_id' => 'Job_category_id',
+                'slug' => 'Slug',
+                'meta_title' => 'Meta_title',
+                'meta_description' => 'Meta_description',
+                'company_id' => 'Company_id',
+                'province' => 'Province',
+                'district' => 'District',
+                'number' => 'Number',
+                'salary' => 'Salary',
+                'end_time' => 'End_time',
+                'order' => 'Order',
+                'description' => 'Description',
+                'is_enabled' => 'Is_enabled',
+            ],
+        ],
+        'meta'   => [
+            'columns'  => [
+            ],
+        ],
+        'footers'   => [
+            'columns'  => [
+                'hn_name' => 'Hn_name',
+                'hn_address' => 'Hn_address',
+                'hn_phone' => 'Hn_phone',
+                'hn_fax' => 'Hn_fax',
+                'other_name' => 'Other_name',
+                'other_address' => 'Other_address',
+                'other_phone' => 'Other_phone',
+                'other_fax' => 'Other_fax',
+                'fb_link' => 'Fb_link',
+                'skype_link' => 'Skype_link',
+                'email' => 'Email',
+            ],
+        ],
+        'contacts'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'email' => 'Email',
+                'phone' => 'Phone',
+                'content' => 'Content',
+                'message_type' => 'Message_type',
+                'is_read' => 'Is_read',
+            ],
+        ],
+        'cadidates'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'phone' => 'Phone',
+                'email' => 'Email',
+                'file' => 'File',
+                'link_job' => 'Link_job',
+            ],
+        ],
+        'save-values'   => [
+            'columns'  => [
+                'cover_image_id' => 'Cover_image_id',
+                'value' => 'Value',
+                'content' => 'Content',
+            ],
+        ],
         /* NEW PAGE STRINGS */
     ],
     'roles'      => [
