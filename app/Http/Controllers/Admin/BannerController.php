@@ -7,16 +7,38 @@ use App\Http\Controllers\Controller;
 use App\Repositories\BannerRepositoryInterface;
 use App\Http\Requests\Admin\BannerRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+use App\Services\AdminUserServiceInterface;
 
 class BannerController extends Controller
 {
     /** @var  \App\Repositories\BannerRepositoryInterface */
     protected $bannerRepository;
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+    protected $adminUserService;
 
     public function __construct(
-        BannerRepositoryInterface $bannerRepository
+        BannerRepositoryInterface $bannerRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService,
+        AdminUserServiceInterface $adminUserService
     ) {
         $this->bannerRepository = $bannerRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
+        $this->adminUserService = $adminUserService;
     }
 
     /**
@@ -79,17 +101,32 @@ class BannerController extends Controller
     {
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'title',
-                            'description',
-                            'admin_user_id',
-                            'order',
-                            'is_enabled',
-                        ]
+                'title',
+                'description',
+                'order',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
+        $input['admin_user_id'] = $this->adminUserService->getUser()->id;
         $banner = $this->bannerRepository->create($input);
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $banner->id,
+                    'title'       => $request->input('name', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->bannerRepository->update($banner, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($banner) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -149,17 +186,38 @@ class BannerController extends Controller
 
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'title',
-                            'description',
-                            'admin_user_id',
-                            'order',
-                            'is_enabled',
-                        ]
+                'title',
+                'description',
+                'order',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->bannerRepository->update($banner, $input);
+        $input['admin_user_id'] = $this->adminUserService->getUser()->id;
+        $banner = $this->bannerRepository->update($banner, $input);
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $banner->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $banner->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->bannerRepository->update($banner, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\BannerController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

@@ -8,6 +8,10 @@
         .row {
             margin-bottom: 15px;
         }
+        #cover-image-preview {
+            width: 100%;
+            height: 300px;
+        }
     </style>
 @stop
 
@@ -95,73 +99,75 @@
                 </div>
             @endif
 
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\BannerController@store') !!}@else{!! action('Admin\BannerController@update', [$banner->id]) !!}@endif" method="POST">
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\BannerController@store') !!}@else{!! action('Admin\BannerController@update', [$banner->id]) !!}@endif" method="POST" enctype="multipart/form-data">
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                                                                                    <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($banner->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $banner->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.banners.columns.cover_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group m-form__group row text-center" style="max-width: 500px;">
+                                @if( !empty($banner->present()->coverImage()) )
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! $banner->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="cover-image" name="cover-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    Ảnh
+                                    <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
                             </div>
-                                                                                                <div class="row">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('title')) has-danger @endif">
-                                        <label for="title">@lang('admin.pages.banners.columns.title')</label>
-                                        <input type="text" class="form-control m-input" name="title" id="title" required placeholder="@lang('admin.pages.banners.columns.title')" value="{{ old('title') ? old('title') : $banner->title }}">
+                                        <label for="title">Tiêu đề</label>
+                                        <input type="text" class="form-control m-input" name="title" id="title" required value="{{ old('title') ? old('title') : $banner->title }}">
                                     </div>
                                 </div>
                             </div>
-                                                                                                <div class="row">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('description')) has-danger @endif">
-                                        <label for="description">@lang('admin.pages.banners.columns.description')</label>
-                                        <textarea name="description" id="description" class="form-control m-input" rows="3" placeholder="@lang('admin.pages.banners.columns.description')">{{ old('description') ? old('description') : $banner->description }}</textarea>
+                                        <label for="description">Mô tả</label>
+                                        <textarea name="description" id="description" class="form-control m-input" rows="3">{{ old('description') ? old('description') : $banner->description }}</textarea>
                                     </div>
                                 </div>
                             </div>
-                                                                                                <div class="row">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
+                                        <label for="order">Vị trí</label>
+                                        <input type="number" min="0" class="form-control m-input" name="order" id="order" required value="{{ old('order') ? old('order') : $banner->order }}">
+                                    </div>
+                                </div>
+                            </div>
+                            {{--  <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('admin_user_id')) has-danger @endif">
                                         <label for="admin_user_id">@lang('admin.pages.banners.columns.admin_user_id')</label>
                                         <input type="number" min="0" class="form-control m-input" name="admin_user_id" id="admin_user_id" required placeholder="@lang('admin.pages.banners.columns.admin_user_id')" value="{{ old('admin_user_id') ? old('admin_user_id') : $banner->admin_user_id }}">
                                     </div>
                                 </div>
+                            </div>  --}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group row @if ($errors->has('is_enabled')) has-danger @endif">
+                                <label for="is_enabled" class="label-switch">Enabled</label>
+                                <span class="m-switch m-switch--outline m-switch--icon m-switch--primary">
+                                    <label>
+                                        <input type="checkbox" id="is_enabled" name="is_enabled" value="1" @if( $banner->is_enabled) checked @endif>
+                                        <span></span>
+                                    </label>
+                                </span>
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
-                                        <label for="order">@lang('admin.pages.banners.columns.order')</label>
-                                        <input type="number" min="0" class="form-control m-input" name="order" id="order" required placeholder="@lang('admin.pages.banners.columns.order')" value="{{ old('order') ? old('order') : $banner->order }}">
-                                    </div>
-                                </div>
-                            </div>
-                                                                                                <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group m-form__group row @if ($errors->has('is_enabled')) has-danger @endif">
-                                        <label for="is_enabled" class="label-switch">@lang('admin.pages.banners.columns.is_enabled')</label>
-                                        <span class="m-switch m-switch--outline m-switch--icon m-switch--primary">
-                                            <label>
-                                                <input type="checkbox" id="is_enabled" name="is_enabled" value="1" @if( $banner->is_enabled) checked @endif>
-                                                <span></span>
-                                            </label>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                                                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">

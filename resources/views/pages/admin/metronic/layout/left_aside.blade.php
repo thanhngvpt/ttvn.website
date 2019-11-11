@@ -26,7 +26,7 @@
             </li>
             <li class="m-menu__item @if( $menu=='table_news') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\TableNewController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-newspaper-o"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -39,7 +39,7 @@
 
             <li class="m-menu__item @if( $menu=='banners') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\BannerController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-picture-o"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -52,7 +52,7 @@
 
             <li class="m-menu__item @if( $menu=='videos') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\VideoController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-file-video-o"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -65,7 +65,7 @@
 
             <li class="m-menu__item @if( $menu=='headings') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\HeadingController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-h-square"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -78,7 +78,7 @@
 
             <li class="m-menu__item @if( $menu=='infor_groups') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\InforGroupController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-info"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -89,22 +89,9 @@
                 </a>
             </li>
 
-            <li class="m-menu__item @if( $menu=='data_high_lights') m-menu__item--active @endif" aria-haspopup="true">
-                <a href="{!! \URL::action('Admin\DataHighLightController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
-                    <span class="m-menu__link-title">
-                        <span class="m-menu__link-wrap">
-                            <span class="m-menu__link-text">
-                                Số liệu nổi bật
-                            </span>
-                        </span>
-                    </span>
-                </a>
-            </li>
-
             <li class="m-menu__item @if( $menu=='companies') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\CompanyController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-university"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -117,7 +104,7 @@
 
             <li class="m-menu__item @if( $menu=='introduces') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\IntroduceController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-exclamation-circle"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -130,7 +117,7 @@
 
             <li class="m-menu__item @if( $menu=='partners') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\PartnerController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-users"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -143,7 +130,7 @@
 
             <li class="m-menu__item @if( $menu=='histories') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\HistoryController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-history"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -156,7 +143,7 @@
 
             <li class="m-menu__item @if( $menu=='leader_ships') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\LeaderShipController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-user"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -169,7 +156,7 @@
 
             <li class="m-menu__item @if( $menu=='fields') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\FieldController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-clone"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -195,7 +182,7 @@
 
             <li class="m-menu__item @if( $menu=='new_categories') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\NewCategoryController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-align-justify"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -208,7 +195,7 @@
 
             <li class="m-menu__item @if( $menu=='cultural_companies') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\CulturalCompanyController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-check-square"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -221,7 +208,7 @@
 
             <li class="m-menu__item @if( $menu=='criteria_candidates') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\CriteriaCandidateController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-files-o"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -234,7 +221,7 @@
 
             <li class="m-menu__item @if( $menu=='job_categories') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\JobCategoryController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-tasks"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -247,7 +234,7 @@
 
             <li class="m-menu__item @if( $menu=='jobs') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\JobController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-user-plus"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -260,7 +247,7 @@
 
             <li class="m-menu__item @if( $menu=='meta') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\MetaController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-ticket"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -273,7 +260,7 @@
 
             <li class="m-menu__item @if( $menu=='footers') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\FooterController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-cog"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -286,7 +273,7 @@
 
             <li class="m-menu__item @if( $menu=='contacts') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\ContactController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-phone"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -299,7 +286,7 @@
 
             <li class="m-menu__item @if( $menu=='cadidates') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\CadidateController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-user-times"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -312,11 +299,24 @@
 
             <li class="m-menu__item @if( $menu=='save_values') m-menu__item--active @endif" aria-haspopup="true">
                 <a href="{!! \URL::action('Admin\SaveValueController@index') !!}" class="m-menu__link">
-                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <i class="m-menu__link-icon la la-viacoin"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
                                 Giá trị tích lũy
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='data_highlights') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\DataHighlightController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-sort-numeric-desc"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Số liệu nổi bật
                             </span>
                         </span>
                     </span>

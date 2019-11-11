@@ -208,6 +208,11 @@ class RepositoryBindServiceProvider extends ServiceProvider {
             \App\Repositories\Eloquent\TableNewRepository::class
         );
 
+        $this->app->singleton(
+            \App\Repositories\DataHighlightRepositoryInterface::class,
+            \App\Repositories\Eloquent\DataHighlightRepository::class
+        );
+
         /* NEW BINDING */
     }
 }

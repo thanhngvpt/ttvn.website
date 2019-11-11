@@ -7,16 +7,34 @@ use App\Http\Controllers\Controller;
 use App\Repositories\CulturalCompanyRepositoryInterface;
 use App\Http\Requests\Admin\CulturalCompanyRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
 
 class CulturalCompanyController extends Controller
 {
     /** @var  \App\Repositories\CulturalCompanyRepositoryInterface */
     protected $culturalCompanyRepository;
+     /** @var FileUploadServiceInterface $fileUploadService */
+     protected $fileUploadService;
+
+     /** @var ImageRepositoryInterface $imageRepository */
+     protected $imageRepository;
+ 
+     /** @var  ImageServiceInterface $imageService */
+     protected $imageService;
 
     public function __construct(
-        CulturalCompanyRepositoryInterface $culturalCompanyRepository
+        CulturalCompanyRepositoryInterface $culturalCompanyRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->culturalCompanyRepository = $culturalCompanyRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -79,30 +97,100 @@ class CulturalCompanyController extends Controller
     {
         $input = $request->only(
             [
-                            'title_page',
-                            'introduce',
-                            'content',
-                            'meta_title',
-                            'meta_description1',
-                            'meta_description2',
-                            'icon1_image_id',
-                            'reason1',
-                            'detail1',
-                            'icon2_image_id',
-                            'reason2',
-                            'detail2',
-                            'icon3_image_id',
-                            'reason3',
-                            'detail3',
-                            'ttvn_image_id',
-                            'ttvn_title',
-                            'ttvn_content',
-                            'we_find_introduce',
-                        ]
+                'title_page',
+                'introduce',
+                'content',
+                'meta_title',
+                'meta_description1',
+                'meta_description2',
+                'reason1',
+                'detail1',
+                'reason2',
+                'detail2',
+                'reason3',
+                'detail3',
+                'ttvn_title',
+                'ttvn_content',
+                'we_find_introduce',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
         $culturalCompany = $this->culturalCompanyRepository->create($input);
+        
+        if ($request->hasFile('icon1-image')) {
+            $file = $request->file('icon1-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['icon1_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('icon2-image')) {
+            $file = $request->file('icon2-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['icon2_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('icon3-image')) {
+            $file = $request->file('icon3-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['icon3_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['ttvn_image_id' => $image->id]);
+            }
+        }
+
+
 
         if( empty($culturalCompany) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));

@@ -449,6 +449,13 @@ return [
                 'content' => 'Content',
             ],
         ],
+        'data-highlights'   => [
+            'columns'  => [
+                'cover_image_id' => 'Cover_image_id',
+                'title' => 'Title',
+                'data' => 'Data',
+            ],
+        ],
         /* NEW PAGE STRINGS */
     ],
     'roles'      => [

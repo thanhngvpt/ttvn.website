@@ -7,16 +7,43 @@ use App\Http\Controllers\Controller;
 use App\Repositories\TableNewRepositoryInterface;
 use App\Http\Requests\Admin\TableNewRequest;
 use App\Http\Requests\PaginationRequest;
+use \App\Repositories\NewCategoryRepositoryInterface;
+use App\Repositories\ImageRepositoryInterface;
+use App\Services\ArticleServiceInterface;
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
 
 class TableNewController extends Controller
 {
     /** @var  \App\Repositories\TableNewRepositoryInterface */
     protected $tableNewRepository;
+    protected $newCategoryRepository;
+    protected $articleService;
+
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
 
     public function __construct(
-        TableNewRepositoryInterface $tableNewRepository
+        TableNewRepositoryInterface $tableNewRepository,
+        NewCategoryRepositoryInterface $newCategoryRepository,
+        ArticleServiceInterface         $articleService,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->tableNewRepository = $tableNewRepository;
+        $this->newCategoryRepository = $newCategoryRepository;
+        $this->articleService           = $articleService;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -65,6 +92,7 @@ class TableNewController extends Controller
             [
                 'isNew'     => true,
                 'tableNew' => $this->tableNewRepository->getBlankModel(),
+                'categories' => $this->newCategoryRepository->all()
             ]
         );
     }
@@ -79,23 +107,39 @@ class TableNewController extends Controller
     {
         $input = $request->only(
             [
-                            'name',
-                            'slug',
-                            'cover_image_id',
-                            'new_category_id',
-                            'display',
-                            'order',
-                            'meta_title',
-                            'meta_description',
-                            'sapo',
-                            'content',
-                            'auth',
-                            'is_enabled',
-                        ]
+                'name',
+                'slug',
+                'new_category_id',
+                'order',
+                'meta_title',
+                'meta_description',
+                'sapo',
+                'content',
+                'auth'
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
+        $input['display'] = $request->get('display', 0);
         $tableNew = $this->tableNewRepository->create($input);
+
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'news_cover_image',
+                $file,
+                [
+                    'entity_type' => 'news_cover_image',
+                    'entity_id'   => $tableNew->id,
+                    'title'       => $request->input('name', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->tableNewRepository->update($tableNew, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($tableNew) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -123,6 +167,7 @@ class TableNewController extends Controller
             [
                 'isNew' => false,
                 'tableNew' => $tableNew,
+                'categories' => $this->newCategoryRepository->all()
             ]
         );
     }
@@ -155,23 +200,44 @@ class TableNewController extends Controller
 
         $input = $request->only(
             [
-                            'name',
-                            'slug',
-                            'cover_image_id',
-                            'new_category_id',
-                            'display',
-                            'order',
-                            'meta_title',
-                            'meta_description',
-                            'sapo',
-                            'content',
-                            'auth',
-                            'is_enabled',
-                        ]
+                'name',
+                'slug',
+                'new_category_id',
+                'order',
+                'meta_title',
+                'meta_description',
+                'sapo',
+                'content',
+                'auth',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->tableNewRepository->update($tableNew, $input);
+        $input['display'] = $request->get('display', 0);
+        $news = $this->tableNewRepository->update($tableNew, $input);
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $news->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'news_cover_image',
+                $file,
+                [
+                    'entity_type' => 'news_cover_image',
+                    'entity_id'   => $news->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->tableNewRepository->update($news, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\TableNewController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));
@@ -196,4 +262,101 @@ class TableNewController extends Controller
                     ->with('message-success', trans('admin.messages.general.delete_success'));
     }
 
+    public function getImages(PaginationRequest $request)
+    {
+        $entityId = intval($request->input('article_id', 0));
+        $type = $request->input('type', 'article_image');
+
+        if ($entityId == 0) {
+            $imageIds = $this->articleService->getImageIdsFromSession();
+            $models   = $this->imageRepository->allByIds($imageIds);
+        } else {
+            /** @var \App\Models\Image[] $models */
+            $models = $this->imageRepository->allByFileCategoryTypeAndEntityId($type, $entityId);
+        }
+
+        $result = [];
+        foreach ($models as $model) {
+            $result[] = [
+                'id'    => $model->id,
+                'url'   => $model->present()->url(),
+                'thumb' => '',
+                'tag'   => ''
+            ];
+        }
+
+        return response()->json($result);
+    }
+
+    public function postImage(BaseRequest $request)
+    {
+        if (!$request->hasFile('file')) {
+            // [TODO] ERROR JSON
+            abort(400, 'No Image File');
+        }
+
+        $type     = $request->input('type', 'article_image');
+        $entityId = $request->input('article_id', 0);
+
+        $conf = config('file.categories.' . $type);
+        if (empty($conf)) {
+            abort(400, 'Invalid type: ' . $type);
+        }
+
+        $file = $request->file('file');
+
+        $image = $this->fileUploadService->upload(
+            'article_image',
+            $file,
+            [
+                'entity_type' => $type,
+                'entity_id'   => $entityId,
+                'title'       => $request->input('title', ''),
+            ]
+        );
+
+
+        if ($entityId == 0) {
+            $this->articleService->addImageIdToSession($image->id);
+        }
+
+        return response()->json(
+            [
+                'id'   => $image->id,
+                'link' => $image->present()->url(),
+            ]
+        );
+    }
+
+    public function deleteImage(BaseRequest $request)
+    {
+        $url = $request->input('src');
+        if (empty($url)) {
+            abort(400, 'No URL Given');
+        }
+        $url = basename($url);
+
+        /** @var \App\Models\Image|null $image */
+        $image = $this->imageRepository->findByUrl($url);
+        if (empty($image)) {
+            abort(404);
+        }
+
+        $entityId = $request->input('article_id', 0);
+        if ($entityId != $image->entity_id) {
+            abort(400, 'Article ID Mismatch');
+        } else {
+            if ($entityId == 0 && !$this->articleService->hasImageIdInSession($image->id)) {
+                abort(400, 'Entity ID Mismatch');
+            }
+        }
+
+        $this->fileUploadService->delete($image);
+
+        if ($entityId == 0) {
+            $this->articleService->removeImageIdFromSession($image->id);
+        }
+
+        return response()->json(['status' => 'ok'], 204);
+    }
 }

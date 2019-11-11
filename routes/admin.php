@@ -46,7 +46,11 @@
 
         \Route::post('signout', 'Admin\AuthController@postSignOut');
 
+        \Route::get('table-news/images', 'Admin\TableNewController@getImages');
+        \Route::post('table-news/images', 'Admin\TableNewController@postImage');
+        \Route::delete('table-news/images', 'Admin\TableNewController@deleteImage');
         \Route::resource('table-news', 'Admin\TableNewController');
+
         \Route::resource('banners', 'Admin\BannerController');
         \Route::resource('videos', 'Admin\VideoController');
         \Route::resource('headings', 'Admin\HeadingController');
@@ -69,6 +73,7 @@
         \Route::resource('contacts', 'Admin\ContactController');
         \Route::resource('cadidates', 'Admin\CadidateController');
         \Route::resource('save-values', 'Admin\SaveValueController');
+        \Route::resource('data-highlights', 'Admin\DataHighlightController');
         /* NEW ADMIN RESOURCE ROUTE */
 
     });

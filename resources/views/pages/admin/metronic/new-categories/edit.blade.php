@@ -30,18 +30,18 @@
 @stop
 
 @section('title')
-    NewCategory | Admin | {{ config('site.name') }}
+Danh mục tin tức | Admin | {{ config('site.name') }}
 @stop
 
 @section('header')
-    NewCategory
+Danh mục tin tức
 @stop
 
 @section('breadcrumb')
     <li class="m-nav__separator"> / </li>
     <li class="m-nav__item">
         <a href="{!! action('Admin\NewCategoryController@index') !!}" class="m-nav__link">
-            NewCategory
+            Danh mục tin tức
         </a>
     </li>
 
@@ -64,7 +64,7 @@
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
-                        Create New Record
+                        Tạo mới
                     </h3>
                 </div>
             </div>
@@ -100,47 +100,47 @@
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                                                        <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('name')) has-danger @endif">
-                                        <label for="name">@lang('admin.pages.new-categories.columns.name')</label>
-                                        <input type="text" class="form-control m-input" name="name" id="name" required placeholder="@lang('admin.pages.new-categories.columns.name')" value="{{ old('name') ? old('name') : $newCategory->name }}">
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('name')) has-danger @endif">
+                                <label for="name">Tên Danh mục</label>
+                                <input type="text" class="form-control m-input" name="name" id="name" required value="{{ old('name') ? old('name') : $newCategory->name }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('slug')) has-danger @endif">
-                                        <label for="slug">@lang('admin.pages.new-categories.columns.slug')</label>
-                                        <input type="text" class="form-control m-input" name="slug" id="slug" required placeholder="@lang('admin.pages.new-categories.columns.slug')" value="{{ old('slug') ? old('slug') : $newCategory->slug }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('slug')) has-danger @endif">
+                                <label for="slug">Slug</label>
+                                <input type="text" class="form-control m-input" name="slug" id="slug" required value="{{ old('slug') ? old('slug') : $newCategory->slug }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('meta_title')) has-danger @endif">
-                                        <label for="meta_title">@lang('admin.pages.new-categories.columns.meta_title')</label>
-                                        <input type="text" class="form-control m-input" name="meta_title" id="meta_title" required placeholder="@lang('admin.pages.new-categories.columns.meta_title')" value="{{ old('meta_title') ? old('meta_title') : $newCategory->meta_title }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('meta_title')) has-danger @endif">
+                                <label for="meta_title">Meta title</label>
+                                <input type="text" class="form-control m-input" name="meta_title" id="meta_title" value="{{ old('meta_title') ? old('meta_title') : $newCategory->meta_title }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('meta_description')) has-danger @endif">
-                                        <label for="meta_description">@lang('admin.pages.new-categories.columns.meta_description')</label>
-                                        <input type="text" class="form-control m-input" name="meta_description" id="meta_description" required placeholder="@lang('admin.pages.new-categories.columns.meta_description')" value="{{ old('meta_description') ? old('meta_description') : $newCategory->meta_description }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('meta_description')) has-danger @endif">
+                                <label for="meta_description">Meta description</label>
+                                <input type="text" class="form-control m-input" name="meta_description" id="meta_description" value="{{ old('meta_description') ? old('meta_description') : $newCategory->meta_description }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
-                                        <label for="order">@lang('admin.pages.new-categories.columns.order')</label>
-                                        <input type="number" min="0" class="form-control m-input" name="order" id="order" required placeholder="@lang('admin.pages.new-categories.columns.order')" value="{{ old('order') ? old('order') : $newCategory->order }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
+                                <label for="order">Vị trí</label>
+                                <input type="number" min="0" class="form-control m-input" name="order" id="order" value="{{ old('order') ? old('order') : $newCategory->order }}">
                             </div>
-                                                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">

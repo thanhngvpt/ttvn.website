@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'new-categories'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'data-highlights'] )
 
 @section('metadata')
 @stop
@@ -12,11 +12,11 @@
 @stop
 
 @section('title')
-     Danh Mục tin tức | Admin | {{ config('site.name') }}
+     DataHighlight | Admin | {{ config('site.name') }}
 @stop
 
 @section('header')
-Danh Mục tin tức
+    DataHighlight
 @stop
 
 @section('breadcrumb')
@@ -24,7 +24,7 @@ Danh Mục tin tức
     <li class="m-nav__item">
         <a href="" class="m-nav__link">
             <span class="m-nav__link-text">
-                Danh Mục tin tức
+                DataHighlight
             </span>
         </a>
     </li>
@@ -36,14 +36,14 @@ Danh Mục tin tức
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
-                        Danh Mục tin tức
+                        DataHighlight
                     </h3>
                 </div>
             </div>
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
-                        <a href="{!! action('Admin\NewCategoryController@create') !!}" class="btn m-btn--pill m-btn--air btn-outline-success btn-sm">
+                        <a href="{!! action('Admin\DataHighlightController@create') !!}" class="btn m-btn--pill m-btn--air btn-outline-success btn-sm">
                             <span>
                                 <i class="la la-plus"></i>
                                 <span>Create New</span>
@@ -94,7 +94,7 @@ Danh Mục tin tức
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div id="m_table_1_filter" class="dataTables_filter">
-                            <form method="get" accept-charset="utf-8" action="{!! action('Admin\NewCategoryController@index') !!}">
+                            <form method="get" accept-charset="utf-8" action="{!! action('Admin\DataHighlightController@index') !!}">
                                 {!! csrf_field() !!}
                                 <div class="m-input-icon m-input-icon--left m-input-icon--right">
                                     <input type="text" name="keyword" id="keyword" value="{{ $keyword }}" class="form-control m-input m-input--pill" placeholder="Tìm kiếm ...">
@@ -115,30 +115,24 @@ Danh Mục tin tức
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                    <th>{!! \PaginationHelper::sort('name', 'Tên') !!}</th>
-                                    <th>{!! \PaginationHelper::sort('slug', 'Slug') !!}</th>
-                                    <th>{!! \PaginationHelper::sort('meta_title', 'Meta title') !!}</th>
-                                    <th>{!! \PaginationHelper::sort('meta_description', 'Meta description') !!}</th>
-                                    <th>{!! \PaginationHelper::sort('order', 'Vị trí') !!}</th>
+                                                                                                                                                                                                        <th>{!! \PaginationHelper::sort('title', trans('admin.pages.data-highlights.columns.title')) !!}</th>
+                                                                                                                    <th>{!! \PaginationHelper::sort('data', trans('admin.pages.data-highlights.columns.data')) !!}</th>
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach( $newCategories as $newCategory )
+                                @foreach( $dataHighlights as $dataHighlight )
                                     <tr>
-                                        <td>{{ $newCategory->id }}</td>
-                                                                                                                            <td>{{ $newCategory->name }}</td>
-                                                                                                                            <td>{{ $newCategory->slug }}</td>
-                                                                                                                            <td>{{ $newCategory->meta_title }}</td>
-                                                                                                                            <td>{{ $newCategory->meta_description }}</td>
-                                                                                                                            <td>{{ $newCategory->order }}</td>
+                                        <td>{{ $dataHighlight->id }}</td>
+                                                                                                                                                                                                                        <td>{{ $dataHighlight->title }}</td>
+                                                                                                                            <td>{{ $dataHighlight->data }}</td>
                                                                                 <td>
-                                            <a href="{!! action('Admin\NewCategoryController@show', $newCategory->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
+                                            <a href="{!! action('Admin\DataHighlightController@show', $dataHighlight->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>
-                                            <a href="javascript:;" data-delete-url="{!! action('Admin\NewCategoryController@destroy', $newCategory->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
+                                            <a href="javascript:;" data-delete-url="{!! action('Admin\DataHighlightController@destroy', $dataHighlight->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
                                                 <i class="la la-trash"></i>
                                             </a>
                                         </td>
