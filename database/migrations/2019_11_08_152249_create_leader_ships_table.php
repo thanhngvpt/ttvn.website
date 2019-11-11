@@ -15,7 +15,12 @@ class CreateleaderShipsTable extends Migration
         Schema::create('leader_ships', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->string('name')->nullable();
+            $table->string('position')->nullable();
+            $table->string('file')->nullable();
+            $table->bigInteger('order')->nullable();
+            $table->boolean('is_enabled')->default(true);
 
             $table->timestamps();
         });

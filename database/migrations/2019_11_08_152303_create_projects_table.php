@@ -15,7 +15,11 @@ class CreateprojectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->string('name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('link')->nullable();
+            $table->integer('order')->nullable();
 
             $table->timestamps();
         });

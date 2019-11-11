@@ -15,7 +15,11 @@ class CreatenewCategoriesTable extends Migration
         Schema::create('new_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->integer('order')->nullable();
 
             $table->timestamps();
         });

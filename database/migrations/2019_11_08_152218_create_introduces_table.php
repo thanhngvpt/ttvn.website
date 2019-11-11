@@ -15,7 +15,15 @@ class CreateintroducesTable extends Migration
         Schema::create('introduces', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->string('title_introduce')->nullable();
+            $table->string('title_leader_ship')->nullable();
+            $table->bigInteger('content_image_id')->default(0);
+            $table->bigInteger('mission_image_id')->default(0);
+            $table->string('content')->nullable();
+            $table->string('mission')->nullable();
+            $table->string('content_intro')->nullable();
+            $table->string('overview_intro')->nullable();
+            $table->bigInteger('diagram_image_id')->default(0);
 
             $table->timestamps();
         });

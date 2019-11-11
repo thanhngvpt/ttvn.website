@@ -15,8 +15,11 @@ class CreatecompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
-
+            $table->string('name');
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->string('link')->nullable();
+            $table->boolean('is_enabled')->default(true);
+            
             $table->timestamps();
         });
 

@@ -15,8 +15,19 @@ class CreatenewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
-
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->bigInteger('new_category_id')->default(0);
+            $table->boolean('display')->default(true);
+            $table->integer('order')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->text('sapo')->nullable();
+            $table->text('content')->nullable();
+            $table->string('auth')->nullable();
+            $table->boolean('is_enabled')->default(true);
+            
             $table->timestamps();
         });
 

@@ -15,8 +15,27 @@ class CreatefieldsTable extends Migration
         Schema::create('fields', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->string('title')->nullable();
+            $table->string('content')->nullable();
+            $table->bigInteger('icon1_image_id')->default(0);
+            $table->string('charact_1')->nullable();
+            $table->string('des_1')->nullable();
+            $table->bigInteger('icon2_image_id')->default(0);
+            $table->string('charact_2')->nullable();
+            $table->string('des_2')->nullable();
 
+            $table->bigInteger('icon3_image_id')->default(0);
+            $table->string('charact_3')->nullable();
+            $table->string('des_3')->nullable();
+
+            $table->bigInteger('order')->nullable();
+            $table->boolean('is_enabled')->default(true);
+            
             $table->timestamps();
         });
 

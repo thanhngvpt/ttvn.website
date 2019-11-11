@@ -15,7 +15,9 @@ class CreatehistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->string('date_start')->nullable();
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->text('content')->nullable();
 
             $table->timestamps();
         });

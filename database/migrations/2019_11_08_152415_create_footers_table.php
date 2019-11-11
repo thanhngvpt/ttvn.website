@@ -15,7 +15,19 @@ class CreatefootersTable extends Migration
         Schema::create('footers', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->string('hn_name')->nullable();
+            $table->string('hn_address')->nullable();
+            $table->string('hn_phone')->nullable();
+            $table->string('hn_fax')->nullable();
+
+            $table->string('other_name')->nullable();
+            $table->string('other_address')->nullable();
+            $table->string('other_phone')->nullable();
+            $table->string('other_fax')->nullable();
+
+            $table->string('fb_link')->nullable();
+            $table->string('skype_link')->nullable();
+            $table->string('email')->nullable();
 
             $table->timestamps();
         });

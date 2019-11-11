@@ -15,7 +15,9 @@ class CreateinforGroupsTable extends Migration
         Schema::create('infor_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->bigInteger('thumbnail_image_id')->default(0);
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

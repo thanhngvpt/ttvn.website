@@ -15,7 +15,12 @@ class CreatebannersTable extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->bigInteger('admin_user_id')->default(0);
+            $table->integer('order')->nullable();
+            $table->boolean('is_enabled')->default(true);
 
             $table->timestamps();
         });

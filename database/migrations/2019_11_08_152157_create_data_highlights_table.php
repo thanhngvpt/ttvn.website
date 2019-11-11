@@ -15,7 +15,9 @@ class CreatedataHighlightsTable extends Migration
         Schema::create('data_highlights', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->bigInteger('cover_image_id')->default(0);
+            $table->string('title')->nullable();
+            $table->bigInteger('data')->nullable();
 
             $table->timestamps();
         });

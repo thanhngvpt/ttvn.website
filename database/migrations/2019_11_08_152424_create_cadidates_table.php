@@ -15,7 +15,11 @@ class CreatecadidatesTable extends Migration
         Schema::create('cadidates', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->string('name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('file')->nullable();
+            $table->string('link_job')->nullable();
 
             $table->timestamps();
         });

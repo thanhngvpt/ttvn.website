@@ -15,7 +15,9 @@ class CreatecriteriaCandidatesTable extends Migration
         Schema::create('criteria_candidates', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->bigInteger('icon_image_id')->default(0);
+            $table->string('name')->nullable();
+            $table->string('content')->nullable();
 
             $table->timestamps();
         });

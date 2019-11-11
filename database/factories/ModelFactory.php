@@ -177,4 +177,295 @@ $factory->define(
     }
 );
 
+$factory->define(App\Models\Banner::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'cover_image_id' => '',
+        'title' => '',
+        'description' => '',
+        'admin_user_id' => '',
+        'order' => '',
+        'is_enabled' => '',
+    ];
+});
+
+$factory->define(App\Models\Heading::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'title_heading' => '',
+        'heading_description' => '',
+        'title_group' => '',
+        'title_data_highlight' => '',
+        'title_news' => '',
+        'title_company' => '',
+        'title_support' => '',
+        'support_description' => '',
+    ];
+});
+
+$factory->define(App\Models\Video::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'cover_image_id' => '',
+        'video_url' => '',
+    ];
+});
+
+$factory->define(App\Models\InforGroup::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'cover_image_id' => '',
+        'thumbnail_image_id' => '',
+        'description' => '',
+    ];
+});
+
+$factory->define(App\Models\DataHighLight::class, function (Faker\Generator $faker) {
+    return [
+    ];
+});
+
+$factory->define(App\Models\DataHighlight::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'cover_image_id' => '',
+        'title' => '',
+        'data' => '',
+    ];
+});
+
+$factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'cover_image_id' => '',
+        'link' => '',
+        'is_enabled' => '',
+    ];
+});
+
+$factory->define(App\Models\Introduce::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'title_introduce' => '',
+        'title_leader_ship' => '',
+        'content_image_id' => '',
+        'mission_image_id' => '',
+        'content' => '',
+        'mission' => '',
+        'content_intro' => '',
+        'overview_intro' => '',
+        'diagram_image_id' => '',
+    ];
+});
+
+$factory->define(App\Models\Partner::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'cover_image_id' => '',
+        'name' => '',
+        'link' => '',
+    ];
+});
+
+$factory->define(App\Models\History::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'date_start' => '',
+        'cover_image_id' => '',
+        'content' => '',
+    ];
+});
+
+$factory->define(App\Models\LeaderShip::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'cover_image_id' => '',
+        'name' => '',
+        'position' => '',
+        'file' => '',
+        'order' => '',
+        'is_enabled' => '',
+    ];
+});
+
+$factory->define(App\Models\Field::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'slug' => '',
+        'meta_title' => '',
+        'meta_description' => '',
+        'cover_image_id' => '',
+        'title' => '',
+        'content' => '',
+        'icon1_image_id' => '',
+        'charact_1' => '',
+        'des_1' => '',
+        'icon2_image_id' => '',
+        'charact_2' => '',
+        'des_2' => '',
+        'icon3_image_id' => '',
+        'charact_3' => '',
+        'des_3' => '',
+        'order' => '',
+        'is_enabled' => '',
+    ];
+});
+
+$factory->define(App\Models\Project::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'cover_image_id' => '',
+        'name' => '',
+        'address' => '',
+        'link' => '',
+        'order' => '',
+    ];
+});
+
+$factory->define(App\Models\NewCategory::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'slug' => '',
+        'meta_title' => '',
+        'meta_description' => '',
+        'order' => '',
+    ];
+});
+
+$factory->define(App\Models\TableNew::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'slug' => '',
+        'cover_image_id' => '',
+        'new_category_id' => '',
+        'display' => '',
+        'order' => '',
+        'meta_title' => '',
+        'meta_description' => '',
+        'sapo' => '',
+        'content' => '',
+        'auth' => '',
+        'is_enabled' => '',
+    ];
+});
+
+$factory->define(App\Models\CulturalCompany::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'title_page' => '',
+        'introduce' => '',
+        'content' => '',
+        'meta_title' => '',
+        'meta_description1' => '',
+        'meta_description2' => '',
+        'icon1_image_id' => '',
+        'reason1' => '',
+        'detail1' => '',
+        'icon2_image_id' => '',
+        'reason2' => '',
+        'detail2' => '',
+        'icon3_image_id' => '',
+        'reason3' => '',
+        'detail3' => '',
+        'ttvn_image_id' => '',
+        'ttvn_title' => '',
+        'ttvn_content' => '',
+        'we_find_introduce' => '',
+    ];
+});
+
+$factory->define(App\Models\CriteriaCandidate::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'icon_image_id' => '',
+        'name' => '',
+        'content' => '',
+    ];
+});
+
+$factory->define(App\Models\JobCategory::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+    ];
+});
+
+$factory->define(App\Models\Job::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'job_category_id' => '',
+        'slug' => '',
+        'meta_title' => '',
+        'meta_description' => '',
+        'company_id' => '',
+        'province' => '',
+        'district' => '',
+        'number' => '',
+        'salary' => '',
+        'end_time' => '',
+        'order' => '',
+        'description' => '',
+        'is_enabled' => '',
+    ];
+});
+
+$factory->define(App\Models\Meta::class, function (Faker\Generator $faker) {
+    return [
+    ];
+});
+
+$factory->define(App\Models\Footer::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'hn_name' => '',
+        'hn_address' => '',
+        'hn_phone' => '',
+        'hn_fax' => '',
+        'other_name' => '',
+        'other_address' => '',
+        'other_phone' => '',
+        'other_fax' => '',
+        'fb_link' => '',
+        'skype_link' => '',
+        'email' => '',
+    ];
+});
+
+$factory->define(App\Models\Contact::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'email' => '',
+        'phone' => '',
+        'content' => '',
+        'message_type' => '',
+        'is_read' => '',
+    ];
+});
+
+$factory->define(App\Models\Cadidate::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'phone' => '',
+        'email' => '',
+        'file' => '',
+        'link_job' => '',
+    ];
+});
+
+$factory->define(App\Models\SaveValue::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'cover_image_id' => '',
+        'value' => '',
+        'content' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

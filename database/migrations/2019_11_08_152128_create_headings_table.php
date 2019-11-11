@@ -15,7 +15,14 @@ class CreateheadingsTable extends Migration
         Schema::create('headings', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            // Add some more columns
+            $table->string('title_heading')->nullable();
+            $table->text('heading_description')->nullable();
+            $table->string('title_group')->nullable();
+            $table->string('title_data_highlight')->nullable();
+            $table->string('title_news')->nullable();
+            $table->string('title_company')->nullable();
+            $table->string('title_support')->nullable();
+            $table->string('support_description')->nullable();
 
             $table->timestamps();
         });
