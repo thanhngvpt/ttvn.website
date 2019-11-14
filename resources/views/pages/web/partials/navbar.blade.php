@@ -33,9 +33,12 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="title-page">
-            @yield('title-navbar')
+    @section('nav-header')
+        <div class="container">
+            <div class="title-page">
+                @yield('title-navbar')
+            </div>
         </div>
-    </div>
+    @show
+    @yield('nav-slide')
 </div>

@@ -550,6 +550,8 @@ main .nav-tabs {
     font-size: 14px;
     line-height: 22px;
     color: #7e7e7e; }
+  .item-news:hover {
+    text-decoration: none; }
 
 .title-border-bottom {
   font-size: 32px;
@@ -639,8 +641,6 @@ main .nav-tabs {
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical; }
-  #news-detail-page .item-news:hover {
-    text-decoration: none; }
 #news-detail-page .slide-relation-news .slick-list {
   padding-top: 16px; }
 
@@ -752,31 +752,6 @@ main .nav-tabs {
     left: 224px;
     z-index: 1;
     cursor: pointer; }
-#introduce-page #company .partner-intro {
-  padding-top: 112px;
-  padding-bottom: 180px;
-  border-bottom: 1px solid #dedede; }
-  #introduce-page #company .partner-intro .title-border-bottom {
-    font-size: 32px;
-    font-weight: 600;
-    font-family: "EB Garamond", serif;
-    color: #222222;
-    margin-top: 0;
-    text-align: center;
-    margin-bottom: 32px; }
-    #introduce-page #company .partner-intro .title-border-bottom::after {
-      margin: auto; }
-  #introduce-page #company .partner-intro .des-partner-intro {
-    width: 884px;
-    font-size: 16px;
-    line-height: 25px;
-    color: #515151;
-    text-align: center;
-    margin: 0 auto;
-    margin-bottom: 100px; }
-  #introduce-page #company .partner-intro .slick-dots {
-    text-align: center;
-    bottom: -64px; }
 #introduce-page #leader {
   padding-bottom: 176px;
   border-bottom: 1px solid #dedede; }
@@ -960,10 +935,320 @@ main .nav-tabs {
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical; }
-    .field-project .item-news:hover {
-      text-decoration: none; }
   .field-project .slide-projects .slick-list {
     padding-top: 16px; }
+
+.top-page-slide {
+  padding-top: 150px;
+  padding-bottom: 150px; }
+  .top-page-slide .item-top-slide {
+    display: flex;
+    align-items: center; }
+    .top-page-slide .item-top-slide .text-slide {
+      width: 742px;
+      margin-right: 70px; }
+    .top-page-slide .item-top-slide .title {
+      font-family: "EB Garamond", serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 64px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: #ffffff; }
+    .top-page-slide .item-top-slide .content {
+      font-family: "EB Garamond", serif;
+      font-weight: 600;
+      font-size: 72px;
+      line-height: 84px;
+      color: #57AE5B;
+      margin-bottom: 40px; }
+    .top-page-slide .item-top-slide .description {
+      font-size: 20px;
+      line-height: 32px;
+      color: #95B5C8;
+      margin-bottom: 56px; }
+      .top-page-slide .item-top-slide .description span {
+        text-decoration: underline;
+        font-weight: bold; }
+    .top-page-slide .item-top-slide button {
+      display: flex;
+      color: #000000;
+      align-items: center; }
+      .top-page-slide .item-top-slide button span {
+        margin-left: 10px; }
+    .top-page-slide .item-top-slide .img-top-slide {
+      width: calc(100% - 812px);
+      position: relative; }
+      .top-page-slide .item-top-slide .img-top-slide img {
+        position: absolute;
+        top: 0;
+        left: 0; }
+
+.top-field {
+  padding-top: 160px;
+  padding-bottom: 160px; }
+  .top-field .title-top-field {
+    margin-bottom: 24px;
+    font-family: "EB Garamond", serif;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 64px;
+    color: #222222;
+    text-align: center; }
+  .top-field .des-top-field {
+    font-size: 20px;
+    line-height: 32px;
+    color: #626262;
+    text-align: center;
+    margin-bottom: 52px; }
+  .top-field .list-top-field {
+    padding: 16px 56px 0 56px; }
+  .top-field .title-topfield {
+    display: block;
+    font-family: "EB Garamond", serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #222222 !important;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    text-align: center; }
+    .top-field .title-topfield img {
+      margin-left: 10px;
+      display: none; }
+  .top-field .des-topfield {
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    color: #626262;
+    height: 75px; }
+  .top-field .item-top-field {
+    padding: 40px 40px 56px 40px;
+    border-radius: 100px 10px 100px 10px;
+    border: 1px solid #eeeeee;
+    transition: transform 0.3s ease-out; }
+    .top-field .item-top-field:hover {
+      transform: translateY(-16px);
+      box-shadow: 0px 32px 56px rgba(0, 0, 0, 0.08); }
+      .top-field .item-top-field:hover .title-topfield {
+        color: #57AE5B !important;
+        text-decoration: none; }
+        .top-field .item-top-field:hover .title-topfield img {
+          display: inline; }
+
+.top-content {
+  padding-top: 97px;
+  background-color: #F8FAFE; }
+
+.top-intro {
+  display: flex;
+  margin-bottom: 173px; }
+
+.text-top-intro {
+  padding-top: 48px;
+  width: 500px;
+  margin-right: 132px; }
+  .text-top-intro .title-1 {
+    font-family: "EB Garamond", serif;
+    font-weight: 600;
+    font-size: 56px;
+    color: #222222;
+    margin-bottom: 15px;
+    line-height: 56px; }
+  .text-top-intro .name {
+    font-family: "EB Garamond", serif;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 56px;
+    color: #ffffff;
+    padding: 10px 24px;
+    width: fit-content;
+    background: #57AE5B;
+    border-radius: 8px;
+    margin-left: -20px;
+    margin-bottom: 20px; }
+  .text-top-intro .title-2 {
+    font-family: "EB Garamond", serif;
+    font-weight: 600;
+    font-size: 56px;
+    color: #222222;
+    margin-bottom: 56px;
+    line-height: 56px; }
+  .text-top-intro .description {
+    font-size: 16px;
+    line-height: 25px;
+    color: #626262;
+    margin-bottom: 56px; }
+  .text-top-intro .btn {
+    padding: 12px 38px;
+    background-color: #ffffff; }
+    .text-top-intro .btn:hover {
+      background-color: #28a745; }
+
+.img-top-intro {
+  position: relative;
+  width: calc(100% - 632px); }
+  .img-top-intro .img-intro-after {
+    float: right;
+    border-radius: 16px;
+    width: 286px; }
+  .img-top-intro .img-intro-before {
+    position: absolute;
+    top: 112px;
+    right: 88px;
+    border-radius: 16px;
+    width: 630px; }
+
+.top-sumarry {
+  padding: 48px 0;
+  background-color: #ffffff;
+  margin-bottom: 160px; }
+  .top-sumarry .col-top-sumary {
+    text-align: center; }
+    .top-sumarry .col-top-sumary img {
+      margin-bottom: 32px; }
+    .top-sumarry .col-top-sumary .number {
+      font-weight: bold;
+      font-size: 72px;
+      line-height: 100%;
+      margin-bottom: 24px; }
+    .top-sumarry .col-top-sumary .name {
+      font-size: 20px;
+      line-height: 32px;
+      color: #515151; }
+
+.title-top-news {
+  font-family: "EB Garamond", serif;
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 64px;
+  color: #222222;
+  text-align: center;
+  margin-bottom: 24px; }
+
+.slide-top-news {
+  margin: 0 100px; }
+  .slide-top-news .item-news {
+    padding: 0 20px;
+    margin-bottom: 0; }
+    .slide-top-news .item-news .content-news {
+      padding: 24px;
+      background-color: #ffffff;
+      border-radius: 0 0 8px 8px; }
+      .slide-top-news .item-news .content-news .title-news {
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: 24px; }
+    .slide-top-news .item-news .img-news {
+      border-radius: 8px; }
+  .slide-top-news .slick-list {
+    padding-top: 16px; }
+  .slide-top-news .slick-slide {
+    transition: transform 0.3s ease-out; }
+    .slide-top-news .slick-slide:hover {
+      transform: translateY(-16px); }
+
+.top-news {
+  padding-bottom: 120px; }
+  .top-news .nav-tabs {
+    padding: 0 186px;
+    margin-bottom: 44px; }
+    .top-news .nav-tabs .nav-item .nav-link {
+      display: inline;
+      color: #626262; }
+      .top-news .nav-tabs .nav-item .nav-link.active {
+        background-color: initial;
+        border-bottom: 2px solid #57AE5B; }
+        .top-news .nav-tabs .nav-item .nav-link.active:before {
+          display: none; }
+      .top-news .nav-tabs .nav-item .nav-link:before {
+        display: none; }
+    .top-news .nav-tabs .nav-item:last-child {
+      flex: 2; }
+
+.btn-see-more-news {
+  font-size: 16px;
+  line-height: 25px;
+  padding: 12px 54px;
+  border-radius: 8px;
+  margin-top: 56px;
+  text-align: center; }
+
+.partner-intro {
+  padding-top: 112px;
+  padding-bottom: 180px;
+  border-bottom: 1px solid #dedede; }
+  .partner-intro .title-border-bottom {
+    font-size: 32px;
+    font-weight: 600;
+    font-family: "EB Garamond", serif;
+    color: #222222;
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 32px; }
+    .partner-intro .title-border-bottom::after {
+      margin: auto; }
+  .partner-intro .des-partner-intro {
+    width: 884px;
+    font-size: 16px;
+    line-height: 25px;
+    color: #515151;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 100px; }
+  .partner-intro .slick-dots {
+    text-align: center;
+    bottom: -64px; }
+
+.top-partners {
+  background-color: #ffffff; }
+  .top-partners .partner-intro {
+    padding-top: 88px;
+    padding-bottom: 132px;
+    border-bottom: none; }
+    .top-partners .partner-intro .title-border-bottom {
+      font-size: 56px;
+      line-height: 64px;
+      margin-bottom: 112px; }
+      .top-partners .partner-intro .title-border-bottom:after {
+        display: none; }
+
+.top-consultation {
+  padding-top: 88px;
+  padding-bottom: 104px;
+  background: #57AE5B;
+  text-align: center; }
+  .top-consultation .title {
+    font-family: "EB Garamond", serif;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 64px;
+    color: #ffffff;
+    margin-bottom: 16px; }
+  .top-consultation .description {
+    font-size: 16px;
+    line-height: 25px;
+    color: #EFFCF1;
+    margin-bottom: 40px; }
+  .top-consultation .form-consultation {
+    display: flex;
+    justify-content: center; }
+    .top-consultation .form-consultation input {
+      width: 312px;
+      margin-right: 24px;
+      height: 48px;
+      padding-left: 24px;
+      padding-right: 24px;
+      color: #ffffff;
+      background-color: rgba(193, 234, 197, 0.56);
+      border-radius: 8px; }
+      .top-consultation .form-consultation input::placeholder {
+        color: rgba(255, 255, 255, 0.64); }
+    .top-consultation .form-consultation .btn {
+      width: 154px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 2px 0px #36883A, inset 0px 2px 0px rgba(0, 0, 0, 0.08);
+      color: #57AE5B; }
 
 @media screen and (min-width: 1440px) {
   .container {
