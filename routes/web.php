@@ -26,6 +26,10 @@
     });
 });
 
+Route::get('/home', function () {
+    return view('pages.web.home');
+});
+
 Route::get('contact', function () {
     return view('pages.web.contact');
 });
