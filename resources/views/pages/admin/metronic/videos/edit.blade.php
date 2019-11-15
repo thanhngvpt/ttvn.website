@@ -8,6 +8,11 @@
         .row {
             margin-bottom: 15px;
         }
+        
+        #cover-image-preview {
+            width: 100%;
+            height: 300px;
+        }
     </style>
 @stop
 
@@ -95,36 +100,34 @@
                 </div>
             @endif
 
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\VideoController@store') !!}@else{!! action('Admin\VideoController@update', [$video->id]) !!}@endif" method="POST">
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\VideoController@store') !!}@else{!! action('Admin\VideoController@update', [$video->id]) !!}@endif" method="POST" enctype="multipart/form-data">
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                                                                                    <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($video->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $video->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.videos.columns.cover_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($video->present()->coverImage()) )
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! $video->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="cover-image" name="cover-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    ảnh
+                                    <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('video_url')) has-danger @endif">
-                                        <label for="video_url">@lang('admin.pages.videos.columns.video_url')</label>
-                                        <input type="text" class="form-control m-input" name="video_url" id="video_url" required placeholder="@lang('admin.pages.videos.columns.video_url')" value="{{ old('video_url') ? old('video_url') : $video->video_url }}">
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group m-form__group row @if ($errors->has('video_url')) has-danger @endif">
+                                <label for="video_url">@lang('admin.pages.videos.columns.video_url')</label>
+                                <input type="text" class="form-control m-input" name="video_url" id="video_url" required placeholder="@lang('admin.pages.videos.columns.video_url')" value="{{ old('video_url') ? old('video_url') : $video->video_url }}">
                             </div>
-                                                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">

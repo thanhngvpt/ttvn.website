@@ -115,6 +115,7 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
+                                    <th style="width: 10px">{!! \PaginationHelper::sort('id', 'Nội dung') !!}</th>
                                                                                                                                                                                                                                                                                                 
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
@@ -124,7 +125,8 @@
                                 @foreach( $inforGroups as $inforGroup )
                                     <tr>
                                         <td>{{ $inforGroup->id }}</td>
-                                                                                                                                                                                                                                                                                                                                                                    <td>
+                                        <td>{{ $inforGroup->description }}</td>
+                                        <td>
                                             <a href="{!! action('Admin\InforGroupController@show', $inforGroup->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>

@@ -7,16 +7,35 @@ use App\Http\Controllers\Controller;
 use App\Repositories\InforGroupRepositoryInterface;
 use App\Http\Requests\Admin\InforGroupRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
 
 class InforGroupController extends Controller
 {
     /** @var  \App\Repositories\InforGroupRepositoryInterface */
     protected $inforGroupRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        InforGroupRepositoryInterface $inforGroupRepository
+        InforGroupRepositoryInterface $inforGroupRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->inforGroupRepository = $inforGroupRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -79,14 +98,46 @@ class InforGroupController extends Controller
     {
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'thumbnail_image_id',
-                            'description',
-                        ]
+                'description',
+            ]
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $inforGroup = $this->inforGroupRepository->create($input);
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $inforGroup->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->inforGroupRepository->update($inforGroup, ['cover_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('thumbnail-image')) {
+            $file = $request->file('thumbnail-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $inforGroup->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->inforGroupRepository->update($inforGroup, ['thumbnail_image_id' => $image->id]);
+            }
+        }
 
         if( empty($inforGroup) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -146,14 +197,56 @@ class InforGroupController extends Controller
 
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'thumbnail_image_id',
-                            'description',
-                        ]
+                'description',
+            ]
         );
+        $inforGroup = $this->inforGroupRepository->update($inforGroup, $input);
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->inforGroupRepository->update($inforGroup, $input);
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $inforGroup->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $inforGroup->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->inforGroupRepository->update($inforGroup, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('thumbnail-image')) {
+            $currentImage = $inforGroup->thumbnailImage;
+            $file = $request->file('thumbnail-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $inforGroup->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->inforGroupRepository->update($inforGroup, ['thumbnail_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\InforGroupController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

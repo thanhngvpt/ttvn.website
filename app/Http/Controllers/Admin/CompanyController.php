@@ -7,16 +7,35 @@ use App\Http\Controllers\Controller;
 use App\Repositories\CompanyRepositoryInterface;
 use App\Http\Requests\Admin\CompanyRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
 
 class CompanyController extends Controller
 {
     /** @var  \App\Repositories\CompanyRepositoryInterface */
     protected $companyRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        CompanyRepositoryInterface $companyRepository
+        CompanyRepositoryInterface $companyRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->companyRepository = $companyRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -79,15 +98,32 @@ class CompanyController extends Controller
     {
         $input = $request->only(
             [
-                            'name',
-                            'cover_image_id',
-                            'link',
-                            'is_enabled',
-                        ]
+                'name',
+                'cover_image_id',
+                'link',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
         $company = $this->companyRepository->create($input);
+
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $company->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->companyRepository->update($company, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($company) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -155,7 +191,30 @@ class CompanyController extends Controller
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->companyRepository->update($company, $input);
+        $company = $this->companyRepository->update($company, $input);
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $company->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $company->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->companyRepository->update($company, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\CompanyController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

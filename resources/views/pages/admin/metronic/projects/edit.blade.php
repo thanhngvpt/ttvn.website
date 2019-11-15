@@ -95,60 +95,60 @@
                 </div>
             @endif
 
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\ProjectController@store') !!}@else{!! action('Admin\ProjectController@update', [$project->id]) !!}@endif" method="POST">
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\ProjectController@store') !!}@else{!! action('Admin\ProjectController@update', [$project->id]) !!}@endif" method="POST" enctype="multipart/form-data">
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                                                                                    <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($project->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $project->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.projects.columns.cover_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($project->present()->coverImage()) )
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! $project->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="cover-image" name="cover-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    @lang('admin.pages.projects.columns.cover_image_id')
+                                    <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('name')) has-danger @endif">
-                                        <label for="name">@lang('admin.pages.projects.columns.name')</label>
-                                        <input type="text" class="form-control m-input" name="name" id="name" required placeholder="@lang('admin.pages.projects.columns.name')" value="{{ old('name') ? old('name') : $project->name }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('name')) has-danger @endif">
+                                <label for="name">@lang('admin.pages.projects.columns.name')</label>
+                                <input type="text" class="form-control m-input" name="name" id="name" required placeholder="@lang('admin.pages.projects.columns.name')" value="{{ old('name') ? old('name') : $project->name }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('address')) has-danger @endif">
-                                        <label for="address">@lang('admin.pages.projects.columns.address')</label>
-                                        <input type="text" class="form-control m-input" name="address" id="address" required placeholder="@lang('admin.pages.projects.columns.address')" value="{{ old('address') ? old('address') : $project->address }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('address')) has-danger @endif">
+                                <label for="address">@lang('admin.pages.projects.columns.address')</label>
+                                <input type="text" class="form-control m-input" name="address" id="address" required placeholder="@lang('admin.pages.projects.columns.address')" value="{{ old('address') ? old('address') : $project->address }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('link')) has-danger @endif">
-                                        <label for="link">@lang('admin.pages.projects.columns.link')</label>
-                                        <input type="text" class="form-control m-input" name="link" id="link" required placeholder="@lang('admin.pages.projects.columns.link')" value="{{ old('link') ? old('link') : $project->link }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('link')) has-danger @endif">
+                                <label for="link">@lang('admin.pages.projects.columns.link')</label>
+                                <input type="text" class="form-control m-input" name="link" id="link" required placeholder="@lang('admin.pages.projects.columns.link')" value="{{ old('link') ? old('link') : $project->link }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
-                                        <label for="order">@lang('admin.pages.projects.columns.order')</label>
-                                        <input type="number" min="0" class="form-control m-input" name="order" id="order" required placeholder="@lang('admin.pages.projects.columns.order')" value="{{ old('order') ? old('order') : $project->order }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
+                                <label for="order">@lang('admin.pages.projects.columns.order')</label>
+                                <input type="number" min="0" class="form-control m-input" name="order" id="order" required placeholder="@lang('admin.pages.projects.columns.order')" value="{{ old('order') ? old('order') : $project->order }}">
                             </div>
-                                                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">

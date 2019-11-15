@@ -7,16 +7,35 @@ use App\Http\Controllers\Controller;
 use App\Repositories\VideoRepositoryInterface;
 use App\Http\Requests\Admin\VideoRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
 
 class VideoController extends Controller
 {
     /** @var  \App\Repositories\VideoRepositoryInterface */
     protected $videoRepository;
+    
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
 
     public function __construct(
-        VideoRepositoryInterface $videoRepository
+        VideoRepositoryInterface $videoRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->videoRepository = $videoRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -79,13 +98,29 @@ class VideoController extends Controller
     {
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'video_url',
-                        ]
+                'video_url',
+            ]
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $video = $this->videoRepository->create($input);
+        
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $video->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->videoRepository->update($video, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($video) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -145,13 +180,35 @@ class VideoController extends Controller
 
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'video_url',
-                        ]
+                'video_url',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->videoRepository->update($video, $input);
+        $video = $this->videoRepository->update($video, $input);
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $video->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $video->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->videoRepository->update($video, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\VideoController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

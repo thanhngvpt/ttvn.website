@@ -8,6 +8,15 @@
         .row {
             margin-bottom: 15px;
         }
+        #mission-image-preview, #content-image-preview, #diagram-image-preview {
+            height: 100px;
+        }
+        .help-block {
+            width: 148px !important;
+        }
+        b {
+            padding-left: 25px;
+        }
     </style>
 @stop
 
@@ -15,8 +24,16 @@
     <script src="{!! \URLHelper::asset('libs/metronic/demo/default/custom/crud/forms/validation/form-controls.js', 'admin') !!}"></script>
     <script>
         $(document).ready(function () {
-            $('#cover-image').change(function (event) {
-                $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
+            $('#mission-image').change(function (event) {
+                $('#mission-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
+            });
+
+            $('#content-image').change(function (event) {
+                $('#content-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
+            });
+
+            $('#diagram-image').change(function (event) {
+                $('#diagram-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
             });
 
             $('.datetime-picker').datetimepicker({
@@ -95,108 +112,107 @@
                 </div>
             @endif
 
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\IntroduceController@store') !!}@else{!! action('Admin\IntroduceController@update', [$introduce->id]) !!}@endif" method="POST">
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\IntroduceController@store') !!}@else{!! action('Admin\IntroduceController@update', [$introduce->id]) !!}@endif" method="POST" enctype="multipart/form-data">
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                                                        <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('title_introduce')) has-danger @endif">
-                                        <label for="title_introduce">@lang('admin.pages.introduces.columns.title_introduce')</label>
-                                        <input type="text" class="form-control m-input" name="title_introduce" id="title_introduce" required placeholder="@lang('admin.pages.introduces.columns.title_introduce')" value="{{ old('title_introduce') ? old('title_introduce') : $introduce->title_introduce }}">
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group row @if ($errors->has('title_introduce')) has-danger @endif">
+                                <label for="title_introduce">Title trang giới thiệu chung</label>
+                                <input type="text" class="form-control m-input" name="title_introduce" id="title_introduce" required value="{{ old('title_introduce') ? old('title_introduce') : $introduce->title_introduce }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('title_leader_ship')) has-danger @endif">
-                                        <label for="title_leader_ship">@lang('admin.pages.introduces.columns.title_leader_ship')</label>
-                                        <input type="text" class="form-control m-input" name="title_leader_ship" id="title_leader_ship" required placeholder="@lang('admin.pages.introduces.columns.title_leader_ship')" value="{{ old('title_leader_ship') ? old('title_leader_ship') : $introduce->title_leader_ship }}">
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group row @if ($errors->has('title_leader_ship')) has-danger @endif">
+                                <label for="title_leader_ship">Title trang ban lãnh đạo</label>
+                                <input type="text" class="form-control m-input" name="title_leader_ship" id="title_leader_ship" required value="{{ old('title_leader_ship') ? old('title_leader_ship') : $introduce->title_leader_ship }}">
                             </div>
-                                                                                                                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($introduce->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $introduce->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.introduces.columns.content_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($introduce->present()->contentImage()) )
+                                <img id="content-image-preview" style="max-width: 100%;" src="{!! $introduce->present()->contentImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="content-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="content-image" name="content-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    Hình ảnh
+                                    <label for="content-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
                             </div>
-                                                                                                                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($introduce->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $introduce->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.introduces.columns.mission_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group m-form__group row @if ($errors->has('content')) has-danger @endif">
+                                <label for="content">Nội dung</label>
+                                <input type="text" class="form-control m-input" name="content" id="content" required value="{{ old('content') ? old('content') : $introduce->content }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('content')) has-danger @endif">
-                                        <label for="content">@lang('admin.pages.introduces.columns.content')</label>
-                                        <input type="text" class="form-control m-input" name="content" id="content" required placeholder="@lang('admin.pages.introduces.columns.content')" value="{{ old('content') ? old('content') : $introduce->content }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($introduce->present()->missionImage()) )
+                                <img id="mission-image-preview" style="max-width: 100%;" src="{!! $introduce->present()->missionImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="mission-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="mission-image" name="mission-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    Hình ảnh
+                                    <label for="mission-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('mission')) has-danger @endif">
-                                        <label for="mission">@lang('admin.pages.introduces.columns.mission')</label>
-                                        <input type="text" class="form-control m-input" name="mission" id="mission" required placeholder="@lang('admin.pages.introduces.columns.mission')" value="{{ old('mission') ? old('mission') : $introduce->mission }}">
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group m-form__group row @if ($errors->has('mission')) has-danger @endif">
+                                <label for="mission">Tầm nhìn sứ mệnh</label>
+                                <input type="text" class="form-control m-input" name="mission" id="mission" required value="{{ old('mission') ? old('mission') : $introduce->mission }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('content_intro')) has-danger @endif">
-                                        <label for="content_intro">@lang('admin.pages.introduces.columns.content_intro')</label>
-                                        <input type="text" class="form-control m-input" name="content_intro" id="content_intro" required placeholder="@lang('admin.pages.introduces.columns.content_intro')" value="{{ old('content_intro') ? old('content_intro') : $introduce->content_intro }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <b>Đối tác đồng hành</b>
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('overview_intro')) has-danger @endif">
-                                        <label for="overview_intro">@lang('admin.pages.introduces.columns.overview_intro')</label>
-                                        <input type="text" class="form-control m-input" name="overview_intro" id="overview_intro" required placeholder="@lang('admin.pages.introduces.columns.overview_intro')" value="{{ old('overview_intro') ? old('overview_intro') : $introduce->overview_intro }}">
-                                    </div>
-                                </div>
+                            <div class="form-group m-form__group row @if ($errors->has('content_intro')) has-danger @endif">
+                                <label for="content_intro">Nội dung giới thiệu</label>
+                                <input type="text" class="form-control m-input" name="content_intro" id="content_intro" required value="{{ old('content_intro') ? old('content_intro') : $introduce->content_intro }}">
                             </div>
-                                                                                                                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($introduce->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $introduce->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.introduces.columns.diagram_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <b>Giới thiệu tổng quan</b>
                             </div>
-                                                            </div>
+                            <div class="form-group m-form__group row @if ($errors->has('overview_intro')) has-danger @endif">
+                                <label for="overview_intro">Giới thiệu tổng quan</label>
+                                <input type="text" class="form-control m-input" name="overview_intro" id="overview_intro" required  value="{{ old('overview_intro') ? old('overview_intro') : $introduce->overview_intro }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($introduce->present()->diagramImage()) )
+                                <img id="diagram-image-preview" style="max-width: 100%;" src="{!! $introduce->present()->diagramImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="diagram-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="diagram-image" name="diagram-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    Sơ đồ cơ cấu tổ chức
+                                    <label for="diagram-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">

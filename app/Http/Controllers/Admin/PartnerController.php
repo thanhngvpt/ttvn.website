@@ -8,15 +8,35 @@ use App\Repositories\PartnerRepositoryInterface;
 use App\Http\Requests\Admin\PartnerRequest;
 use App\Http\Requests\PaginationRequest;
 
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class PartnerController extends Controller
 {
     /** @var  \App\Repositories\PartnerRepositoryInterface */
     protected $partnerRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        PartnerRepositoryInterface $partnerRepository
+        PartnerRepositoryInterface $partnerRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->partnerRepository = $partnerRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -84,9 +104,25 @@ class PartnerController extends Controller
                             'link',
                         ]
         );
-
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $partner = $this->partnerRepository->create($input);
+
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $partner->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->partnerRepository->update($partner, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($partner) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -151,9 +187,30 @@ class PartnerController extends Controller
                             'link',
                         ]
         );
+        $partner = $this->partnerRepository->update($partner, $input);
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->partnerRepository->update($partner, $input);
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $partner->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $partner->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->partnerRepository->update($partner, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\PartnerController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

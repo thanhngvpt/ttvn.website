@@ -4,7 +4,6 @@ namespace App\Presenters;
 
 use Illuminate\Support\Facades\Redis;
 use App\Models\Image;
-use App\Models\Image;
 
 class InforGroupPresenter extends BasePresenter
 {

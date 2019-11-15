@@ -8,6 +8,16 @@
         .row {
             margin-bottom: 15px;
         }
+
+        #cover-image-preview {
+            width: 100%;
+            height: 300px;
+        }
+
+        #thumbnail-image-preview {
+            width: 100%;
+            height: 300px;
+        }
     </style>
 @stop
 
@@ -17,6 +27,10 @@
         $(document).ready(function () {
             $('#cover-image').change(function (event) {
                 $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
+            });
+
+            $('#thumbnail-image').change(function (event) {
+                $('#thumbnail-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
             });
 
             $('.datetime-picker').datetimepicker({
@@ -95,52 +109,50 @@
                 </div>
             @endif
 
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\InforGroupController@store') !!}@else{!! action('Admin\InforGroupController@update', [$inforGroup->id]) !!}@endif" method="POST">
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\InforGroupController@store') !!}@else{!! action('Admin\InforGroupController@update', [$inforGroup->id]) !!}@endif" method="POST" enctype="multipart/form-data">
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                                                                                    <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($inforGroup->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $inforGroup->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.infor-groups.columns.cover_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($inforGroup->present()->coverImage()) )
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! $inforGroup->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="cover-image" name="cover-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    Hình ảnh 1
+                                    <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
                             </div>
-                                                                                                                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($inforGroup->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $inforGroup->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.infor-groups.columns.thumbnail_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($inforGroup->present()->thumbnailImage()) )
+                                <img id="thumbnail-image-preview" style="max-width: 100%;" src="{!! $inforGroup->present()->thumbnailImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="thumbnail-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="thumbnail-image" name="thumbnail-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    Hình ảnh 2
+                                    <label for="thumbnail-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('description')) has-danger @endif">
-                                        <label for="description">@lang('admin.pages.infor-groups.columns.description')</label>
-                                        <textarea name="description" id="description" class="form-control m-input" rows="3" placeholder="@lang('admin.pages.infor-groups.columns.description')">{{ old('description') ? old('description') : $inforGroup->description }}</textarea>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('description')) has-danger @endif">
+                                <label for="description">Nội dung chi tiết</label>
+                                <textarea name="description" id="description" class="form-control m-input" rows="3">{{ old('description') ? old('description') : $inforGroup->description }}</textarea>
                             </div>
-                                                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">

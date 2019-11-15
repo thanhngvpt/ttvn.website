@@ -16,7 +16,8 @@ class CulturalCompanyController extends Controller
 {
     /** @var  \App\Repositories\CulturalCompanyRepositoryInterface */
     protected $culturalCompanyRepository;
-     /** @var FileUploadServiceInterface $fileUploadService */
+
+    /** @var FileUploadServiceInterface $fileUploadService */
      protected $fileUploadService;
 
      /** @var ImageRepositoryInterface $imageRepository */
@@ -250,30 +251,118 @@ class CulturalCompanyController extends Controller
 
         $input = $request->only(
             [
-                            'title_page',
-                            'introduce',
-                            'content',
-                            'meta_title',
-                            'meta_description1',
-                            'meta_description2',
-                            'icon1_image_id',
-                            'reason1',
-                            'detail1',
-                            'icon2_image_id',
-                            'reason2',
-                            'detail2',
-                            'icon3_image_id',
-                            'reason3',
-                            'detail3',
-                            'ttvn_image_id',
-                            'ttvn_title',
-                            'ttvn_content',
-                            'we_find_introduce',
-                        ]
+                'title_page',
+                'introduce',
+                'content',
+                'meta_title',
+                'meta_description1',
+                'meta_description2',
+                'reason1',
+                'detail1',
+                'reason2',
+                'detail2',
+                'reason3',
+                'detail3',
+                'ttvn_title',
+                'ttvn_content',
+                'we_find_introduce',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->culturalCompanyRepository->update($culturalCompany, $input);
+        $culturalCompany = $this->culturalCompanyRepository->update($culturalCompany, $input);
+
+        if ($request->hasFile('icon1-image')) {
+            $currentImage = $culturalCompany->icon1Image;
+            $file = $request->file('icon1-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['icon1_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('icon2-image')) {
+            $currentImage = $culturalCompany->icon2Image;
+            $file = $request->file('icon2-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['icon2_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('icon3-image')) {
+            $currentImage = $culturalCompany->icon3Image;
+            $file = $request->file('icon3-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['icon3_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $culturalCompany->ttvnImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['ttvn_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\CulturalCompanyController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

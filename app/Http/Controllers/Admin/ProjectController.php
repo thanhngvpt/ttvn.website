@@ -8,15 +8,35 @@ use App\Repositories\ProjectRepositoryInterface;
 use App\Http\Requests\Admin\ProjectRequest;
 use App\Http\Requests\PaginationRequest;
 
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class ProjectController extends Controller
 {
     /** @var  \App\Repositories\ProjectRepositoryInterface */
     protected $projectRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        ProjectRepositoryInterface $projectRepository
+        ProjectRepositoryInterface $projectRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->projectRepository = $projectRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -86,9 +106,25 @@ class ProjectController extends Controller
                             'order',
                         ]
         );
-
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $project = $this->projectRepository->create($input);
+
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $project->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->projectRepository->update($project, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($project) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -155,9 +191,30 @@ class ProjectController extends Controller
                             'order',
                         ]
         );
+        $project = $this->projectRepository->update($project, $input);
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->projectRepository->update($project, $input);
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $project->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $project->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->projectRepository->update($project, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\ProjectController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

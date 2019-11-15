@@ -8,15 +8,35 @@ use App\Repositories\HistoryRepositoryInterface;
 use App\Http\Requests\Admin\HistoryRequest;
 use App\Http\Requests\PaginationRequest;
 
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class HistoryController extends Controller
 {
     /** @var  \App\Repositories\HistoryRepositoryInterface */
     protected $historyRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        HistoryRepositoryInterface $historyRepository
+        HistoryRepositoryInterface $historyRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->historyRepository = $historyRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -79,14 +99,29 @@ class HistoryController extends Controller
     {
         $input = $request->only(
             [
-                            'date_start',
-                            'cover_image_id',
-                            'content',
-                        ]
+                'date_start',
+                'content',
+            ]
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $history = $this->historyRepository->create($input);
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $history->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->historyRepository->update($history, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($history) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -146,14 +181,35 @@ class HistoryController extends Controller
 
         $input = $request->only(
             [
-                            'date_start',
-                            'cover_image_id',
-                            'content',
-                        ]
+                'date_start',
+                'content',
+            ]
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->historyRepository->update($history, $input);
+        $history = $this->historyRepository->update($history, $input);
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $history->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $history->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->historyRepository->update($history, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\HistoryController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

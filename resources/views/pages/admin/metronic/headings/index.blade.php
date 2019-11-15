@@ -115,14 +115,12 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('title_heading', trans('admin.pages.headings.columns.title_heading')) !!}</th>
-                                                                                                                                                                                                        <th>{!! \PaginationHelper::sort('title_group', trans('admin.pages.headings.columns.title_group')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('title_data_highlight', trans('admin.pages.headings.columns.title_data_highlight')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('title_news', trans('admin.pages.headings.columns.title_news')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('title_company', trans('admin.pages.headings.columns.title_company')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('title_support', trans('admin.pages.headings.columns.title_support')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('support_description', trans('admin.pages.headings.columns.support_description')) !!}</th>
-                                    
+                                    <th>{!! \PaginationHelper::sort('title_heading', 'Title lĩnh vực hoạt động') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('title_group', 'Title thông tin tập đoàn') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('title_data_highlight', 'Title số liệu nổi bật') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('title_news', 'Title phần tin tức') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('title_company', 'Title công ty thành viên') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('title_support', 'Title nhận tư vấn') !!}</th>
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
                             </thead>
@@ -131,14 +129,13 @@
                                 @foreach( $headings as $heading )
                                     <tr>
                                         <td>{{ $heading->id }}</td>
-                                                                                                                            <td>{{ $heading->title_heading }}</td>
-                                                                                                                                                                                                                        <td>{{ $heading->title_group }}</td>
-                                                                                                                            <td>{{ $heading->title_data_highlight }}</td>
-                                                                                                                            <td>{{ $heading->title_news }}</td>
-                                                                                                                            <td>{{ $heading->title_company }}</td>
-                                                                                                                            <td>{{ $heading->title_support }}</td>
-                                                                                                                            <td>{{ $heading->support_description }}</td>
-                                                                                <td>
+                                        <td>{{ $heading->title_heading }}</td>
+                                        <td>{{ $heading->title_group }}</td>
+                                        <td>{{ $heading->title_data_highlight }}</td>
+                                        <td>{{ $heading->title_news }}</td>
+                                        <td>{{ $heading->title_company }}</td>
+                                        <td>{{ $heading->title_support }}</td>
+                                        <td>
                                             <a href="{!! action('Admin\HeadingController@show', $heading->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>

@@ -7,16 +7,35 @@ use App\Http\Controllers\Controller;
 use App\Repositories\IntroduceRepositoryInterface;
 use App\Http\Requests\Admin\IntroduceRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
 
 class IntroduceController extends Controller
 {
     /** @var  \App\Repositories\IntroduceRepositoryInterface */
     protected $introduceRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        IntroduceRepositoryInterface $introduceRepository
+        IntroduceRepositoryInterface $introduceRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->introduceRepository = $introduceRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -81,18 +100,68 @@ class IntroduceController extends Controller
             [
                             'title_introduce',
                             'title_leader_ship',
-                            'content_image_id',
-                            'mission_image_id',
                             'content',
                             'mission',
                             'content_intro',
                             'overview_intro',
-                            'diagram_image_id',
                         ]
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $introduce = $this->introduceRepository->create($input);
+
+        if ($request->hasFile('content-image')) {
+            $file = $request->file('content-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $introduce->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->introduceRepository->update($introduce, ['content_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('mission-image')) {
+            $file = $request->file('mission-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $introduce->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->introduceRepository->update($introduce, ['mission_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('diagram-image')) {
+            $file = $request->file('diagram-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $introduce->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->introduceRepository->update($introduce, ['diagram_image_id' => $image->id]);
+            }
+        }
 
         if( empty($introduce) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -152,20 +221,85 @@ class IntroduceController extends Controller
 
         $input = $request->only(
             [
-                            'title_introduce',
-                            'title_leader_ship',
-                            'content_image_id',
-                            'mission_image_id',
-                            'content',
-                            'mission',
-                            'content_intro',
-                            'overview_intro',
-                            'diagram_image_id',
-                        ]
+                'title_introduce',
+                'title_leader_ship',
+                'content',
+                'mission',
+                'content_intro',
+                'overview_intro',
+            ]
         );
+        
+        $introduce = $this->introduceRepository->update($introduce, $input);
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->introduceRepository->update($introduce, $input);
+        if ($request->hasFile('content-image')) {
+            $currentImage = $introduce->contentImage;
+            $file = $request->file('content-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $introduce->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->introduceRepository->update($introduce, ['content_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('mission-image')) {
+            $currentImage = $introduce->missionImage;
+            $file = $request->file('mission-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $introduce->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->introduceRepository->update($introduce, ['mission_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('diagram-image')) {
+            $currentImage = $introduce->diagramImage;
+            $file = $request->file('diagram-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $introduce->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->introduceRepository->update($introduce, ['diagram_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\IntroduceController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

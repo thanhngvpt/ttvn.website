@@ -8,15 +8,36 @@ use App\Repositories\FieldRepositoryInterface;
 use App\Http\Requests\Admin\FieldRequest;
 use App\Http\Requests\PaginationRequest;
 
+
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class FieldController extends Controller
 {
     /** @var  \App\Repositories\FieldRepositoryInterface */
     protected $fieldRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        FieldRepositoryInterface $fieldRepository
+        FieldRepositoryInterface $fieldRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->fieldRepository = $fieldRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -79,29 +100,97 @@ class FieldController extends Controller
     {
         $input = $request->only(
             [
-                            'name',
-                            'slug',
-                            'meta_title',
-                            'meta_description',
-                            'cover_image_id',
-                            'title',
-                            'content',
-                            'icon1_image_id',
-                            'charact_1',
-                            'des_1',
-                            'icon2_image_id',
-                            'charact_2',
-                            'des_2',
-                            'icon3_image_id',
-                            'charact_3',
-                            'des_3',
-                            'order',
-                            'is_enabled',
-                        ]
+                'name',
+                'slug',
+                'meta_title',
+                'meta_description',
+                'title',
+                'content',
+                'charact_1',
+                'des_1',
+                'charact_2',
+                'des_2',
+                'charact_3',
+                'des_3',
+                'order',
+                'is_enabled',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
         $field = $this->fieldRepository->create($input);
+
+        if ($request->hasFile('icon1-image')) {
+            $file = $request->file('icon1-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->fieldRepository->update($field, ['icon1_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('icon2-image')) {
+            $file = $request->file('icon2-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->fieldRepository->update($field, ['icon2_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('icon3-image')) {
+            $file = $request->file('icon3-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->fieldRepository->update($field, ['icon3_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->fieldRepository->update($field, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($field) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -161,29 +250,121 @@ class FieldController extends Controller
 
         $input = $request->only(
             [
-                            'name',
-                            'slug',
-                            'meta_title',
-                            'meta_description',
-                            'cover_image_id',
-                            'title',
-                            'content',
-                            'icon1_image_id',
-                            'charact_1',
-                            'des_1',
-                            'icon2_image_id',
-                            'charact_2',
-                            'des_2',
-                            'icon3_image_id',
-                            'charact_3',
-                            'des_3',
-                            'order',
-                            'is_enabled',
-                        ]
+                'name',
+                'slug',
+                'meta_title',
+                'meta_description',
+                'cover_image_id',
+                'title',
+                'content',
+                'icon1_image_id',
+                'charact_1',
+                'des_1',
+                'icon2_image_id',
+                'charact_2',
+                'des_2',
+                'icon3_image_id',
+                'charact_3',
+                'des_3',
+                'order',
+                'is_enabled',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->fieldRepository->update($field, $input);
+        $field = $this->fieldRepository->update($field, $input);
+
+        if ($request->hasFile('icon1-image')) {
+            $currentImage = $field->icon1Image;
+            $file = $request->file('icon1-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->fieldRepository->update($field, ['icon1_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('icon2-image')) {
+            $currentImage = $field->icon2Image;
+            $file = $request->file('icon2-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->fieldRepository->update($field, ['icon2_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('icon3-image')) {
+            $currentImage = $field->icon3Image;
+            $file = $request->file('icon3-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->fieldRepository->update($field, ['icon3_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $field->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->fieldRepository->update($field, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\FieldController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

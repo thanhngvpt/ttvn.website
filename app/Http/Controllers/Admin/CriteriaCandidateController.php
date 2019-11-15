@@ -8,15 +8,35 @@ use App\Repositories\CriteriaCandidateRepositoryInterface;
 use App\Http\Requests\Admin\CriteriaCandidateRequest;
 use App\Http\Requests\PaginationRequest;
 
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class CriteriaCandidateController extends Controller
 {
     /** @var  \App\Repositories\CriteriaCandidateRepositoryInterface */
     protected $criteriaCandidateRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        CriteriaCandidateRepositoryInterface $criteriaCandidateRepository
+        CriteriaCandidateRepositoryInterface $criteriaCandidateRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->criteriaCandidateRepository = $criteriaCandidateRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -79,14 +99,29 @@ class CriteriaCandidateController extends Controller
     {
         $input = $request->only(
             [
-                            'icon_image_id',
-                            'name',
-                            'content',
-                        ]
+                'name',
+                'content',
+            ]
         );
-
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $criteriaCandidate = $this->criteriaCandidateRepository->create($input);
+
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $criteriaCandidate->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->criteriaCandidateRepository->update($criteriaCandidate, ['icon_image_id' => $image->id]);
+            }
+        }
 
         if( empty($criteriaCandidate) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -146,14 +181,36 @@ class CriteriaCandidateController extends Controller
 
         $input = $request->only(
             [
-                            'icon_image_id',
-                            'name',
-                            'content',
-                        ]
+                'name',
+                'content',
+            ]
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->criteriaCandidateRepository->update($criteriaCandidate, $input);
+        $criteriaCandidate = $this->criteriaCandidateRepository->update($criteriaCandidate, $input);
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $criteriaCandidate->iconImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $criteriaCandidate->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->criteriaCandidateRepository->update($criteriaCandidate, ['icon_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\CriteriaCandidateController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

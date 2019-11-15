@@ -8,6 +8,7 @@
         .row {
             margin-bottom: 15px;
         }
+        
     </style>
 @stop
 
@@ -95,44 +96,44 @@
                 </div>
             @endif
 
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\CriteriaCandidateController@store') !!}@else{!! action('Admin\CriteriaCandidateController@update', [$criteriaCandidate->id]) !!}@endif" method="POST">
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\CriteriaCandidateController@store') !!}@else{!! action('Admin\CriteriaCandidateController@update', [$criteriaCandidate->id]) !!}@endif" method="POST" enctype="multipart/form-data">
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                                                                                    <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row" style="max-width: 500px;">
-                                        @if( !empty($criteriaCandidate->present()->coverImage()) )
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! $criteriaCandidate->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
-                                        @else
-                                        <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
-                                        @endif
-                                        <input type="file" style="display: none;" id="cover-image" name="cover-image">
-                                        <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                            @lang('admin.pages.criteria-candidates.columns.icon_image_id')
-                                            <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
-                                        </p>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-4 offset-md-4">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($criteriaCandidate->present()->iconImage()) )
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! $criteriaCandidate->present()->iconImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="cover-image" name="cover-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 314px; text-align: center;">
+                                    Icon/Hình ảnh
+                                    <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('name')) has-danger @endif">
-                                        <label for="name">@lang('admin.pages.criteria-candidates.columns.name')</label>
-                                        <input type="text" class="form-control m-input" name="name" id="name" required placeholder="@lang('admin.pages.criteria-candidates.columns.name')" value="{{ old('name') ? old('name') : $criteriaCandidate->name }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('name')) has-danger @endif">
+                                <label for="name">Tên tiêu chí</label>
+                                <input type="text" class="form-control m-input" name="name" id="name" required value="{{ old('name') ? old('name') : $criteriaCandidate->name }}">
                             </div>
-                                                                                                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-form__group row @if ($errors->has('content')) has-danger @endif">
-                                        <label for="content">@lang('admin.pages.criteria-candidates.columns.content')</label>
-                                        <input type="text" class="form-control m-input" name="content" id="content" required placeholder="@lang('admin.pages.criteria-candidates.columns.content')" value="{{ old('content') ? old('content') : $criteriaCandidate->content }}">
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('content')) has-danger @endif">
+                                <label for="content">Nội dung tiêu chí</label>
+                                <input type="text" class="form-control m-input" name="content" id="content" required value="{{ old('content') ? old('content') : $criteriaCandidate->content }}">
                             </div>
-                                                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">
