@@ -2,6 +2,21 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	background-color: #f7f7f7;
 }
+.form-control {
+	&:focus {
+		box-shadow: none;
+	}
+}
+.invalid-feedback {
+	margin-top: 8px;
+	padding-left: 24px;
+	font-size: 12px;
+	line-height: 18px;
+}
+.form-control.is-invalid {
+	background-image: url('../images/icon-invalid.svg');
+	background-size: 12px 12px;
+}
 .logo-img {
 	margin-left: 48px;
 }
@@ -65,13 +80,12 @@ body {
 			margin-bottom: 24px;
 
 			input {
-				border-radius: 8px;
 				border-color: #dedede;
+				border-radius: 8px;
 				font-size: 16px;
 				line-height: 25px;
 				height: 50px;
 				padding: 12px 24px 13px 24px;
-				color: rgba(0, 0, 0, 0.32);
 			}
 			textarea {
 				padding: 12px 24px 13px 24px;
@@ -86,8 +100,8 @@ body {
 			width: 200px;
 			font-size: 16px;
 			line-height: 25px;
-			padding-top: 12px;
-			padding-bottom: 11px;
+			padding-top: 10px;
+			padding-bottom: 9px;
 			font-weight: 600;
 			border-radius: 8px;
 			color: #57AE5B;
@@ -762,6 +776,7 @@ main {
 }
 
 .tag-news {
+	width: fit-content;
 	font-size: 12px;
 	line-height: 18px;
 	color: #2F8132;
@@ -840,6 +855,10 @@ main {
 
 		.img-news {
 			border-radius: 8px 8px 0 0;
+
+			img {
+				width: 100%;
+			}
 		}
 		.content-news {
 			padding: 24px;
@@ -874,6 +893,9 @@ main {
 .no-title-page {
 	.title-page {
 		display: none;
+	}
+	nav {
+		padding-bottom: 27px;
 	}
 }
 
@@ -1687,6 +1709,29 @@ main {
 		}
 	}
 }
+.number-detail-job {
+	display: flex;
+
+	.item-number-detail {
+		display: flex;
+		align-items: center;
+		margin-right: 48px;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		span {
+			margin-left: 16px;
+			color: #95B5C8;
+			font-size: 16px;
+			line-height: 25px;
+		}
+	}
+}
+.display-md {
+	display: none;
+}
 
 @media screen and (min-width: 1440px) {
 	.container {
@@ -1709,8 +1754,31 @@ main {
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
+	.col-xl-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+	}
 	.container {
-		max-width: 1010px;
+		max-width: 936px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#job-detail-page {
+		.container-detail-job {
+			width: 936px;
+		}
+		.area-apply {
+			padding: 48px 108px;
+			margin-top: 48px;
+
+			.title-apply {
+				margin-bottom: 40px;
+			}
+			.btn-upload-file-apply {
+				margin-bottom: 3px;
+			}
+		}
 	}
 	.logo-img {
 		height: 24px;
@@ -1721,7 +1789,6 @@ main {
 			font-size: 40px;
 			line-height: 64px;
 			margin-top: 120px;
-			margin-left: 215px;
 			padding-bottom: 80px;
 		}
 	}
@@ -1746,9 +1813,36 @@ main {
 			font-size: 16px;
 		}
 	}
+	#news-page {
+		.img-slide-news {
+			width: 534px;
+		}
+		.content-slide-news {
+			width: 376px;
+		}
+		.prev-arrow {
+			left: -30px;
+		}
+		.next-arrow {
+			right: -30px;
+		}
+	}
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+	.container {
+		max-width: 736px;
+		// padding-left: 0;
+		// padding-right: 0;
+	}
+	main {
+		.prev-arrow {
+			left: -30px;
+		}
+		.next-arrow {
+			right: -30px;
+		}
+	}
 	.logo-img {
 		margin-left: 8px;
 	}
@@ -1756,7 +1850,7 @@ main {
 		.title-page {
 			font-size: 32px;
 			line-height: initial;
-			margin-left: 24px;
+			margin-left: -15px;
 			margin-top: 78px;
 			padding-bottom: 48px;
 		}
@@ -1789,9 +1883,95 @@ main {
 			padding-bottom: 56px;
 		}
 	}
+	#news-page {
+		.img-slide-news {
+			width: 360px;
+		}
+		.content-slide-news {
+			width: 359px;
+		}
+		.title-slide-news {
+			font-size: 24px;
+			line-height: 32px;
+		}
+		.prev-arrow {
+			z-index: 2;
+			left: 0;
+			padding: 12px 8px;
+			background-color: #eee;
+			top: 32%;
+		}
+		.next-arrow {
+			z-index: 2;
+			right: 0;
+			padding: 12px 8px;
+			background-color: #eee;
+			top: 32%;
+		}
+	}
+	#job-detail-page {
+		.container-detail-job {
+			width: calc(100% - 48px);
+			margin-left: 24px;
+			margin-right: 24px;
+		}
+		.area-apply {
+			padding: 40px 64px;
+
+			.input-apply-group {
+				display: block;
+
+				input {
+					width: 49%;
+
+					&:first-child {
+						float: left;
+						margin-bottom: 24px;
+					}
+					&:nth-child(2) {
+						float: right;
+						margin-bottom: 24px;
+					}
+					&:nth-child(3) {
+						float: left;
+						margin-bottom: 24px;
+					}
+				}
+				.btn-upload-file-apply {
+					float: right;
+					width: 49%;
+				}
+			}
+		}
+		.display-md {
+			display: block;
+		}
+		.hidden-md {
+			display: none;
+		}
+	}
 }
 
 @media screen and (max-width: 767px) {
+	main {
+		.prev-arrow {
+			left: -15px;
+		}
+		.next-arrow {
+			right: -15px;
+		}
+	}
+	.container {
+		padding-left: 18px;
+		padding-right: 18px;
+	}
+	#news-detail-page {
+		.area-detail-news {
+			width: initial;
+			padding-left: 18px;
+			padding-right: 18px;
+		}
+	}
 	.logo-img {
 		margin-left: 2px;
 	}
@@ -1820,9 +2000,121 @@ main {
 		.title-page {
 			font-size: 24px;
 			line-height: 24px;
-			margin-left: 18px;
 			margin-top: 60px;
 			padding-bottom: 22px;
+		}
+	}
+	footer {
+		padding-bottom: 60px;
+
+		.logo-footer {
+			padding-top: 40px;
+		}
+	}
+	#news-page {
+		.title-slide-news {
+			font-size: 24px;
+			line-height: 32px;
+		}
+		.item-slide-news {
+			display: block;
+		}
+		.img-slide-news {
+			width: 100%;
+		}
+		.content-slide-news {
+			width: 100%;
+			margin-top: 24px;
+		}
+		.slick-dots {
+			text-align: center;
+		}
+		.prev-arrow {
+			left: 5px;
+			z-index: 1;
+			top: 19%;
+		}
+		.next-arrow {
+			right: 5px;
+			z-index: 1;
+			top: 19%;
+		}
+		.nav-tabs {
+			justify-content: initial;
+			margin-bottom: 40px;
+			.nav-item {
+				flex: inherit;
+				text-align: center;
+				padding: 0 8px 16px 8px;
+
+				.nav-link {
+					font-size: 16px;
+					line-height: 22px;
+
+					&::before {
+						padding-top: 4px;
+						margin-bottom: 10px;
+					}
+					&.active {
+						&::before {
+							padding-top: 4px;
+							margin-bottom: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.display-md {
+		display: block;
+	}
+	.hidden-md {
+		display: none;
+	}
+	.number-detail-job {
+		display: block;
+		
+		.item-number-detail {
+			display: inline-flex;
+			width: 32%;
+		}
+	}
+	#job-detail-page {
+		padding-bottom: 56px;
+
+		.content-job-detail {
+			width: initial;
+			padding-left: 18px;
+			padding-right: 18px;
+
+			.title-job-detail {
+				margin-top: 0;
+			}
+		}
+		.container-detail-job {
+			padding-left: 18px;
+			padding-right: 18px;
+			width: 100%;
+		}
+		.area-apply {
+			padding: 40px 16px 44px 16px;
+
+			.title-apply {
+				font-size: 20px;
+				line-height: 44px;
+				margin-bottom: 28px;
+			}
+			.input-apply-group {
+				display: block;
+
+				input {
+					width: 100%;
+					margin-bottom: 16px;
+				}
+				.btn-upload-file-apply {
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 }

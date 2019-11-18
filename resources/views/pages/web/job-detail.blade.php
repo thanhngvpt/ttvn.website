@@ -1,7 +1,27 @@
 @extends('pages.web.layouts.app')
 
 @section('title-navbar')
-	Kiến trúc sư thiết kế cảnh quan
+	<div class="mb-2">
+		Kiến trúc sư thiết kế cảnh quan
+	</div>
+	<div class="number-detail-job">
+		<div class="item-number-detail">
+			<img src="{{ asset('images/icon-job-1.svg') }}" class="img-fluid" />
+			<span>Hà nội</span>
+		</div>
+		<div class="item-number-detail">
+			<img src="{{ asset('images/icon-job-2.svg') }}" class="img-fluid" />
+			<span>03</span>
+		</div>
+		<div class="item-number-detail">
+			<img src="{{ asset('images/icon-job-3.svg') }}" class="img-fluid" />
+			<span>15-20 triệu</span>
+		</div>
+		<div class="item-number-detail">
+			<img src="{{ asset('images/icon-job-4.svg') }}" class="img-fluid" />
+			<span>31/12/2030</span>
+		</div>
+	</div>
 @endsection
 
 @section('content')
@@ -48,8 +68,11 @@
 						<input type="text" name="name" placeholder="Họ và tên" class="form-control">
 						<input type="email" name="email" placeholder="Email" class="form-control">
 						<input type="text" name="phone" placeholder="Số điện thoại" class="form-control">
+						<div class="btn-upload-file-apply display-md" onclick="$('#file_apply').click()">
+							Tải lên CV của bạn.
+						</div>
 					</div>
-					<div class="btn-upload-file-apply" onclick="$('#file_apply').click()">
+					<div class="btn-upload-file-apply hidden-md" onclick="$('#file_apply').click()">
 						Tải lên CV của bạn.
 					</div>
 					<input type="file" name="" id="file_apply">

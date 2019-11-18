@@ -2,6 +2,19 @@ body {
   font-family: 'Open Sans', sans-serif;
   background-color: #f7f7f7; }
 
+.form-control:focus {
+  box-shadow: none; }
+
+.invalid-feedback {
+  margin-top: 8px;
+  padding-left: 24px;
+  font-size: 12px;
+  line-height: 18px; }
+
+.form-control.is-invalid {
+  background-image: url("../images/icon-invalid.svg");
+  background-size: 12px 12px; }
+
 .logo-img {
   margin-left: 48px; }
 
@@ -47,13 +60,12 @@ body {
   #contact-page .form-contact .item-form-contact {
     margin-bottom: 24px; }
     #contact-page .form-contact .item-form-contact input {
-      border-radius: 8px;
       border-color: #dedede;
+      border-radius: 8px;
       font-size: 16px;
       line-height: 25px;
       height: 50px;
-      padding: 12px 24px 13px 24px;
-      color: rgba(0, 0, 0, 0.32); }
+      padding: 12px 24px 13px 24px; }
     #contact-page .form-contact .item-form-contact textarea {
       padding: 12px 24px 13px 24px;
       font-size: 16px;
@@ -65,8 +77,8 @@ body {
     width: 200px;
     font-size: 16px;
     line-height: 25px;
-    padding-top: 12px;
-    padding-bottom: 11px;
+    padding-top: 10px;
+    padding-bottom: 9px;
     font-weight: 600;
     border-radius: 8px;
     color: #57AE5B;
@@ -567,6 +579,7 @@ main .nav-tabs {
     background-color: #7BC47F; }
 
 .tag-news {
+  width: fit-content;
   font-size: 12px;
   line-height: 18px;
   color: #2F8132;
@@ -625,6 +638,8 @@ main .nav-tabs {
   margin-bottom: 10px; }
   #news-detail-page .item-news .img-news {
     border-radius: 8px 8px 0 0; }
+    #news-detail-page .item-news .img-news img {
+      width: 100%; }
   #news-detail-page .item-news .content-news {
     padding: 24px;
     background-color: #ffffff;
@@ -646,6 +661,8 @@ main .nav-tabs {
 
 .no-title-page .title-page {
   display: none; }
+.no-title-page nav {
+  padding-bottom: 27px; }
 
 .modal-backdrop {
   background-color: #00263C; }
@@ -1250,6 +1267,23 @@ main .nav-tabs {
       box-shadow: 0px 2px 0px #36883A, inset 0px 2px 0px rgba(0, 0, 0, 0.08);
       color: #57AE5B; }
 
+.number-detail-job {
+  display: flex; }
+  .number-detail-job .item-number-detail {
+    display: flex;
+    align-items: center;
+    margin-right: 48px; }
+    .number-detail-job .item-number-detail:last-child {
+      margin-right: 0; }
+    .number-detail-job .item-number-detail span {
+      margin-left: 16px;
+      color: #95B5C8;
+      font-size: 16px;
+      line-height: 25px; }
+
+.display-md {
+  display: none; }
+
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1316px;
@@ -1268,8 +1302,25 @@ main .nav-tabs {
     color: #7e7e7e;
     margin-bottom: 24px; } }
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .col-xl-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%; }
+
   .container {
-    max-width: 1010px; }
+    max-width: 936px;
+    padding-left: 0;
+    padding-right: 0; }
+
+  #job-detail-page .container-detail-job {
+    width: 936px; }
+  #job-detail-page .area-apply {
+    padding: 48px 108px;
+    margin-top: 48px; }
+    #job-detail-page .area-apply .title-apply {
+      margin-bottom: 40px; }
+    #job-detail-page .area-apply .btn-upload-file-apply {
+      margin-bottom: 3px; }
 
   .logo-img {
     height: 24px;
@@ -1279,7 +1330,6 @@ main .nav-tabs {
     font-size: 40px;
     line-height: 64px;
     margin-top: 120px;
-    margin-left: 215px;
     padding-bottom: 80px; }
 
   .navbar-top-area .navbar {
@@ -1291,15 +1341,32 @@ main .nav-tabs {
     height: 465px; }
 
   footer .title-col-footer {
-    font-size: 16px; } }
+    font-size: 16px; }
+
+  #news-page .img-slide-news {
+    width: 534px; }
+  #news-page .content-slide-news {
+    width: 376px; }
+  #news-page .prev-arrow {
+    left: -30px; }
+  #news-page .next-arrow {
+    right: -30px; } }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 736px; }
+
+  main .prev-arrow {
+    left: -30px; }
+  main .next-arrow {
+    right: -30px; }
+
   .logo-img {
     margin-left: 8px; }
 
   .navbar-top-area .title-page {
     font-size: 32px;
     line-height: initial;
-    margin-left: 24px;
+    margin-left: -15px;
     margin-top: 78px;
     padding-bottom: 48px; }
 
@@ -1319,8 +1386,69 @@ main .nav-tabs {
       padding-top: 64px;
       padding-bottom: 40px; }
     footer .col-footer {
-      padding-bottom: 56px; } }
+      padding-bottom: 56px; }
+
+  #news-page .img-slide-news {
+    width: 360px; }
+  #news-page .content-slide-news {
+    width: 359px; }
+  #news-page .title-slide-news {
+    font-size: 24px;
+    line-height: 32px; }
+  #news-page .prev-arrow {
+    z-index: 2;
+    left: 0;
+    padding: 12px 8px;
+    background-color: #eee;
+    top: 32%; }
+  #news-page .next-arrow {
+    z-index: 2;
+    right: 0;
+    padding: 12px 8px;
+    background-color: #eee;
+    top: 32%; }
+
+  #job-detail-page .container-detail-job {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: 24px; }
+  #job-detail-page .area-apply {
+    padding: 40px 64px; }
+    #job-detail-page .area-apply .input-apply-group {
+      display: block; }
+      #job-detail-page .area-apply .input-apply-group input {
+        width: 49%; }
+        #job-detail-page .area-apply .input-apply-group input:first-child {
+          float: left;
+          margin-bottom: 24px; }
+        #job-detail-page .area-apply .input-apply-group input:nth-child(2) {
+          float: right;
+          margin-bottom: 24px; }
+        #job-detail-page .area-apply .input-apply-group input:nth-child(3) {
+          float: left;
+          margin-bottom: 24px; }
+      #job-detail-page .area-apply .input-apply-group .btn-upload-file-apply {
+        float: right;
+        width: 49%; }
+  #job-detail-page .display-md {
+    display: block; }
+  #job-detail-page .hidden-md {
+    display: none; } }
 @media screen and (max-width: 767px) {
+  main .prev-arrow {
+    left: -15px; }
+  main .next-arrow {
+    right: -15px; }
+
+  .container {
+    padding-left: 18px;
+    padding-right: 18px; }
+
+  #news-detail-page .area-detail-news {
+    width: initial;
+    padding-left: 18px;
+    padding-right: 18px; }
+
   .logo-img {
     margin-left: 2px; }
 
@@ -1339,8 +1467,87 @@ main .nav-tabs {
   .navbar-top-area .title-page {
     font-size: 24px;
     line-height: 24px;
-    margin-left: 18px;
     margin-top: 60px;
-    padding-bottom: 22px; } }
+    padding-bottom: 22px; }
+
+  footer {
+    padding-bottom: 60px; }
+    footer .logo-footer {
+      padding-top: 40px; }
+
+  #news-page .title-slide-news {
+    font-size: 24px;
+    line-height: 32px; }
+  #news-page .item-slide-news {
+    display: block; }
+  #news-page .img-slide-news {
+    width: 100%; }
+  #news-page .content-slide-news {
+    width: 100%;
+    margin-top: 24px; }
+  #news-page .slick-dots {
+    text-align: center; }
+  #news-page .prev-arrow {
+    left: 5px;
+    z-index: 1;
+    top: 19%; }
+  #news-page .next-arrow {
+    right: 5px;
+    z-index: 1;
+    top: 19%; }
+  #news-page .nav-tabs {
+    justify-content: initial;
+    margin-bottom: 40px; }
+    #news-page .nav-tabs .nav-item {
+      flex: inherit;
+      text-align: center;
+      padding: 0 8px 16px 8px; }
+      #news-page .nav-tabs .nav-item .nav-link {
+        font-size: 16px;
+        line-height: 22px; }
+        #news-page .nav-tabs .nav-item .nav-link::before {
+          padding-top: 4px;
+          margin-bottom: 10px; }
+        #news-page .nav-tabs .nav-item .nav-link.active::before {
+          padding-top: 4px;
+          margin-bottom: 10px; }
+
+  .display-md {
+    display: block; }
+
+  .hidden-md {
+    display: none; }
+
+  .number-detail-job {
+    display: block; }
+    .number-detail-job .item-number-detail {
+      display: inline-flex;
+      width: 32%; }
+
+  #job-detail-page {
+    padding-bottom: 56px; }
+    #job-detail-page .content-job-detail {
+      width: initial;
+      padding-left: 18px;
+      padding-right: 18px; }
+      #job-detail-page .content-job-detail .title-job-detail {
+        margin-top: 0; }
+    #job-detail-page .container-detail-job {
+      padding-left: 18px;
+      padding-right: 18px;
+      width: 100%; }
+    #job-detail-page .area-apply {
+      padding: 40px 16px 44px 16px; }
+      #job-detail-page .area-apply .title-apply {
+        font-size: 20px;
+        line-height: 44px;
+        margin-bottom: 28px; }
+      #job-detail-page .area-apply .input-apply-group {
+        display: block; }
+        #job-detail-page .area-apply .input-apply-group input {
+          width: 100%;
+          margin-bottom: 16px; }
+        #job-detail-page .area-apply .input-apply-group .btn-upload-file-apply {
+          margin-bottom: 0; } }
 
 /*# sourceMappingURL=app.css.map */

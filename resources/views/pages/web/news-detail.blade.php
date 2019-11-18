@@ -7,9 +7,9 @@
 @section('content')
 	<div id="news-detail-page">
 		<div class="area-detail-news">
-			<span class="tag-news">
+			<div class="tag-news">
 				Văn hoá - sự kiện
-			</span>
+			</div>
 			<div class="title-news-detail">
 				Year End Party 2018: One TTVN - One Dream
 			</div>
@@ -51,7 +51,7 @@
 			<div class="title-relation-news">
 				Tin liên quan
 			</div>
-			<div class="content-page">
+			<div class="container">
 				<div class="slide-relation-news">
 					<a href="#" class="item-news">
 						<div class="img-news">
@@ -138,14 +138,44 @@
 @section('page-scripts')
 	<script type="text/javascript">
 		$(document).ready(function(){
-  			$('.slide-relation-news').slick({
-  				infinite: true,
-  				slidesToShow: 3,
-  				slidesToScroll: 1,
-  				dots: true,
-  				prevArrow: '<img src="{{ asset("images/arrow-left-ad.png") }}" class="img-fluid prev-arrow" />',
-  				nextArrow: '<img src="{{ asset("images/arrow-right-ad.png") }}" class="img-fluid next-arrow" />'
-  			});
+			$('.slide-relation-news').slick({
+				infinite: true,
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				dots: true,
+				prevArrow: '<img src="{{ asset("images/arrow-left-ad.svg") }}" class="img-fluid prev-arrow" />',
+				nextArrow: '<img src="{{ asset("images/arrow-right-ad.svg") }}" class="img-fluid next-arrow" />',
+				responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+
+			$('.next-arrow').mouseover(function () {
+				$(this).attr('src', '{{ asset("images/arrow-right-active.svg") }}');
+			})
+			.mouseout(function () {
+				$(this).attr('src', '{{ asset("images/arrow-right-ad.svg") }}');
+			})
+
+			$('.prev-arrow').mouseover(function () {
+				$(this).attr('src', '{{ asset("images/arrow-left-active.svg") }}');
+			})
+			.mouseout(function () {
+				$(this).attr('src', '{{ asset("images/arrow-left-ad.svg") }}');
+			})
 		});
 	</script>
 @endsection
