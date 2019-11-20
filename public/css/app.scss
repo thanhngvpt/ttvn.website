@@ -24,12 +24,15 @@ body {
 	background-color: #ffffff;
 }
 .navbar-top-area {
-	background-image: url('../images/bg-navbar.png');
+	background-image: url('../images/bg-header-lg.svg');
+	background-position: bottom right;
+	background-repeat: no-repeat;
 
 	.navbar {
 		padding-top: 27px;
 
 		.navbar-brand {
+			height: 32px;
 			margin-right: 125px;
 		}
 		li {
@@ -55,7 +58,7 @@ body {
 		font-weight: 600;
 		line-height: 64px;
 		color: #57AE5B;
-		margin-top: 152px;
+		margin-top: 149px;
 		padding-bottom: 120px;
 	}
 }
@@ -274,7 +277,6 @@ body {
 			font-size: 16px;
 			line-height: 25px;
 			font-weight: 600;
-			color: #57AE5B;
 			border: 2px solid #57AE5B;
 			border-radius: 8px;
 			padding: 12px 54px;
@@ -675,7 +677,7 @@ main {
 		right: -40px;
 	}
 	.pagination {
-		margin-bottom: 160px;
+		// margin-bottom: 160px;
 	}
 	.nav-tabs {
 		justify-content: space-between;
@@ -1732,6 +1734,9 @@ main {
 .display-md {
 	display: none;
 }
+.list-job-mb {
+	display: none;
+}
 
 @media screen and (min-width: 1440px) {
 	.container {
@@ -1763,6 +1768,9 @@ main {
 		max-width: 936px;
 		padding-left: 0;
 		padding-right: 0;
+	}
+	.navbar-top-area {
+		background-image: url('../images/bg-header-md.svg');
 	}
 	#job-detail-page {
 		.container-detail-job {
@@ -1827,6 +1835,80 @@ main {
 			right: -30px;
 		}
 	}
+	#list-job-page {
+		.area-list-job {
+			width: 936px;
+		}
+		.form-search-job {
+			padding: 40px 57px 47px 57px;
+
+			.search-keyword {
+				width: 264px;
+			}
+			.facilty {
+				width: 170px;
+			}
+			.workarea {
+				width: 163px;
+			}
+		}
+	}
+	.list-job table {
+		thead {
+			th {
+				padding: 16px 20px;
+
+				&:first-child {
+					width: 50%;
+				}
+			}
+		}
+		tbody {
+			td {
+				padding: 32px 24px;
+				font-size: 14px;
+	
+				&:first-child {
+					padding-left: 40px;;
+				}
+				.name-job {
+					font-size: 16px;
+				}
+			}
+		}
+	}
+	#job-page {
+		.content-job-page {
+			width: 936px;
+			padding-top: 88px;
+
+			.title-three-job {
+				margin-top: 0;
+			}
+		}
+		.userfind-job {
+			padding: 88px 80px 80px 80px;
+		}
+		.title-feature-job {
+			margin-top: 0;
+		}
+		.view-all-job {
+			margin-top: 30px;
+		}
+		.detail-jobs {
+			.content-job-page {
+				padding-bottom: 73px;
+			}
+		}
+	}
+	.cultural-job {
+		padding-top: 0;
+		padding-bottom: 0;
+
+		.column-right {
+			width: 454px;
+		}
+	}
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -1843,15 +1925,26 @@ main {
 			right: -30px;
 		}
 	}
+	.navbar-top-area {
+		background-image: url('../images/bg-header-sm.svg');
+	}
+	.navbar-top-area .navbar {
+		padding-top: 20px;
+
+		.navbar-brand {
+			height: 24px;
+		}
+	}
 	.logo-img {
 		margin-left: 8px;
+		height: 24px;
 	}
 	.navbar-top-area {
 		.title-page {
 			font-size: 32px;
 			line-height: initial;
 			margin-left: -15px;
-			margin-top: 78px;
+			margin-top: 58px;
 			padding-bottom: 48px;
 		}
 	}
@@ -1948,6 +2041,80 @@ main {
 		}
 		.hidden-md {
 			display: none;
+		}
+	}
+	#list-job-page {
+		.download-cv {
+			margin-bottom: 56px;
+		}
+		.pagination {
+			margin-bottom: 0;
+		}
+		.area-list-job {
+			width: 736px;
+			padding-top: 48px;
+			padding-bottom: 56px;
+		}
+		.form-search-job {
+			padding: 40px 62px;
+			
+			.title-search-job {
+				margin-bottom: 32px;
+			}
+			form {
+				display: block;
+			}
+			.search-keyword {
+				width: 610px;
+				margin-bottom: 23px;
+			}
+			.facilty {
+				display: inline-flex;
+				width: 180px;
+				margin-right: 20px;
+			}
+			.workarea {
+				display: inline-flex;
+				width: 180px;
+				margin-right: 20px;
+			}
+			.btn-search-job {
+				display: inline-flex;
+				width: 202px;
+			}
+		}
+	}
+	.list-job table {
+		thead {
+			th {
+				padding: 16px 12px;
+
+				&:first-child {
+					width: 48%;
+				}
+			}
+		}
+		tbody {
+			td {
+				padding: 32px 16px;
+				font-size: 14px;
+	
+				.name-job {
+					font-size: 16px;
+				}
+			}
+		}
+	}
+	#job-page {
+		.content-job-page {
+			width: 736px;
+		}
+		.userfind-job {
+			padding: 72px 64px 70px 64px;
+
+			.des-userfind-job {
+				width: initial;
+			}
 		}
 	}
 }
@@ -2117,4 +2284,148 @@ main {
 			}
 		}
 	}
+	.list-job {
+		display: none;
+	}
+	.item-job-mb {
+		padding: 24px;
+		background: #FFFFFF;
+		border-radius: 8px;
+		margin-bottom: 24px;
+
+		.name-job-mb {
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 22px;
+			color: #000000;
+			margin-bottom: 8px;
+		}
+		.des-job-mb {
+			font-size: 14px;
+			line-height: 22px;
+			color: #626262;
+			margin-bottom: 24px;
+		}
+		.info-job-mb {
+			display: flex;
+			align-items: center;
+			font-size: 16px;
+			line-height: 25px;
+			color: #222222;
+			margin-bottom: 16px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+			span {
+				margin-left: 16px;
+			}
+		}
+	}
+	.navbar-top-area {
+		background-color: #00263C;
+		background-image: none;
+	}
+	.list-job-mb {
+		display: block;
+	}
+	#list-job-page {
+		.area-list-job {
+			width: calc(100% - 36px);
+			padding-bottom: 40px;
+		}
+		.form-search-job {
+			padding: 40px 24px 36px 24px;
+			margin-bottom: 48px;
+
+			.title-search-job {
+				font-size: 20px;
+				line-height: 32px;
+				margin-bottom: 24px;
+			}
+			form {
+				display: block;
+
+				>div {
+					width: 100% !important;
+					margin-bottom: 16px;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+		.pagination {
+			margin-bottom: 0;
+		}
+		.download-cv {
+			margin-bottom: 40px;
+		}
+	}
+	#job-page {
+		.content-job-page {
+			width: calc(100% - 36px);
+			padding-top: 42px;
+			padding-bottom: 48px;
+		}
+		.title-job-page {
+			font-size: 20px;
+			line-height: 32px;
+		}
+		.des-job-page {
+			width: initial;
+		}
+		.three-column-job {
+			.title-three-job {
+				margin-top: 8px;
+				margin-bottom: 56px;
+			}
+			.col-md-4 {
+				margin-bottom: 40px;
+
+				&:last-child {
+					margin-bottom: 8px;
+				}
+			}
+		}
+		.userfind-job {
+			width: 100%;
+			padding: 48px 24px;
+
+			.des-userfind-job {
+				width: initial;
+			}
+		}
+		.skill-job {
+			display: block;
+			padding-bottom: 0;
+
+			.item-skill-job {
+				margin-bottom: 48px;
+			}
+		}
+		.title-feature-job {
+			margin-top: 14px;
+			margin-bottom: 24px;
+			font-size: 20px;
+		}
+		.view-all-job {
+			margin-top: 24px;
+		}
+	}
+	.cultural-job {
+		padding-top: 14px;
+		padding-bottom: 14px;
+		display: block;
+
+		.column-left {
+			width: 100%;
+			margin-bottom: 30px;
+		}
+		.column-right {
+			width: 100%;
+		}
+	}
+	
 }

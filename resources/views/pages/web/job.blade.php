@@ -100,7 +100,7 @@
 					<div class="skill-job">
 						<div class="item-skill-job">
 							<div class="title-skill-job">
-								<img src="{{ asset('images/skill-one.png') }}" class="img-fluid">
+								<img src="{{ asset('images/skill-one.svg') }}" class="img-fluid">
 								<span>Kĩ năng</span>
 							</div>
 							<div class="des-skill-job">
@@ -109,7 +109,7 @@
 						</div>
 						<div class="item-skill-job">
 							<div class="title-skill-job">
-								<img src="{{ asset('images/skill-two.png') }}" class="img-fluid">
+								<img src="{{ asset('images/skill-two.svg') }}" class="img-fluid">
 								<span>Kĩ năng</span>
 							</div>
 							<div class="des-skill-job">
@@ -120,7 +120,7 @@
 					<div class="skill-job">
 						<div class="item-skill-job">
 							<div class="title-skill-job">
-								<img src="{{ asset('images/skill-three.png') }}" class="img-fluid">
+								<img src="{{ asset('images/skill-three.svg') }}" class="img-fluid">
 								<span>Kĩ năng</span>
 							</div>
 							<div class="des-skill-job">
@@ -129,7 +129,7 @@
 						</div>
 						<div class="item-skill-job">
 							<div class="title-skill-job">
-								<img src="{{ asset('images/skill-four.png') }}" class="img-fluid">
+								<img src="{{ asset('images/skill-four.svg') }}" class="img-fluid">
 								<span>Kĩ năng</span>
 							</div>
 							<div class="des-skill-job">
@@ -227,6 +227,104 @@
 							</tr>
 						</tbody>
 					</table>
+				</div>
+				<div class="list-job-mb">
+					<div class="item-job-mb">
+						<div class="name-job-mb">
+							Kiến trúc sư thiết kế cảnh quan
+						</div>
+						<div class="des-job-mb">
+							Công ty Tập đoàn Trường Thành Việt Nam
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+							<span>Hà nội</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+							<span>03</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+							<span>15-20 triệu</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+							<span>31/12/2030</span>
+						</div>
+					</div>
+					<div class="item-job-mb">
+						<div class="name-job-mb">
+							Kiến trúc sư thiết kế cảnh quan
+						</div>
+						<div class="des-job-mb">
+							Công ty Tập đoàn Trường Thành Việt Nam
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+							<span>Hà nội</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+							<span>03</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+							<span>15-20 triệu</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+							<span>31/12/2030</span>
+						</div>
+					</div>
+					<div class="item-job-mb">
+						<div class="name-job-mb">
+							Kiến trúc sư thiết kế cảnh quan
+						</div>
+						<div class="des-job-mb">
+							Công ty Tập đoàn Trường Thành Việt Nam
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+							<span>Hà nội</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+							<span>03</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+							<span>15-20 triệu</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+							<span>31/12/2030</span>
+						</div>
+					</div>
+					<div class="item-job-mb">
+						<div class="name-job-mb">
+							Kiến trúc sư thiết kế cảnh quan
+						</div>
+						<div class="des-job-mb">
+							Công ty Tập đoàn Trường Thành Việt Nam
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+							<span>Hà nội</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+							<span>03</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+							<span>15-20 triệu</span>
+						</div>
+						<div class="info-job-mb">
+							<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+							<span>31/12/2030</span>
+						</div>
+					</div>
 				</div>
 				<div class="view-all-job">
 					<a href="" class="btn btn-outline-success">

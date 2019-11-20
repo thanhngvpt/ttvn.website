@@ -1,7 +1,7 @@
 @extends('pages.web.layouts.app')
 
 @section('title-navbar')
-	Cơ hội nghề nghiệp tại TTVN Group
+	Danh sách tuyển dụng
 @endsection
 
 @section('content')
@@ -16,12 +16,12 @@
 						<input type="text" name="keyword" class="form-control" placeholder="Từ khóa">
 						<img src="{{ asset('images/icon-search.png') }}" class="img-fluid">
 					</div>
-					<div class="select-option-job">
+					<div class="select-option-job facilty">
 						<select class="form-control">
 							<option>Ngành nghề</option>
 						</select>
 					</div>
-					<div class="select-option-job">
+					<div class="select-option-job workarea">
 						<select class="form-control">
 							<option>Nơi làm việc</option>
 						</select>
@@ -115,6 +115,104 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<div class="list-job-mb">
+				<div class="item-job-mb">
+					<div class="name-job-mb">
+						Kiến trúc sư thiết kế cảnh quan
+					</div>
+					<div class="des-job-mb">
+						Công ty Tập đoàn Trường Thành Việt Nam
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+						<span>Hà nội</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+						<span>03</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+						<span>15-20 triệu</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+						<span>31/12/2030</span>
+					</div>
+				</div>
+				<div class="item-job-mb">
+					<div class="name-job-mb">
+						Kiến trúc sư thiết kế cảnh quan
+					</div>
+					<div class="des-job-mb">
+						Công ty Tập đoàn Trường Thành Việt Nam
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+						<span>Hà nội</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+						<span>03</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+						<span>15-20 triệu</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+						<span>31/12/2030</span>
+					</div>
+				</div>
+				<div class="item-job-mb">
+					<div class="name-job-mb">
+						Kiến trúc sư thiết kế cảnh quan
+					</div>
+					<div class="des-job-mb">
+						Công ty Tập đoàn Trường Thành Việt Nam
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+						<span>Hà nội</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+						<span>03</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+						<span>15-20 triệu</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+						<span>31/12/2030</span>
+					</div>
+				</div>
+				<div class="item-job-mb">
+					<div class="name-job-mb">
+						Kiến trúc sư thiết kế cảnh quan
+					</div>
+					<div class="des-job-mb">
+						Công ty Tập đoàn Trường Thành Việt Nam
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+						<span>Hà nội</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+						<span>03</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+						<span>15-20 triệu</span>
+					</div>
+					<div class="info-job-mb">
+						<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+						<span>31/12/2030</span>
+					</div>
+				</div>
 			</div>
 			<div class="download-cv">
 				Ứng viên có thể tải mẫu ứng tuyển <a href="#">Tại đây</a>
