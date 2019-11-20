@@ -1640,7 +1640,26 @@ main .nav-tabs {
       left: initial;
       right: -150px;
       bottom: -190px;
-      width: 475px; } }
+      width: 475px; }
+
+  #introduce-page #leader .list-member {
+    padding-top: 48px;
+    padding-bottom: 48px; }
+    #introduce-page #leader .list-member .bg-list-member {
+      width: 100%; }
+    #introduce-page #leader .list-member .row .col-md-4 {
+      display: none; }
+    #introduce-page #leader .list-member .row .col-md-8 {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%; }
+
+  .des-leader > div {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%; }
+    .des-leader > div:first-child {
+      display: none; } }
 @media screen and (max-width: 767px) {
   main .prev-arrow {
     left: -15px; }

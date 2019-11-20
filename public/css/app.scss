@@ -2278,6 +2278,35 @@ main {
 			}
 		}
 	}
+	#introduce-page #leader .list-member {
+		padding-top: 48px;
+		padding-bottom: 48px;
+
+		.bg-list-member {
+			width: 100%;
+		}
+		.row {
+			.col-md-4 {
+				display: none;
+			}
+			.col-md-8 {
+				-ms-flex: 0 0 100%;
+				flex: 0 0 100%;
+				max-width: 100%;
+			}
+		}
+	}
+	.des-leader {
+		> div {
+			-ms-flex: 0 0 50%;
+			flex: 0 0 50%;
+			max-width: 50%;
+		
+			&:first-child {
+				display: none;
+			}
+		}
+	}
 }
 
 @media screen and (max-width: 767px) {
