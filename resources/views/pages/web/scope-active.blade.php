@@ -13,10 +13,10 @@ class="background-white"
     <div class="container">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#technology-tab">Công nghệ cao</a>
+          <a class="nav-link active" data-toggle="tab" href="#technology-tab">Công nghệ cao</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#energy-tab">Năng lượng tái tạo</a>
+          <a class="nav-link" data-toggle="tab" href="#energy-tab">Năng lượng tái tạo</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#real-estate-tab">Bất động sản</a>
@@ -24,59 +24,61 @@ class="background-white"
       </ul>
     </div>
     <div class="tab-content">
-      <div class="tab-pane" id="technology-tab">
-        <div class="container">
-          <div class="tech-intro">
-            <div class="tech-left">
-              <div class="title-border-bottom">
-                Công nghệ cao Trường Thành
-              </div>
-              <div class="des-tech-intro">
-                <p>Chúng tôi luôn cố gắng từng ngày mang đến những giải pháp công nghệ hiệu quả nhất giải quyết các vấn đề cấp thiết hiện nay để mang đến nhiều giá trị cho cộng đồng và xã hội.</p>
-                <p>Trong xu thế phát triển của nền kinh tế chia sẻ và cuộc cách mạng công nghiệp 4.0, TTVN hướng tới việc ứng dụng các công nghệ tiên tiến trên thế giới (Blockchain, Big data, IOT,…) để xây dựng các sản phẩm, ứng dụng và nền tảng nhằm cải thiện sử tiện dụng cho người dùng, tối ưu hóa các chi phí, khai thác tối đa các tài nguyên, nâng cao hiệu quả hoạt động của doanh nghiệp,... </p>
-              </div>
+      <div class="tab-pane active" id="technology-tab">
+        <div class="tech-intro">
+          <div class="tech-left">
+            <div class="title-border-bottom">
+              Công nghệ cao Trường Thành
             </div>
-            <div class="tech-right">
-              <img src="{{ asset('images/hight-technology.png') }}" class="img-fluid" />
+            <div class="des-tech-intro">
+              <p>Chúng tôi luôn cố gắng từng ngày mang đến những giải pháp công nghệ hiệu quả nhất giải quyết các vấn đề cấp thiết hiện nay để mang đến nhiều giá trị cho cộng đồng và xã hội.</p>
+              <p>Trong xu thế phát triển của nền kinh tế chia sẻ và cuộc cách mạng công nghiệp 4.0, TTVN hướng tới việc ứng dụng các công nghệ tiên tiến trên thế giới (Blockchain, Big data, IOT,…) để xây dựng các sản phẩm, ứng dụng và nền tảng nhằm cải thiện sử tiện dụng cho người dùng, tối ưu hóa các chi phí, khai thác tối đa các tài nguyên, nâng cao hiệu quả hoạt động của doanh nghiệp,... </p>
             </div>
           </div>
-          <div class="tech-list">
-            <div class="tech-column-one">
-              <div class="tech-item">
-                <div class="tech-line"></div>
-                <img src="{{ asset('images/item-tech-1.png') }}" class="img-fluid" />
-                <div class="tech-item-title">
-                  Khai thác tối đa tài nguyên
+          <div class="tech-right">
+            <img src="{{ asset('images/hight-technology.svg') }}" class="img-fluid" />
+          </div>
+        </div>
+        <div class="tech-frame">
+          <div class="container">
+            <div class="tech-list">
+              <div class="tech-column-one">
+                <div class="tech-item">
+                  <div class="tech-line"></div>
+                  <img src="{{ asset('images/item-tech-1.svg') }}" class="img-fluid" />
+                  <div class="tech-item-title">
+                    Khai thác tối đa tài nguyên
+                  </div>
+                  <div class="tech-item-des">
+                    Xây dựng giải pháp công nghệ gắn với nền kinh tế chia sẻ ( ứng dung tích điểm dùng chung Sen Point), giúp tiết kiêm tài nguyên, chi phí và tăng hiệu quả hoạt động doanh nghiệp
+                  </div>
                 </div>
-                <div class="tech-item-des">
-                  Xây dựng giải pháp công nghệ gắn với nền kinh tế chia sẻ ( ứng dung tích điểm dùng chung Sen Point), giúp tiết kiêm tài nguyên, chi phí và tăng hiệu quả hoạt động doanh nghiệp
-                </div>
-              </div>
-              <div class="tech-item tech-item-down">
-                <div class="tech-line"></div>
-                <img src="{{ asset('images/item-tech-2.png') }}" class="img-fluid" />
-                <div class="tech-item-title">
-                  Khai thác tối đa tài nguyên
-                </div>
-                <div class="tech-item-des">
-                  Xây dựng giải pháp công nghệ gắn với nền kinh tế chia sẻ ( ứng dung tích điểm dùng chung Sen Point), giúp tiết kiêm tài nguyên, chi phí và tăng hiệu quả hoạt động doanh nghiệp
-                </div>
-              </div>
-            </div>
-            <div class="tech-column-two">
-              <div class="tech-item">
-                <div class="tech-line"></div>
-                <img src="{{ asset('images/item-tech-3.png') }}" class="img-fluid" />
-                <div class="tech-item-title">
-                  Mang tiện ích đến khách hàng
-                </div>
-                <div class="tech-item-des">
-                  Chỉ với 1 thiết bị di động có kết nối internet, khách hàng có thể bắt kịp với xu hướng của nền công nghiệp 4.0, cải thiện cuộc sống hàng ngày và tiết kiệm thời gian
+                <div class="tech-item tech-item-down">
+                  <div class="tech-line"></div>
+                  <img src="{{ asset('images/item-tech-2.svg') }}" class="img-fluid" />
+                  <div class="tech-item-title">
+                    Khai thác tối đa tài nguyên
+                  </div>
+                  <div class="tech-item-des">
+                    Xây dựng giải pháp công nghệ gắn với nền kinh tế chia sẻ ( ứng dung tích điểm dùng chung Sen Point), giúp tiết kiêm tài nguyên, chi phí và tăng hiệu quả hoạt động doanh nghiệp
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="tech-column-three">
-              <img src="{{ asset('images/item-tech-4.png') }}" class="img-fluid" />
+              <div class="tech-column-two">
+                <div class="tech-item">
+                  <div class="tech-line"></div>
+                  <img src="{{ asset('images/item-tech-3.svg') }}" class="img-fluid" />
+                  <div class="tech-item-title">
+                    Mang tiện ích đến khách hàng
+                  </div>
+                  <div class="tech-item-des">
+                    Chỉ với 1 thiết bị di động có kết nối internet, khách hàng có thể bắt kịp với xu hướng của nền công nghiệp 4.0, cải thiện cuộc sống hàng ngày và tiết kiệm thời gian
+                  </div>
+                </div>
+              </div>
+              <div class="tech-column-three">
+                <img src="{{ asset('images/item-tech-4.svg') }}" class="img-fluid" />
+              </div>
             </div>
           </div>
         </div>
@@ -138,7 +140,7 @@ class="background-white"
           </div>
         </div>
       </div>
-      <div class="tab-pane active" id="real-estate-tab">
+      <div class="tab-pane" id="real-estate-tab">
         <div class="container">
           <div class="tech-intro">
             <div class="tech-left">
@@ -209,7 +211,7 @@ class="background-white"
         <div class="slide-projects">
           <a href="#" class="item-news">
             <div class="img-news">
-              <img src="{{ asset('images/project-1.png') }}" class="img-fluid" />
+              <img src="{{ asset('images/project-1.svg') }}" class="img-fluid" />
             </div>
             <div class="content-news">
               <div class="title-news">
@@ -222,7 +224,7 @@ class="background-white"
           </a>
           <a href="#" class="item-news">
             <div class="img-news">
-              <img src="{{ asset('images/project-2.png') }}" class="img-fluid" />
+              <img src="{{ asset('images/project-2.svg') }}" class="img-fluid" />
             </div>
             <div class="content-news">
               <div class="title-news">
@@ -235,7 +237,7 @@ class="background-white"
           </a>
           <a href="#" class="item-news">
             <div class="img-news">
-              <img src="{{ asset('images/project-3.png') }}" class="img-fluid" />
+              <img src="{{ asset('images/project-3.svg') }}" class="img-fluid" />
             </div>
             <div class="content-news">
               <div class="title-news">
@@ -248,7 +250,7 @@ class="background-white"
           </a>
           <a href="#" class="item-news">
             <div class="img-news">
-              <img src="{{ asset('images/project-1.png') }}" class="img-fluid" />
+              <img src="{{ asset('images/project-1.svg') }}" class="img-fluid" />
             </div>
             <div class="content-news">
               <div class="title-news">
@@ -280,9 +282,56 @@ class="background-white"
 	    background-repeat: no-repeat;
       background-position: bottom right;
       background-color: #f7f7f7;
+      background-size: cover;
     }
     .navbar-top-area {
       background-image: none;
+    }
+
+    @media screen and (min-width: 1024px) and (max-width: 1439px) {
+      .item-news .title-news {
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: 16px;
+      }
+      .field-project {
+        padding-bottom: 48px;
+      }
+      .slick-dots {
+        display: none !important;
+      }
+    }
+
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
+      #field-page .tech-frame {
+        overflow: hidden;
+        padding-bottom: 0px;
+      }
+    }
+    
+    @media screen and (max-width: 767px) {
+      .field-project {
+        padding-bottom: 100px;
+      }
+      .field-project .title-field-project {
+        font-size: 24px;
+        line-height: 36px;
+        margin-bottom: 24px;
+      }
+      .content-page {
+        width: 100%;
+      }
+      main .prev-arrow {
+        left: 0;
+        z-index: 2;
+      }
+      main .next-arrow {
+        right: 0;
+        z-index: 2;
+      }
+      .slick-dotted.slick-slider {
+        margin-bottom: 0;
+      }
     }
   </style>
 @endsection

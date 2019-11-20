@@ -870,9 +870,14 @@ main .nav-tabs {
     align-items: center;
     margin-bottom: 36px; }
     #field-page .tech-intro .tech-left {
-      width: 33.3%; }
+      margin-left: calc(50% - 660px);
+      width: 422px; }
     #field-page .tech-intro .tech-right {
-      width: 66.7%; }
+      width: calc(50% + 238px);
+      overflow: hidden; }
+      #field-page .tech-intro .tech-right img {
+        width: 1190px;
+        max-width: initial; }
   #field-page .tech-list {
     display: flex;
     align-items: center;
@@ -1409,8 +1414,29 @@ main .nav-tabs {
   .field-project .next-arrow {
     right: -30px; }
 
-  #field-page .tech-intro {
-    margin-top: 170px; } }
+  #field-page {
+    padding-bottom: 0; }
+    #field-page .tech-frame {
+      overflow: hidden;
+      padding-bottom: 200px; }
+    #field-page .tech-intro .tech-left {
+      margin-left: calc(50% - 468px);
+      width: 374px; }
+    #field-page .tech-list .tech-column-one {
+      width: 382px;
+      margin-right: 48px; }
+      #field-page .tech-list .tech-column-one .tech-item {
+        padding: 48px 32px; }
+    #field-page .tech-list .tech-column-two {
+      width: 382px; }
+      #field-page .tech-list .tech-column-two .tech-item {
+        padding: 48px 32px; }
+    #field-page .tech-list .tech-column-three {
+      position: absolute;
+      left: initial;
+      right: -150px;
+      bottom: -190px;
+      width: 475px; } }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .container {
     max-width: 736px; }
@@ -1573,7 +1599,9 @@ main .nav-tabs {
     #field-page .tech-intro .tech-left {
       width: 374px; }
     #field-page .tech-intro .tech-right {
-      width: calc(100% - 374px); }
+      width: calc(50% - 6px); }
+      #field-page .tech-intro .tech-right img {
+        width: 682px; }
   #field-page .tech-item {
     padding: 48px 24px; }
   #field-page .tech-list .tech-column-one {
@@ -1588,7 +1616,31 @@ main .nav-tabs {
     left: initial;
     bottom: initial; }
     #field-page .tech-list .tech-column-three img {
-      width: 245px; } }
+      width: 245px; }
+
+  #field-page {
+    padding-bottom: 0; }
+    #field-page .tech-frame {
+      overflow: hidden;
+      padding-bottom: 200px; }
+    #field-page .tech-intro .tech-left {
+      margin-left: calc(50% - 368px);
+      width: 374px; }
+    #field-page .tech-list .tech-column-one {
+      width: 382px;
+      margin-right: 48px; }
+      #field-page .tech-list .tech-column-one .tech-item {
+        padding: 48px 32px; }
+    #field-page .tech-list .tech-column-two {
+      width: 382px; }
+      #field-page .tech-list .tech-column-two .tech-item {
+        padding: 48px 32px; }
+    #field-page .tech-list .tech-column-three {
+      position: absolute;
+      left: initial;
+      right: -150px;
+      bottom: -190px;
+      width: 475px; } }
 @media screen and (max-width: 767px) {
   main .prev-arrow {
     left: -15px; }
@@ -1806,6 +1858,46 @@ main .nav-tabs {
       width: 100%;
       margin-bottom: 30px; }
     .cultural-job .column-right {
-      width: 100%; } }
+      width: 100%; }
+
+  #field-page {
+    padding-bottom: 0; }
+    #field-page .nav-link {
+      font-size: 12px;
+      line-height: 14px; }
+    #field-page .tech-intro {
+      display: block; }
+      #field-page .tech-intro .tech-left {
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(100% - 36px); }
+        #field-page .tech-intro .tech-left .title-border-bottom {
+          font-size: 20px;
+          padding-top: 48px; }
+      #field-page .tech-intro .tech-right {
+        width: 100%; }
+        #field-page .tech-intro .tech-right img {
+          width: 100%; }
+    #field-page .tech-list {
+      display: block; }
+      #field-page .tech-list .tech-column-one {
+        width: 100%;
+        margin-right: 0; }
+        #field-page .tech-list .tech-column-one .tech-item {
+          padding: 40px 24px;
+          text-align: center; }
+          #field-page .tech-list .tech-column-one .tech-item .tech-line {
+            margin-left: calc(50% - 32px); }
+        #field-page .tech-list .tech-column-one .tech-item-down {
+          margin-top: 32px; }
+      #field-page .tech-list .tech-column-two {
+        width: 100%;
+        margin-top: 32px; }
+        #field-page .tech-list .tech-column-two .tech-item {
+          text-align: center; }
+          #field-page .tech-list .tech-column-two .tech-item .tech-line {
+            margin-left: calc(50% - 32px); }
+      #field-page .tech-list .tech-column-three {
+        display: none; } }
 
 /*# sourceMappingURL=app.css.map */
