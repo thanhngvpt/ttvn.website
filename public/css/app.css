@@ -1399,7 +1399,17 @@ main .nav-tabs {
     padding-top: 0;
     padding-bottom: 0; }
     .cultural-job .column-right {
-      width: 454px; } }
+      width: 454px; }
+
+  .field-project .content-page {
+    width: 936px; }
+  .field-project .prev-arrow {
+    left: -30px; }
+  .field-project .next-arrow {
+    right: -30px; }
+
+  #field-page .tech-intro {
+    margin-top: 170px; } }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .container {
     max-width: 736px; }
@@ -1537,7 +1547,47 @@ main .nav-tabs {
   #job-page .userfind-job {
     padding: 72px 64px 70px 64px; }
     #job-page .userfind-job .des-userfind-job {
-      width: initial; } }
+      width: initial; }
+
+  .field-project {
+    padding-bottom: 58px; }
+    .field-project .content-page {
+      width: 736px; }
+    .field-project .prev-arrow {
+      left: -15px; }
+    .field-project .next-arrow {
+      right: -15px; }
+    .field-project .title-field-project {
+      font-size: 32px;
+      line-height: 64px;
+      margin-bottom: 16px; }
+    .field-project .slick-dots {
+      bottom: 0; }
+
+  #field-page .container {
+    padding-left: 0;
+    padding-right: 0; }
+  #field-page .tech-intro {
+    margin-top: 88px; }
+    #field-page .tech-intro .tech-left {
+      width: 374px; }
+    #field-page .tech-intro .tech-right {
+      width: calc(100% - 374px); }
+  #field-page .tech-item {
+    padding: 48px 24px; }
+  #field-page .tech-list .tech-column-one {
+    width: 48%;
+    margin-right: 4%; }
+  #field-page .tech-list .tech-column-two {
+    width: 48%;
+    margin-right: 0; }
+  #field-page .tech-list .tech-column-three {
+    top: 0;
+    right: 50px;
+    left: initial;
+    bottom: initial; }
+    #field-page .tech-list .tech-column-three img {
+      width: 245px; } }
 @media screen and (max-width: 767px) {
   main .prev-arrow {
     left: -15px; }

@@ -1909,6 +1909,22 @@ main {
 			width: 454px;
 		}
 	}
+	.field-project {
+		.content-page {
+			width: 936px;
+		}
+		.prev-arrow {
+			left: -30px;
+		}
+		.next-arrow {
+			right: -30px;
+		}
+	}
+	#field-page {
+		.tech-intro {
+			margin-top: 170px;
+		}
+	}
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -2114,6 +2130,65 @@ main {
 
 			.des-userfind-job {
 				width: initial;
+			}
+		}
+	}
+	.field-project {
+		.content-page {
+			width: 736px;
+		}
+		padding-bottom: 58px;
+		.prev-arrow {
+			left: -15px;
+		}
+		.next-arrow {
+			right: -15px;
+		}
+		.title-field-project {
+			font-size: 32px;
+			line-height: 64px;
+			margin-bottom: 16px;
+		}
+		.slick-dots {
+			bottom: 0;
+		}
+	}
+	#field-page {
+		.container {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.tech-intro {
+			margin-top: 88px;
+
+			.tech-left {
+				width: 374px;
+			}
+			.tech-right {
+				width: calc(100% - 374px);
+			}
+		}
+		.tech-item {
+			padding: 48px 24px;
+		}
+		.tech-list {
+			.tech-column-one {
+				width: 48%;
+				margin-right: 4%;
+			}
+			.tech-column-two {
+				width: 48%;
+				margin-right: 0;
+			}
+			.tech-column-three {
+				top: 0;
+				right: 50px;
+				left: initial;
+				bottom: initial;
+
+				img {
+					width: 245px;
+				}
 			}
 		}
 	}

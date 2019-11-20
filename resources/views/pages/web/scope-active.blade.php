@@ -310,17 +310,45 @@ class="background-white"
           slidesToScroll: 1,
           dots: true
   			});
-		});
 
-    $(document).ready(function(){
-      $('.slide-projects').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        dots: true,
-        prevArrow: '<img src="{{ asset("images/arrow-left-ad.png") }}" class="img-fluid prev-arrow" />',
-        nextArrow: '<img src="{{ asset("images/arrow-right-ad.png") }}" class="img-fluid next-arrow" />'
-      });
+        $('.slide-projects').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          dots: true,
+          prevArrow: '<img src="{{ asset("images/arrow-left-ad.svg") }}" class="img-fluid prev-arrow" />',
+          nextArrow: '<img src="{{ asset("images/arrow-right-ad.svg") }}" class="img-fluid next-arrow" />',
+          responsive: [
+					{
+						breakpoint: 1023,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+        });
+
+        $('.next-arrow').mouseover(function () {
+          $(this).attr('src', '{{ asset("images/arrow-right-active.svg") }}');
+        })
+        .mouseout(function () {
+          $(this).attr('src', '{{ asset("images/arrow-right-ad.svg") }}');
+        })
+
+        $('.prev-arrow').mouseover(function () {
+          $(this).attr('src', '{{ asset("images/arrow-left-active.svg") }}');
+        })
+        .mouseout(function () {
+          $(this).attr('src', '{{ asset("images/arrow-left-ad.svg") }}');
+        })
 		});
 	</script>
 @endsection
