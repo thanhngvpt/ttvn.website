@@ -24,7 +24,8 @@ body {
 .navbar-top-area {
   background-image: url("../images/bg-header-lg.svg");
   background-position: bottom right;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-size: cover; }
   .navbar-top-area .navbar {
     padding-top: 27px; }
     .navbar-top-area .navbar .navbar-brand {
