@@ -24,128 +24,304 @@
                     </span>
                 </a>
             </li>
-
-            <li class="m-menu__item @if( $menu=='articles') m-menu__item--active @endif" aria-haspopup="true">
-                <a href="{!! \URL::action('Admin\ArticleController@index') !!}" class="m-menu__link ">
-                    <i class="m-menu__link-icon la la-file-text"></i>
+            <li class="m-menu__item @if( $menu=='table_news') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\TableNewController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-newspaper-o"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.articles')
+                                Tin tức
                             </span>
                         </span>
                     </span>
                 </a>
             </li>
 
-            @if( $authUser->hasRole(\App\Models\AdminUserRole::ROLE_ADMIN) )
-                <li class="m-menu__section ">
-                    <h4 class="m-menu__section-text">
-                        USER MANAGEMENT
-                    </h4>
-                    <i class="m-menu__section-icon flaticon-more-v3"></i>
-                </li>
-
-                <li class="m-menu__item @if( $menu=='admin_users') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\AdminUserController@index') !!}" class="m-menu__link ">
-                        <i class="m-menu__link-icon la la-user-secret"></i>
-                        <span class="m-menu__link-title">
-                            <span class="m-menu__link-wrap">
-                                <span class="m-menu__link-text">
-                                    @lang('admin.menu.admin_users')
-                                </span>
-                            </span>
-                        </span>
-                    </a>
-                </li>
-
-                <li class="m-menu__item @if( $menu=='admin_user_notifications') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\AdminUserNotificationController@index') !!}" class="m-menu__link ">
-                    <i class="m-menu__link-icon la la-bell-o"></i>
+            <li class="m-menu__item @if( $menu=='banners') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\BannerController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-picture-o"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.admin_user_notifications')
+                                Banner
                             </span>
                         </span>
                     </span>
-                    </a>
-                </li>
+                </a>
+            </li>
 
-                <li class="m-menu__item @if( $menu=='users') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\UserController@index') !!}" class="m-menu__link ">
+            <li class="m-menu__item @if( $menu=='videos') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\VideoController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-file-video-o"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Video
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='headings') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\HeadingController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-h-square"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Heading
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='infor_groups') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\InforGroupController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-info"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Thông tin tập đoàn
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='companies') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\CompanyController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-university"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Công ty
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='introduces') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\IntroduceController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-exclamation-circle"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Giới thiệu tập đoàn
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='partners') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\PartnerController@index') !!}" class="m-menu__link">
                     <i class="m-menu__link-icon la la-users"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.users')
+                                Đối tác
                             </span>
                         </span>
                     </span>
-                    </a>
-                </li>
+                </a>
+            </li>
 
-                <li class="m-menu__item @if( $menu=='user_notifications') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\UserNotificationController@index') !!}" class="m-menu__link ">
-                    <i class="m-menu__link-icon la la-bell"></i>
+            <li class="m-menu__item @if( $menu=='histories') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\HistoryController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-history"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.user_notifications')
+                                Lịch sử phát triển
                             </span>
                         </span>
                     </span>
-                    </a>
-                </li>
-            @endif
+                </a>
+            </li>
 
-            @if( $authUser->hasRole(\App\Models\AdminUserRole::ROLE_SUPER_USER) )
-                <li class="m-menu__section ">
-                    <h4 class="m-menu__section-text">
-                        BACKEND
-                    </h4>
-                    <i class="m-menu__section-icon flaticon-more-v3"></i>
-                </li>
-
-                <li class="m-menu__item @if( $menu=='oauth_clients') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\OauthClientController@index') !!}" class="m-menu__link">
-                        <i class="m-menu__link-icon la la-key"></i>
-                        <span class="m-menu__link-title">
-                            <span class="m-menu__link-wrap">
-                                <span class="m-menu__link-text">
-                                    OAuth Clients
-                                </span>
+            <li class="m-menu__item @if( $menu=='leader_ships') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\LeaderShipController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-user"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Ban lãnh đạo
                             </span>
                         </span>
-                    </a>
-                </li>
+                    </span>
+                </a>
+            </li>
 
-                <li class="m-menu__item @if( $menu=='images') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\ImageController@index') !!}" class="m-menu__link">
-                        <i class="m-menu__link-icon la la-image"></i>
-                        <span class="m-menu__link-title">
-                            <span class="m-menu__link-wrap">
-                                <span class="m-menu__link-text">
-                                    @lang('admin.menu.images')
-                                </span>
+            <li class="m-menu__item @if( $menu=='fields') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\FieldController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-clone"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Lĩnh vực
                             </span>
                         </span>
-                    </a>
-                </li>
+                    </span>
+                </a>
+            </li>
 
-                <li class="m-menu__item @if( $menu=='logs') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\LogController@index') !!}" class="m-menu__link">
-                        <i class="m-menu__link-icon la la-sticky-note"></i>
-                        <span class="m-menu__link-title">
-                            <span class="m-menu__link-wrap">
-                                <span class="m-menu__link-text">
-                                    @lang('admin.menu.log_system')
-                                </span>
+            <li class="m-menu__item @if( $menu=='projects') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\ProjectController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-sticky-note"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Dự án
                             </span>
                         </span>
-                    </a>
-                </li>
-            @endif
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='new_categories') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\NewCategoryController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-align-justify"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Danh mục tin tức
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='cultural_companies') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\CulturalCompanyController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-check-square"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Văn hóa doanh nghiệp
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='criteria_candidates') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\CriteriaCandidateController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-files-o"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Tiêu chí ứng viên
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='job_categories') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\JobCategoryController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-tasks"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Danh mục tuyển dụng
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='jobs') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\JobController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-user-plus"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Tuyển dụng
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='meta') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\MetaController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-ticket"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Meta
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='footers') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\FooterController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-cog"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                               Footer
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='contacts') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\ContactController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-phone"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Liên hệ
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='cadidates') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\CadidateController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-user-times"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Ứng viên
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='save_values') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\SaveValueController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-viacoin"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Giá trị tích lũy
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='data_highlights') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\DataHighlightController@index') !!}" class="m-menu__link">
+                    <i class="m-menu__link-icon la la-sort-numeric-desc"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Số liệu nổi bật
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
 
             <!-- %%SIDEMENU%% -->
         </ul>
