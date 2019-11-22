@@ -920,11 +920,14 @@ main {
 			margin-bottom: 64px;
 		}
 		.introduce-general {
-			padding: 176px 0;
 			background-color: #EFFCF1;
 			margin-left: calc(50vw - 658px);
 			margin-bottom: 276px;
 			position: relative;
+
+			.position-relative {
+				padding: 176px 0;
+			}
 
 			.view-more-intro {
 				width: 414px;
@@ -934,7 +937,7 @@ main {
 				line-height: 24px;
 				position: absolute;
 				bottom: 0;
-				left: 350px;
+				left: calc(33.33% - 85px);
 				cursor: pointer;
 			}
 		}
@@ -1745,6 +1748,61 @@ main {
 .list-job-mb {
 	display: none;
 }
+#introduce-page {
+	.list-member-mb {
+		display: none;
+		display: block;
+    padding-top: 48px;
+    padding-bottom: 40px;
+		background-color: #EFFCF1;
+		
+		.slick-dots {
+			background-color: #EFFCF1;
+			text-align: center;
+			bottom: -15px;
+		}
+	}
+	.list-member {
+		display: block;
+	}
+}
+.cultural-job {
+	.nav-tabs {
+		margin-bottom: 24px;
+
+		.nav-item {
+			color: #9E9E9E;
+			text-align: left;
+			padding: 8px 32px 8px 0;
+			font-weight: 600;
+			font-size: 20px;
+
+			&:hover {
+				border-color: #ffffff;
+			}
+			&.active {
+				color: #57AE5B;
+				border-color: #ffffff;
+			}
+		}
+	}
+}
+.primary-value-slide {
+	.prev-arrow {
+		top: initial;
+		bottom: 88px;
+    z-index: 2;
+		left: calc(100% - 648px);
+		width: 200px;
+	}
+	.next-arrow {
+		top: initial;
+		bottom: 88px;
+    z-index: 2;
+		left: 648px;
+		width: 200px;
+	}
+}
 
 @media screen and (min-width: 1440px) {
 	.container {
@@ -1966,6 +2024,66 @@ main {
 			}
 		}
 	}
+	#introduce-page {
+		.content-page {
+			width: 936px;
+		}
+		#company {
+			.column-image {
+				width: 455px;
+			}
+			.introduce-general {
+				margin-left: initial;
+
+				.position-relative {
+					padding: 112px 0;
+				}
+			}
+			.img-introduce {
+				img {
+					top: -40px;
+					width: 455px;
+				}
+			}
+			.history-develop {
+				.text-history-slide {
+					margin-left: 0;
+				}
+				.img-history-slide {
+					width: 422px;
+				}
+				.prev-arrow {
+					bottom: -25px;
+					left: 0;
+				}
+				.next-arrow {
+					bottom: -25px;
+					left: 110px;
+				}
+			}
+			.title-border-bottom {
+				margin-top: 88px;
+				margin-bottom: 50px;
+			}
+		}
+	}
+	.primary-value-slide {
+		.prev-arrow {
+			width: 24px;
+			left: 550px;
+		}
+		.next-arrow {
+			width: 24px;
+		}
+	}
+	.partner-intro {
+		padding-top: 0;
+		padding-bottom: 120px;
+
+		.des-partner-intro {
+			margin-bottom: 40px;
+		}
+	}
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -1973,6 +2091,9 @@ main {
 		max-width: 736px;
 		// padding-left: 0;
 		// padding-right: 0;
+	}
+	.content-page {
+		width: 736px;
 	}
 	main {
 		.prev-arrow {
@@ -2305,6 +2426,105 @@ main {
 			&:first-child {
 				display: none;
 			}
+		}
+	}
+	#introduce-page {
+		#company {
+			.title-border-bottom {
+				margin-top: 56px;
+				margin-bottom: 32px;
+				font-size: 24px;
+			}
+			.des-partner-intro {
+				margin-bottom: 48px;
+			}
+			.column-text {
+				width: 355px;
+
+				.title-border-bottom {
+					font-size: 24px;
+				}
+			}
+			.column-image {
+				width: 360px;
+			}
+			.introduce-general {
+				margin-left: 0;
+				margin-bottom: 88px;
+
+				.position-relative {
+					padding-top: 43px;
+					padding-bottom: 40px;
+
+					.col-md-4 {
+						-ms-flex: 0 0 50%;
+						flex: 0 0 50%;
+						max-width: 50%;
+
+						&:first-child {
+							display: none;
+						}
+					}
+					.view-more-intro {
+						display: none;
+					}
+				}
+			}
+			.history-develop {
+				padding-bottom: 126px;
+				.container {
+					padding: 0;
+				}
+				.nav-tabs {
+					margin-bottom: 56px;
+				}
+				.title-history-develop {
+					font-size: 24px;
+				}
+				.text-history-slide {
+					margin-left: 0;
+					width: 356px;
+				}
+				.img-history-slide {
+					width: 342px;
+
+					&:before {
+						left: -16px;
+					}
+				}
+				.prev-arrow {
+					bottom: -75px;
+					left: 0;
+				}
+				.next-arrow {
+					bottom: -75px;
+					left: 110px;
+				}
+			}
+		}
+	}
+	.primary-value-slide {
+		.prev-arrow {
+			width: 24px;
+			top: 15px;
+			left: initial;
+			right: 78px;
+			bottom: initial;
+		}
+		.next-arrow {
+			width: 24px;
+			top: 15px;
+			left: initial;
+			right: 0;
+			bottom: initial;
+		}
+	}
+	.partner-intro {
+		padding-top: 0;
+		padding-bottom: 80px;
+
+		.slick-dots {
+			bottom: -40px;
 		}
 	}
 }
@@ -2678,6 +2898,123 @@ main {
 			.tech-column-three {
 				display: none;
 			}
+		}
+	}
+	#introduce-page {
+		.list-member-mb {
+			display: block;
+		}
+		.list-member {
+			display: none;
+		}
+		#leader {
+			padding-bottom: 0;
+
+			.row-leader .item-leader-slide {
+				width: calc(100% - 36px);
+				margin: auto;
+			}
+			.detail-leader {
+				padding: 32px 16px;
+			}
+		}
+		.modal-dialog {
+			margin: 150px 18px 30px 18px;
+
+			.modal-content {
+				width: 100%;
+
+				.modal-body .img-detail-list img {
+					padding: 0 16px;
+				}
+			}
+		}
+	}
+	.content-page {
+		width: calc(100% - 36px);
+	}
+	#introduce-page {
+		.nav-tabs {
+			margin-bottom: 0;
+		}
+		#company {
+			.column-text {
+				width: 100%;
+			}
+			.column-image {
+				width: 100%;
+			}
+			.title-border-bottom {
+				margin-top: 48px;
+				margin-bottom: 32px;
+				font-size: 24px;
+			}
+			.introduce-general {
+				margin-left: 0;
+				margin-bottom: 48px;
+
+				.position-relative {
+					padding: 40px 0;
+					
+					.col-md-4 {
+						&:first-child {
+							display: none;
+						}
+					}
+					.view-more-intro {
+						display: none;
+					}
+				}
+			}
+			.history-develop {
+				padding-left: 18px;
+				padding-right: 18px;
+				padding-bottom: 126px;
+
+				.item-history-slide {
+					display: block;
+				}
+				.container {
+					padding: 0;
+				}
+				.nav-tabs {
+					margin-bottom: 56px;
+				}
+				.title-history-develop {
+					font-size: 24px;
+				}
+				.text-history-slide {
+					margin-left: 0;
+					width: 100%;
+				}
+				.img-history-slide {
+					width: 100%;
+
+					&:before {
+						display: none;
+					}
+				}
+				.prev-arrow {
+					bottom: -75px;
+					left: 0;
+				}
+				.next-arrow {
+					bottom: -75px;
+					left: 110px;
+				}
+			}
+		}
+	}
+	.partner-intro {
+		padding-top: 0;
+		padding-bottom: 80px;
+
+		.slick-dots {
+			bottom: -40px;
+		}
+		.des-partner-intro {
+			display: none;
+			margin-bottom: 0;
 		}
 	}
 }

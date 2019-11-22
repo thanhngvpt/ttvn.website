@@ -677,11 +677,12 @@ main .nav-tabs {
   margin-top: 130px;
   margin-bottom: 64px; }
 #introduce-page #company .introduce-general {
-  padding: 176px 0;
   background-color: #EFFCF1;
   margin-left: calc(50vw - 658px);
   margin-bottom: 276px;
   position: relative; }
+  #introduce-page #company .introduce-general .position-relative {
+    padding: 176px 0; }
   #introduce-page #company .introduce-general .view-more-intro {
     width: 414px;
     padding: 24px 28px 24px 102px;
@@ -690,7 +691,7 @@ main .nav-tabs {
     line-height: 24px;
     position: absolute;
     bottom: 0;
-    left: 350px;
+    left: calc(33.33% - 85px);
     cursor: pointer; }
 #introduce-page #company .img-introduce {
   position: relative; }
@@ -1293,6 +1294,46 @@ main .nav-tabs {
 .list-job-mb {
   display: none; }
 
+#introduce-page .list-member-mb {
+  display: none;
+  display: block;
+  padding-top: 48px;
+  padding-bottom: 40px;
+  background-color: #EFFCF1; }
+  #introduce-page .list-member-mb .slick-dots {
+    background-color: #EFFCF1;
+    text-align: center;
+    bottom: -15px; }
+#introduce-page .list-member {
+  display: block; }
+
+.cultural-job .nav-tabs {
+  margin-bottom: 24px; }
+  .cultural-job .nav-tabs .nav-item {
+    color: #9E9E9E;
+    text-align: left;
+    padding: 8px 32px 8px 0;
+    font-weight: 600;
+    font-size: 20px; }
+    .cultural-job .nav-tabs .nav-item:hover {
+      border-color: #ffffff; }
+    .cultural-job .nav-tabs .nav-item.active {
+      color: #57AE5B;
+      border-color: #ffffff; }
+
+.primary-value-slide .prev-arrow {
+  top: initial;
+  bottom: 88px;
+  z-index: 2;
+  left: calc(100% - 648px);
+  width: 200px; }
+.primary-value-slide .next-arrow {
+  top: initial;
+  bottom: 88px;
+  z-index: 2;
+  left: 648px;
+  width: 200px; }
+
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1316px;
@@ -1436,10 +1477,50 @@ main .nav-tabs {
       left: initial;
       right: -150px;
       bottom: -190px;
-      width: 475px; } }
+      width: 475px; }
+
+  #introduce-page .content-page {
+    width: 936px; }
+  #introduce-page #company .column-image {
+    width: 455px; }
+  #introduce-page #company .introduce-general {
+    margin-left: initial; }
+    #introduce-page #company .introduce-general .position-relative {
+      padding: 112px 0; }
+  #introduce-page #company .img-introduce img {
+    top: -40px;
+    width: 455px; }
+  #introduce-page #company .history-develop .text-history-slide {
+    margin-left: 0; }
+  #introduce-page #company .history-develop .img-history-slide {
+    width: 422px; }
+  #introduce-page #company .history-develop .prev-arrow {
+    bottom: -25px;
+    left: 0; }
+  #introduce-page #company .history-develop .next-arrow {
+    bottom: -25px;
+    left: 110px; }
+  #introduce-page #company .title-border-bottom {
+    margin-top: 88px;
+    margin-bottom: 50px; }
+
+  .primary-value-slide .prev-arrow {
+    width: 24px;
+    left: 550px; }
+  .primary-value-slide .next-arrow {
+    width: 24px; }
+
+  .partner-intro {
+    padding-top: 0;
+    padding-bottom: 120px; }
+    .partner-intro .des-partner-intro {
+      margin-bottom: 40px; } }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .container {
     max-width: 736px; }
+
+  .content-page {
+    width: 736px; }
 
   main .prev-arrow {
     left: -30px; }
@@ -1659,7 +1740,74 @@ main .nav-tabs {
     flex: 0 0 50%;
     max-width: 50%; }
     .des-leader > div:first-child {
-      display: none; } }
+      display: none; }
+
+  #introduce-page #company .title-border-bottom {
+    margin-top: 56px;
+    margin-bottom: 32px;
+    font-size: 24px; }
+  #introduce-page #company .des-partner-intro {
+    margin-bottom: 48px; }
+  #introduce-page #company .column-text {
+    width: 355px; }
+    #introduce-page #company .column-text .title-border-bottom {
+      font-size: 24px; }
+  #introduce-page #company .column-image {
+    width: 360px; }
+  #introduce-page #company .introduce-general {
+    margin-left: 0;
+    margin-bottom: 88px; }
+    #introduce-page #company .introduce-general .position-relative {
+      padding-top: 43px;
+      padding-bottom: 40px; }
+      #introduce-page #company .introduce-general .position-relative .col-md-4 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%; }
+        #introduce-page #company .introduce-general .position-relative .col-md-4:first-child {
+          display: none; }
+      #introduce-page #company .introduce-general .position-relative .view-more-intro {
+        display: none; }
+  #introduce-page #company .history-develop {
+    padding-bottom: 126px; }
+    #introduce-page #company .history-develop .container {
+      padding: 0; }
+    #introduce-page #company .history-develop .nav-tabs {
+      margin-bottom: 56px; }
+    #introduce-page #company .history-develop .title-history-develop {
+      font-size: 24px; }
+    #introduce-page #company .history-develop .text-history-slide {
+      margin-left: 0;
+      width: 356px; }
+    #introduce-page #company .history-develop .img-history-slide {
+      width: 342px; }
+      #introduce-page #company .history-develop .img-history-slide:before {
+        left: -16px; }
+    #introduce-page #company .history-develop .prev-arrow {
+      bottom: -75px;
+      left: 0; }
+    #introduce-page #company .history-develop .next-arrow {
+      bottom: -75px;
+      left: 110px; }
+
+  .primary-value-slide .prev-arrow {
+    width: 24px;
+    top: 15px;
+    left: initial;
+    right: 78px;
+    bottom: initial; }
+  .primary-value-slide .next-arrow {
+    width: 24px;
+    top: 15px;
+    left: initial;
+    right: 0;
+    bottom: initial; }
+
+  .partner-intro {
+    padding-top: 0;
+    padding-bottom: 80px; }
+    .partner-intro .slick-dots {
+      bottom: -40px; } }
 @media screen and (max-width: 767px) {
   main .prev-arrow {
     left: -15px; }
@@ -1917,6 +2065,81 @@ main .nav-tabs {
           #field-page .tech-list .tech-column-two .tech-item .tech-line {
             margin-left: calc(50% - 32px); }
       #field-page .tech-list .tech-column-three {
-        display: none; } }
+        display: none; }
+
+  #introduce-page .list-member-mb {
+    display: block; }
+  #introduce-page .list-member {
+    display: none; }
+  #introduce-page #leader {
+    padding-bottom: 0; }
+    #introduce-page #leader .row-leader .item-leader-slide {
+      width: calc(100% - 36px);
+      margin: auto; }
+    #introduce-page #leader .detail-leader {
+      padding: 32px 16px; }
+  #introduce-page .modal-dialog {
+    margin: 150px 18px 30px 18px; }
+    #introduce-page .modal-dialog .modal-content {
+      width: 100%; }
+      #introduce-page .modal-dialog .modal-content .modal-body .img-detail-list img {
+        padding: 0 16px; }
+
+  .content-page {
+    width: calc(100% - 36px); }
+
+  #introduce-page .nav-tabs {
+    margin-bottom: 0; }
+  #introduce-page #company .column-text {
+    width: 100%; }
+  #introduce-page #company .column-image {
+    width: 100%; }
+  #introduce-page #company .title-border-bottom {
+    margin-top: 48px;
+    margin-bottom: 32px;
+    font-size: 24px; }
+  #introduce-page #company .introduce-general {
+    margin-left: 0;
+    margin-bottom: 48px; }
+    #introduce-page #company .introduce-general .position-relative {
+      padding: 40px 0; }
+      #introduce-page #company .introduce-general .position-relative .col-md-4:first-child {
+        display: none; }
+      #introduce-page #company .introduce-general .position-relative .view-more-intro {
+        display: none; }
+  #introduce-page #company .history-develop {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 126px; }
+    #introduce-page #company .history-develop .item-history-slide {
+      display: block; }
+    #introduce-page #company .history-develop .container {
+      padding: 0; }
+    #introduce-page #company .history-develop .nav-tabs {
+      margin-bottom: 56px; }
+    #introduce-page #company .history-develop .title-history-develop {
+      font-size: 24px; }
+    #introduce-page #company .history-develop .text-history-slide {
+      margin-left: 0;
+      width: 100%; }
+    #introduce-page #company .history-develop .img-history-slide {
+      width: 100%; }
+      #introduce-page #company .history-develop .img-history-slide:before {
+        display: none; }
+    #introduce-page #company .history-develop .prev-arrow {
+      bottom: -75px;
+      left: 0; }
+    #introduce-page #company .history-develop .next-arrow {
+      bottom: -75px;
+      left: 110px; }
+
+  .partner-intro {
+    padding-top: 0;
+    padding-bottom: 80px; }
+    .partner-intro .slick-dots {
+      bottom: -40px; }
+    .partner-intro .des-partner-intro {
+      display: none;
+      margin-bottom: 0; } }
 
 /*# sourceMappingURL=app.css.map */

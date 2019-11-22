@@ -22,15 +22,15 @@ class="background-white"
     </div>
       
     <div class="tab-content">
-      <div class="tab-pane" id="company">
+      <div class="tab-pane active" id="company">
         <div class="container">
           <div class="title-border-bottom">
             Giới thiệu chung
           </div>
         </div>
         <div class="introduce-general">
-          <div class="container ml-0">
-            <div class="row">
+          <div class="container">
+            <div class="row position-relative">
               <div class="col-md-4">
                 <div class="img-introduce">
                   <img src="{{ asset('images/introduce.png') }}" />
@@ -44,12 +44,12 @@ class="background-white"
                 <p>Xây dựng đội ngũ quản lý có năng lực, trình độ cao, sáng tạo và đoàn kết. </p>
                 <p>Với triết lý “Quy tụ NHÂN TÀI, gắn kết NHÂN TÂM, nâng tầm TRÍ TUỆ và chia sẻ THÀNH CÔNG” sẽ giúp TTVN Group phát triển vững chắc trong thời gian tới.</p>
               </div>
-            </div>
-          </div>
-          <div class="view-more-intro clearfix">
-            <div class="float-left">Xem tiếp</div>
-            <div class="float-right">
-              <img src="{{ asset('images/icon-show-more.png') }}" class="img-fluid" />
+              <div class="view-more-intro clearfix">
+                <div class="float-left">Xem tiếp</div>
+                <div class="float-right">
+                  <img src="{{ asset('images/icon-show-more.png') }}" class="img-fluid" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -68,17 +68,90 @@ class="background-white"
               <img src="{{ asset('images/view-intro.png') }}" class="img-fluid">
             </div>
           </div>
-          <div class="cultural-job">
-            <div class="column-left column-image">
-              <img src="{{ asset('images/value-intro.png') }}" class="img-fluid">
-            </div>
-            <div class="column-right column-text">
-              <div class="title-border-bottom">
-              Giá trị cốt lõi
+          <div class="primary-value-slide">
+            <div class="item-slide">
+              <div class="cultural-job">
+                <div class="column-left column-image">
+                  <img src="{{ asset('images/value-intro.png') }}" class="img-fluid">
+                </div>
+                <div class="column-right column-text">
+                  <div class="title-border-bottom">
+                  Giá trị cốt lõi
+                  </div>
+                  <nav>
+                  <div class="nav nav-tabs" id="nav-tab">
+                    <a class="nav-item nav-link active" data-toggle="tab" href="#nav-value-1" role="tab">Nhân</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-2" role="tab">Tâm</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-3" role="tab">Trí</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-4" role="tab">Vượng</a>
+                  </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-value-1" role="tabpanel">
+                    <div class="des-cultural-job">
+                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-value-2" role="tabpanel">
+                    <div class="des-cultural-job">
+                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-value-3" role="tabpanel">
+                    <div class="des-cultural-job">
+                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-value-4" role="tabpanel">
+                    <div class="des-cultural-job">
+                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                    </div>
+                  </div>
+                </div>
+                </div>
               </div>
-              <div class="des-cultural-job">
-                <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-              </div>	
+            </div>
+            <div class="item-slide">
+              <div class="cultural-job">
+                <div class="column-left column-image">
+                  <img src="{{ asset('images/value-intro.png') }}" class="img-fluid">
+                </div>
+                <div class="column-right column-text">
+                  <div class="title-border-bottom">
+                  Giá trị cốt lõi
+                  </div>
+                  <nav>
+                  <div class="nav nav-tabs" id="nav-tab">
+                    <a class="nav-item nav-link active" data-toggle="tab" href="#nav-value-1" role="tab">Nhân</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-2" role="tab">Tâm</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-3" role="tab">Trí</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-4" role="tab">Vượng</a>
+                  </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-value-1" role="tabpanel">
+                    <div class="des-cultural-job">
+                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-value-2" role="tabpanel">
+                    <div class="des-cultural-job">
+                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-value-3" role="tabpanel">
+                    <div class="des-cultural-job">
+                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-value-4" role="tabpanel">
+                    <div class="des-cultural-job">
+                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -175,7 +248,7 @@ class="background-white"
           </div>
         </div>
       </div>
-      <div class="tab-pane active" id="leader">
+      <div class="tab-pane" id="leader">
         <div class="container">
           <div class="title-border-bottom">
             Hội đồng quản trị và Ban lãnh đạo
@@ -302,6 +375,40 @@ class="background-white"
             </div>
           </div>
         </div>
+        <div class="list-member-mb">
+          <div class="leader-slide-mb">
+            <div class="item-slide">
+              <div class="row-leader">
+                <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
+                  <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
+                  <div class="info-leader">
+                    <div class="name-leader">
+                      Ông Đặng Trung Kiên
+                    </div>
+                    <div class="role-company">
+                      CHỦ TỊCH HĐQT
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item-slide">
+              <div class="row-leader">
+                <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
+                  <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
+                  <div class="info-leader">
+                    <div class="name-leader">
+                      Ông Đặng Trung Kiên
+                    </div>
+                    <div class="role-company">
+                      CHỦ TỊCH HĐQT
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="modal" id="show-detail-leader">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -366,6 +473,30 @@ class="background-white"
           slidesToScroll: 1,
           dots: true
   			});
+
+        $('.leader-slide-mb').slick({
+  				slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          arrows: false
+  			});
+
+        $('.primary-value-slide').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          prevArrow: '<img src="{{ asset("images/left-slide.png") }}" class="img-fluid prev-arrow" />',
+  				nextArrow: '<img src="{{ asset("images/right-slide.png") }}" class="img-fluid next-arrow" />',
+          responsive: [
+					{
+						breakpoint: 1399,
+						settings: {
+              prevArrow: '<img src="{{ asset("images/arrow-left-new.svg") }}" class="img-fluid prev-arrow" />',
+  				    nextArrow: '<img src="{{ asset("images/arrow-right-new.svg") }}" class="img-fluid next-arrow" />',
+						}
+					}
+				]
+        });
 		});
 	</script>
 @endsection
