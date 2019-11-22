@@ -48,6 +48,6 @@ $(document).ready(function () {
         todayHighlight: true,
         autoclose: true,
         pickerPosition: "bottom-left",
-        format: "yyyy/mm/dd hh:ii:ss"
+        format: "yyyy/mm/dd"
     });
 });

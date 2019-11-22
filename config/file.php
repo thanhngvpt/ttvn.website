@@ -30,6 +30,51 @@ return [
             'local_type'  => 'common',
             'local_path'  => 'img/articles/'
         ],
+        'icon_image' => [
+            'name'        => 'icon_image',
+            'type'        => 'image',
+            'region'      => env('AWS_IMAGE_REGION'),
+            'buckets'     => [
+                env('AWS_IMAGE_BUCKET'),
+            ],
+            'size'        => [600, 400],
+            'thumbnails'  => [
+            ],
+            'seed_prefix' => 'icon_image',
+            'format'      => 'png',
+            'local_type'  => 'common',
+            'local_path'  => 'img/icon_image/'
+        ],
+        'banner_cover_image' => [
+            'name'        => 'banner_cover_image',
+            'type'        => 'image',
+            'region'      => env('AWS_IMAGE_REGION'),
+            'buckets'     => [
+                env('AWS_IMAGE_BUCKET'),
+            ],
+            'size'        => [600, 400],
+            'thumbnails'  => [
+            ],
+            'seed_prefix' => 'banner_cover',
+            'format'      => 'png',
+            'local_type'  => 'common',
+            'local_path'  => 'img/banners/'
+        ],
+        'news_cover_image' => [
+            'name'        => 'news_cover_image',
+            'type'        => 'image',
+            'region'      => env('AWS_IMAGE_REGION'),
+            'buckets'     => [
+                env('AWS_IMAGE_BUCKET'),
+            ],
+            'size'        => [600, 400],
+            'thumbnails'  => [
+            ],
+            'seed_prefix' => 'news_cover',
+            'format'      => 'png',
+            'local_type'  => 'common',
+            'local_path'  => 'img/news/'
+        ],
         'article_image'       => [
             'name'        => 'article_image',
             'type'        => 'image',
