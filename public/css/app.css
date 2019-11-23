@@ -1035,6 +1035,7 @@ main .nav-tabs {
       width: calc(50% - 154px); }
   .top-page-slide .slick-dots {
     left: calc(50% - 648px);
+    width: 500px;
     bottom: 150px;
     background-color: initial; }
 
