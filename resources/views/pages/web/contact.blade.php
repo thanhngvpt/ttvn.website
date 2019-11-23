@@ -13,7 +13,7 @@
 					Liên hệ với chúng tôi
 				</div>
 				<div class="item-form-contact">
-					<input type="text" name="name" class="form-control is-invalid" placeholder="Họ và tên">
+					<input type="email" name="name" class="form-control is-invalid" placeholder="Họ và tên">
 					<div class="invalid-feedback">
 						Email chưa đúng
 					</div>

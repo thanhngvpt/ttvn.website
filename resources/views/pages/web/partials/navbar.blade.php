@@ -13,13 +13,22 @@
                     <a class="nav-link" href="#">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Giới thiệu</a>
+                    <a class="nav-link" href="#">
+                        Giới thiệu
+                        <i class="fas fa-caret-down"></i>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Lĩnh vực hoạt động</a>
+                    <a class="nav-link" href="#">
+                        Lĩnh vực hoạt động
+                        <i class="fas fa-caret-down"></i>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tin tức</a>
+                    <a class="nav-link" href="#">
+                        Tin tức
+                        <i class="fas fa-caret-down"></i>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Tuyển dụng</a>
@@ -34,10 +43,8 @@
         </div>
     </nav>
     @section('nav-header')
-        <div class="container">
-            <div class="title-page">
-                @yield('title-navbar')
-            </div>
+        <div class="title-page">
+            @yield('title-navbar')
         </div>
     @show
     @yield('nav-slide')

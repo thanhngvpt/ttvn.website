@@ -7,9 +7,9 @@
 @section('content')
 	<div id="news-detail-page">
 		<div class="area-detail-news">
-			<div class="tag-news">
+			<a class="tag-news" href="#">
 				Văn hoá - sự kiện
-			</div>
+			</a>
 			<div class="title-news-detail">
 				Year End Party 2018: One TTVN - One Dream
 			</div>
@@ -30,17 +30,17 @@
 					<ul class="news-social">
 						<li>
 							<a href="#">
-								<img src="{{ asset('images/icon-facebook-share.png') }}" class="img-fluid" />
+								<img src="{{ asset('images/icon-facebook-share.svg') }}" class="img-fluid" />
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="{{ asset('images/icon-google-share.png') }}" class="img-fluid" />
+								<img src="{{ asset('images/icon-google-share.svg') }}" class="img-fluid" />
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="{{ asset('images/icon-instagram-share.png') }}" class="img-fluid" />
+								<img src="{{ asset('images/icon-instagram-share.svg') }}" class="img-fluid" />
 							</a>
 						</li>
 					</ul>
@@ -133,6 +133,24 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('page-styles')
+	<style>
+		.navbar-top-area {
+			background-image: url('{{ asset("images/bg-menu-newsdetail.svg") }}')
+		}
+		.navbar-top-area .navbar {
+			padding-top: 32px;
+			padding-bottom: 32px;
+		}
+		@media screen and (min-width: 768px) and (max-width: 1023px) {
+			.navbar-top-area {
+				background-image: none;
+				background-color: #00263C;
+			}
+		}
+	</style>
 @endsection
 
 @section('page-scripts')

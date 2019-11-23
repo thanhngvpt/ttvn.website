@@ -1,7 +1,7 @@
 <footer>
 	<div class="container">
 		<div class="logo-footer">
-			<img src="{{ asset('images/logo-footer.png') }}" class="img-fluid">
+			<img src="{{ asset('images/logo-footer.svg') }}" class="img-fluid">
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-lg-3 col-footer">
@@ -29,12 +29,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-4 col-footer">
+			<div class="col-md-6 col-lg-4 col-footer office-column">
 				<div class="title-col-footer">
 					VP Đại diện tại TP Hồ Chí Minh
 				</div>
 				<div class="content-col-footer">
-					<div class="item-content-footer">
+					<div class="item-content-footer" style="width: 80%">
 						<span class="title">
 							Địa chỉ:
 						</span>
@@ -59,32 +59,32 @@
 					Danh mục
 				</div>
 				<div class="content-col-footer">
-					<div class="item-content-footer">Trang chủ</div>
-					<div class="item-content-footer">Giới thiệu tập đoàn</div>
-					<div class="item-content-footer">Lĩnh vực hoạt động</div>
-					<div class="item-content-footer">Tin tức</div>
-					<div class="item-content-footer">Tuyển Dụng</div>
-					<div class="item-content-footer">Liên hệ</div>
+					<a class="item-content-footer" href="#">Trang chủ</a>
+					<a class="item-content-footer" href="#">Giới thiệu tập đoàn</a>
+					<a class="item-content-footer" href="#">Lĩnh vực hoạt động</a>
+					<a class="item-content-footer" href="#">Tin tức</a>
+					<a class="item-content-footer" href="#">Tuyển Dụng</a>
+					<a class="item-content-footer" href="#">Liên hệ</a>
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-3 col-footer">
+			<div class="col-md-6 col-lg-3 col-footer connect-us">
 				<div class="title-col-footer">
 					Kết nối với chúng tôi
 				</div>
 				<ul class="contact-us-social">
 					<li>
 						<a href="#">
-							<img src="{{ asset('images/icon-facebook.png') }}" class="img-fluid">
+							<img src="{{ asset('images/icon-facebook.svg') }}" class="img-fluid">
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="{{ asset('images/icon-skype.png') }}" class="img-fluid">
+							<img src="{{ asset('images/icon-skype.svg') }}" class="img-fluid">
 						</a>
 					</li>
 					<li>
 						<a href="#">
-							<img src="{{ asset('images/icon-google.png') }}" class="img-fluid">
+							<img src="{{ asset('images/icon-google.svg') }}" class="img-fluid">
 						</a>
 					</li>
 				</ul>
