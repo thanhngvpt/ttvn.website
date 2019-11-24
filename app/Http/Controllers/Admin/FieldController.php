@@ -114,6 +114,7 @@ class FieldController extends Controller
                 'des_3',
                 'order',
                 'is_enabled',
+                'home_content'
             ]
         );
 
@@ -189,6 +190,42 @@ class FieldController extends Controller
 
             if (!empty($image)) {
                 $this->fieldRepository->update($field, ['cover_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('cover2-image')) {
+            $file = $request->file('cover2-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->fieldRepository->update($field, ['cover2_image_id' => $image->id]);
+            }
+        }
+
+        if ($request->hasFile('home-image')) {
+            $file = $request->file('home-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->fieldRepository->update($field, ['home_image_id' => $image->id]);
             }
         }
 
@@ -268,6 +305,7 @@ class FieldController extends Controller
                 'des_3',
                 'order',
                 'is_enabled',
+                'home_content'
             ]
         );
 
@@ -359,6 +397,52 @@ class FieldController extends Controller
 
             if (!empty($newImage)) {
                 $this->fieldRepository->update($field, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('cover2-image')) {
+            $currentImage = $field->cover2Image;
+            $file = $request->file('cover2-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->fieldRepository->update($field, ['cover2_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('home-image')) {
+            $currentImage = $field->homeImage;
+            $file = $request->file('home-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->fieldRepository->update($field, ['home_image_id' => $newImage->id]);
 
                 if (!empty($currentImage)) {
                     $this->fileUploadService->delete($currentImage);

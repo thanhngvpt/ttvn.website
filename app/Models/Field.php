@@ -38,6 +38,9 @@ class Field extends Base
         'des_3',
         'order',
         'is_enabled',
+        'home_image_id',
+        'cover2_image_id',
+        'home_content'
     ];
 
     /**
@@ -62,6 +65,17 @@ class Field extends Base
     {
         return $this->hasOne(\App\Models\Image::class, 'id', 'cover_image_id');
     }
+
+    public function HomeImage()
+    {
+        return $this->hasOne(\App\Models\Image::class, 'id', 'home_image_id');
+    }
+
+    public function cover2Image()
+    {
+        return $this->hasOne(\App\Models\Image::class, 'id', 'cover2_image_id');
+    }
+
 
     public function icon1Image()
     {

@@ -9,7 +9,7 @@ class FieldPresenter extends BasePresenter
 {
     protected $multilingualFields = [];
 
-    protected $imageFields = ['cover_image','icon1_image','icon2_image','icon3_image'];
+    protected $imageFields = ['home_image', 'cover2_image','cover_image','icon1_image','icon2_image','icon3_image'];
 
     /**
     * @return \App\Models\Image
@@ -32,6 +32,48 @@ class FieldPresenter extends BasePresenter
         }
 
         $image = $this->entity->coverImage;
+        return $image;
+    }
+
+    public function cover2Image()
+    {
+        if( \CacheHelper::cacheRedisEnabled() ) {
+            $cacheKey = \CacheHelper::keyForModel('ImageModel');
+            $cached = Redis::hget($cacheKey, $this->entity->cover2_image_id);
+
+            if( $cached ) {
+                $image = new Image(json_decode($cached, true));
+                $image['id'] = json_decode($cached, true)['id'];
+                return $image;
+            } else {
+                $image = $this->entity->cover2Image;
+                Redis::hsetnx($cacheKey, $this->entity->cover2_image_id, $image);
+                return $image;
+            }
+        }
+
+        $image = $this->entity->cover2Image;
+        return $image;
+    }
+
+    public function homeImage()
+    {
+        if( \CacheHelper::cacheRedisEnabled() ) {
+            $cacheKey = \CacheHelper::keyForModel('ImageModel');
+            $cached = Redis::hget($cacheKey, $this->entity->home_image_id);
+
+            if( $cached ) {
+                $image = new Image(json_decode($cached, true));
+                $image['id'] = json_decode($cached, true)['id'];
+                return $image;
+            } else {
+                $image = $this->entity->homeImage;
+                Redis::hsetnx($cacheKey, $this->entity->home_image_id, $image);
+                return $image;
+            }
+        }
+
+        $image = $this->entity->homeImage;
         return $image;
     }
 

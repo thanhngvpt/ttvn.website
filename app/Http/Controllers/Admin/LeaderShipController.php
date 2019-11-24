@@ -8,15 +8,36 @@ use App\Repositories\LeaderShipRepositoryInterface;
 use App\Http\Requests\Admin\LeaderShipRequest;
 use App\Http\Requests\PaginationRequest;
 
+
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class LeaderShipController extends Controller
 {
     /** @var  \App\Repositories\LeaderShipRepositoryInterface */
     protected $leaderShipRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        LeaderShipRepositoryInterface $leaderShipRepository
+        LeaderShipRepositoryInterface $leaderShipRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->leaderShipRepository = $leaderShipRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -91,6 +112,40 @@ class LeaderShipController extends Controller
         $input['is_enabled'] = $request->get('is_enabled', 0);
         $leaderShip = $this->leaderShipRepository->create($input);
 
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $leaderShip->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->leaderShipRepository->update($leaderShip, ['cover_image_id' => $image->id]);
+            }
+        }
+
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+            
+            $filePath = $this->fileUploadService->upload(
+                'file',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $leaderShip->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+        }
+
+        if ($filePath) $this->leaderShipRepository->update($leaderShip, ['file' => $filePath]);
+
         if( empty($leaderShip) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
         }
@@ -159,7 +214,46 @@ class LeaderShipController extends Controller
         );
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->leaderShipRepository->update($leaderShip, $input);
+        $leaderShip = $this->leaderShipRepository->update($leaderShip, $input);
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $leaderShip->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $leaderShip->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->leaderShipRepository->update($leaderShip, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+            
+            $filePath = $this->fileUploadService->upload(
+                'file',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $leaderShip->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+        }
+
+        if ($filePath) $this->leaderShipRepository->update($leaderShip, ['file' => $filePath]);
 
         return redirect()->action('Admin\LeaderShipController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

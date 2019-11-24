@@ -1,84 +1,84 @@
 <?php namespace Tests\Repositories;
 
-use App\Models\DataHighlight;
+use App\Models\DataHighLight;
 use Tests\TestCase;
 
-class DataHighlightRepositoryTest extends TestCase
+class DataHighLightRepositoryTest extends TestCase
 {
     protected $useDatabase = true;
 
     public function testGetInstance()
     {
-        /** @var  \App\Repositories\DataHighlightRepositoryInterface $repository */
-        $repository = \App::make(\App\Repositories\DataHighlightRepositoryInterface::class);
+        /** @var  \App\Repositories\DataHighLightRepositoryInterface $repository */
+        $repository = \App::make(\App\Repositories\DataHighLightRepositoryInterface::class);
         $this->assertNotNull($repository);
     }
 
     public function testGetList()
     {
-        $dataHighlights = factory(DataHighlight::class, 3)->create();
-        $dataHighlightIds = $dataHighlights->pluck('id')->toArray();
+        $dataHighLights = factory(DataHighLight::class, 3)->create();
+        $dataHighLightIds = $dataHighLights->pluck('id')->toArray();
 
-        /** @var  \App\Repositories\DataHighlightRepositoryInterface $repository */
-        $repository = \App::make(\App\Repositories\DataHighlightRepositoryInterface::class);
+        /** @var  \App\Repositories\DataHighLightRepositoryInterface $repository */
+        $repository = \App::make(\App\Repositories\DataHighLightRepositoryInterface::class);
         $this->assertNotNull($repository);
 
-        $dataHighlightsCheck = $repository->get('id', 'asc', 0, 1);
-        $this->assertInstanceOf(DataHighlight::class, $dataHighlightsCheck[0]);
+        $dataHighLightsCheck = $repository->get('id', 'asc', 0, 1);
+        $this->assertInstanceOf(DataHighLight::class, $dataHighLightsCheck[0]);
 
-        $dataHighlightsCheck = $repository->getByIds($dataHighlightIds);
-        $this->assertEquals(3, count($dataHighlightsCheck));
+        $dataHighLightsCheck = $repository->getByIds($dataHighLightIds);
+        $this->assertEquals(3, count($dataHighLightsCheck));
     }
 
     public function testFind()
     {
-        $dataHighlights = factory(DataHighlight::class, 3)->create();
-        $dataHighlightIds = $dataHighlights->pluck('id')->toArray();
+        $dataHighLights = factory(DataHighLight::class, 3)->create();
+        $dataHighLightIds = $dataHighLights->pluck('id')->toArray();
 
-        /** @var  \App\Repositories\DataHighlightRepositoryInterface $repository */
-        $repository = \App::make(\App\Repositories\DataHighlightRepositoryInterface::class);
+        /** @var  \App\Repositories\DataHighLightRepositoryInterface $repository */
+        $repository = \App::make(\App\Repositories\DataHighLightRepositoryInterface::class);
         $this->assertNotNull($repository);
 
-        $dataHighlightCheck = $repository->find($dataHighlightIds[0]);
-        $this->assertEquals($dataHighlightIds[0], $dataHighlightCheck->id);
+        $dataHighLightCheck = $repository->find($dataHighLightIds[0]);
+        $this->assertEquals($dataHighLightIds[0], $dataHighLightCheck->id);
     }
 
     public function testCreate()
     {
-        $dataHighlightData = factory(DataHighlight::class)->make();
+        $dataHighLightData = factory(DataHighLight::class)->make();
 
-        /** @var  \App\Repositories\DataHighlightRepositoryInterface $repository */
-        $repository = \App::make(\App\Repositories\DataHighlightRepositoryInterface::class);
+        /** @var  \App\Repositories\DataHighLightRepositoryInterface $repository */
+        $repository = \App::make(\App\Repositories\DataHighLightRepositoryInterface::class);
         $this->assertNotNull($repository);
 
-        $dataHighlightCheck = $repository->create($dataHighlightData->toFillableArray());
-        $this->assertNotNull($dataHighlightCheck);
+        $dataHighLightCheck = $repository->create($dataHighLightData->toFillableArray());
+        $this->assertNotNull($dataHighLightCheck);
     }
 
     public function testUpdate()
     {
-        $dataHighlightData = factory(DataHighlight::class)->create();
+        $dataHighLightData = factory(DataHighLight::class)->create();
 
-        /** @var  \App\Repositories\DataHighlightRepositoryInterface $repository */
-        $repository = \App::make(\App\Repositories\DataHighlightRepositoryInterface::class);
+        /** @var  \App\Repositories\DataHighLightRepositoryInterface $repository */
+        $repository = \App::make(\App\Repositories\DataHighLightRepositoryInterface::class);
         $this->assertNotNull($repository);
 
-        $dataHighlightCheck = $repository->update($dataHighlightData, $dataHighlightData->toFillableArray());
-        $this->assertNotNull($dataHighlightCheck);
+        $dataHighLightCheck = $repository->update($dataHighLightData, $dataHighLightData->toFillableArray());
+        $this->assertNotNull($dataHighLightCheck);
     }
 
     public function testDelete()
     {
-        $dataHighlightData = factory(DataHighlight::class)->create();
+        $dataHighLightData = factory(DataHighLight::class)->create();
 
-        /** @var  \App\Repositories\DataHighlightRepositoryInterface $repository */
-        $repository = \App::make(\App\Repositories\DataHighlightRepositoryInterface::class);
+        /** @var  \App\Repositories\DataHighLightRepositoryInterface $repository */
+        $repository = \App::make(\App\Repositories\DataHighLightRepositoryInterface::class);
         $this->assertNotNull($repository);
 
-        $repository->delete($dataHighlightData);
+        $repository->delete($dataHighLightData);
 
-        $dataHighlightCheck = $repository->find($dataHighlightData->id);
-        $this->assertNull($dataHighlightCheck);
+        $dataHighLightCheck = $repository->find($dataHighLightData->id);
+        $this->assertNull($dataHighLightCheck);
     }
 
 }

@@ -12,7 +12,7 @@ class Meta extends Base
      *
      * @var string
      */
-    protected $table = 'meta';
+    protected $table = 'metas';
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,7 @@ class Meta extends Base
      * @var array
      */
     protected $fillable = [
-        
+        'link', 'meta_title', 'meta_description'
     ];
 
     /**
