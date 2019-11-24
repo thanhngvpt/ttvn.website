@@ -211,6 +211,24 @@ class FieldController extends Controller
             }
         }
 
+        if ($request->hasFile('home-image')) {
+            $file = $request->file('home-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->fieldRepository->update($field, ['home_image_id' => $image->id]);
+            }
+        }
+
         if( empty($field) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
         }
@@ -402,6 +420,29 @@ class FieldController extends Controller
 
             if (!empty($newImage)) {
                 $this->fieldRepository->update($field, ['cover2_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('home-image')) {
+            $currentImage = $field->homeImage;
+            $file = $request->file('home-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $field->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->fieldRepository->update($field, ['home_image_id' => $newImage->id]);
 
                 if (!empty($currentImage)) {
                     $this->fileUploadService->delete($currentImage);

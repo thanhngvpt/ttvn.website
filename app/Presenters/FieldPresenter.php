@@ -9,7 +9,7 @@ class FieldPresenter extends BasePresenter
 {
     protected $multilingualFields = [];
 
-    protected $imageFields = ['cover_image','icon1_image','icon2_image','icon3_image'];
+    protected $imageFields = ['home_image', 'cover2_image','cover_image','icon1_image','icon2_image','icon3_image'];
 
     /**
     * @return \App\Models\Image
@@ -46,13 +46,13 @@ class FieldPresenter extends BasePresenter
                 $image['id'] = json_decode($cached, true)['id'];
                 return $image;
             } else {
-                $image = $this->entity->coverImage;
+                $image = $this->entity->cover2Image;
                 Redis::hsetnx($cacheKey, $this->entity->cover2_image_id, $image);
                 return $image;
             }
         }
 
-        $image = $this->entity->coverImage;
+        $image = $this->entity->cover2Image;
         return $image;
     }
 
@@ -67,13 +67,13 @@ class FieldPresenter extends BasePresenter
                 $image['id'] = json_decode($cached, true)['id'];
                 return $image;
             } else {
-                $image = $this->entity->coverImage;
+                $image = $this->entity->homeImage;
                 Redis::hsetnx($cacheKey, $this->entity->home_image_id, $image);
                 return $image;
             }
         }
 
-        $image = $this->entity->coverImage;
+        $image = $this->entity->homeImage;
         return $image;
     }
 
