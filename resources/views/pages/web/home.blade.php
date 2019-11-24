@@ -6,50 +6,51 @@
 @section('nav-slide')
 <main>
   <div class="top-page-slide">
+    @if (empty($video))
     <div class="item-slide">
-      <div class="item-top-slide">
-        <div class="text-slide">
-          <div class="title">
-            Tập đoàn
+        <div class="item-top-slide">
+          <div class="text-slide">
+            <div class="title">
+              Tập đoàn
+            </div>
+            <div class="content">
+              Trường Thành Việt Nam
+            </div>
+            <div class="description">
+              Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
+            </div>
+            <button class="btn btn-success">
+              <img src="{{ asset('images/view-video.png') }}" class="img-fluid" />
+              <span><a href="{{$video->video_url}}">Xem video</a></span>
+            </button>
           </div>
-          <div class="content">
-            Trường Thành Việt Nam
+          <div class="img-top-slide">
+            <iframe width="648" height="490" src="{{$video->video_url}}" frameborder="0"/></iframe>
           </div>
-          <div class="description">
-            Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
-          </div>
-          <button class="btn btn-success">
-            <img src="{{ asset('images/view-video.png') }}" class="img-fluid" />
-            <span>Xem video</span>
-          </button>
-        </div>
-        <div class="img-top-slide">
-          <img src="{{ asset('images/history-develop.png') }}" class="img-fluid" />
         </div>
       </div>
-    </div>
-    <div class="item-slide">
-      <div class="item-top-slide">
-        <div class="text-slide">
-          <div class="title">
-            Tập đoàn
+    @else
+      @foreach($banners as $banner)
+      <div class="item-slide">
+          <div class="item-top-slide">
+            <div class="text-slide">
+              <div class="title">
+                Tập đoàn
+              </div>
+              <div class="content">
+                Trường Thành Việt Nam
+              </div>
+              <div class="description">
+                Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
+              </div>
+            </div>
+            <div class="img-top-slide">
+              <img src="{!! $banner->present()->coverImage()->present()->url !!}" class="img-fluid" />
+            </div>
           </div>
-          <div class="content">
-            Trường Thành Việt Nam
-          </div>
-          <div class="description">
-            Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
-          </div>
-          <button class="btn btn-success">
-            <img src="{{ asset('images/view-video.png') }}" class="img-fluid" />
-            <span>Xem video</span>
-          </button>
         </div>
-        <div class="img-top-slide">
-          <img src="{{ asset('images/history-develop.png') }}" class="img-fluid" />
-        </div>
-      </div>
-    </div>
+      @endforeach
+    @endif
   </div>
 </main>
 @endsection
@@ -70,48 +71,22 @@ class="background-white"
         </div>
         <div class="list-top-field">
           <div class="row">
+            @foreach($fields as $field)
             <div class="col-md-4">
               <div class="item-top-field">
                 <div class="img-topfield">
-                  <img src="{{ asset('images/top-field-1.svg') }}" class="img-fluid">
+                  <img src="{!! $field->present()->homeImage()->present()->url !!}" class="img-fluid">
                 </div>
                 <a class="title-topfield" href="#">
-                  Công nghệ cao
+                  {{$field->name}}
                   <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid" />
                 </a>
                 <div class="des-topfield">
-                  Ứng dụng công nghệ tiên tiến, xây dựng nền tảng tối ưu tài nguyên, nâng cao hiệu quả hoạt động
+                  {{$field->home_content}}
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="item-top-field">
-                <div class="img-topfield">
-                  <img src="{{ asset('images/top-field-2.svg') }}" class="img-fluid">
-                </div>
-                <a class="title-topfield" href="#">
-                  Năng lượng tái tạo
-                  <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid" />
-                </a>
-                <div class="des-topfield">
-                  Nhà máy điện mặt trời, điện trên mái nhà dân, dự án công nghệ cao.
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="item-top-field">
-                <div class="img-topfield">
-                  <img src="{{ asset('images/top-field-3.svg') }}" class="img-fluid">
-                </div>
-                <a class="title-topfield" href="#">
-                  Bất động sản
-                  <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid" />
-                </a>
-                <div class="des-topfield">
-                  Bất động sản nhà ở, bất động sản du lịch, khu công nghiệp.
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -130,8 +105,7 @@ class="background-white"
               VIỆT NAM
             </div>
             <div class="description">
-              <p>Công ty Cổ phần Tập đoàn Trường Thành Việt Nam là doanh nghiệp kinh doanh đa ngành, được giao nhiệm vụ triển khai một số dự án trọng điểm nhằm gắn kết hoạt động kinh tế với thực hiện công tác nghiệp vụ của đơn vị góp phần đảm bảo an ninh, trật tự trên địa bàn nơi doanh nghiệp hoạt động.</p>
-              <p>Một trong những yếu tố quan trọng nhằm tạo nên sức mạnh của TTVN Group là: Xây dựng đội ngũ quản lý có năng lực, trình độ cao, sáng tạo và đoàn kết.</p>
+              <p>{{$inforGroup->description}}</p>
             </div>
             <a href="#" class="btn btn-outline-success">
               Xem thêm
@@ -139,56 +113,25 @@ class="background-white"
             </a>
           </div>
           <div class="img-top-intro">
-            <img src="{{ asset('images/top-intro-1.png') }}" class="img-fluid img-intro-after" />
-            <img src="{{ asset('images/top-intro-2.png') }}" class="img-fluid img-intro-before" />
+            <img src="{!! $inforGroup->present()->coverImage()->present()->url !!}" class="img-fluid img-intro-after" />
+            <img src="{!! $inforGroup->present()->thumbnailImage()->present()->url !!}" class="img-fluid img-intro-before" />
           </div>
         </div>
         <div class="top-sumarry">
           <div class="row">
+            @foreach($dataHighlights as $dataHighlight)
             <div class="col-md-3">
               <div class="col-top-sumary">
-                <img src="{{ asset('images/top-sumary-1.svg') }}" class="img-fluid" />
+                <img src="{!! $dataHighlight->present()->coverImage()->present()->url !!}" class="img-fluid" />
                 <div class="number">
-                  24
+                  {{$dataHighlight->data}}
                 </div>
                 <div class="name">
-                  Công ty thành viên
+                    {{$dataHighlight->title}}
                 </div>
               </div>
             </div>
-            <div class="col-md-3">
-              <div class="col-top-sumary">
-                <img src="{{ asset('images/top-sumary-2.svg') }}" class="img-fluid" />
-                <div class="number">
-                  96
-                </div>
-                <div class="name">
-                  Dự án BĐS
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="col-top-sumary">
-                <img src="{{ asset('images/top-sumary-3.svg') }}" class="img-fluid" />
-                  <div class="number">
-                  32
-                </div>
-                <div class="name">
-                  Doanh nghiệp hợp tác
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="col-top-sumary last-sumarry">
-                <img src="{{ asset('images/top-sumary-4.svg') }}" class="img-fluid" />
-                <div class="number">
-                  04
-                </div>
-                <div class="name">
-                  Nhà máy điện
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
         <div class="top-news">
@@ -302,30 +245,11 @@ class="background-white"
             </div>
             <div class="container">
               <div class="partner-slide">
+                @foreach ($companies as $company)
                 <div class="item-slide">
-                  <img src="{{ asset('images/partner-1.png') }}" class="img-fluid" />
+                  <img src="{!! $company->present()->coverImage()->present()->url !!}" class="img-fluid" />
                 </div>
-                <div class="item-slide">
-                  <img src="{{ asset('images/partner-3.png') }}" class="img-fluid" />
-                </div>
-                <div class="item-slide">
-                  <img src="{{ asset('images/partner-4.png') }}" class="img-fluid" />
-                </div>
-                <div class="item-slide">
-                  <img src="{{ asset('images/partner-5.png') }}" class="img-fluid" />
-                </div>
-                <div class="item-slide">
-                  <img src="{{ asset('images/partner-6.png') }}" class="img-fluid" />
-                </div>
-                <div class="item-slide">
-                  <img src="{{ asset('images/partner-1.png') }}" class="img-fluid" />
-                </div>
-                <div class="item-slide">
-                  <img src="{{ asset('images/partner-3.png') }}" class="img-fluid" />
-                </div>
-                <div class="item-slide">
-                  <img src="{{ asset('images/partner-4.png') }}" class="img-fluid" />
-                </div>
+                @endforeach
               </div>
             </div>
           </div>
@@ -370,6 +294,17 @@ class="background-white"
       .navbar-top-area {
         background-image: url('../images/bg-header-home-xs.svg');
       }
+    }
+    a {
+        color: #0060B6;
+        text-decoration: none;
+    }
+  
+    a:hover 
+    {
+        color:#00A0C6; 
+        text-decoration:none; 
+        cursor:pointer;  
     }
   </style>
 @endsection

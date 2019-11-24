@@ -26,9 +26,7 @@
     });
 });
 
-Route::get('/home', function () {
-    return view('pages.web.home');
-});
+Route::get('/', 'Web\HomeController@index');
 
 Route::get('contact', function () {
     return view('pages.web.contact');

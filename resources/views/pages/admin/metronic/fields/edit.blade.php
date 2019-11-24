@@ -9,7 +9,7 @@
             margin-bottom: 15px;
         }
 
-        #cover-image-preview, #icon1-image-preview, #icon2-image-preview, #icon3-image-preview  {
+        #cover2-image-preview, #cover-image-preview, #icon1-image-preview, #icon2-image-preview, #icon3-image-preview, #home-image-preview {
             height: 100px;
         }
         
@@ -32,6 +32,15 @@
                 $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
             });
 
+            $('#cover2-image').change(function (event) {
+                $('#cover2-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
+            });
+
+            $('#home-image').change(function (event) {
+                $('#home-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
+            });
+
+            
             $('#icon1-image').change(function (event) {
                 $('#icon1-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
             });
@@ -144,6 +153,29 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($field->present()->homeImage()) )
+                                <img id="home-image-preview" style="max-width: 100%;" src="{!! $field->present()->homeImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="home-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="home-image" name="home-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    icon minh họa trang chủ (home)
+                                    <label for="home-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-10">
+                            <div class="form-group m-form__group row @if ($errors->has('home_content')) has-danger @endif">
+                                <label for="home_content">Nội dung mô tả ngắn trang chủ (*)</label>
+                                <input type="text" class="form-control m-input" name="home_content" id="home_content" required value="{{ old('home_content') ? old('home_content') : $field->home_content }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('meta_title')) has-danger @endif">
                                 <label for="meta_title">Meta title</label>
@@ -169,12 +201,26 @@
                                 @endif
                                 <input type="file" style="display: none;" id="cover-image" name="cover-image">
                                 <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
-                                    Hình ảnh
+                                    Hình ảnh 1
                                     <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-2">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($field->present()->cover2Image()) )
+                                <img id="cover2-image-preview" style="max-width: 100%;" src="{!! $field->present()->cover2Image()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="cover2-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="cover2-image" name="cover2-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    Hình ảnh 2
+                                    <label for="cover2-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
                             <div class="form-group m-form__group row @if ($errors->has('title')) has-danger @endif">
                                 <label for="title">Tiêu đề</label>
                                 <input type="text" class="form-control m-input" name="title" id="title" required value="{{ old('title') ? old('title') : $field->title }}">
