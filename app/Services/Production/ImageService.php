@@ -20,13 +20,13 @@ class ImageService extends BaseService implements ImageServiceInterface
         $image  = imagecreatefromstring(file_get_contents($path));
         $frame  = $this->getImageFrameToCrop( getimagesize($path), $config );
 
-        $image = imagecrop($image, ['x' => $frame['x'], 'y' => $frame['y'], 'width' => $frame['width'], 'height' => $frame['height']]);
-        if ($image !== false) {
+        // $image = imagecrop($image, ['x' => $frame['x'], 'y' => $frame['y'], 'width' => $frame['width'], 'height' => $frame['height']]);
+        // if ($image !== false) {
             imagepng($image, $fileUploadedPath);
             return true;
-        }
+        // }
 
-        return false;
+        // return false;
     }
 
     /**
