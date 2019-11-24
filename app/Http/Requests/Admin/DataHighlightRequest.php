@@ -1,17 +1,17 @@
 <?php namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\BaseRequest;
-use App\Repositories\DataHighlightRepositoryInterface;
+use App\Repositories\DataHighLightRepositoryInterface;
 
-class DataHighlightRequest extends BaseRequest
+class DataHighLightRequest extends BaseRequest
 {
 
-    /** @var \App\Repositories\DataHighlightRepositoryInterface */
-    protected $dataHighlightRepository;
+    /** @var \App\Repositories\DataHighLightRepositoryInterface */
+    protected $dataHighLightRepository;
 
-    public function __construct(DataHighlightRepositoryInterface $dataHighlightRepository)
+    public function __construct(DataHighLightRepositoryInterface $dataHighLightRepository)
     {
-        $this->dataHighlightRepository = $dataHighlightRepository;
+        $this->dataHighLightRepository = $dataHighLightRepository;
     }
 
     /**
@@ -31,12 +31,12 @@ class DataHighlightRequest extends BaseRequest
      */
     public function rules()
     {
-        return $this->dataHighlightRepository->rules();
+        return $this->dataHighLightRepository->rules();
     }
 
     public function messages()
     {
-        return $this->dataHighlightRepository->messages();
+        return $this->dataHighLightRepository->messages();
     }
 
 }
