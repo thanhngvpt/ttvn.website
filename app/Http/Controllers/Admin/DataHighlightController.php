@@ -8,15 +8,35 @@ use App\Repositories\DataHighlightRepositoryInterface;
 use App\Http\Requests\Admin\DataHighlightRequest;
 use App\Http\Requests\PaginationRequest;
 
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class DataHighlightController extends Controller
 {
     /** @var  \App\Repositories\DataHighlightRepositoryInterface */
     protected $dataHighlightRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+    
     public function __construct(
-        DataHighlightRepositoryInterface $dataHighlightRepository
+        DataHighlightRepositoryInterface $dataHighlightRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->dataHighlightRepository = $dataHighlightRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -85,9 +105,24 @@ class DataHighlightController extends Controller
                         ]
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $dataHighlight = $this->dataHighlightRepository->create($input);
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
 
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $dataHighlight->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->dataHighlightRepository->update($dataHighlight, ['cover_image_id' => $image->id]);
+            }
+        }
         if( empty($dataHighlight) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
         }
@@ -146,14 +181,35 @@ class DataHighlightController extends Controller
 
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'title',
-                            'data',
-                        ]
+                'cover_image_id',
+                'title',
+                'data',
+            ]
         );
+        $dataHighlight = $this->dataHighlightRepository->update($dataHighlight, $input);
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->dataHighlightRepository->update($dataHighlight, $input);
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $dataHighlight->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $dataHighlight->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->dataHighlightRepository->update($dataHighlight, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\DataHighlightController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

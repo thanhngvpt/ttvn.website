@@ -136,5 +136,20 @@ return [
             'local_type'  => 'common',
             'local_path'  => 'img/ogp/'
         ],
+        'file' => [
+            'name'        => 'file',
+            'type'        => 'file',
+            'region'      => env('AWS_IMAGE_REGION'),
+            'buckets'     => [
+                env('AWS_IMAGE_BUCKET'),
+            ],
+            'size'        => [600, 400],
+            'thumbnails'  => [
+            ],
+            'seed_prefix' => 'file',
+            'format'      => 'pdf',
+            'local_type'  => 'common',
+            'local_path'  => 'file/'
+        ],
     ],
 ];

@@ -8,15 +8,35 @@ use App\Repositories\DataHighLightRepositoryInterface;
 use App\Http\Requests\Admin\DataHighLightRequest;
 use App\Http\Requests\PaginationRequest;
 
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class DataHighLightController extends Controller
 {
     /** @var  \App\Repositories\DataHighLightRepositoryInterface */
     protected $dataHighLightRepository;
 
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
+
+    /** @var ImageRepositoryInterface $imageRepository */
+    protected $imageRepository;
+
+    /** @var  ImageServiceInterface $imageService */
+    protected $imageService;
+
     public function __construct(
-        DataHighLightRepositoryInterface $dataHighLightRepository
+        DataHighLightRepositoryInterface $dataHighLightRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->dataHighLightRepository = $dataHighLightRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -78,13 +98,28 @@ class DataHighLightController extends Controller
     public function store(DataHighLightRequest $request)
     {
         $input = $request->only(
-            [
-                        ]
+            ['title',
+            'data',]
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $dataHighLight = $this->dataHighLightRepository->create($input);
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
 
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $dataHighLight->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->dataHighLightRepository->update($dataHighLight, ['cover_image_id' => $image->id]);
+            }
+        }
         if( empty($dataHighLight) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
         }
@@ -135,6 +170,7 @@ class DataHighLightController extends Controller
      */
     public function update($id, DataHighLightRequest $request)
     {
+        dd('a');
         /** @var  \App\Models\DataHighLight $dataHighLight */
         $dataHighLight = $this->dataHighLightRepository->find($id);
         if( empty($dataHighLight) ) {
@@ -143,11 +179,33 @@ class DataHighLightController extends Controller
 
         $input = $request->only(
             [
-                        ]
+            'title',
+            'data',]
         );
+        $dataHighLight = $this->dataHighLightRepository->update($dataHighLight, $input);
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->dataHighLightRepository->update($dataHighLight, $input);
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $dataHighLight->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $dataHighLight->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->dataHighLightRepository->update($dataHighLight, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\DataHighLightController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

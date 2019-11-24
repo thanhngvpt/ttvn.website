@@ -177,7 +177,7 @@ class FileUploadService extends BaseService implements FileUploadServiceInterfac
             }
 
             move_uploaded_file( $path, $localPath . $fileName );
-
+            // dd(public_path().'/'.$localPath . $fileName);
             $input['url']      = $fileName;
             $input['is_local'] = true;
         } else {
@@ -194,9 +194,10 @@ class FileUploadService extends BaseService implements FileUploadServiceInterfac
         }
 
         /** @var  \App\Models\File | null $file */
-        $file = $this->fileRepository->create($input);
+        // $file = $this->fileRepository->create($input);
 
-        return $file;
+        // return $file;
+        return '/'.$localPath . $fileName;
     }
 
     /**

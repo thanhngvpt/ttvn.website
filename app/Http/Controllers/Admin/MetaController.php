@@ -43,7 +43,7 @@ class MetaController extends Controller
         $metas = $this->metaRepository->getByFilter($filter, $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit']);
 
         return view(
-            'pages.admin.' . config('view.admin') . '.metas.index',
+            'pages.admin.' . config('view.admin') . '.meta.index',
             [
                 'metas'    => $metas,
                 'count'         => $count,
@@ -61,7 +61,7 @@ class MetaController extends Controller
     public function create()
     {
         return view(
-            'pages.admin.' . config('view.admin') . '.metas.edit',
+            'pages.admin.' . config('view.admin') . '.meta.edit',
             [
                 'isNew'     => true,
                 'meta' => $this->metaRepository->getBlankModel(),
@@ -78,11 +78,9 @@ class MetaController extends Controller
     public function store(MetaRequest $request)
     {
         $input = $request->only(
-            [
-                        ]
+            ['link', 'meta_title', 'meta_description']
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $meta = $this->metaRepository->create($input);
 
         if( empty($meta) ) {
@@ -107,7 +105,7 @@ class MetaController extends Controller
         }
 
         return view(
-            'pages.admin.' . config('view.admin') . '.metas.edit',
+            'pages.admin.' . config('view.admin') . '.meta.edit',
             [
                 'isNew' => false,
                 'meta' => $meta,
@@ -142,11 +140,9 @@ class MetaController extends Controller
         }
 
         $input = $request->only(
-            [
-                        ]
+           ['link', 'meta_title', 'meta_description']
         );
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $this->metaRepository->update($meta, $input);
 
         return redirect()->action('Admin\MetaController@show', [$id])
