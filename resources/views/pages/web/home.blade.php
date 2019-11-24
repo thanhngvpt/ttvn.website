@@ -6,7 +6,7 @@
 @section('nav-slide')
 <main>
   <div class="top-page-slide">
-    @if (empty($video))
+    @if (!empty($video))
     <div class="item-slide">
         <div class="item-top-slide">
           <div class="text-slide">
@@ -64,10 +64,10 @@ class="background-white"
     <div class="top-field">
       <div class="container">
         <div class="title-top-field">
-          Lĩnh vực hoạt động chính
+          {{$heading->title_heading}}
         </div>
         <div class="des-top-field">
-          Chúng tôi luôn cố gắng xây dựng hệ thống sản phẩm đáp ứng được tốt nhất nhu cầu của khách hàng.
+            {{$heading->heading_description}}
         </div>
         <div class="list-top-field">
           <div class="row">
@@ -136,93 +136,40 @@ class="background-white"
         </div>
         <div class="top-news">
           <div class="title-top-news">
-            Tin tức
+            {{$heading->title_news}}
           </div>
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#tab_all">Tất cả</a>
+              <a class="nav-link active" data-toggle="tab" data-category-id="0" href="#tab_all">Tất cả</a>
             </li>
+            @foreach ($categories as $category)
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#realty_tab">Bất động sản</a>
+              <a class="nav-link list-category-news" data-toggle="tab" data-category-id="{{$category->id}}" href="#cate-{{$category->id}}">{{$category->name}}</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#technology_tab">Công nghệ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#energy_tab">Năng lượng</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#cultural_tab">Văn hoá doanh nghiệp</a>
-            </li>
+            @endforeach
           </ul>
           <!-- Tab panes -->
           <div class="tab-content">
             <div class="tab-pane container active" id="tab_all">
               <div class="slide-top-news">
+                @foreach($news as $item)
                 <a href="#" class="item-news">
                   <div class="img-news">
-                    <img src="{{ asset('images/top-news-1.png') }}" class="img-fluid" />
+                    <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
                   </div>
                   <div class="content-news">
                     <div class="cate-news">
-                      BẤT ĐỘNG SẢN
+                      {{$item->newCategory->name}}
                     </div>
                     <div class="title-news">
-                      Đăng ví dụ tiêu chuẩn 9 với hình ảnh nổi bật Đăng
+                      {{$item->name}}
                     </div>
                     <div class="date-news">
-                      27/09/2021
+                        {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
                     </div>
                   </div>
                 </a>
-                <a href="#" class="item-news">
-                  <div class="img-news">
-                    <img src="{{ asset('images/top-news-2.png') }}" class="img-fluid" />
-                  </div>
-                  <div class="content-news">
-                    <div class="cate-news">
-                      BẤT ĐỘNG SẢN
-                    </div>
-                    <div class="title-news">
-                      Đăng ví dụ tiêu chuẩn 9 với hình ảnh nổi bật Đăng
-                    </div>
-                    <div class="date-news">
-                      27/09/2021
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="item-news">
-                  <div class="img-news">
-                    <img src="{{ asset('images/top-news-3.png') }}" class="img-fluid" />
-                  </div>
-                  <div class="content-news">
-                    <div class="cate-news">
-                      BẤT ĐỘNG SẢN
-                    </div>
-                    <div class="title-news">
-                      Đăng ví dụ tiêu chuẩn 9 với hình ảnh nổi bật Đăng
-                    </div>
-                    <div class="date-news">
-                      27/09/2021
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="item-news">
-                  <div class="img-news">
-                    <img src="{{ asset('images/top-news-1.png') }}" class="img-fluid" />
-                  </div>
-                  <div class="content-news">
-                    <div class="cate-news">
-                      Công nghệ cao
-                    </div>
-                    <div class="title-news">
-                      Fugiat ullamco reprehenderit Lorem nostrud
-                    </div>
-                    <div class="date-news">
-                      27/09/2021
-                    </div>
-                  </div>
-                </a>
+                @endforeach
               </div>
               <div class="text-center">
                 <a href="#" class="btn btn-outline-success btn-see-more-news">
@@ -230,10 +177,9 @@ class="background-white"
                 </a>
               </div>
             </div>
-            <div class="tab-pane container active" id="realty_tab"></div>
-            <div class="tab-pane container active" id="technology_tab"></div>
-            <div class="tab-pane container active" id="energy_tab"></div>
-            <div class="tab-pane container active" id="cultural_tab"></div>            
+            @foreach ($categories as $category)
+            <div class="tab-pane container active" id="cate-{{$category->id}}"></div>
+            @endforeach         
           </div>
         </div>
       </div>
@@ -241,7 +187,7 @@ class="background-white"
         <div class="container">
           <div class="partner-intro">
             <div class="title-border-bottom">
-              Công ty thành viên
+                {{$heading->title_company}}
             </div>
             <div class="container">
               <div class="partner-slide">
@@ -257,10 +203,10 @@ class="background-white"
       </div>
       <div class="top-consultation">
         <div class="title">
-          Nhận tư vấn miễn phí
+            {{$heading->title_support}}
         </div>
         <div class="description">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            {{$heading->support_description}}
         </div>
         <form action="" method="">
           <div class="form-consultation">
@@ -364,6 +310,22 @@ class="background-white"
 					}
         ]
       });
-		});
+    });
+    $(document).ready(function() {
+      $('.list-category-news').on('click', function() {
+        let cate_id = $(this).data('category-id')
+        $.ajax({
+          url: "{{action('Web\HomeController@getNewByCate')}}",
+          type: "GET",
+          data: {
+              _token: "{!! csrf_token() !!}",
+              cate_id: cate_id,
+          },
+          success: function (res) {
+              $('#cate-'+cate_id).html(res)
+          }
+        });
+      })
+    })
 	</script>
 @endsection

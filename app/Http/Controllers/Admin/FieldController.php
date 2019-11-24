@@ -114,6 +114,7 @@ class FieldController extends Controller
                 'des_3',
                 'order',
                 'is_enabled',
+                'home_content'
             ]
         );
 
@@ -286,6 +287,7 @@ class FieldController extends Controller
                 'des_3',
                 'order',
                 'is_enabled',
+                'home_content'
             ]
         );
 
