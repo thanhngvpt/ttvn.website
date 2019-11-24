@@ -115,6 +115,8 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
+                                    <th style="width: 10px">{!! \PaginationHelper::sort('id', 'title') !!}</th>
+                                    <th style="width: 10px">{!! \PaginationHelper::sort('id', 'description') !!}</th>
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
@@ -124,7 +126,9 @@
                                 @foreach( $metas as $meta )
                                     <tr>
                                         <td>{{ $meta->id }}</td>
-                                                                                <td>
+                                        <td>{{ $meta->meta_title }}</td>
+                                        <td>{{ $meta->meta_description }}</td>
+                                        <td>
                                             <a href="{!! action('Admin\MetaController@show', $meta->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>

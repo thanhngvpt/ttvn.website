@@ -8,15 +8,35 @@ use App\Repositories\SaveValueRepositoryInterface;
 use App\Http\Requests\Admin\SaveValueRequest;
 use App\Http\Requests\PaginationRequest;
 
+use App\Services\FileUploadServiceInterface;
+use App\Services\ImageServiceInterface;
+use App\Http\Requests\BaseRequest;
+use App\Repositories\ImageRepositoryInterface;
+
 class SaveValueController extends Controller
 {
     /** @var  \App\Repositories\SaveValueRepositoryInterface */
     protected $saveValueRepository;
 
+     /** @var FileUploadServiceInterface $fileUploadService */
+     protected $fileUploadService;
+
+     /** @var ImageRepositoryInterface $imageRepository */
+     protected $imageRepository;
+ 
+     /** @var  ImageServiceInterface $imageService */
+     protected $imageService;
+
     public function __construct(
-        SaveValueRepositoryInterface $saveValueRepository
+        SaveValueRepositoryInterface $saveValueRepository,
+        FileUploadServiceInterface      $fileUploadService,
+        ImageRepositoryInterface        $imageRepository,
+        ImageServiceInterface           $imageService
     ) {
         $this->saveValueRepository = $saveValueRepository;
+        $this->fileUploadService        = $fileUploadService;
+        $this->imageRepository          = $imageRepository;
+        $this->imageService             = $imageService;
     }
 
     /**
@@ -79,14 +99,30 @@ class SaveValueController extends Controller
     {
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'value',
-                            'content',
-                        ]
+                'cover_image_id',
+                'value',
+                'content',
+            ]
         );
-
-        $input['is_enabled'] = $request->get('is_enabled', 0);
         $saveValue = $this->saveValueRepository->create($input);
+
+        if ($request->hasFile('cover-image')) {
+            $file = $request->file('cover-image');
+
+            $image = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $saveValue->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->saveValueRepository->update($saveValue, ['cover_image_id' => $image->id]);
+            }
+        }
 
         if( empty($saveValue) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -146,14 +182,35 @@ class SaveValueController extends Controller
 
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'value',
-                            'content',
-                        ]
+                'cover_image_id',
+                'value',
+                'content',
+            ]
         );
+        $saveValue = $this->saveValueRepository->update($saveValue, $input);
 
-        $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->saveValueRepository->update($saveValue, $input);
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $saveValue->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'banner_cover_image',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $saveValue->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->saveValueRepository->update($saveValue, ['cover_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
 
         return redirect()->action('Admin\SaveValueController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

@@ -115,11 +115,11 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                                                                                                                                                                                        <th>{!! \PaginationHelper::sort('name', trans('admin.pages.leader-ships.columns.name')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('position', trans('admin.pages.leader-ships.columns.position')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('file', trans('admin.pages.leader-ships.columns.file')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('order', trans('admin.pages.leader-ships.columns.order')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('is_enabled', trans('admin.pages.leader-ships.columns.is_enabled')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.leader-ships.columns.name')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('position', trans('admin.pages.leader-ships.columns.position')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('file', trans('admin.pages.leader-ships.columns.file')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('order', trans('admin.pages.leader-ships.columns.order')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('is_enabled', trans('admin.pages.leader-ships.columns.is_enabled')) !!}</th>
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
@@ -129,12 +129,21 @@
                                 @foreach( $leaderShips as $leaderShip )
                                     <tr>
                                         <td>{{ $leaderShip->id }}</td>
-                                                                                                                                                                                                                        <td>{{ $leaderShip->name }}</td>
-                                                                                                                            <td>{{ $leaderShip->position }}</td>
-                                                                                                                            <td>{{ $leaderShip->file }}</td>
-                                                                                                                            <td>{{ $leaderShip->order }}</td>
-                                                                                                                            <td>{{ $leaderShip->is_enabled }}</td>
-                                                                                <td>
+                                        <td>{{ $leaderShip->name }}</td>
+                                        <td>{{ $leaderShip->position }}</td>
+                                        <td> <a href="{{ $leaderShip->file }}">File</a></td>
+                                        <td>{{ $leaderShip->order }}</td>
+                                        <td>@if ($leaderShip->is_enabled)
+                                            <span class="m--font-success">
+                                                Enabled
+                                            </span>
+                                            @else
+                                                <span class="m--font-warning">
+                                                    Disabled
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td>
                                             <a href="{!! action('Admin\LeaderShipController@show', $leaderShip->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>

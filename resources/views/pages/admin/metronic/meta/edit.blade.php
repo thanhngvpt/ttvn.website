@@ -100,7 +100,31 @@
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('link')) has-danger @endif">
+                                <label for="meta_title">Link</label>
+                                <input type="text" class="form-control m-input" name="link" id="link" required value="{{ old('link') ? old('link') : $meta->link }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('meta_title')) has-danger @endif">
+                                <label for="meta_title">Meta title</label>
+                                <input type="text" class="form-control m-input" name="meta_title" id="meta_title" required value="{{ old('meta_title') ? old('meta_title') : $meta->meta_title }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('meta_description')) has-danger @endif">
+                                <label for="meta_description">Meta Description</label>
+                                <input type="text" class="form-control m-input" name="meta_description" id="meta_description" required value="{{ old('meta_description') ? old('meta_description') : $meta->meta_description }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">

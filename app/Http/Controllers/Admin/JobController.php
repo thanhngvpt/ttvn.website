@@ -7,16 +7,24 @@ use App\Http\Controllers\Controller;
 use App\Repositories\JobRepositoryInterface;
 use App\Http\Requests\Admin\JobRequest;
 use App\Http\Requests\PaginationRequest;
+use \App\Repositories\JobCategoryRepositoryInterface;
+use \App\Repositories\CompanyRepositoryInterface;
 
 class JobController extends Controller
 {
     /** @var  \App\Repositories\JobRepositoryInterface */
     protected $jobRepository;
+    protected $jobCategoryRepository;
+    protected $companyRepository;
 
     public function __construct(
-        JobRepositoryInterface $jobRepository
+        JobRepositoryInterface $jobRepository,
+        JobCategoryRepositoryInterface $jobCategoryRepository,
+        CompanyRepositoryInterface $companyRepository
     ) {
         $this->jobRepository = $jobRepository;
+        $this->jobCategoryRepository = $jobCategoryRepository;
+        $this->companyRepository = $companyRepository;
     }
 
     /**
@@ -65,6 +73,8 @@ class JobController extends Controller
             [
                 'isNew'     => true,
                 'job' => $this->jobRepository->getBlankModel(),
+                'categories' => $this->jobCategoryRepository->all(),
+                'companies' => $this->companyRepository->all()
             ]
         );
     }
@@ -125,6 +135,8 @@ class JobController extends Controller
             [
                 'isNew' => false,
                 'job' => $job,
+                'categories' => $this->jobCategoryRepository->all(),
+                'companies' => $this->companyRepository->all()
             ]
         );
     }
