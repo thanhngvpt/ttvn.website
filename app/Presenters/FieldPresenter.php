@@ -39,7 +39,7 @@ class FieldPresenter extends BasePresenter
     {
         if( \CacheHelper::cacheRedisEnabled() ) {
             $cacheKey = \CacheHelper::keyForModel('ImageModel');
-            $cached = Redis::hget($cacheKey, $this->entity->cover_image_id);
+            $cached = Redis::hget($cacheKey, $this->entity->cover2_image_id);
 
             if( $cached ) {
                 $image = new Image(json_decode($cached, true));
@@ -47,7 +47,7 @@ class FieldPresenter extends BasePresenter
                 return $image;
             } else {
                 $image = $this->entity->coverImage;
-                Redis::hsetnx($cacheKey, $this->entity->cover_image_id, $image);
+                Redis::hsetnx($cacheKey, $this->entity->cover2_image_id, $image);
                 return $image;
             }
         }
@@ -60,7 +60,7 @@ class FieldPresenter extends BasePresenter
     {
         if( \CacheHelper::cacheRedisEnabled() ) {
             $cacheKey = \CacheHelper::keyForModel('ImageModel');
-            $cached = Redis::hget($cacheKey, $this->entity->cover_image_id);
+            $cached = Redis::hget($cacheKey, $this->entity->home_image_id);
 
             if( $cached ) {
                 $image = new Image(json_decode($cached, true));
@@ -68,7 +68,7 @@ class FieldPresenter extends BasePresenter
                 return $image;
             } else {
                 $image = $this->entity->coverImage;
-                Redis::hsetnx($cacheKey, $this->entity->cover_image_id, $image);
+                Redis::hsetnx($cacheKey, $this->entity->home_image_id, $image);
                 return $image;
             }
         }

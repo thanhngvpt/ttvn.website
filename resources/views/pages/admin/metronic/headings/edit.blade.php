@@ -118,7 +118,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('title_group')) has-danger @endif">
                                 <label for="title_group">Title thông tin ngắn tập đoàn</label>
-                                <input type="text" class="form-control m-input" name="title_group" id="title_group" required value="{{ old('title_group') ? old('title_group') : $heading->title_group }}">
+                                <input type="text" class="form-control m-input" name="title_group" id="title_group" value="{{ old('title_group') ? old('title_group') : $heading->title_group }}">
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('title_data_highlight')) has-danger @endif">
                                 <label for="title_data_highlight">Title số liệu nổi bật</label>
-                                <input type="text" class="form-control m-input" name="title_data_highlight" id="title_data_highlight" required value="{{ old('title_data_highlight') ? old('title_data_highlight') : $heading->title_data_highlight }}">
+                                <input type="text" class="form-control m-input" name="title_data_highlight" id="title_data_highlight"  value="{{ old('title_data_highlight') ? old('title_data_highlight') : $heading->title_data_highlight }}">
                             </div>
                         </div>
                     </div>

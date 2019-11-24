@@ -12,6 +12,7 @@ return [
             'image/png'  => 'png',
             'image/jpeg' => 'jpg',
             'image/gif'  => 'gif',
+            'image/svg' => 'svg',
         ],
     ],
     'categories' => [
@@ -41,7 +42,7 @@ return [
             'thumbnails'  => [
             ],
             'seed_prefix' => 'icon_image',
-            'format'      => 'png',
+            'format'      => 'svg',
             'local_type'  => 'common',
             'local_path'  => 'img/icon_image/'
         ],
