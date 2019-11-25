@@ -25,3 +25,39 @@
 
     });
 });
+
+Route::get('/', 'Web\HomeController@index');
+Route::get('new-by-category', 'Web\HomeController@getNewByCate');
+
+Route::get('contact', function () {
+    return view('pages.web.contact');
+});
+
+Route::get('job', function () {
+    return view('pages.web.job');
+});
+
+Route::get('list-job', function () {
+    return view('pages.web.list-job');
+});
+
+Route::get('job-detail', function () {
+    return view('pages.web.job-detail');
+});
+
+Route::get('news', function () {
+    return view('pages.web.news');
+});
+
+Route::get('news-detail', function () {
+    return view('pages.web.news-detail');
+});
+
+Route::get('introduce-company', function () {
+    return view('pages.web.introduce-company');
+});
+
+Route::get('scope-active', 'Web\ScopeActiveController@index');
+Route::get('news', 'Web\NewsController@index');
+Route::get('get-news-via-category', 'Web\NewsController@getNewsViaCategory');
+Route::get('get-project-via-field', 'Web\ScopeActiveController@getProjects');
