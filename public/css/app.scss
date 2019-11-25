@@ -495,8 +495,15 @@ footer {
 				border-radius: 4px;
 				background-color: #ffffff;
 				padding: 6px 12px;
+				margin: 0 10px;
 			}
 		}
+	}
+}
+
+#news-page {
+	.pagination {
+		margin-bottom: 160px;
 	}
 }
 
@@ -550,7 +557,10 @@ footer {
 	.area-apply {
 		margin-top: 56px;
 		padding: 56px 188px;
-		background-color: #57AE5B;
+		border-radius: 8px;
+		background-image: url('../images/bg-form.svg');
+		background-size: cover;
+		background-repeat: no-repeat;
 
 		.title-apply {
 			font-size: 32px;
@@ -589,6 +599,7 @@ footer {
 			border: 1px dashed #ffffff;
 			margin-bottom: 32px;
 			border-radius: 8px;
+			cursor: pointer;
 		}
 		#file_apply {
 			opacity: 0;
@@ -1776,6 +1787,7 @@ main {
 		display: flex;
 		align-items: center;
 		margin-right: 48px;
+		font-family: "Open Sans", serif;
 
 		&:last-child {
 			margin-right: 0;
@@ -1900,6 +1912,18 @@ main {
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
+	#news-page {
+		.nav-tabs {
+			margin-bottom: 60px;
+		}
+		.item-news {
+			margin-bottom: 48px;
+		}
+		.pagination {
+			margin-top: 8px;
+			margin-bottom: 88px;
+		}
+	}
 	#news-detail-page  {
 		.slick-dots {
 			bottom: -56px;
@@ -2285,6 +2309,26 @@ main {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+	#news-page {
+		.list-news {
+			margin-left: -7px;
+			margin-right: -7px;
+
+			.col-xl-4 {
+				padding: 0 8px;
+			}
+		}
+		.item-news {
+			margin-bottom: 48px;
+
+			.title-news {
+				font-size: 16px;
+			}
+		}
+		.pagination {
+			margin-bottom: 56px;
+		}
+	}
 	#news-detail-page {
 		.slick-slide {
 			&:hover {
@@ -3039,6 +3083,13 @@ main {
 		}
 	}
 	#news-page {
+		.pagination {
+			margin-top: -8px;
+			margin-bottom: 56px;
+		}
+		.list-news {
+			padding-top: 50px;
+		}
 		.title-slide-news {
 			font-size: 24px;
 			line-height: 32px;
@@ -3066,30 +3117,43 @@ main {
 			z-index: 1;
 			top: 19%;
 		}
+		.navtab-custom {
+			overflow-x: auto;
+			margin-bottom: 32px;
+		}
 		.nav-tabs {
-			justify-content: initial;
-			margin-bottom: 40px;
+			width: 700px;
+			margin-bottom: 12px;
+
 			.nav-item {
-				flex: inherit;
 				text-align: center;
-				padding: 0 8px 16px 8px;
 
 				.nav-link {
 					font-size: 16px;
 					line-height: 22px;
+					font-weight: normal;
 
 					&::before {
-						padding-top: 4px;
 						margin-bottom: 10px;
 					}
 					&.active {
 						&::before {
-							padding-top: 4px;
 							margin-bottom: 10px;
 						}
 					}
 				}
 			}
+		}
+	}
+	.item-news {
+		margin-bottom: 48px;
+
+		.title-news {
+			font-size: 16px;
+			line-height: 22px;
+		}
+		.cate-news {
+			margin-top: 16px;
 		}
 	}
 	.display-md {

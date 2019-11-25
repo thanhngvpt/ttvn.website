@@ -11,16 +11,19 @@
 @section('content')
 	<div id="news-page">
 		<div class="container">
-			<ul class="nav nav-tabs">
-			    <li class="nav-item">
-			        <a class="nav-link active" data-category-id="0" data-toggle="tab" href="#tab_all">Tất cả</a>
-				</li>
-				@foreach($categories as $category)
-			    <li class="nav-item category-click">
-			        <a class="nav-link" data-toggle="tab" data-category-id="{{$category->id}}" href="#news-tab-{{$category->id}}">{{$category->name}}</a>
-			    </li>
-			    @endforeach
-			</ul>
+			<div class="navtab-custom">
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link active" data-category-id="0" data-toggle="tab" href="#tab_all">Tất cả</a>
+					</li>
+					@foreach($categories as $category)
+					<li class="nav-item category-click">
+						<a class="nav-link" data-toggle="tab" data-category-id="{{$category->id}}" href="#news-tab-{{$category->id}}">{{$category->name}}</a>
+					</li>
+					@endforeach
+				</ul>
+			</div>
+			
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div class="tab-pane active" data-category-id="0" id="tab_all">

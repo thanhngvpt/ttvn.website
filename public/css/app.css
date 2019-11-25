@@ -365,7 +365,11 @@ footer {
     border: 1px solid #515151;
     border-radius: 4px;
     background-color: #ffffff;
-    padding: 6px 12px; }
+    padding: 6px 12px;
+    margin: 0 10px; }
+
+#news-page .pagination {
+  margin-bottom: 160px; }
 
 .cultural-job {
   padding-top: 122px;
@@ -407,7 +411,10 @@ footer {
   #job-detail-page .area-apply {
     margin-top: 56px;
     padding: 56px 188px;
-    background-color: #57AE5B; }
+    border-radius: 8px;
+    background-image: url("../images/bg-form.svg");
+    background-size: cover;
+    background-repeat: no-repeat; }
     #job-detail-page .area-apply .title-apply {
       font-size: 32px;
       line-height: 51px;
@@ -438,7 +445,8 @@ footer {
       background-color: rgba(193, 234, 197, 0.56);
       border: 1px dashed #ffffff;
       margin-bottom: 32px;
-      border-radius: 8px; }
+      border-radius: 8px;
+      cursor: pointer; }
     #job-detail-page .area-apply #file_apply {
       opacity: 0; }
     #job-detail-page .area-apply .btn-submit-apply {
@@ -1312,7 +1320,8 @@ main .nav-tabs {
   .number-detail-job .item-number-detail {
     display: flex;
     align-items: center;
-    margin-right: 48px; }
+    margin-right: 48px;
+    font-family: "Open Sans", serif; }
     .number-detail-job .item-number-detail:last-child {
       margin-right: 0; }
     .number-detail-job .item-number-detail span {
@@ -1405,6 +1414,14 @@ main .nav-tabs {
   #news-page .list-news .col-xl-4 {
     padding: 0 12px; } }
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
+  #news-page .nav-tabs {
+    margin-bottom: 60px; }
+  #news-page .item-news {
+    margin-bottom: 48px; }
+  #news-page .pagination {
+    margin-top: 8px;
+    margin-bottom: 88px; }
+
   #news-detail-page .slick-dots {
     bottom: -56px; }
   #news-detail-page .relation-news {
@@ -1654,6 +1671,18 @@ main .nav-tabs {
   .top-page-slide .item-top-slide .img-top-slide {
     width: calc(50% - 178px); } }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+  #news-page .list-news {
+    margin-left: -7px;
+    margin-right: -7px; }
+    #news-page .list-news .col-xl-4 {
+      padding: 0 8px; }
+  #news-page .item-news {
+    margin-bottom: 48px; }
+    #news-page .item-news .title-news {
+      font-size: 16px; }
+  #news-page .pagination {
+    margin-bottom: 56px; }
+
   #news-detail-page .slick-slide:hover {
     transform: initial; }
   #news-detail-page .prev-arrow {
@@ -2169,6 +2198,11 @@ main .nav-tabs {
     footer .logo-footer {
       padding-top: 40px; }
 
+  #news-page .pagination {
+    margin-top: -8px;
+    margin-bottom: 56px; }
+  #news-page .list-news {
+    padding-top: 50px; }
   #news-page .title-slide-news {
     font-size: 24px;
     line-height: 32px; }
@@ -2189,22 +2223,30 @@ main .nav-tabs {
     right: 5px;
     z-index: 1;
     top: 19%; }
+  #news-page .navtab-custom {
+    overflow-x: auto;
+    margin-bottom: 32px; }
   #news-page .nav-tabs {
-    justify-content: initial;
-    margin-bottom: 40px; }
+    width: 700px;
+    margin-bottom: 12px; }
     #news-page .nav-tabs .nav-item {
-      flex: inherit;
-      text-align: center;
-      padding: 0 8px 16px 8px; }
+      text-align: center; }
       #news-page .nav-tabs .nav-item .nav-link {
         font-size: 16px;
-        line-height: 22px; }
+        line-height: 22px;
+        font-weight: normal; }
         #news-page .nav-tabs .nav-item .nav-link::before {
-          padding-top: 4px;
           margin-bottom: 10px; }
         #news-page .nav-tabs .nav-item .nav-link.active::before {
-          padding-top: 4px;
           margin-bottom: 10px; }
+
+  .item-news {
+    margin-bottom: 48px; }
+    .item-news .title-news {
+      font-size: 16px;
+      line-height: 22px; }
+    .item-news .cate-news {
+      margin-top: 16px; }
 
   .display-md {
     display: block; }

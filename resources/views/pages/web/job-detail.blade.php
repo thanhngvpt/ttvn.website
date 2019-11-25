@@ -84,3 +84,11 @@
 		</div>
 	</div>
 @endsection
+
+@section('page-styles')
+	<style>
+		.navbar-top-area .title-page {
+			padding-bottom: 87px;
+		}
+	</style>
+@endsection

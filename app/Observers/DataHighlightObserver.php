@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Redis;
 
-class DataHighlightObserver extends BaseObserver
+class DataHighLightObserver extends BaseObserver
 {
-    protected $cachePrefix = 'DataHighlightModel';
+    protected $cachePrefix = 'DataHighLightModel';
 
     public function created($model)
     {
