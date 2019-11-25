@@ -18,3 +18,8 @@
         </a>
     @endforeach
 </div>
+<div class="text-center">
+    <a href="#" class="btn btn-outline-success btn-see-more-news">
+        Xem tất cả
+    </a>
+</div>

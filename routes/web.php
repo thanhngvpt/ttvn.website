@@ -57,6 +57,6 @@ Route::get('introduce-company', function () {
     return view('pages.web.introduce-company');
 });
 
-Route::get('scope-active', function () {
-    return view('pages.web.scope-active');
-});
+Route::get('scope-active', 'Web\ScopeActiveController@index');
+Route::get('news', 'Web\NewsController@index');
+Route::get('get-news-via-category', 'Web\NewsController@getNewsViaCategory');

@@ -323,6 +323,27 @@ class="background-white"
           },
           success: function (res) {
               $('#cate-'+cate_id).html(res)
+              $('.slide-top-news').not('.slick-initialized').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                prevArrow: '<img src="{{ asset("images/arrow-left-ad.svg") }}" class="img-fluid prev-arrow" />',
+                nextArrow: '<img src="{{ asset("images/arrow-right-ad.svg") }}" class="img-fluid next-arrow" />',
+                responsive: [
+                  {
+                    breakpoint: 1023,
+                    settings: {
+                      slidesToShow: 2
+                    }
+                  },
+                  {
+                    breakpoint: 767,
+                    settings: {
+                      slidesToShow: 1
+                    }
+                  }
+                ]
+              });
           }
         });
       })

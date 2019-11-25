@@ -13,256 +13,80 @@
 		<div class="container">
 			<ul class="nav nav-tabs">
 			    <li class="nav-item">
-			        <a class="nav-link active" data-toggle="tab" href="#tab_all">Tất cả</a>
+			        <a class="nav-link active" data-category-id="0" data-toggle="tab" href="#tab_all">Tất cả</a>
+				</li>
+				@foreach($categories as $category)
+			    <li class="nav-item category-click">
+			        <a class="nav-link" data-toggle="tab" data-category-id="{{$category->id}}" href="#news-tab-{{$category->id}}">{{$category->name}}</a>
 			    </li>
-			    <li class="nav-item">
-			        <a class="nav-link" data-toggle="tab" href="#realty_tab">Bất động sản</a>
-			    </li>
-			    <li class="nav-item">
-			        <a class="nav-link" data-toggle="tab" href="#technology_tab">Công nghệ</a>
-			    </li>
-			    <li class="nav-item">
-			        <a class="nav-link" data-toggle="tab" href="#energy_tab">Năng lượng</a>
-			    </li>
-			    <li class="nav-item">
-			        <a class="nav-link" data-toggle="tab" href="#cultural_tab">Văn hoá</a>
-			    </li>
+			    @endforeach
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content">
-				<div class="tab-pane active" id="tab_all">
+				<div class="tab-pane active" data-category-id="0" id="tab_all">
 					<div class="news-slide">
+						@foreach($hot_news as $hot_new)
 						<div class="item-slide">
 							<div class="item-slide-news">
 								<div class="img-slide-news">
-									<img src="{{ asset('images/slide-news.png') }}" class="img-fluid">
+									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
 								</div>
 								<div class="content-slide-news">
 									<button class="btn tag-news">
-										Văn hoá - sự kiện
+										{{$hot_new->newCategory->name}}
 									</button>
 									<div class="title-slide-news">
-										Year End Party 2018: One TTVN - One Dream
+											{{$hot_new->name}}
 									</div>
 									<div class="des-slide-news">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+											{{$hot_new->content}}
 									</div>
 									<div class="date-slide-news">
-										27/09/2021
+											{!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="item-slide">
-							<div class="item-slide-news">
-								<div class="img-slide-news">
-									<img src="{{ asset('images/slide-news.png') }}" class="img-fluid">
-								</div>
-								<div class="content-slide-news">
-									<button class="btn tag-news">
-										Văn hoá - sự kiện
-									</button>
-									<div class="title-slide-news">
-										Year End Party 2018: One TTVN - One Dream
-									</div>
-									<div class="des-slide-news">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-									</div>
-									<div class="date-slide-news">
-										27/09/2021
-									</div>
-								</div>
-							</div>
-						</div>
+						@endforeach
 					</div>
-					<div class="row list-news">
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-1.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Fugiat ullamco reprehenderit Lorem nostrud
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-2.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Sint excepteur labore exercitation labore
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
+					<div class="news-content">
+						<div class="row list-news">
+							@foreach($data['news'] as $item)
+							<div class="col-xl-4 col-md-6">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+											{{$item->newCategory->name}}
+									</div>
+									<div class="title-news">
+											{{$item->name}}
+									</div>
+									<div class="des-news">
+											{{$item->content}}
+									</div>
+									<div class="date-news">
+											{!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
+									</div>
 								</div>
 							</div>
+							@endforeach
 						</div>
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-3.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Nulla minim ullamco incididunt nisi adipisicing ad
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-4.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Fugiat ullamco reprehenderit Lorem nostrud
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-5.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Sint excepteur labore exercitation labore
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-6.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Nulla minim ullamco incididunt nisi adipisicing ad
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-7.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Fugiat ullamco reprehenderit Lorem nostrud
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-8.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Sint excepteur labore exercitation labore
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6">
-							<div class="item-news">
-								<div class="img-news">
-									<img src="{{ asset('images/news-9.png') }}" class="img-fluid" />
-								</div>
-								<div class="cate-news">
-									Công nghệ cao
-								</div>
-								<div class="title-news">
-									Nulla minim ullamco incididunt nisi adipisicing ad
-								</div>
-								<div class="des-news">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-								</div>
-								<div class="date-news">
-									27/09/2021
-								</div>
-							</div>
-						</div>
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
+							@for($i=1;$i<=$data['total_page'];$i++)
+							<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
+							@endfor
+							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+						</ul>
 					</div>
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item"><a class="page-link" href="#">6</a></li>
-						<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
-					</ul>
 				</div>
-				<div class="tab-pane container fade" id="realty_tab">...</div>
-				<div class="tab-pane container fade" id="technology_tab">...</div>
-				<div class="tab-pane container fade" id="energy_tab">...</div>
-				<div class="tab-pane container fade" id="cultural_tab">...</div>
+				@foreach($categories as $category)
+				<div class="tab-pane container fade" data-category-id={{$category->id}} id="news-tab-{{$category->id}}">
+					
+				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
@@ -291,7 +115,49 @@
   				dots: true,
   				prevArrow: '<img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid prev-arrow" />',
   				nextArrow: '<img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid next-arrow" />'
-  			});
+			  });
 		});
+
+		$(document).on('click', '.child-item', function() {
+			let next_page = $(this).data('page-number');
+			let category_id = $('.tab-pane.active').data('category-id')
+
+			$.ajax({
+				url: "{{action('Web\NewsController@index')}}",
+				type: "GET",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					page: next_page,
+					category_id: category_id
+				},
+				success: function (res) {
+					$('.news-content').html(res)
+				}
+			});
+		})
+
+		$(document).on('click', '.category-click', function() {
+			let category_id = $('.tab-pane.active').data('category-id')
+			
+			$.ajax({
+				url: "{{action('Web\NewsController@getNewsViaCategory')}}",
+				type: "GET",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					category_id: category_id
+				},
+				success: function (res) {
+					$('.tab-pane.active').html(res)
+					$('.news-slide').not('.slick-initialized').slick({
+						infinite: true,
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						dots: true,
+						prevArrow: '<img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid prev-arrow" />',
+						nextArrow: '<img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid next-arrow" />'
+					});
+				}
+			});
+		})
 	</script>
 @endsection
