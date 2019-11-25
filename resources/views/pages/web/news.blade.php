@@ -29,7 +29,7 @@
 				<div class="tab-pane active" data-category-id="0" id="tab_all">
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
-						<div class="item-slide">
+						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', $hot_new->id) !!}'">
 							<div class="item-slide-news">
 								<div class="img-slide-news">
 									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">

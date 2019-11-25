@@ -64,4 +64,15 @@ class NewsController extends Controller
 
         return $html;
     }
+
+    public function details($id)
+    {
+        $news = TableNew::find($id);
+        $new_relations = TableNew::where('new_category_id', $news->id)->orderBy('order', 'desc')->take(12)->get();
+       
+        return view('pages.web.news-detail', [
+            'news' => $news,
+            'new_relations' => $new_relations
+        ]); 
+    }
 }
