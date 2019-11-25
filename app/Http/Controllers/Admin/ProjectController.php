@@ -12,6 +12,7 @@ use App\Services\FileUploadServiceInterface;
 use App\Services\ImageServiceInterface;
 use App\Http\Requests\BaseRequest;
 use App\Repositories\ImageRepositoryInterface;
+use \App\Repositories\FieldRepositoryInterface;
 
 class ProjectController extends Controller
 {
@@ -26,17 +27,20 @@ class ProjectController extends Controller
 
     /** @var  ImageServiceInterface $imageService */
     protected $imageService;
+    protected $fieldRepo;
 
     public function __construct(
         ProjectRepositoryInterface $projectRepository,
         FileUploadServiceInterface      $fileUploadService,
         ImageRepositoryInterface        $imageRepository,
-        ImageServiceInterface           $imageService
+        ImageServiceInterface           $imageService,
+        FieldRepositoryInterface $fieldRepo
     ) {
         $this->projectRepository = $projectRepository;
         $this->fileUploadService        = $fileUploadService;
         $this->imageRepository          = $imageRepository;
         $this->imageService             = $imageService;
+        $this->fieldRepo = $fieldRepo;
     }
 
     /**
@@ -85,6 +89,7 @@ class ProjectController extends Controller
             [
                 'isNew'     => true,
                 'project' => $this->projectRepository->getBlankModel(),
+                'fields' => $this->fieldRepo->all()
             ]
         );
     }
@@ -99,12 +104,13 @@ class ProjectController extends Controller
     {
         $input = $request->only(
             [
-                            'cover_image_id',
-                            'name',
-                            'address',
-                            'link',
-                            'order',
-                        ]
+                'cover_image_id',
+                'name',
+                'address',
+                'link',
+                'order',
+                'field_id'
+            ]
         );
         $project = $this->projectRepository->create($input);
 
@@ -152,6 +158,7 @@ class ProjectController extends Controller
             [
                 'isNew' => false,
                 'project' => $project,
+                'fields' => $this->fieldRepo->all()
             ]
         );
     }
@@ -189,6 +196,7 @@ class ProjectController extends Controller
                             'address',
                             'link',
                             'order',
+                            'field_id'
                         ]
         );
         $project = $this->projectRepository->update($project, $input);

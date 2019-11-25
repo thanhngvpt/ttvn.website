@@ -173,6 +173,24 @@ class CulturalCompanyController extends Controller
             }
         }
 
+        if ($request->hasFile('ttvn-image')) {
+            $file = $request->file('ttvn-image');
+
+            $image = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if (!empty($image)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['ttvn_image_id' => $image->id]);
+            }
+        }
+
         if ($request->hasFile('cover-image')) {
             $file = $request->file('cover-image');
 
@@ -187,7 +205,7 @@ class CulturalCompanyController extends Controller
             );
 
             if (!empty($image)) {
-                $this->culturalCompanyRepository->update($culturalCompany, ['ttvn_image_id' => $image->id]);
+                $this->culturalCompanyRepository->update($culturalCompany, ['cover_image_id' => $image->id]);
             }
         }
 
@@ -341,9 +359,9 @@ class CulturalCompanyController extends Controller
             }
         }
 
-        if ($request->hasFile('cover-image')) {
+        if ($request->hasFile('ttvn-image')) {
             $currentImage = $culturalCompany->ttvnImage;
-            $file = $request->file('cover-image');
+            $file = $request->file('ttvn-image');
 
             $newImage = $this->fileUploadService->upload(
                 'icon_image',
@@ -357,6 +375,29 @@ class CulturalCompanyController extends Controller
 
             if (!empty($newImage)) {
                 $this->culturalCompanyRepository->update($culturalCompany, ['ttvn_image_id' => $newImage->id]);
+
+                if (!empty($currentImage)) {
+                    $this->fileUploadService->delete($currentImage);
+                }
+            }
+        }
+
+        if ($request->hasFile('cover-image')) {
+            $currentImage = $culturalCompany->coverImage;
+            $file = $request->file('cover-image');
+
+            $newImage = $this->fileUploadService->upload(
+                'icon_image',
+                $file,
+                [
+                    'entity_type' => 'icon_image',
+                    'entity_id'   => $culturalCompany->id,
+                    'title'       => $request->input('title', ''),
+                ]
+            );
+
+            if (!empty($newImage)) {
+                $this->culturalCompanyRepository->update($culturalCompany, ['cover_image_id' => $newImage->id]);
 
                 if (!empty($currentImage)) {
                     $this->fileUploadService->delete($currentImage);

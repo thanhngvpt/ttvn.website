@@ -43,7 +43,7 @@ class Job extends Base
      */
     protected $hidden = [];
 
-    protected $dates  = ['end_time'];
+    protected $dates  = [];
 
     protected $presenter = \App\Presenters\JobPresenter::class;
 

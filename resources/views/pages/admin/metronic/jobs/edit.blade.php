@@ -37,7 +37,7 @@
                 todayHighlight: true,
                 autoclose: true,
                 pickerPosition: 'bottom-left',
-                format: 'yyyy/mm/dd hh:ii'
+                format: 'yyyy/mm/dd'
             });
         });
     </script>

@@ -148,6 +148,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('field_id')) has-danger @endif">
+                                <label for="field_id">Lĩnh vực</label>
+                                <select name="field_id" id="field_id" class="form-control m-input">
+                                    @foreach($fields as $field)
+                                    <option @if($project->field_id == $field->id) selected @endif value="{{$field->id}}">{{$field->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">

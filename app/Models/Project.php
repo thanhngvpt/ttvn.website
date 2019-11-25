@@ -25,6 +25,7 @@ class Project extends Base
         'address',
         'link',
         'order',
+        'field_id'
     ];
 
     /**

@@ -170,7 +170,7 @@
                                         <label for="new_category_id">Loại tin tức</label>
                                         <select name="new_category_id" id="new_category_id" class="form-control m-input">
                                             @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            <option @if($tableNew->new_category_id == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

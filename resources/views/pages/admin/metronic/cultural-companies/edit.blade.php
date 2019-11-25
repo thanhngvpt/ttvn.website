@@ -8,7 +8,7 @@
         .row {
             margin-bottom: 15px;
         }
-        #cover-image-preview, #icon1-image-preview, #icon2-image-preview, #icon3-image-preview  {
+        #ttvn-image-preview, #cover-image-preview, #icon1-image-preview, #icon2-image-preview, #icon3-image-preview  {
             height: 100px;
         }
         
@@ -24,6 +24,10 @@
         $(document).ready(function () {
             $('#cover-image').change(function (event) {
                 $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
+            });
+
+            $('#ttvn-image').change(function (event) {
+                $('#ttvn-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
             });
 
             $('#icon1-image').change(function (event) {
@@ -128,7 +132,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-2">
+                            <div class="form-group m-form__group row" style="max-width: 500px;">
+                                @if( !empty($culturalCompany->present()->coverImage()) )
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! $culturalCompany->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
+                                @else
+                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                @endif
+                                <input type="file" style="display: none;" id="cover-image" name="cover-image">
+                                <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
+                                    Ảnh minh họa
+                                    <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
                             <div class="form-group m-form__group row @if ($errors->has('introduce')) has-danger @endif">
                                 <label for="introduce">Giới thiệu chung(văn hóa doanh nghiệp TTVN)</label>
                                 <input type="text" class="form-control m-input" name="introduce" id="introduce" required value="{{ old('introduce') ? old('introduce') : $culturalCompany->introduce }}">
@@ -257,14 +275,14 @@
                         <div class="col-md-2">
                             <div class="form-group m-form__group row" style="max-width: 500px;">
                                 @if( !empty($culturalCompany->present()->ttvnImage()) )
-                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! $culturalCompany->present()->ttvnImage()->present()->url !!}" alt="" class="margin"/>
+                                <img id="ttvn-image-preview" style="max-width: 100%;" src="{!! $culturalCompany->present()->ttvnImage()->present()->url !!}" alt="" class="margin"/>
                                 @else
-                                <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                <img id="ttvn-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
                                 @endif
-                                <input type="file" style="display: none;" id="cover-image" name="cover-image">
+                                <input type="file" style="display: none;" id="ttvn-image" name="ttvn-image">
                                 <p class="help-block" style="font-weight: bolder; display: block; width: 100%; text-align: center;">
                                     hình ảnh
-                                    <label for="cover-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
+                                    <label for="ttvn-image" style="font-weight: 100; color: #549cca; margin-left: 10px; cursor: pointer;">@lang('admin.pages.common.buttons.edit')</label>
                                 </p>
                             </div>
                         </div>

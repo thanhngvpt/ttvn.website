@@ -92,6 +92,11 @@ class Field extends Base
         return $this->hasOne(\App\Models\Image::class, 'id', 'icon3_image_id');
     }
 
+    public function projects()
+    {
+        return $this->hasMany(\App\Models\Project::class, 'field_id', 'id');
+    }
+
     
 
     // Utility Functions

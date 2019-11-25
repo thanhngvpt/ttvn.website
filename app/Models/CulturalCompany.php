@@ -39,6 +39,7 @@ class CulturalCompany extends Base
         'ttvn_title',
         'ttvn_content',
         'we_find_introduce',
+        'cover_image_id'
     ];
 
     /**
@@ -77,6 +78,11 @@ class CulturalCompany extends Base
     public function ttvnImage()
     {
         return $this->hasOne(\App\Models\Image::class, 'id', 'ttvn_image_id');
+    }
+
+    public function coverImage()
+    {
+        return $this->hasOne(\App\Models\Image::class, 'id', 'cover_image_id');
     }
 
     

@@ -13,7 +13,7 @@ class="background-white"
     <div class="container">
       <ul class="nav nav-tabs">
         @foreach ($fields as $key => $field)
-        <li class="nav-item">
+        <li class="nav-item field-tab-click" data-field-id="{{$field->id}}">
           <a class="nav-link @if($key==0) active @endif" data-toggle="tab" href="#field-tab-{{$field->id}}">{{$field->name}}</a>
         </li>
         @endforeach
@@ -243,6 +243,46 @@ class="background-white"
         })
         .mouseout(function () {
           $(this).attr('src', '{{ asset("images/arrow-left-ad.svg") }}');
+        })
+
+        $(document).on('click', '.field-tab-click', function() {
+          let field_id = $(this).data('field-id');
+          
+          $.ajax({
+            url: "{{action('Web\ScopeActiveController@getProjects')}}",
+            type: "GET",
+            data: {
+              _token: "{!! csrf_token() !!}",
+              field_id: field_id
+            },
+            success: function (res) {
+              $('.content-page').html(res)
+              $('.slide-projects').not('.slick-initialized').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                dots: true,
+                prevArrow: '<img src="{{ asset("images/arrow-left-ad.svg") }}" class="img-fluid prev-arrow" />',
+                nextArrow: '<img src="{{ asset("images/arrow-right-ad.svg") }}" class="img-fluid next-arrow" />',
+                responsive: [
+                {
+                  breakpoint: 1023,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                  }
+                },
+                {
+                  breakpoint: 767,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
+                }
+              ]
+              });
+            }
+          });
         })
 		});
 	</script>
