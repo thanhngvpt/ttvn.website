@@ -556,11 +556,12 @@ footer {
 	}
 	.area-apply {
 		margin-top: 56px;
-		padding: 56px 188px;
+		padding: 55px 188px;
 		border-radius: 8px;
 		background-image: url('../images/bg-form.svg');
 		background-size: cover;
 		background-repeat: no-repeat;
+		box-shadow: 0px 16px 32px rgba(87, 174, 91, 0.32);
 
 		.title-apply {
 			font-size: 32px;
@@ -602,7 +603,7 @@ footer {
 			cursor: pointer;
 		}
 		#file_apply {
-			opacity: 0;
+			display: none;
 		}
 		.btn-submit-apply {
 			text-align: center;
@@ -1810,7 +1811,6 @@ main {
 #introduce-page {
 	.list-member-mb {
 		display: none;
-		display: block;
     padding-top: 48px;
     padding-bottom: 40px;
 		background-color: #EFFCF1;
