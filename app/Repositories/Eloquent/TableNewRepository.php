@@ -13,7 +13,7 @@ class TableNewRepository extends SingleKeyModelRepository implements TableNewRep
 
     public function getByNewsCategory($page, $category_id)
     {
-        $page_size = 2;
+        $page_size = 9;
         $offset = ($page - 1) * $page_size;
 
         $query = $this->getBlankModel()->where('is_enabled', 1);
