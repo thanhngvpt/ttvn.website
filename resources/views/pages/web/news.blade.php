@@ -55,7 +55,7 @@
 					<div class="news-content">
 						<div class="row list-news">
 							@foreach($data['news'] as $item)
-							<div class="col-xl-4 col-md-6">
+							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', $item->id) !!}'">
 								<div class="item-news">
 									<div class="img-news">
 										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
