@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Http\Controllers\Web;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PaginationRequest;
+use \App\Repositories\TableNewRepositoryInterface;
+use App\Models\NewCategory;
+use App\Models\TableNew;
+use View;
+
+class NewsController extends Controller
+{
+    protected $newRepo;
+    public function __construct(TableNewRepositoryInterface $newRepo)
+    {
+        $this->newRepo = $newRepo;
+    }
+    public function index(PaginationRequest $request)
+    {
+        $categories = NewCategory::orderBy('order', 'asc')->get();
+        $page =  $request->get('page', 1);
+        $category_id = $request->get('category_id', 0);
+        if ($category_id != 0) {
+            $hot_news = TableNew::where('new_category_id', $category_id)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+        } else {
+            $hot_news = TableNew::where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+        }
+        
+        $data = $this->newRepo->getByNewsCategory($page, $category_id);
+
+        if($request->ajax()){
+            $html = View::make('pages.web.news-next-page', ['data' => $data])->render();
+
+            return $html;
+        }
+
+        return view('pages.web.news', [
+            'data' => $data,
+            'categories' => $categories,
+            'hot_news' => $hot_news
+        ]);
+    }
+
+    public function getNewsViaCategory(PaginationRequest $request)
+    {
+        $page =  $request->get('page', 1);
+        $category_id = $request->get('category_id', 0);
+        if ($category_id != 0) {
+            $hot_news = TableNew::where('new_category_id', $category_id)
+                            ->where('is_enabled', 1)
+                            ->orderBy('order', 'esc')
+                            ->orderBy('id', 'desc')
+                            ->take(4)
+                            ->get();
+        } else {
+            $hot_news = TableNew::where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+        }
+       
+        
+        $data = $this->newRepo->getByNewsCategory($page, $category_id);
+
+        $html = View::make('pages.web.news-next-cate', ['data' => $data, 'hot_news' => $hot_news])->render();
+
+        return $html;
+    }
+}
