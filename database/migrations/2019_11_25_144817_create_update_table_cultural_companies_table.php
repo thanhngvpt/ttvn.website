@@ -12,7 +12,7 @@ class CreateupdateTableCulturalCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::table('update_table_cultural_companies', function (Blueprint $table) {
+        Schema::table('cultural_companies', function (Blueprint $table) {
             $table->bigInteger('cover_image_id')->default(0);
         });
     }
