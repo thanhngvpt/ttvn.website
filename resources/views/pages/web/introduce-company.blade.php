@@ -25,7 +25,7 @@ class="background-white"
       <div class="tab-pane active" id="company">
         <div class="container">
           <div class="title-border-bottom">
-            Giới thiệu chung
+            {{$introduce->title_introduce}}
           </div>
         </div>
         <div class="introduce-general">
@@ -33,16 +33,14 @@ class="background-white"
             <div class="row position-relative">
               <div class="col-md-4">
                 <div class="img-introduce">
-                  <img src="{{ asset('images/introduce.png') }}" />
+                  <img src="{!! $introduce->present()->contentImage()->present()->url !!}" />
                 </div>
               </div>
               <div class="col-md-4">
-                <p>Công ty Cổ phần Tập đoàn Trường Thành Việt Nam (TTVN Group) là doanh nghiệp kinh doanh đa ngành, trong đó tập trung vào 04 lĩnh vực chính đều hướng tới các mục tiêu xanh, sạch và gắn với sự phát triển của cộng đồng, xã hội.</p>
-                <p>Một trong những yếu tố quan trọng tạo nên sức mạnh của TTVN Group là: </p>
+                <p>{{$introduce->content}}</p>
               </div>
               <div class="col-md-4">
-                <p>Xây dựng đội ngũ quản lý có năng lực, trình độ cao, sáng tạo và đoàn kết. </p>
-                <p>Với triết lý “Quy tụ NHÂN TÀI, gắn kết NHÂN TÂM, nâng tầm TRÍ TUỆ và chia sẻ THÀNH CÔNG” sẽ giúp TTVN Group phát triển vững chắc trong thời gian tới.</p>
+                  <p>{{$introduce->content2}}</p>
               </div>
               <div class="view-more-intro clearfix">
                 <div class="float-left">Xem tiếp</div>
@@ -60,12 +58,11 @@ class="background-white"
                 Tầm nhìn - Sứ mệnh
               </div>
               <div class="des-cultural-job">
-                <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-                <p>Quy tụ nhân tài, gắn kết nhân tâm, nâng tầm trí tuệ và chia sẻ thành công</p>
+                <p>{{$introduce->mission}}</p>
               </div>	
             </div>
             <div class="column-right column-image">
-              <img src="{{ asset('images/view-intro.png') }}" class="img-fluid">
+              <img src="{!! $introduce->present()->missionImage()->present()->url !!}" class="img-fluid">
             </div>
           </div>
           <div class="primary-value-slide">
@@ -158,21 +155,11 @@ class="background-white"
         <div class="history-develop">
           <div class="container">
             <ul class="nav nav-tabs">
+              @foreach($histories as $key => $history)
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#2012">2012</a>
+                <a class="nav-link @if ($key == 0) active @endif" data-toggle="tab" href="#2012">{!!  date('Y', (strtotime( $history->date_start))) !!}</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#2013">2013</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#2015">2015</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#2017">2017</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#2018">2018</a>
-              </li>
+              @endforeach
             </ul>
             <div class="tab-content">
             <div class="tab-pane active" id="2012">
@@ -180,34 +167,22 @@ class="background-white"
                 Lịch sử phát triển
               </div>
               <div class="history-slide">
+                @foreach($histories as $history)
                 <div class="item-slide">
                   <div class="item-history-slide">
                     <div class="text-history-slide">
-                      <p>Ngày 19 tháng 10 năm 2017, Công ty TNHH MTV chính thức chuyển đổi loại hình doanh nghiệp thành Công ty Cổ phần với tên gọi mới là Công ty Cổ phần Tập đoàn Trường Thành Việt Nam.</p>
-                      <p>TTVN Group đã cấu trúc lại doanh nghiệp theo chiều dọc thành 4 Tổng công ty tương ứng với 4 lĩnh vực hoạt động chính. Các lĩnh vực trên cùng với các Dự án có ý nghĩa xã hội cao, đã và đang góp phần vào việc xây dựng cộng đồng và nâng cao vị thế, uy tín của TTVN Group.</p>
+                      {!! $history->content !!}
                     </div>
                     <div class="img-history-slide">
-                      <img src="{{ asset('images/history-develop.png') }}" class="img-fluid" />
+                      <img src="{!! $history->present()->coverImage()->present()->url !!}" class="img-fluid" />
                     </div>
                   </div>
                 </div>
-                <div class="item-slide">
-                  <div class="item-history-slide">
-                    <div class="text-history-slide">
-                      <p>Ngày 19 tháng 10 năm 2017, Công ty TNHH MTV chính thức chuyển đổi loại hình doanh nghiệp thành Công ty Cổ phần với tên gọi mới là Công ty Cổ phần Tập đoàn Trường Thành Việt Nam.</p>
-                      <p>TTVN Group đã cấu trúc lại doanh nghiệp theo chiều dọc thành 4 Tổng công ty tương ứng với 4 lĩnh vực hoạt động chính. Các lĩnh vực trên cùng với các Dự án có ý nghĩa xã hội cao, đã và đang góp phần vào việc xây dựng cộng đồng và nâng cao vị thế, uy tín của TTVN Group.</p>
-                    </div>
-                    <div class="img-history-slide">
-                      <img src="{{ asset('images/history-develop.png') }}" class="img-fluid" />
-                    </div>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </div>
             <div class="tab-pane" id="2013"></div>
             <div class="tab-pane" id="2015"></div>
-            <div class="tab-pane" id="2017"></div>
-            <div class="tab-pane" id="2018"></div>
             </div>
           </div>
         </div>
