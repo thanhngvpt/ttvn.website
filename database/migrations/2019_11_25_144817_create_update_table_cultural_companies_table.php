@@ -24,6 +24,6 @@ class CreateupdateTableCulturalCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('update_table_cultural_companies');
+        // Schema::dropIfExists('update_table_cultural_companies');
     }
 }
