@@ -13,7 +13,7 @@
                             {{$hot_new->name}}
                     </div>
                     <div class="des-slide-news">
-                            {!!$hot_new->content!!}
+                            {!!$hot_new->sapo!!}
                     </div>
                     <div class="date-slide-news">
                             {!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
@@ -38,7 +38,7 @@
                             {{$item->name}}
                     </div>
                     <div class="des-news">
-                            {!!$item->content!!}
+                            {!!$item->sapo!!}
                     </div>
                     <div class="date-news">
                             {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}

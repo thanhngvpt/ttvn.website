@@ -12,7 +12,7 @@
                         {{$item->name}}
                 </div>
                 <div class="des-news">
-                        {!!$item->content!!}
+                        {!!$item->sapo!!}
                 </div>
                 <div class="date-news">
                         {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
