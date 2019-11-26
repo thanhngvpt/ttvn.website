@@ -12,7 +12,7 @@ class CreatealterLeaderShipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('leader_ships', function (Blueprint $table) {
+        Schema::table('leader_ships', function (Blueprint $table) {
             $table->text('file_text')->nullable();
         });
     }
