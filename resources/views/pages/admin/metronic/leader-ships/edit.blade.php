@@ -125,6 +125,14 @@
                         </div>
                     </div>
                     <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group m-form__group row @if ($errors->has('file_text')) has-danger @endif">
+                                    <label for="file_text">Hồ sơ</label>
+                                    <input type="text" class="form-control m-input" name="file_text" id="file_text" required value="{{ old('file_text') ? old('file_text') : $leaderShip->file_text }}">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('position')) has-danger @endif">
                                 <label for="position">@lang('admin.pages.leader-ships.columns.position')</label>

@@ -147,12 +147,20 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-5">
                             <div class="form-group m-form__group row @if ($errors->has('content')) has-danger @endif">
                                 <label for="content">Nội dung</label>
                                 <input type="text" class="form-control m-input" name="content" id="content" required value="{{ old('content') ? old('content') : $introduce->content }}">
                             </div>
                         </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group m-form__group row @if ($errors->has('content2')) has-danger @endif">
+                                <label for="content">Nội dung 2</label>
+                                <input type="text" class="form-control m-input" name="content2" id="content2" required value="{{ old('content2') ? old('content2') : $introduce->content2 }}">
+                            </div>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-2">
@@ -193,6 +201,10 @@
                             <div class="form-group m-form__group row @if ($errors->has('overview_intro')) has-danger @endif">
                                 <label for="overview_intro">Giới thiệu tổng quan</label>
                                 <input type="text" class="form-control m-input" name="overview_intro" id="overview_intro" required  value="{{ old('overview_intro') ? old('overview_intro') : $introduce->overview_intro }}">
+                            </div>
+                            <div class="form-group m-form__group row @if ($errors->has('overview_intro2')) has-danger @endif">
+                                <label for="overview_intro2">Giới thiệu tổng quan 2</label>
+                                <input type="text" class="form-control m-input" name="overview_intro2" id="overview_intro2" required  value="{{ old('overview_intro2') ? old('overview_intro2') : $introduce->overview_intro2 }}">
                             </div>
                         </div>
                     </div>

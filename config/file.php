@@ -12,7 +12,7 @@ return [
             'image/png'  => 'png',
             'image/jpeg' => 'jpg',
             'image/gif'  => 'gif',
-            'image/svg' => 'svg',
+            'image/svg+xml' => 'svg',
         ],
     ],
     'categories' => [

@@ -17,12 +17,13 @@ class ImageService extends BaseService implements ImageServiceInterface
      */
     public function resizeImage($path, $config, $fileUploadedPath)
     {
-        $image  = imagecreatefromstring(file_get_contents($path));
-        $frame  = $this->getImageFrameToCrop( getimagesize($path), $config );
+        // dd($path);
+        // $image  = imagecreatefromstring(file_get_contents($path));
+        // $frame  = $this->getImageFrameToCrop( getimagesize($path), $config );
 
         // $image = imagecrop($image, ['x' => $frame['x'], 'y' => $frame['y'], 'width' => $frame['width'], 'height' => $frame['height']]);
         // if ($image !== false) {
-            imagepng($image, $fileUploadedPath);
+            // imagepng($image, $fileUploadedPath);
             return true;
         // }
 

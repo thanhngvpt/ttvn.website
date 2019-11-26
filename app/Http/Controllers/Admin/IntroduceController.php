@@ -104,6 +104,8 @@ class IntroduceController extends Controller
                             'mission',
                             'content_intro',
                             'overview_intro',
+                            'content2',
+                            'overview_intro2'
                         ]
         );
 
@@ -227,6 +229,8 @@ class IntroduceController extends Controller
                 'mission',
                 'content_intro',
                 'overview_intro',
+                'content2',
+                'overview_intro2'
             ]
         );
         

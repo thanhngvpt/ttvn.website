@@ -29,6 +29,8 @@ class Introduce extends Base
         'content_intro',
         'overview_intro',
         'diagram_image_id',
+        'content2',
+        'overview_intro2'
     ];
 
     /**

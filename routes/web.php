@@ -49,13 +49,9 @@ Route::get('news', function () {
     return view('pages.web.news');
 });
 
-Route::get('news-detail', function () {
-    return view('pages.web.news-detail');
-});
+Route::get('news-detail/{id}', 'Web\NewsController@details');
 
-Route::get('introduce-company', function () {
-    return view('pages.web.introduce-company');
-});
+Route::get('introduce-company', 'Web\IntroduceCompanyController@index');
 
 Route::get('scope-active', 'Web\ScopeActiveController@index');
 Route::get('news', 'Web\NewsController@index');

@@ -26,6 +26,7 @@ class LeaderShip extends Base
         'file',
         'order',
         'is_enabled',
+        'file_text'
     ];
 
     /**

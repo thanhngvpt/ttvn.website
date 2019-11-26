@@ -106,6 +106,7 @@ class LeaderShipController extends Controller
                             'file',
                             'order',
                             'is_enabled',
+                            'file_text'
                         ]
         );
 
@@ -210,6 +211,7 @@ class LeaderShipController extends Controller
                             'file',
                             'order',
                             'is_enabled',
+                            'file_text'
                         ]
         );
 
