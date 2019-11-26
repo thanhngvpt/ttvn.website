@@ -12,16 +12,16 @@ class="background-white"
     <div class="container">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link @if ($type==1) active @endif" data-toggle="tab" href="#company">Về TTVN Group</a>
+          <a class="nav-link active" data-toggle="tab" href="#company">Về TTVN Group</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link @if ($type==2) active @endif" data-toggle="tab" href="#leader">Ban lãnh đạo</a>
+          <a class="nav-link" data-toggle="tab" href="#leader">Ban lãnh đạo</a>
         </li>
       </ul>
     </div>
       
     <div class="tab-content">
-      <div class="tab-pane @if ($type==1) active @endif" id="company">
+      <div class="tab-pane active" id="company">
         <div class="container">
           <div class="title-border-bottom">
             {{$introduce->title_introduce}}
@@ -144,7 +144,7 @@ class="background-white"
           </div>
         </div>
       </div>
-      <div class="tab-pane @if ($type==2) active @endif" id="leader">
+      <div class="tab-pane" id="leader">
         <div class="container">
           <div class="title-border-bottom">
             {{$introduce->title_leader_ship}}
