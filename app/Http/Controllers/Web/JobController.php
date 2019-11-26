@@ -16,8 +16,8 @@ class JobController extends Controller
         $jobs = Job::take(5)->orderBy('id', 'desc');
 
         return view('pages.web.job', [
-            'cultural_companies' => 'cultural_companies',
-            'criteria_candidate' => 'criteria_candidate'
+            'cultural_companies' => $cultural_companies,
+            'criteria_candidate' => $criteria_candidate
         ]);
     }
 }
