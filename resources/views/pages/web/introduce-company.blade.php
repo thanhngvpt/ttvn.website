@@ -7,7 +7,6 @@
 @section('body-class')
 class="background-white"
 @endsection
-
 @section('content')
 	<div id="introduce-page">
     <div class="container">
@@ -66,90 +65,31 @@ class="background-white"
             </div>
           </div>
           <div class="primary-value-slide">
+            @foreach($save_values as $save_value)
             <div class="item-slide">
-              <div class="cultural-job">
-                <div class="column-left column-image">
-                  <img src="{{ asset('images/value-intro.png') }}" class="img-fluid">
-                </div>
-                <div class="column-right column-text">
-                  <div class="title-border-bottom">
-                  Giá trị cốt lõi
+                <div class="cultural-job">
+                  <div class="column-left column-image">
+                    <img src="{!! $save_value->present()->coverImage()->present()->url !!}" class="img-fluid">
                   </div>
-                  <nav>
-                  <div class="nav nav-tabs" id="nav-tab">
-                    <a class="nav-item nav-link active" data-toggle="tab" href="#nav-value-1" role="tab">Nhân</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-2" role="tab">Tâm</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-3" role="tab">Trí</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-4" role="tab">Vượng</a>
-                  </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="nav-value-1" role="tabpanel">
-                    <div class="des-cultural-job">
-                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
+                  <div class="column-right column-text">
+                    <div class="title-border-bottom">
+                    Giá trị cốt lõi
+                    </div>
+                    <nav>
+                    <div class="nav nav-tabs" id="nav-tab">
+                      <a class="nav-item nav-link active" data-toggle="tab" href="#nav-value-1" role="tab">{{$save_value->value}}</a>
+                    </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-value-1" role="tabpanel">
+                      <div class="des-cultural-job">
+                        <p>{{$save_value->content}}</p>
+                      </div>
                     </div>
                   </div>
-                  <div class="tab-pane fade" id="nav-value-2" role="tabpanel">
-                    <div class="des-cultural-job">
-                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-                    </div>
                   </div>
-                  <div class="tab-pane fade" id="nav-value-3" role="tabpanel">
-                    <div class="des-cultural-job">
-                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="nav-value-4" role="tabpanel">
-                    <div class="des-cultural-job">
-                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-                    </div>
-                  </div>
-                </div>
                 </div>
               </div>
-            </div>
-            <div class="item-slide">
-              <div class="cultural-job">
-                <div class="column-left column-image">
-                  <img src="{{ asset('images/value-intro.png') }}" class="img-fluid">
-                </div>
-                <div class="column-right column-text">
-                  <div class="title-border-bottom">
-                  Giá trị cốt lõi
-                  </div>
-                  <nav>
-                  <div class="nav nav-tabs" id="nav-tab">
-                    <a class="nav-item nav-link active" data-toggle="tab" href="#nav-value-1" role="tab">Nhân</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-2" role="tab">Tâm</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-3" role="tab">Trí</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-value-4" role="tab">Vượng</a>
-                  </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="nav-value-1" role="tabpanel">
-                    <div class="des-cultural-job">
-                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="nav-value-2" role="tabpanel">
-                    <div class="des-cultural-job">
-                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="nav-value-3" role="tabpanel">
-                    <div class="des-cultural-job">
-                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="nav-value-4" role="tabpanel">
-                    <div class="des-cultural-job">
-                      <p>Bằng ánh sáng của Trí Huệ, TTVN Group mong muốn tiên phong trong lĩnh vực mới, đột phá trong lĩnh vực kinh doanh truyền thống với chiến lược phát triển nhanh và bền vững, phấn đấu trở thành một trong năm mươi doanh nghiệp hàng đầu Việt Nam và từng bước vươn ra tầm khu vực.</p>
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
         <div class="history-develop">
@@ -191,34 +131,15 @@ class="background-white"
             Đối tác đồng hành
           </div>
           <div class="des-partner-intro">
-            TTVN chào đón cơ hội hợp tác với đối tác chiến lược trong và ngoài nước phù hợp dựa trên tiêu chí không chỉ góp vốn mà còn có khả năng cung cấp hỗ trợ kỹ thuật và thương hiệu tốt để cùng TTVN phát triển mạnh và bền vững.
+            {{$introduce->content_intro}}
           </div>
           <div class="container">
             <div class="partner-slide">
-              <div class="item-slide">
-                <img src="{{ asset('images/partner-1.png') }}" class="img-fluid" />
+              @foreach($partners as $partner)
+              <div class="item-slide" onclick="location.href='{{$partner->link}}'">
+                  <img src="{!! $partner->present()->coverImage()->present()->url !!}" class="img-fluid" />
               </div>
-              <div class="item-slide">
-                <img src="{{ asset('images/partner-3.png') }}" class="img-fluid" />
-              </div>
-              <div class="item-slide">
-                <img src="{{ asset('images/partner-4.png') }}" class="img-fluid" />
-              </div>
-              <div class="item-slide">
-                <img src="{{ asset('images/partner-5.png') }}" class="img-fluid" />
-              </div>
-              <div class="item-slide">
-                <img src="{{ asset('images/partner-6.png') }}" class="img-fluid" />
-              </div>
-              <div class="item-slide">
-                <img src="{{ asset('images/partner-1.png') }}" class="img-fluid" />
-              </div>
-              <div class="item-slide">
-                <img src="{{ asset('images/partner-3.png') }}" class="img-fluid" />
-              </div>
-              <div class="item-slide">
-                <img src="{{ asset('images/partner-4.png') }}" class="img-fluid" />
-              </div>
+              @endforeach
             </div>
           </div>
         </div>
@@ -226,15 +147,15 @@ class="background-white"
       <div class="tab-pane" id="leader">
         <div class="container">
           <div class="title-border-bottom">
-            Hội đồng quản trị và Ban lãnh đạo
+            {{$introduce->title_leader_ship}}
           </div>
           <div class="row des-leader">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              {{$introduce->overview_intro}}
             </div>
             <div class="col-md-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              {{$introduce->overview_intro2}}
             </div>
           </div>
         </div>
@@ -245,106 +166,31 @@ class="background-white"
               <div class="col-md-4"></div>
               <div class="col-md-8">
                 <div class="leader-slide">
+                  @foreach($leader_ships as $key => $leader_ship)
+                  @if ($key % 4 == 0)
                   <div class="item-slide">
+                  @endif
+                  @if ($key % 2 == 0)
                     <div class="row-leader">
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
+                    @endif
+                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
+                        <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
                         <div class="info-leader">
                           <div class="name-leader">
-                            Ông Đặng Trung Kiên
+                            {{$leader_ship->name}}
                           </div>
                           <div class="role-company">
-                            CHỦ TỊCH HĐQT
+                              {{$leader_ship->position}}
                           </div>
                         </div>
                       </div>
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-2.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
+                    @if ($key % 2 ==  1)
                     </div>
-                    <div class="row-leader">
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-2.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    @endif
+                    @if ($key % 4 == 3)
                   </div>
-                  <div class="item-slide">
-                    <div class="row-leader">
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-2.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row-leader">
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                        <img src="{{ asset('images/leader-2.png') }}" class="img-fluid" />
-                        <div class="info-leader">
-                          <div class="name-leader">
-                            Ông Đặng Trung Kiên
-                          </div>
-                          <div class="role-company">
-                            CHỦ TỊCH HĐQT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  @endif
+                  @endforeach
                 </div>
               </div>
             </div>
@@ -352,39 +198,27 @@ class="background-white"
         </div>
         <div class="list-member-mb">
           <div class="leader-slide-mb">
+            @foreach($leader_ships as $leader_ship)
             <div class="item-slide">
               <div class="row-leader">
-                <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                  <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
+                <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
+                  <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
                   <div class="info-leader">
                     <div class="name-leader">
-                      Ông Đặng Trung Kiên
+                      {{$leader_ship->name}}
                     </div>
                     <div class="role-company">
-                      CHỦ TỊCH HĐQT
+                        {{$leader_ship->position}}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="item-slide">
-              <div class="row-leader">
-                <div class="item-leader-slide" data-toggle="modal" data-target="#show-detail-leader">
-                  <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
-                  <div class="info-leader">
-                    <div class="name-leader">
-                      Ông Đặng Trung Kiên
-                    </div>
-                    <div class="role-company">
-                      CHỦ TỊCH HĐQT
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
-        <div class="modal" id="show-detail-leader">
+        @foreach($leader_ships as $leader_ship)
+        <div class="modal" id="show-detail-leader-{{$leader_ship->id}}">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
@@ -396,25 +230,24 @@ class="background-white"
               <!-- Modal body -->
               <div class="modal-body">
                 <div class="img-detail-list">
-                  <img src="{{ asset('images/leader-1.png') }}" class="img-fluid" />
+                  <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
                 </div>
                 <div class="info-leader">
                   <div class="name-leader">
-                    Ông Đặng Trung Kiên
+                    {{$leader_ship->name}}
                   </div>
                   <div class="role-compay">
-                    CHỦ TỊCH HĐQT
+                      {{$leader_ship->position}}
                   </div>
                   <div class="detail-leader">
-                    <p>Ông Đặng Trung Kiên sinh năm 1973, là Chủ tịch Hội đồng quản trị Công ty Cổ phần Tập đoàn Trường Thành Việt Nam và là đại diện pháp luật của Công ty.</p>
-                    <p>Ông Đặng Trung Kiên tốt nghiệp Cao cấp lý luận chính trị - Học viện Chính trị Quốc gia Hồ Chí Minh, Thạc sỹ Quản lý Hành chính công – Học viện Hành chính Quốc gia, Cử nhân luật - Đại học Luật Hà Nội.</p>
-                    <p>Thực hiện chủ trương “Quy tụ nhân tài, gắn kết nhân tâm, nâng tầm trí tuệ và chia sẻ thành công”, bằng uy tín và khả năng của mình, ông Đặng Trung Kiên đã quy tụ được nhiều chuyên gia đầu ngành trong các lĩnh vực để cùng chung sức, đồng lòng thực hiện thành công các chiến lược đề ra, giúp Công ty có những bước phát triển vững chắc, khẳng định vị thế của mình trên thương trường.</p>
+                    <p>{{$leader_ship->file_text}}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        @endforeach
       </div>
     </div>
   </div>
