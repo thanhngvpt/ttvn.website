@@ -57,3 +57,4 @@ Route::get('scope-active', 'Web\ScopeActiveController@index');
 Route::get('news', 'Web\NewsController@index');
 Route::get('get-news-via-category', 'Web\NewsController@getNewsViaCategory');
 Route::get('get-project-via-field', 'Web\ScopeActiveController@getProjects');
+Route::post('post-contact', 'Web\ContactController@index')->name('post-contact');
