@@ -11,6 +11,10 @@ use App\Models\Partner;
 
 class IntroduceCompanyController extends Controller
 {
+    /** 
+     * type = 1 => tab TTVN
+     * type = 2 => tab BLD
+    */
     public function index()
     {
         $introduce = Introduce::first();
@@ -24,7 +28,8 @@ class IntroduceCompanyController extends Controller
             'save_values' => $save_values,
             'histories' => $histories,
             'leader_ships' => $leader_ships,
-            'partners' => $partners
+            'partners' => $partners,
+            // 'type' => $type
         ]);
     }
 }
