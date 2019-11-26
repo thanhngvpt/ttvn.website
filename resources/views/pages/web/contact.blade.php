@@ -5,27 +5,31 @@
 @endsection
 
 @section('content')
+	@if ($message = Session::get('success'))
+	<div class="alert alert-success alert-block">
+	<button type="button" class="close" data-dismiss="alert">×</button>	
+		<strong>{{ $message }}</strong>
+	</div>
+	@endif
 	<div id="contact-page">
 		<div class="form-contact-area">
-			<form method="POST" action="" class="form-contact">
+			<form method="POST" action="{!! action('Web\ContactController@index') !!}" class="form-contact">
 				@csrf
 				<div class="title-contact">
 					Liên hệ với chúng tôi
 				</div>
 				<div class="item-form-contact">
-					<input type="email" name="name" class="form-control is-invalid" placeholder="Họ và tên">
-					<div class="invalid-feedback">
-						Email chưa đúng
-					</div>
+					{{--  is-invalid class error  --}}
+					<input type="email" required name="name" class="form-control" placeholder="Email">
 				</div>
 				<div class="item-form-contact">
-					<input type="text" name="email" class="form-control" placeholder="Email">
+					<input type="text" name="email" required class="form-control" placeholder="Họ và tên">
 				</div>
 				<div class="item-form-contact">
-					<input type="text" name="phone" class="form-control" placeholder="Số điện thoại">
+					<input type="number" name="phone" required class="form-control" placeholder="Số điện thoại">
 				</div>
 				<div class="item-form-contact">
-					<textarea name="content" placeholder="Nội dung" class="form-control" rows="5"></textarea>
+					<textarea name="content" placeholder="Nội dung" required class="form-control" rows="5"></textarea>
 				</div>
 				<div class="text-center">
 					<button type="submit" class="btn btn-outline-success">Gửi</button>
