@@ -20,8 +20,8 @@ class="background-white"
       </ul>
     </div>
     <div class="tab-content">
-      @foreach($fields as $field)
-      <div class="tab-pane active" id="field-tab-{{$field->id}}">
+      @foreach($fields as $key => $field)
+      <div class="tab-pane @if($key==0) active @endif" id="field-tab-{{$field->id}}">
         <div class="tech-intro">
           <div class="tech-left">
             <div class="title-border-bottom">
