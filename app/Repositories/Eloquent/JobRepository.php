@@ -11,16 +11,28 @@ class JobRepository extends SingleKeyModelRepository implements JobRepositoryInt
         return new Job();
     }
 
-    public function rules()
+    public function getByJobCategory($page,$category_id, $province, $keyword)
     {
-        return [
-        ];
-    }
 
-    public function messages()
-    {
-        return [
-        ];
-    }
+        $page_size = 9;
+        $offset = ($page - 1) * $page_size;
 
+        $query = $this->getBlankModel()->where('is_enabled', 1);
+
+        if ($category_id != 0) $query = $query->where('job_category_id', $category_id);
+        if ($province != 'all') $query = $query->where('province', $province);
+        if ($keyword != null) $query = $query->where('name', 'like', '%'.$keyword.'%');
+
+        $count = $query->count();
+        $total_page = intval($count / $page_size) + (($count % $page_size) == 0 ? 0 : 1);
+        
+        $jobs = $query->orderBy('id', 'desc')->limit($page_size)->offset($offset)->get();
+
+        return [
+            'jobs' => $jobs,
+            'total_page' => $total_page,
+            'current_page' => $page
+        ];
+        
+    }
 }

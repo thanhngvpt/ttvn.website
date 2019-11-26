@@ -35,9 +35,7 @@ Route::get('contact', function () {
 
 Route::get('job', 'Web\JobController@index');
 
-Route::get('list-job', function () {
-    return view('pages.web.list-job');
-});
+Route::get('list-job', 'Web\JobController@listJob');
 
 Route::get('job-detail', function () {
     return view('pages.web.job-detail');
