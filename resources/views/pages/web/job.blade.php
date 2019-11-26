@@ -92,7 +92,7 @@
 						Chúng tôi tìm ai?
 					</div>
 					<div class="des-userfind-job">
-						Hướng tới mục tiêu trở thành một trong 50 công ty hàng đầu Việt Nam, TTVN luôn chào đón các nhân sự trình độ cao, có kinh nghiệm trong lĩnh vực tài chính, năng lượng, hạ tầng, bất động sản gia nhập đội ngũ của chúng tôi.
+						{{$cultural_companies->we_find_introduce}}
 					</div>
 					@foreach($criteria_candidate as $key => $value)
 					@if ($key % 4 == 0)
