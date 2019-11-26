@@ -36,17 +36,20 @@ body {
     .navbar-top-area .navbar .navbar-brand {
       height: 32px;
       margin-right: 125px; }
-    .navbar-top-area .navbar li a {
-      padding: 4px 3px !important;
-      margin: 0 18px;
-      color: #ffffff !important;
-      font-size: 16px;
-      font-weight: normal;
-      font-style: normal; }
-      .navbar-top-area .navbar li a i {
-        margin-left: 10px; }
-    .navbar-top-area .navbar li.active a {
-      color: #57AE5B !important; }
+    .navbar-top-area .navbar li {
+      position: relative; }
+      .navbar-top-area .navbar li .nav-link {
+        padding: 4px 3px !important;
+        margin: 0 18px;
+        color: #ffffff !important;
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+        cursor: pointer; }
+        .navbar-top-area .navbar li .nav-link i {
+          margin-left: 10px; }
+      .navbar-top-area .navbar li.active a {
+        color: #57AE5B !important; }
     .navbar-top-area .navbar .icon-change-language {
       line-height: 32px;
       margin-right: 48px; }
@@ -59,6 +62,88 @@ body {
     color: #57AE5B;
     margin-top: 149px;
     padding-bottom: 120px; }
+
+.menu-xl {
+  position: absolute;
+  top: 56px; }
+
+.menu-xl-child {
+  padding: 20px 32px;
+  width: 234px;
+  background-color: #ffffff;
+  border-radius: 8px; }
+  .menu-xl-child li {
+    list-style: none; }
+    .menu-xl-child li a {
+      margin: 0 !important;
+      display: block;
+      padding: 12px 0;
+      color: #222222 !important; }
+      .menu-xl-child li a img {
+        display: none;
+        width: 16px;
+        margin-right: 16px; }
+      .menu-xl-child li a:hover {
+        text-decoration: none; }
+        .menu-xl-child li a:hover img {
+          display: inline-block; }
+      .menu-xl-child li a.active img {
+        display: inline-block; }
+
+#language-menu-xl {
+  right: 0; }
+  #language-menu-xl .menu-xl-child {
+    width: 200px; }
+
+#collapsibleNavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 32px 24px;
+  display: none;
+  background-color: #ffffff; }
+  #collapsibleNavbar.show {
+    display: block; }
+  #collapsibleNavbar .logo-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px; }
+    #collapsibleNavbar .logo-menu a {
+      display: block; }
+    #collapsibleNavbar .logo-menu img {
+      height: 24px; }
+  #collapsibleNavbar .menu-mb-parent {
+    padding-left: 0; }
+    #collapsibleNavbar .menu-mb-parent li {
+      border-bottom: 1px solid #dedede;
+      list-style: none; }
+      #collapsibleNavbar .menu-mb-parent li a {
+        display: block;
+        font-size: 16px;
+        line-height: 25px;
+        color: #222222;
+        padding: 16px 16px 16px 0;
+        font-weight: normal;
+        cursor: pointer; }
+        #collapsibleNavbar .menu-mb-parent li a:hover {
+          text-decoration: none;
+          color: #57AE5B; }
+        #collapsibleNavbar .menu-mb-parent li a i {
+          margin-left: 12px; }
+        #collapsibleNavbar .menu-mb-parent li a.active {
+          color: #57AE5B;
+          font-weight: 600; }
+  #collapsibleNavbar .menu-mb-child {
+    border-top: 1px solid #dedede;
+    padding: 16px 24px; }
+    #collapsibleNavbar .menu-mb-child li {
+      border: none; }
+      #collapsibleNavbar .menu-mb-child li a {
+        padding: 8px 0; }
 
 #contact-page .form-contact-area {
   width: 648px;
@@ -1670,6 +1755,41 @@ main .nav-tabs {
       margin-bottom: 40px; }
   .top-page-slide .item-top-slide .img-top-slide {
     width: calc(50% - 178px); } }
+@media screen and (min-width: 1024px) and (max-width: 1250px) {
+  .navbar-top-area {
+    background-position: bottom right -100px; }
+
+  .navbar-top-area .navbar li a {
+    margin: 0 10px; }
+
+  .navbar-top-area .navbar .navbar-brand {
+    margin-right: 40px;
+    padding-top: 0; } }
+@media screen and (max-width: 1023px) {
+  .navbar-top-area .navbar .navbar-brand {
+    padding: 0; }
+
+  .navbar-dark .navbar-toggler:focus {
+    outline: none; }
+
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: #eeeeee; } }
+@media screen and (min-width: 992px) and (max-width: 1023px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: none !important; }
+
+  .navbar-top-area .navbar {
+    display: flex;
+    justify-content: space-between; }
+
+  .navbar-dark .navbar-toggler {
+    display: block; } }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   #news-page .list-news {
     margin-left: -7px;
