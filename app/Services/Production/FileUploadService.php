@@ -63,12 +63,14 @@ class FileUploadService extends BaseService implements FileUploadServiceInterfac
     public function upload($configKey, $file, $storageInfo)
     {
         $conf = config('file.categories.' . $configKey);
+        
         if (empty($conf)) {
             return false;
         }
 
         $acceptableFileList = config('file.acceptable.' . $conf['type']);
         $mediaType          = $file->getClientMimeType();
+        // dd($mediaType);
         if (!array_key_exists($mediaType, $acceptableFileList)) {
             return false;
         }
@@ -230,8 +232,9 @@ class FileUploadService extends BaseService implements FileUploadServiceInterfac
         }
 
         $fileUploadedPath = $localPath . $fileName;
+        move_uploaded_file($path, $fileUploadedPath);
+        // $this->imageService->resizeImage($path, config('file.categories.' . $configKey . '.size'), $fileUploadedPath);
 
-        $this->imageService->resizeImage($path, config('file.categories.' . $configKey . '.size'), $fileUploadedPath);
         if( !file_exists($fileUploadedPath) ) {
             return false;
         }
@@ -240,12 +243,13 @@ class FileUploadService extends BaseService implements FileUploadServiceInterfac
         $input['height']    = getimagesize($fileUploadedPath)[1];
 
         if( env('LOCAL_STORAGE') ) {
+            // dd('aaa');
             $input['url']      = $fileName;
             $input['is_local'] = true;
 
             foreach (array_get(config('file.categories.' . $configKey), 'thumbnails', []) as $thumbnail) {
                 $thumbnailKey = $this->getThumbnailKeyFromKey($fileName, $thumbnail);
-                $this->imageService->resizeImage($path, $thumbnail, $localPath . $thumbnailKey);
+                // $this->imageService->resizeImage($path, $thumbnail, $localPath . $thumbnailKey);
             }
         } else {
             $bucket = $this->decideBucket(array_get(config('file.categories.' . $configKey), 'buckets', ''));
