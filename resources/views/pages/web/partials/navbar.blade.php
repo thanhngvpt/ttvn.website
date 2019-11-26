@@ -20,13 +20,13 @@
                     <div id="introduce-menu-xl" class="collapse menu-xl">
                         <ul class="menu-xl-child">
                             <li>
-                                <a href="https://www.google.com/">
+                                <a href="#">
                                     <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
                                     Về TTVN Group
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.google.com/">
+                                <a href="#">
                                     <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />       
                                     Ban lãnh đạo
                                 </a>
@@ -95,10 +95,10 @@
                 <div id="introduce-menu-mb" class="collapse">
                     <ul class="menu-mb-child">
                         <li>
-                            <a href="https://www.google.com">Về TTVN Group</a>
+                            <a href="#">Về TTVN Group</a>
                         </li>
                         <li>
-                            <a href="https://www.google.com/">Ban lãnh đạo</a>
+                            <a href="#">Ban lãnh đạo</a>
                         </li>
                     </ul>
                 </div>
