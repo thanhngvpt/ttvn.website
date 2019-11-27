@@ -140,7 +140,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
                                         <label for="order">Vị trí</label>
-                                        <input type="number" min="0" class="form-control m-input" name="order" id="order" required value="{{ old('order') ? old('order') : $banner->order }}">
+                                        <input type="number" min="0" class="form-control m-input" name="order" id="order" value="{{ old('order') ? old('order') : $banner->order }}">
                                     </div>
                                 </div>
                             </div>

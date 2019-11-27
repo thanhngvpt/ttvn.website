@@ -128,7 +128,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('link')) has-danger @endif">
                                 <label for="link">@lang('admin.pages.partners.columns.link')</label>
-                                <input type="text" class="form-control m-input" name="link" id="link" required placeholder="@lang('admin.pages.partners.columns.link')" value="{{ old('link') ? old('link') : $partner->link }}">
+                                <input type="text" class="form-control m-input" name="link" id="link" placeholder="@lang('admin.pages.partners.columns.link')" value="{{ old('link') ? old('link') : $partner->link }}">
                             </div>
                         </div>
                     </div>

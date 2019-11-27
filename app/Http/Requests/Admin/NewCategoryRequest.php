@@ -31,12 +31,20 @@ class NewCategoryRequest extends BaseRequest
      */
     public function rules()
     {
-        return $this->newCategoryRepository->rules();
+        $id = ($this->method() == 'PUT') ? $this->route('new_category') : 0;
+
+        return $rules = [
+            'slug'  => 'required|unique:new_categories,slug,'.$id,
+        ];
     }
 
     public function messages()
     {
-        return $this->newCategoryRepository->messages();
+        $message = [
+            'slug.unique' => 'Slug đã tồn tại'
+        ];
+
+        return $message;
     }
 
 }

@@ -31,12 +31,20 @@ class FieldRequest extends BaseRequest
      */
     public function rules()
     {
-        return $this->fieldRepository->rules();
+        $id = ($this->method() == 'PUT') ? $this->route('field') : 0;
+
+        return $rules = [
+            'slug'  => 'required|unique:fields,slug,'.$id,
+        ];
     }
 
     public function messages()
     {
-        return $this->fieldRepository->messages();
+        $message = [
+            'slug.unique' => 'Slug đã tồn tại'
+        ];
+
+        return $message;
     }
 
 }

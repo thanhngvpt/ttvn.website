@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'leader-ships'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'leader_ships'] )
 
 @section('metadata')
 @stop
@@ -152,7 +152,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
                                 <label for="order">@lang('admin.pages.leader-ships.columns.order')</label>
-                                <input type="number" min="0" class="form-control m-input" name="order" id="order" required placeholder="@lang('admin.pages.leader-ships.columns.order')" value="{{ old('order') ? old('order') : $leaderShip->order }}">
+                                <input type="number" min="0" class="form-control m-input" name="order" id="order" placeholder="@lang('admin.pages.leader-ships.columns.order')" value="{{ old('order') ? old('order') : $leaderShip->order }}">
                             </div>
                         </div>
                     </div>

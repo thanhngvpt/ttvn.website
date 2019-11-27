@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'metas'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'meta'] )
 
 @section('metadata')
 @stop
@@ -120,7 +120,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('meta_description')) has-danger @endif">
                                 <label for="meta_description">Meta Description</label>
-                                <input type="text" class="form-control m-input" name="meta_description" id="meta_description" required value="{{ old('meta_description') ? old('meta_description') : $meta->meta_description }}">
+                                <input type="text" class="form-control m-input" name="meta_description" id="meta_description" value="{{ old('meta_description') ? old('meta_description') : $meta->meta_description }}">
                             </div>
                         </div>
                     </div>

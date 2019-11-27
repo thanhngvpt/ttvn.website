@@ -139,8 +139,8 @@ class="background-white"
             </a>
           </div>
           <div class="img-top-intro">
-            <img src="{!! $inforGroup->present()->coverImage()->present()->url !!}" class="img-fluid img-intro-after" />
-            <img src="{!! $inforGroup->present()->thumbnailImage()->present()->url !!}" class="img-fluid img-intro-before" />
+            <img src="{!! $inforGroup->present()->thumbnailImage()->present()->url !!}" class="img-fluid img-intro-after" />
+            <img src="{!! $inforGroup->present()->coverImage()->present()->url !!}" class="img-fluid img-intro-before" />
           </div>
         </div>
         <div class="top-sumarry">

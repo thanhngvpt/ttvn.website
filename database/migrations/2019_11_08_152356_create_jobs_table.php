@@ -24,7 +24,7 @@ class CreatejobsTable extends Migration
             $table->string('province')->nullable();
             $table->string('district')->nullable();
             $table->integer('number')->nullable();
-            $table->integer('salary')->nullable();
+            $table->string('salary')->nullable();
             $table->timestamp('end_time')->nullable();
             $table->integer('order')->nullable();
             $table->text('description')->nullable();
