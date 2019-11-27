@@ -33,9 +33,9 @@ Route::get('contact', function () {
     return view('pages.web.contact');
 });
 
-// Route::get('job', 'Web\JobController@index');
+Route::get('job', 'Web\JobController@index');
 
-Route::get('job', 'Web\JobController@listJob');
+Route::get('list-job', 'Web\JobController@listJob');
 Route::get('job/{slug}', 'Web\JobController@detail')->name('job.details');
 Route::post('post-cv', 'Web\JobController@postCV');
 
@@ -47,7 +47,7 @@ Route::get('news/{slug}', 'Web\NewsController@details');
 
 Route::get('introduce-company', 'Web\IntroduceCompanyController@index');
 
-Route::get('scope-active', 'Web\ScopeActiveController@index');
+Route::get('scope-active/{slug}', 'Web\ScopeActiveController@index');
 Route::get('news', 'Web\NewsController@index');
 Route::get('get-news-via-category', 'Web\NewsController@getNewsViaCategory');
 Route::get('get-project-via-field', 'Web\ScopeActiveController@getProjects');

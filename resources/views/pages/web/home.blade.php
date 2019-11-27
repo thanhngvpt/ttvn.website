@@ -72,7 +72,7 @@ class="background-white"
         <div class="list-top-field">
           <div class="row">
             @foreach($fields as $field)
-            <div class="col-md-4">
+            <div class="col-md-4" onclick="location.href='{!! action('Web\ScopeActiveController@index', $field->slug) !!}'">
               <div class="item-top-field">
                 <div class="img-topfield">
                   <img src="{!! $field->present()->homeImage()->present()->url !!}" class="img-fluid">
@@ -153,7 +153,7 @@ class="background-white"
             <div class="tab-pane container active" id="tab_all">
               <div class="slide-top-news">
                 @foreach($news as $item)
-                <a href="#" class="item-news">
+                <a href="{{action('Web\NewsController@details', $item->slug)}}" class="item-news">
                   <div class="img-news">
                     <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
                   </div>
@@ -172,7 +172,7 @@ class="background-white"
                 @endforeach
               </div>
               <div class="text-center">
-                <a href="#" class="btn btn-outline-success btn-see-more-news">
+                <a href="{{action('Web\NewsController@index')}}" class="btn btn-outline-success btn-see-more-news">
                   Xem tất cả
                 </a>
               </div>
