@@ -1,9 +1,10 @@
 <?php
 
 \Route::group(['middleware' => ['web.values']], function () {
-    \Route::get('/', 'Web\IndexController@index');
+    // \Route::get('/', 'Web\IndexController@index');
 
     \Route::group(['middleware' => ['web.guest']], function () {
+        \Route::get('/', 'Web\IndexController@index');
         \Route::get('signin', 'Web\AuthController@getSignIn');
         \Route::post('signin', 'Web\AuthController@postSignIn');
 

@@ -73,18 +73,18 @@ class="background-white"
           <div class="row">
             @foreach($fields as $field)
             <div class="col-md-4">
-              <div class="item-top-field">
+              <a class="item-top-field">
                 <div class="img-topfield">
                   <img src="{!! $field->present()->homeImage()->present()->url !!}" class="img-fluid">
                 </div>
-                <a class="title-topfield" href="#">
+                <div class="title-topfield">
                   {{$field->name}}
                   <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid" />
-                </a>
+                </div>
                 <div class="des-topfield">
                   {{$field->home_content}}
                 </div>
-              </div>
+              </a>
             </div>
             @endforeach
           </div>
@@ -109,7 +109,8 @@ class="background-white"
             </div>
             <a href="#" class="btn btn-outline-success">
               Xem thêm
-              <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid ml-2" />
+              <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid ml-2 btn-no-hover" />
+              <img src="{{ asset('images/arrow-right-hover-new.svg') }}" class="img-fluid ml-2 btn-hover" />
             </a>
           </div>
           <div class="img-top-intro">
@@ -138,38 +139,42 @@ class="background-white"
           <div class="title-top-news">
             {{$heading->title_news}}
           </div>
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" data-category-id="0" href="#tab_all">Tất cả</a>
-            </li>
-            @foreach ($categories as $category)
-            <li class="nav-item">
-              <a class="nav-link list-category-news" data-toggle="tab" data-category-id="{{$category->id}}" href="#cate-{{$category->id}}">{{$category->name}}</a>
-            </li>
-            @endforeach
-          </ul>
+          <div class="area-nav-news">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" data-category-id="0" href="#tab_all">Tất cả</a>
+              </li>
+              @foreach ($categories as $category)
+              <li class="nav-item">
+                <a class="nav-link list-category-news" data-toggle="tab" data-category-id="{{$category->id}}" href="#cate-{{$category->id}}">{{$category->name}}</a>
+              </li>
+              @endforeach
+            </ul>
+          </div>
           <!-- Tab panes -->
           <div class="tab-content">
             <div class="tab-pane container active" id="tab_all">
-              <div class="slide-top-news">
-                @foreach($news as $item)
-                <a href="#" class="item-news">
-                  <div class="img-news">
-                    <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                  </div>
-                  <div class="content-news">
-                    <div class="cate-news">
-                      {{$item->newCategory->name}}
-                    </div>
-                    <div class="title-news">
-                      {{$item->name}}
-                    </div>
-                    <div class="date-news">
-                        {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
-                    </div>
-                  </div>
-                </a>
-                @endforeach
+              <div class="area-top-news">
+                <div class="slide-top-news">
+                  @foreach($news as $item)
+                    <a href="#" class="item-news">
+                      <div class="img-news">
+                        <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                      </div>
+                      <div class="content-news">
+                        <div class="cate-news">
+                          {{$item->newCategory->name}}
+                        </div>
+                        <div class="title-news">
+                          {{$item->name}}
+                        </div>
+                        <div class="date-news">
+                            {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
+                        </div>
+                      </div>
+                    </a>
+                  @endforeach
+                </div>
               </div>
               <div class="text-center">
                 <a href="#" class="btn btn-outline-success btn-see-more-news">
@@ -190,12 +195,14 @@ class="background-white"
                 {{$heading->title_company}}
             </div>
             <div class="container">
-              <div class="partner-slide">
-                @foreach ($companies as $company)
-                <div class="item-slide">
-                  <img src="{!! $company->present()->coverImage()->present()->url !!}" class="img-fluid" />
+              <div class="area-partner-slide">
+                <div class="partner-slide">
+                  @foreach ($companies as $company)
+                  <div class="item-slide">
+                    <img src="{!! $company->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                  </div>
+                  @endforeach
                 </div>
-                @endforeach
               </div>
             </div>
           </div>
@@ -278,15 +285,7 @@ class="background-white"
         responsive: [
 					{
 						breakpoint: 1023,
-						settings: {
-              slidesToShow: 2
-						}
-					},
-          {
-						breakpoint: 767,
-						settings: {
-              slidesToShow: 1
-						}
+						settings: 'unslick'
 					}
         ]
       });
@@ -298,15 +297,7 @@ class="background-white"
         responsive: [
 					{
 						breakpoint: 1023,
-						settings: {
-              slidesToShow: 4
-						}
-					},
-          {
-						breakpoint: 767,
-						settings: {
-              slidesToShow: 3
-						}
+						settings: 'unslick'
 					}
         ]
       });
@@ -332,21 +323,27 @@ class="background-white"
                 responsive: [
                   {
                     breakpoint: 1023,
-                    settings: {
-                      slidesToShow: 2
-                    }
+                    settings: 'unslick'
                   },
-                  {
-                    breakpoint: 767,
-                    settings: {
-                      slidesToShow: 1
-                    }
-                  }
                 ]
               });
           }
         });
       })
+
+      $('.next-arrow').mouseover(function () {
+				$(this).attr('src', '{{ asset("images/arrow-right-active.svg") }}');
+			})
+			.mouseout(function () {
+				$(this).attr('src', '{{ asset("images/arrow-right-ad.svg") }}');
+			})
+
+			$('.prev-arrow').mouseover(function () {
+				$(this).attr('src', '{{ asset("images/arrow-left-active.svg") }}');
+			})
+			.mouseout(function () {
+				$(this).attr('src', '{{ asset("images/arrow-left-ad.svg") }}');
+			})
     })
 	</script>
 @endsection

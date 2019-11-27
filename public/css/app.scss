@@ -85,6 +85,7 @@ body {
 .menu-xl {
 	position: absolute;
 	top: 56px;
+	z-index: 2;
 }
 .menu-xl-child {
 	padding: 20px 32px;
@@ -849,13 +850,11 @@ main {
 		margin-bottom: 88px;
 
 		.nav-item {
-			flex: 1;
 			text-align: center;
 
 			.nav-link {
 				font-size: 20px;
 				line-height: 32px;
-				font-weight: 600;
 				color: #7E7E7E;
 				padding: 0;
 				border: none;
@@ -874,6 +873,7 @@ main {
 
 				&.active {
 					color: #222222;
+					font-weight: 600;
 					border: none;
 
 					&:before {
@@ -1575,7 +1575,7 @@ main {
 		margin-bottom: 52px;
 	}
 	.list-top-field {
-		padding: 16px 56px 0 56px;
+		padding: 16px 40px 0 40px;
 	}
 	.title-topfield {
 		display: block;
@@ -1600,6 +1600,7 @@ main {
 		height: 75px;
 	}
 	.item-top-field {
+		display: block;
 		padding: 40px 40px 56px 40px;
 		border-radius: 100px 10px 100px 10px;
 		border: 1px solid #eeeeee;
@@ -1648,7 +1649,7 @@ main {
 		font-size: 56px;
 		line-height: 56px;
 		color: #ffffff;
-		padding: 10px 24px;
+		padding: 10px 20px;
 		width: fit-content;
 		background: #57AE5B;
 		border-radius: 8px;
@@ -1672,9 +1673,23 @@ main {
 	.btn {
 		padding: 12px 38px;
 		background-color: #ffffff;
+		
+		.btn-no-hover {
+			display: inline-block;
+		}
+		.btn-hover {
+			display: none;
+		}
 
 		&:hover {
 			background-color: #28a745;
+
+			.btn-no-hover {
+				display: none;
+			}
+			.btn-hover {
+				display: inline-block;
+			}
 		}
 	}
 }
@@ -1699,12 +1714,15 @@ main {
 	padding: 48px 0;
 	background-color: #ffffff;
 	margin-bottom: 160px;
+	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+	border-radius: 8px;
 
 	.col-top-sumary {
 		text-align: center;
 
 		img {
 			margin-bottom: 32px;
+			width: 40px;
 		}
 		.number {
 			font-weight: bold;
@@ -1739,11 +1757,17 @@ main {
 			padding: 24px;
 			background-color: #ffffff;
 			border-radius: 0 0 8px 8px;
+			box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+			margin-bottom: 32px;
 
 			.title-news {
 				font-size: 16px;
 				line-height: 25px;
 				margin-bottom: 24px;
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
 			}
 		}
 		.img-news {
@@ -1767,6 +1791,7 @@ main {
 	.nav-tabs {
 		padding: 0 186px;
 		margin-bottom: 44px;
+		display: flex;
 
 		.nav-item {
 			.nav-link {
@@ -1785,9 +1810,6 @@ main {
 					display: none;
 				}
 			}
-			&:last-child {
-				flex: 2;
-			}
 		}
 	}
 }
@@ -1796,8 +1818,9 @@ main {
 	line-height: 25px;
 	padding: 12px 54px;
 	border-radius: 8px;
-	margin-top: 56px;
+	margin-top: 24px;
 	text-align: center;
+	background-color: #ffffff;
 }
 .partner-intro {
 	padding-top: 112px;
@@ -1853,7 +1876,7 @@ main {
 .top-consultation {
 	padding-top: 88px;
 	padding-bottom: 104px;
-	background-image: url('../images/bg-search-job.svg');
+	background-image: url('../images/bg-form-square.svg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	text-align: center;
@@ -2025,6 +2048,29 @@ main {
 			.col-xl-4 {
 				padding: 0 12px;
 			}
+		}
+	}
+	.navbar-top-area .navbar .navbar-brand {
+		padding: 0;
+	}
+	.logo-img {
+		height: 32px;
+	}
+	.img-topfield {
+		text-align: center;
+		
+		img {
+			width: 220px;
+		}
+	}
+	.list-top-field {
+		.col-md-4 {
+			padding: 0 27px;
+		}
+	}
+	.partner-slide {
+		.slick-slide {
+			padding: 0 50px;
 		}
 	}
 }
@@ -2351,19 +2397,62 @@ main {
 	.text-top-intro {
 		.title-1 {
 			font-size: 40px;
+			line-height: 40px;
 		}
 		.name {
 			font-size: 40px;
+			line-height: 40px;
 		}
 		.title-2 {
 			font-size: 40px;
+			line-height: 44px;
+			margin-bottom: 40px;
 		}
 	}
-	.top-sumarry .col-top-sumary {
-		margin-bottom: 88px;
+	.top-content {
+		padding-top: 88px;
+	}
+	.text-top-intro {
+		padding-top: 0;
+		width: 375px;
+		margin-right: 56px;
 
+		.description {
+			margin-bottom: 40px;
+		}
+	}
+	.img-top-intro {
+		width: calc(100% - 431px);
+
+		.img-intro-after {
+			width: 131px;
+		}
+		.img-intro-before {
+			top: 68px;
+			left: 0;
+			right: initial;
+		}
+	}
+	.top-sumarry {
+		padding: 40px 0;
+		margin-bottom: 88px;
+	}
+	.item-news {
+		.cate-news {
+			margin-top: 0;
+			margin-bottom: 8px;
+		}
+		.title-news {
+			margin-bottom: 16px !important;
+		}
+	}
+	.slide-top-news .item-news {
+		padding: 0 12px;
+	}
+	.top-sumarry .col-top-sumary {
 		.number {
 			font-size: 40px;
+			margin-bottom: 16px;
 		}
 		.name {
 			font-size: 16px;
@@ -3042,33 +3131,42 @@ main {
 
 		.img-intro-before {
 			left: 0;
-			top: 160px;
+			top: 124px;
 			right: initial;
 		}
 		.img-intro-after {
 			width: 131px;
-			margin-top: 90px;
+			margin-top: 55px;
 			margin-right: -60px;
 		}
+	}
+	.top-content {
+		padding-top: 88px;
 	}
 	.text-top-intro {
 		width: 296px;
 		margin-right: 42px;
+		padding-top: 0;
 
 		.title-1 {
 			font-size: 32px;
 			line-height: 32px;
+			margin-bottom: 16px;
 		}
 		.name {
 			font-size: 32px;
 			line-height: 32px;
-			padding: 9px 12px;
+			padding: 9px 10px;
 			margin-left: 0;
+			margin-bottom: 16px;
 		}
 		.title-2 {
 			font-size: 32px;
 			line-height: 32px;
 			margin-bottom: 32px;
+		}
+		.description {
+			margin-bottom: 29px;
 		}
 	}
 	.top-sumarry {
@@ -3079,9 +3177,14 @@ main {
 
 			.number {
 				font-size: 40px;
+				margin-bottom: 16px;
 			}
 			.name {
 				font-size: 16px;
+				line-height: 16px;
+			}
+			img {
+				margin-bottom: 24px;
 			}
 		}
 		.col-md-3 {
@@ -3092,20 +3195,68 @@ main {
 		padding-bottom: 64px;
 
 		.title-top-news {
-			font-size: 40px;
+			font-size: 32px;
+			line-height: 32px;
+		}
+		.area-nav-news {
+			overflow: scroll;
+			margin-bottom: 32px;
 		}
 		.nav-tabs {
 			padding: 0 20px;
+			width: max-content;
+			margin-bottom: 12px;
+
+			.nav-item {
+				margin-right: 48px;
+				display: inline-block;
+			}
 		}
+	}
+	.area-top-news {
+		overflow: auto;
 	}
 	.slide-top-news {
 		margin: 0;
+		width: max-content;
+		display: flex;
 
 		.prev-arrow {
 			left: -15px;
+			z-index: 2;
 		}
 		.next-arrow {
 			right: -15px;
+			z-index: 2;
+		}
+		.item-news {
+			display: block;
+			width: 296px;
+			padding: 0 12px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	.area-partner-top {
+		overflow: auto;
+	}
+	.area-partner-slide {
+		overflow: scroll;
+		padding-bottom: 16px;
+	}
+	.partner-slide {
+		display: flex;
+		width: max-content;
+
+		.item-slide {
+			margin-right: 52px;
+			width: 128px;
+
+			&:last-child {
+				margin-right: 0;
+			}
 		}
 	}
 	.top-partners {
@@ -3142,13 +3293,17 @@ main {
 	.top-partners {
 		.partner-intro {
 			padding-top: 64px;
-			padding-bottom: 80px;
+			padding-bottom: 48px;
 
 			.title-border-bottom {
 				font-size: 32px;
 				margin-bottom: 42px;
 			}
 		}
+	}
+	.top-consultation {
+		padding-top: 64px;
+		padding-bottom: 56px;
 	}
 	footer {
 		.logo-footer {
