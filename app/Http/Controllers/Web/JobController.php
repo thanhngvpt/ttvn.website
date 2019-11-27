@@ -7,17 +7,24 @@ use App\Models\CulturalCompany;
 use App\Models\CriteriaCandidate;
 use App\Models\Job;
 use App\Models\JobCategory;
+use App\Models\Cadidate;
+
 use View;
 use \App\Repositories\JobRepositoryInterface;
 use App\Http\Requests\PaginationRequest;
 
+use App\Services\FileUploadServiceInterface;
+
 class JobController extends Controller
 {
     protected $jobRepo;
+    /** @var FileUploadServiceInterface $fileUploadService */
+    protected $fileUploadService;
 
-    public function __construct(JobRepositoryInterface $jobRepo)
+    public function __construct(JobRepositoryInterface $jobRepo, FileUploadServiceInterface $fileUploadService)
     {
-        $this->jobRepo= $jobRepo;
+        $this->jobRepo = $jobRepo;
+        $this->fileUploadService = $fileUploadService;
     }
     public function index()
     {
@@ -71,5 +78,44 @@ class JobController extends Controller
             'job_categories' => $job_categories,
             'data'  =>  $data
         ]);
+    }
+
+    public function detail($slug)
+    {
+        $job = Job::where('slug', $slug)->first();
+
+        return view('pages.web.job-detail', [
+            'job' => $job
+        ]);
+    }
+
+    public function postCV(PaginationRequest $request)
+    {
+        $input = $request->only([
+            'name', 'email', 'phone'
+        ]);
+
+        $slug = $request->get('slug');
+        $input['link_job'] = route('job.details', ['slug' => $slug]);
+        $candidates = Cadidate::create($input);
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+            
+            $filePath = $this->fileUploadService->upload(
+                'file',
+                $file,
+                [
+                    'entity_type' => 'banner_cover_image',
+                    'entity_id'   => $candidates->id,
+                    'title'       => $request->input('title_page', ''),
+                ]
+            );
+
+            if ($filePath) {
+                $candidates->file = $filePath;
+                $candidates->save();
+            } 
+                
+        }  
     }
 }

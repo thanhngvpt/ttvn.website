@@ -1,6 +1,6 @@
 
 @foreach($data['jobs'] as $job)
-<tr>
+<tr onclick="location.href='{!! action('Web\JobController@detail', $job->slug) !!}'">
     <td>
         <a href="#" class="name-job">
             {{$job->name}}

@@ -33,19 +33,17 @@ Route::get('contact', function () {
     return view('pages.web.contact');
 });
 
-Route::get('job', 'Web\JobController@index');
+// Route::get('job', 'Web\JobController@index');
 
-Route::get('list-job', 'Web\JobController@listJob');
+Route::get('job', 'Web\JobController@listJob');
+Route::get('job/{slug}', 'Web\JobController@detail')->name('job.details');
+Route::post('post-cv', 'Web\JobController@postCV');
 
-Route::get('job-detail', function () {
-    return view('pages.web.job-detail');
-});
+// Route::get('job-detail', function () {
+//     return view('pages.web.job-detail');
+// });
 
-Route::get('news', function () {
-    return view('pages.web.news');
-});
-
-Route::get('news-detail/{id}', 'Web\NewsController@details');
+Route::get('news/{slug}', 'Web\NewsController@details');
 
 Route::get('introduce-company', 'Web\IntroduceCompanyController@index');
 
