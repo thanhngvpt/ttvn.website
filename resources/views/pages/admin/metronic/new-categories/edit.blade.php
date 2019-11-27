@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'new-categories'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'new_categories'] )
 
 @section('metadata')
 @stop
@@ -25,6 +25,13 @@
                 pickerPosition: 'bottom-left',
                 format: 'yyyy/mm/dd hh:ii'
             });
+
+            $('#name').on('change', function() {
+                let text = $(this).val()
+                let  slug = convertToSlug(text)
+
+                $('#slug').val(slug)
+            })
         });
     </script>
 @stop
@@ -81,17 +88,16 @@ Danh mục tin tức
 
         <div class="m-portlet__body">
             @if(isset($errors) && count($errors))
-                {{ $errs = $errors->all() }}
-                <div class="m-alert m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
-                    <strong>
-                        Error !!!
-                    </strong>
-                    <ul>
-                        @foreach($errs as $error)
+            <div class="m-alert m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                <strong>
+                    Error !!!
+                </strong>
+                <ul>
+                    @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                    @endforeach
+                </ul>
                 </div>
             @endif
 
@@ -112,7 +118,7 @@ Danh mục tin tức
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('slug')) has-danger @endif">
                                 <label for="slug">Slug</label>
-                                <input type="text" class="form-control m-input" name="slug" id="slug" required value="{{ old('slug') ? old('slug') : $newCategory->slug }}">
+                                <input readonly type="text" class="form-control m-input" name="slug" id="slug" required value="{{ old('slug') ? old('slug') : $newCategory->slug }}">
                             </div>
                         </div>
                     </div>

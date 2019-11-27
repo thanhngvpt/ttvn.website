@@ -59,6 +59,13 @@
                 pickerPosition: 'bottom-left',
                 format: 'yyyy/mm/dd hh:ii'
             });
+
+            $('#name').on('change', function() {
+                let text = $(this).val()
+                let  slug = convertToSlug(text)
+
+                $('#slug').val(slug)
+            })
         });
     </script>
 @stop
@@ -115,14 +122,13 @@
 
         <div class="m-portlet__body">
             @if(isset($errors) && count($errors))
-                {{ $errs = $errors->all() }}
                 <div class="m-alert m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
                     <strong>
                         Error !!!
                     </strong>
                     <ul>
-                        @foreach($errs as $error)
+                        @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
@@ -148,7 +154,7 @@
                         <div class="col-md-6">
                             <div class="form-group m-form__group row @if ($errors->has('slug')) has-danger @endif">
                                 <label for="slug">@lang('admin.pages.fields.columns.slug')</label>
-                                <input type="text" class="form-control m-input" name="slug" id="slug" required value="{{ old('slug') ? old('slug') : $field->slug }}">
+                                <input type="text" readonly class="form-control m-input" name="slug" id="slug" required value="{{ old('slug') ? old('slug') : $field->slug }}">
                             </div>
                         </div>
                     </div>
@@ -187,7 +193,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('meta_description')) has-danger @endif">
                                 <label for="meta_description">Meta Description</label>
-                                <input type="text" class="form-control m-input" name="meta_description" id="meta_description" required value="{{ old('meta_description') ? old('meta_description') : $field->meta_description }}">
+                                <input type="text" class="form-control m-input" name="meta_description" id="meta_description" value="{{ old('meta_description') ? old('meta_description') : $field->meta_description }}">
                             </div>
                         </div>
                     </div>
@@ -335,7 +341,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
                                 <label for="order">Vị trí</label>
-                                <input type="number" min="0" class="form-control m-input" name="order" id="order" required value="{{ old('order') ? old('order') : $field->order }}">
+                                <input type="number" min="0" class="form-control m-input" name="order" id="order" value="{{ old('order') ? old('order') : $field->order }}">
                             </div>
                         </div>
                     </div>

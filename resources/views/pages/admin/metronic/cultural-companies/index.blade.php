@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'cultural-companies'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'cultural_companies'] )
 
 @section('metadata')
 @stop

@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'leader-ships'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'leader_ships'] )
 
 @section('metadata')
 @stop

@@ -31,12 +31,20 @@ class JobRequest extends BaseRequest
      */
     public function rules()
     {
-        return $this->jobRepository->rules();
+        $id = ($this->method() == 'PUT') ? $this->route('job') : 0;
+
+        return $rules = [
+            'slug'  => 'required|unique:jobs,slug,'.$id,
+        ];
     }
 
     public function messages()
     {
-        return $this->jobRepository->messages();
+        $message = [
+            'slug.unique' => 'Slug đã tồn tại'
+        ];
+
+        return $message;
     }
 
 }

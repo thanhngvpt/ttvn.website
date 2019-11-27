@@ -136,7 +136,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('link')) has-danger @endif">
                                 <label for="link">@lang('admin.pages.projects.columns.link')</label>
-                                <input type="text" class="form-control m-input" name="link" id="link" required placeholder="@lang('admin.pages.projects.columns.link')" value="{{ old('link') ? old('link') : $project->link }}">
+                                <input type="text" class="form-control m-input" name="link" id="link" placeholder="@lang('admin.pages.projects.columns.link')" value="{{ old('link') ? old('link') : $project->link }}">
                             </div>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
                                 <label for="order">@lang('admin.pages.projects.columns.order')</label>
-                                <input type="number" min="0" class="form-control m-input" name="order" id="order" required placeholder="@lang('admin.pages.projects.columns.order')" value="{{ old('order') ? old('order') : $project->order }}">
+                                <input type="number" min="0" class="form-control m-input" name="order" id="order" placeholder="@lang('admin.pages.projects.columns.order')" value="{{ old('order') ? old('order') : $project->order }}">
                             </div>
                         </div>
                     </div>

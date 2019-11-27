@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'table-news'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'table_news'] )
 
 @section('metadata')
 @stop
@@ -40,6 +40,13 @@
                 pickerPosition: 'bottom-left',
                 format: 'yyyy/mm/dd hh:ii'
             });
+
+            $('#name').on('change', function() {
+                let text = $(this).val()
+                let  slug = convertToSlug(text)
+
+                $('#slug').val(slug)
+            })
         });
 
         Boilerplate.imageUploadUrl = "{!! URL::action('Admin\TableNewController@postImage') !!}";
@@ -113,16 +120,15 @@
 
         <div class="m-portlet__body">
             @if(isset($errors) && count($errors))
-                {{ $errs = $errors->all() }}
                 <div class="m-alert m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
                     <strong>
                         Error !!!
                     </strong>
                     <ul>
-                        @foreach($errs as $error)
+                    @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
-                        @endforeach
+                    @endforeach
                     </ul>
                 </div>
             @endif
@@ -160,7 +166,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('slug')) has-danger @endif">
                                         <label for="slug">Slug</label>
-                                        <input type="text" class="form-control m-input" name="slug" id="slug" required value="{{ old('slug') ? old('slug') : $tableNew->slug }}">
+                                        <input readonly type="text" class="form-control m-input" name="slug" id="slug" required value="{{ old('slug') ? old('slug') : $tableNew->slug }}">
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +186,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
                                         <label for="order">Vị trí</label>
-                                        <input type="number" min="0" class="form-control m-input" name="order" id="order" required value="{{ old('order') ? old('order') : $tableNew->order }}">
+                                        <input type="number" min="0" class="form-control m-input" name="order" id="order" value="{{ old('order') ? old('order') : $tableNew->order }}">
                                     </div>
                                 </div>
                             </div>
