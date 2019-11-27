@@ -47,7 +47,7 @@
 					</thead>
 					<tbody id="tbody">
 						@foreach($data['jobs'] as $job)
-						<tr>
+						<tr onclick="location.href='{!! action('Web\JobController@detail', $job->slug) !!}'">
 							<td>
 								<a href="#" class="name-job">
 									{{$job->name}}
@@ -67,7 +67,7 @@
 			</div>
 			<div class="list-job-mb">
 					@foreach($data['jobs'] as $job)
-					<div class="item-job-mb">
+					<div class="item-job-mb" onclick="location.href='{!! action('Web\JobController@detail', $job->slug) !!}'">
 						<div class="name-job-mb">
 								{{$job->name}}
 						</div>

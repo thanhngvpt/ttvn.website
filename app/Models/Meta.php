@@ -22,7 +22,7 @@ class Meta extends Base
     protected $fillable = [
         'link', 'meta_title', 'meta_description'
     ];
-
+    
     /**
      * The attributes excluded from the model's JSON form.
      *

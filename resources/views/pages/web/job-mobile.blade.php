@@ -1,5 +1,5 @@
 @foreach($data['jobs'] as $job)
-    <div class="item-job-mb">
+    <div class="item-job-mb" onclick="location.href='{!! action('Web\JobController@detail', $job->slug) !!}'">
         <div class="name-job-mb">
                 {{$job->name}}
         </div>
