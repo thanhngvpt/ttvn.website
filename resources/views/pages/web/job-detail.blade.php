@@ -5,21 +5,25 @@
 		{{$job->name}}
 	</div>
 	<div class="number-detail-job">
-		<div class="item-number-detail">
-			<img src="{{ asset('images/icon-job-1.svg') }}" class="img-fluid" />
-			<span>{{$job->province}}</span>
+		<div class="detail-job-left">
+			<div class="item-number-detail">
+				<img src="{{ asset('images/icon-job-1.svg') }}" class="img-fluid" />
+				<span>{{$job->province}}</span>
+			</div>
+			<div class="item-number-detail">
+				<img src="{{ asset('images/icon-job-2.svg') }}" class="img-fluid" />
+				<span>{{$job->number}}</span>
+			</div>
 		</div>
-		<div class="item-number-detail">
-			<img src="{{ asset('images/icon-job-2.svg') }}" class="img-fluid" />
-			<span>{{$job->number}}</span>
-		</div>
-		<div class="item-number-detail">
-			<img src="{{ asset('images/icon-job-3.svg') }}" class="img-fluid" />
-			<span>{{$job->salary}} triệu</span>
-		</div>
-		<div class="item-number-detail">
-			<img src="{{ asset('images/icon-job-4.svg') }}" class="img-fluid" />
-			<span>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</span>
+		<div class="detail-job-right">
+			<div class="item-number-detail">
+				<img src="{{ asset('images/icon-job-3.svg') }}" class="img-fluid" />
+				<span>{{$job->salary}} triệu</span>
+			</div>
+			<div class="item-number-detail">
+				<img src="{{ asset('images/icon-job-4.svg') }}" class="img-fluid" />
+				<span>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</span>
+			</div>
 		</div>
 	</div>
 @endsection

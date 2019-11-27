@@ -1,7 +1,7 @@
 @extends('pages.web.layouts.app')
 
 @section('title-navbar')
-	Danh sách tuyển dụng
+	Danh sách tin tuyển dụng
 @endsection
 
 @section('content')

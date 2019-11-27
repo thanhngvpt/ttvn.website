@@ -4,10 +4,10 @@
 @endsection
 
 @section('nav-slide')
-<main>
+<main class="position-relative">
   <div class="top-page-slide">
     @if (!empty($video))
-    <div class="item-slide">
+      <div class="item-slide">
         <div class="item-top-slide">
           <div class="text-slide">
             <div class="title">
@@ -20,7 +20,29 @@
               Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
             </div>
             <button class="btn btn-success">
-              <img src="{{ asset('images/view-video.png') }}" class="img-fluid" />
+              <img src="{{ asset('images/view-video.svg') }}" class="img-fluid" />
+              <span><a href="{{$video->video_url}}">Xem video</a></span>
+            </button>
+          </div>
+          <div class="img-top-slide">
+            <iframe width="648" height="490" src="{{$video->video_url}}" frameborder="0"/></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="item-slide">
+        <div class="item-top-slide">
+          <div class="text-slide">
+            <div class="title">
+              Tập đoàn
+            </div>
+            <div class="content">
+              Trường Thành Việt Nam
+            </div>
+            <div class="description">
+              Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
+            </div>
+            <button class="btn btn-success">
+              <img src="{{ asset('images/view-video.svg') }}" class="img-fluid" />
               <span><a href="{{$video->video_url}}">Xem video</a></span>
             </button>
           </div>
@@ -51,6 +73,9 @@
         </div>
       @endforeach
     @endif
+  </div>
+  <div class="icon-down-nav">
+    <img src="{{ asset('images/icon-down-nav.svg') }}" class="img-fluid" />
   </div>
 </main>
 @endsection
@@ -175,15 +200,15 @@ class="background-white"
                 </a>
                 @endforeach
               </div>
-              <div class="text-center">
-                <a href="{{action('Web\NewsController@index')}}" class="btn btn-outline-success btn-see-more-news">
-                  Xem tất cả
-                </a>
-              </div>
             </div>
             @foreach ($categories as $category)
-            <div class="tab-pane container active" id="cate-{{$category->id}}"></div>
-            @endforeach         
+              <div class="tab-pane container active" id="cate-{{$category->id}}"></div>
+            @endforeach
+            <div class="text-center">
+              <a href="{{action('Web\NewsController@index')}}" class="btn btn-outline-success btn-see-more-news">
+                Xem tất cả
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -235,6 +260,17 @@ class="background-white"
     .navbar-top-area {
       background-image: url('../images/bg-header-home.svg');
     }
+    a {
+      color: #0060B6;
+      text-decoration: none;
+    }
+  
+    a:hover 
+    {
+      color:#00A0C6; 
+      text-decoration:none; 
+      cursor:pointer;  
+    }
 
     @media screen and (max-width: 1023px) and (min-width: 768px) {
       .navbar-top-area {
@@ -246,17 +282,6 @@ class="background-white"
       .navbar-top-area {
         background-image: url('../images/bg-header-home-xs.svg');
       }
-    }
-    a {
-        color: #0060B6;
-        text-decoration: none;
-    }
-  
-    a:hover 
-    {
-        color:#00A0C6; 
-        text-decoration:none; 
-        cursor:pointer;  
     }
   </style>
 @endsection

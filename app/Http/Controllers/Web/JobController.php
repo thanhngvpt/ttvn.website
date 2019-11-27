@@ -48,7 +48,7 @@ class JobController extends Controller
         
         $job_categories = JobCategory::all();
         $data = $this->jobRepo->getByJobCategory($page,$category_id, $province, $keyword);
-        
+
         if($request->ajax()){
             $html_mobile = View::make('pages.web.job-mobile',
                                         [

@@ -65,7 +65,8 @@ body {
 
 .menu-xl {
   position: absolute;
-  top: 56px; }
+  top: 56px;
+  z-index: 2; }
 
 .menu-xl-child {
   padding: 20px 32px;
@@ -328,13 +329,17 @@ body {
     color: #626262;
     padding: 16px 40px; }
   .list-job table tbody tr {
-    background-color: #ffffff;
-    border-bottom: 16px solid #f7f7f7; }
+    border-bottom: 16px solid #f7f7f7;
+    background-image: url(../images/bg-white-radius.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; }
     .list-job table tbody tr:last-child {
       margin-bottom: 0; }
   .list-job table tbody td {
     padding: 32px 40px; }
   .list-job table tbody .name-job {
+    display: block;
     font-size: 20px;
     line-height: 32px;
     font-weight: bold;
@@ -386,8 +391,10 @@ footer {
   padding-bottom: 112px; }
 #list-job-page .form-search-job {
   padding: 56px 80px;
-  background-color: #57AE5B;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  background-image: url("../images/bg-form.svg");
+  background-position: center;
+  background-size: cover; }
   #list-job-page .form-search-job .title-search-job {
     font-size: 32px;
     line-height: 51px;
@@ -1085,6 +1092,11 @@ main .nav-tabs {
   .field-project .slide-projects .slick-list {
     padding-top: 16px; }
 
+.icon-down-nav {
+  position: absolute;
+  bottom: 35px;
+  left: calc(50% - 12px); }
+
 .top-page-slide {
   padding-top: 150px;
   padding-bottom: 150px; }
@@ -1121,15 +1133,18 @@ main .nav-tabs {
     .top-page-slide .item-top-slide button {
       display: flex;
       color: #000000;
-      align-items: center; }
+      align-items: center;
+      background-color: #57AE5B; }
       .top-page-slide .item-top-slide button span {
         margin-left: 10px; }
+      .top-page-slide .item-top-slide button a {
+        color: #000000; }
     .top-page-slide .item-top-slide .img-top-slide {
       width: calc(50% - 154px); }
   .top-page-slide .slick-dots {
-    left: calc(50% - 648px);
+    left: calc(50% - 656px);
     width: 500px;
-    bottom: 150px;
+    bottom: 170px;
     background-color: initial; }
 
 .top-field {
@@ -1531,7 +1546,23 @@ main .nav-tabs {
     padding: 0 27px; }
 
   .partner-slide .slick-slide {
-    padding: 0 50px; } }
+    padding: 0 50px; }
+
+  .top-page-slide .slick-slide .img-top-slide {
+    display: none; }
+  .top-page-slide .slick-slide.slick-current .img-top-slide {
+    display: block; }
+
+  .top-page-slide .item-top-slide button {
+    width: 210px;
+    height: 48px; }
+
+  .detail-job-left {
+    display: flex;
+    margin-right: 48px; }
+
+  .detail-job-right {
+    display: flex; } }
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
   #news-page .nav-tabs {
     margin-bottom: 60px; }
@@ -1611,7 +1642,8 @@ main .nav-tabs {
     right: -30px; }
 
   #list-job-page .area-list-job {
-    width: 936px; }
+    width: 936px;
+    padding-bottom: 72px; }
   #list-job-page .form-search-job {
     padding: 40px 57px 47px 57px; }
     #list-job-page .form-search-job .search-keyword {
@@ -1807,6 +1839,13 @@ main .nav-tabs {
     line-height: 40px;
     margin-bottom: 16px; }
 
+  .top-page-slide .slick-slide .img-top-slide {
+    display: none; }
+  .top-page-slide .slick-slide.slick-current .img-top-slide {
+    display: block; }
+  .top-page-slide .slick-dots {
+    left: calc(50% - 468px);
+    bottom: 250px; }
   .top-page-slide .item-top-slide .text-slide {
     width: 578px;
     margin-left: calc(50% - 468px);
@@ -1815,7 +1854,7 @@ main .nav-tabs {
       font-size: 24px;
       line-height: 24px; }
     .top-page-slide .item-top-slide .text-slide .content {
-      font-size: 56px;
+      font-size: 55px;
       line-height: 56px;
       margin-bottom: 16px; }
     .top-page-slide .item-top-slide .text-slide .description {
@@ -1823,7 +1862,17 @@ main .nav-tabs {
       line-height: 31px;
       margin-bottom: 40px; }
   .top-page-slide .item-top-slide .img-top-slide {
-    width: calc(50% - 178px); } }
+    width: calc(50% - 178px); }
+
+  .detail-job-left {
+    display: flex;
+    margin-right: 48px; }
+
+  .detail-job-right {
+    display: flex; }
+
+  #list-job-page .download-cv {
+    margin-bottom: 56px; } }
 @media screen and (min-width: 1024px) and (max-width: 1250px) {
   .navbar-top-area {
     background-position: bottom right -100px; }
@@ -1860,6 +1909,12 @@ main .nav-tabs {
   .navbar-dark .navbar-toggler {
     display: block; } }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+  #job-detail-page {
+    padding-top: 56px;
+    padding-bottom: 56px; }
+    #job-detail-page .content-job-detail .title-job-detail {
+      margin-top: 0; }
+
   #news-page .list-news {
     margin-left: -7px;
     margin-right: -7px; }
@@ -1996,7 +2051,8 @@ main .nav-tabs {
     padding-top: 48px;
     padding-bottom: 56px; }
   #list-job-page .form-search-job {
-    padding: 40px 62px; }
+    padding: 40px 62px;
+    margin-bottom: 36px; }
     #list-job-page .form-search-job .title-search-job {
       margin-bottom: 32px; }
     #list-job-page .form-search-job form {
@@ -2017,7 +2073,7 @@ main .nav-tabs {
       width: 202px; }
 
   .list-job table thead th {
-    padding: 16px 12px; }
+    padding: 16px 9px; }
     .list-job table thead th:first-child {
       width: 48%; }
   .list-job table tbody td {
@@ -2379,7 +2435,23 @@ main .nav-tabs {
     padding-top: 88px;
     padding-bottom: 40px; }
     footer .logo-footer img {
-      height: 32px; } }
+      height: 32px; }
+
+  .detail-job-left {
+    display: flex;
+    margin-right: 48px; }
+
+  .detail-job-right {
+    display: flex; }
+
+  .select-option-job {
+    position: relative; }
+    .select-option-job select::after {
+      display: block;
+      content: "";
+      width: 3px;
+      height: 5px;
+      background: transparent url("../images/triangle-down.svg") no-repeat; } }
 @media screen and (max-width: 767px) {
   #news-detail-page .area-detail-news {
     padding-top: 32px;
@@ -2431,7 +2503,7 @@ main .nav-tabs {
 
   .navbar-top-area .title-page {
     font-size: 24px;
-    line-height: 24px;
+    line-height: 34px;
     padding-left: 16px;
     margin-top: 60px;
     padding-bottom: 22px; }
@@ -2483,13 +2555,28 @@ main .nav-tabs {
         #news-page .nav-tabs .nav-item .nav-link.active::before {
           margin-bottom: 10px; }
 
-  .item-news {
-    margin-bottom: 48px; }
-    .item-news .title-news {
-      font-size: 16px;
-      line-height: 22px; }
-    .item-news .cate-news {
-      margin-top: 16px; }
+  .top-news .tab-pane {
+    padding-left: 0;
+    padding-right: 0; }
+
+  .slide-top-news {
+    width: max-content; }
+    .slide-top-news .item-news {
+      display: block;
+      padding: 0;
+      width: 234px;
+      margin-right: 16px; }
+
+  .item-news .title-news {
+    font-size: 14px !important;
+    line-height: 25px !important;
+    margin-bottom: 16px !important; }
+  .item-news .cate-news {
+    margin-top: 0;
+    margin-bottom: 8px; }
+  .item-news .date-news {
+    font-size: 12px;
+    line-height: 18px; }
 
   .display-md {
     display: block; }
@@ -2497,11 +2584,12 @@ main .nav-tabs {
   .hidden-md {
     display: none; }
 
-  .number-detail-job {
-    display: block; }
-    .number-detail-job .item-number-detail {
-      display: inline-flex;
-      width: 32%; }
+  .number-detail-job .item-number-detail {
+    display: flex;
+    width: 100%;
+    margin-bottom: 16px; }
+    .number-detail-job .item-number-detail:last-child {
+      margin-bottom: 0; }
 
   #job-detail-page {
     padding-bottom: 56px; }
@@ -2772,7 +2860,7 @@ main .nav-tabs {
       display: none; }
 
   .top-field {
-    padding-top: 0; }
+    padding-top: 32px; }
     .top-field .title-top-field {
       font-size: 24px;
       line-height: 24px;
@@ -2781,18 +2869,25 @@ main .nav-tabs {
       font-size: 16px;
       line-height: 25px;
       margin-bottom: 32px; }
+    .top-field .title-topfield {
+      font-size: 20px;
+      margin-bottom: 16px; }
+    .top-field .des-topfield {
+      font-size: 14px;
+      line-height: 22px; }
 
   .top-field {
-    padding-bottom: 56px; }
+    padding-bottom: 32px; }
     .top-field .list-top-field {
       padding: 0; }
       .top-field .list-top-field .item-top-field {
-        margin-bottom: 24px; }
+        margin-bottom: 24px;
+        padding: 32px 24px 54px 24px; }
         .top-field .list-top-field .item-top-field .img-topfield {
           text-align: center; }
 
   .top-content {
-    padding-top: 112px; }
+    padding-top: 56px; }
 
   .text-top-intro {
     padding-top: 0; }
@@ -2838,46 +2933,75 @@ main .nav-tabs {
 
   .top-sumarry {
     margin-bottom: 72px; }
-    .top-sumarry .col-top-sumary {
-      margin-bottom: 88px; }
-      .top-sumarry .col-top-sumary img {
-        margin-bottom: 24px; }
-      .top-sumarry .col-top-sumary .number {
-        margin-bottom: 16px; }
+    .top-sumarry .col-top-sumary img {
+      margin-bottom: 24px; }
+    .top-sumarry .col-top-sumary .number {
+      margin-bottom: 16px;
+      font-size: 40px;
+      line-height: 40px; }
+    .top-sumarry .col-top-sumary .name {
+      font-size: 16px;
+      line-height: 16px; }
     .top-sumarry .last-sumarry {
       margin-bottom: 0; }
 
   .top-news {
     padding-bottom: 48px; }
     .top-news .title-top-news {
-      font-size: 24px; }
+      font-size: 24px;
+      line-height: 24px; }
+    .top-news .area-nav-news {
+      overflow: auto;
+      margin-bottom: 20px; }
     .top-news .nav-tabs {
       padding: 0;
-      display: block; }
+      width: max-content;
+      margin-bottom: 12px; }
       .top-news .nav-tabs .nav-item {
         display: inline-block;
-        padding: 0 12px; }
+        padding-right: 24px; }
         .top-news .nav-tabs .nav-item .nav-link {
           font-size: 14px; }
 
+  .area-top-news {
+    overflow: auto; }
+
   .slide-top-news {
-    margin: 0; }
+    margin: 0;
+    display: flex;
+    width: max-content; }
 
   .btn-see-more-news {
     margin-top: 16px; }
 
   .top-partners .partner-intro {
     padding-top: 40px;
-    padding-bottom: 56px; }
+    padding-bottom: 32px; }
     .top-partners .partner-intro .title-border-bottom {
       font-size: 24px;
+      line-height: 24px;
       margin-bottom: 32px; }
+
+  .partner-intro .container {
+    padding-left: 0;
+    padding-right: 0; }
+
+  .area-partner-slide {
+    overflow: auto; }
+
+  .partner-slide {
+    display: flex;
+    width: max-content; }
+    .partner-slide .item-slide {
+      width: 120px;
+      margin-right: 16px; }
 
   .top-consultation {
     padding-top: 64px;
     padding-bottom: 56px; }
     .top-consultation .title {
       font-size: 24px;
+      line-height: 24px;
       margin-bottom: 16px;
       width: calc(100% - 36px); }
     .top-consultation .description {
