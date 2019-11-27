@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'save-values'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'save_values'] )
 
 @section('metadata')
 @stop

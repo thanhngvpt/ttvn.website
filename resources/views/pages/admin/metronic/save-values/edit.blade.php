@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'save-values'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'save_values'] )
 
 @section('metadata')
 @stop
@@ -95,7 +95,7 @@
                 </div>
             @endif
 
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\SaveValueController@store') !!}@else{!! action('Admin\SaveValueController@update', [$saveValue->id]) !!}@endif" method="POST" enctype="multipart/form-data">
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\SaveValueController@store') !!}@else{!! action('Admin\SaveValueController@update', [$saveValue->id]) !!}@endif" method="POST"     >
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 

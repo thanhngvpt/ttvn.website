@@ -31,12 +31,20 @@ class TableNewRequest extends BaseRequest
      */
     public function rules()
     {
-        return $this->tableNewRepository->rules();
+        $id = ($this->method() == 'PUT') ? $this->route('table_news') : 0;
+
+        return $rules = [
+            'slug'  => 'required|unique:table_news,slug,'.$id,
+        ];
     }
 
     public function messages()
     {
-        return $this->tableNewRepository->messages();
+        $message = [
+            'slug.unique' => 'Slug đã tồn tại'
+        ];
+
+        return $message;
     }
 
 }

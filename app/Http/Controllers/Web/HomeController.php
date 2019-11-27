@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         $fields = Field::where('is_enabled', 1)->take(3)->get();
         $video = Video::first();
-        $banners = Banner::where('is_enabled', 1)->get();
+        $banners = Banner::where('is_enabled', 1)->orderBy('order', 'asc')->get();
         $inforGroup = InforGroup::first();
         $dataHighlights = DataHighlight::get();
         $companies = Company::where('is_enabled', 1)->get();

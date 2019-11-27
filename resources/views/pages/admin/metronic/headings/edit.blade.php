@@ -104,13 +104,13 @@
                         <div class="col-md-6">
                             <div class="form-group m-form__group row @if ($errors->has('title_heading')) has-danger @endif">
                                 <label for="title_heading">Title lĩnh vực hoạt động</label>
-                                <input type="text" class="form-control m-input" name="title_heading" id="title_heading" required value="{{ old('title_heading') ? old('title_heading') : $heading->title_heading }}">
+                                <input type="text" class="form-control m-input" name="title_heading" id="title_heading"  value="{{ old('title_heading') ? old('title_heading') : $heading->title_heading }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group m-form__group row @if ($errors->has('heading_description')) has-danger @endif">
                                 <label for="heading_description">Mô tả ngắn hỗ trợ</label>
-                                <input name="heading_description" id="heading_description" class="form-control m-input" rows="3" required value="{{ old('heading_description') ? old('heading_description') : $heading->heading_description }}">
+                                <input name="heading_description" id="heading_description" class="form-control m-input" rows="3"  value="{{ old('heading_description') ? old('heading_description') : $heading->heading_description }}">
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('title_news')) has-danger @endif">
                                 <label for="title_news">Title phần tin tức</label>
-                                <input type="text" class="form-control m-input" name="title_news" id="title_news" required value="{{ old('title_news') ? old('title_news') : $heading->title_news }}">
+                                <input type="text" class="form-control m-input" name="title_news" id="title_news"  value="{{ old('title_news') ? old('title_news') : $heading->title_news }}">
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('title_company')) has-danger @endif">
                                 <label for="title_company">Title công ty thành viên</label>
-                                <input type="text" class="form-control m-input" name="title_company" id="title_company" required value="{{ old('title_company') ? old('title_company') : $heading->title_company }}">
+                                <input type="text" class="form-control m-input" name="title_company" id="title_company"  value="{{ old('title_company') ? old('title_company') : $heading->title_company }}">
                             </div>
                         </div>
                     </div>
@@ -150,13 +150,13 @@
                         <div class="col-md-6">
                             <div class="form-group m-form__group row @if ($errors->has('title_support')) has-danger @endif">
                                 <label for="title_support">Title nhận tư vấn</label>
-                                <input type="text" class="form-control m-input" name="title_support" id="title_support" required value="{{ old('title_support') ? old('title_support') : $heading->title_support }}">
+                                <input type="text" class="form-control m-input" name="title_support" id="title_support"  value="{{ old('title_support') ? old('title_support') : $heading->title_support }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group m-form__group row @if ($errors->has('support_description')) has-danger @endif">
                                 <label for="support_description">Mô tả ngắn hỗ trợ</label>
-                                <input type="text" class="form-control m-input" name="support_description" id="support_description" required value="{{ old('support_description') ? old('support_description') : $heading->support_description }}">
+                                <input type="text" class="form-control m-input" name="support_description" id="support_description"  value="{{ old('support_description') ? old('support_description') : $heading->support_description }}">
                             </div>
                         </div>
                     </div>

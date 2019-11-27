@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'table-news'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'table_news'] )
 
 @section('metadata')
 @stop

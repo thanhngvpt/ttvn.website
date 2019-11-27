@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'infor-groups'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'infor_groups'] )
 
 @section('metadata')
 @stop
