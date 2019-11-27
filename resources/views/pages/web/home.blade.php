@@ -73,7 +73,7 @@ class="background-white"
           <div class="row">
             @foreach($fields as $field)
             <div class="col-md-4">
-              <a class="item-top-field">
+              <a class="item-top-field" href="{!! action('Web\ScopeActiveController@index', $field->slug) !!}">
                 <div class="img-topfield">
                   <img src="{!! $field->present()->homeImage()->present()->url !!}" class="img-fluid">
                 </div>
@@ -154,30 +154,29 @@ class="background-white"
           <!-- Tab panes -->
           <div class="tab-content">
             <div class="tab-pane container active" id="tab_all">
-              <div class="area-top-news">
-                <div class="slide-top-news">
-                  @foreach($news as $item)
-                    <a href="#" class="item-news">
-                      <div class="img-news">
-                        <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                      </div>
-                      <div class="content-news">
-                        <div class="cate-news">
-                          {{$item->newCategory->name}}
-                        </div>
-                        <div class="title-news">
-                          {{$item->name}}
-                        </div>
-                        <div class="date-news">
-                            {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
-                        </div>
-                      </div>
-                    </a>
-                  @endforeach
-                </div>
+            <div class="area-top-news">
+              <div class="slide-top-news">
+                @foreach($news as $item)
+                <a href="{{action('Web\NewsController@details', $item->slug)}}" class="item-news">
+                  <div class="img-news">
+                    <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                  </div>
+                  <div class="content-news">
+                    <div class="cate-news">
+                      {{$item->newCategory->name}}
+                    </div>
+                    <div class="title-news">
+                      {{$item->name}}
+                    </div>
+                    <div class="date-news">
+                        {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
+                    </div>
+                  </div>
+                </a>
+                @endforeach
               </div>
               <div class="text-center">
-                <a href="#" class="btn btn-outline-success btn-see-more-news">
+                <a href="{{action('Web\NewsController@index')}}" class="btn btn-outline-success btn-see-more-news">
                   Xem tất cả
                 </a>
               </div>

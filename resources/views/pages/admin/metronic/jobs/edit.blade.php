@@ -6,6 +6,7 @@
 @section('styles')
     <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
     <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="{!! \URLHelper::asset('libs/plugins/select2/select2.min.css', 'admin') !!}">
 
     <style>
         .row {
@@ -20,13 +21,29 @@
             width: 100%;
         }
 
+        .select2-container .select2-selection--single {
+            height: 33px;
+            border-radius: 0px;
+            margin-right: 5px;
+            border: solid 0.5px;
+            border-color: #d2d6de;
+            box-shadow: none !important;
+            width: 100%;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered  {
+            line-height: 19px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            top: 16px;
+        }
+
     </style>
 @stop
 
 @section('scripts')
     <script src="{!! \URLHelper::asset('libs/metronic/demo/default/custom/crud/forms/validation/form-controls.js', 'admin') !!}"></script>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/js/froala_editor.pkgd.min.js'></script>
-
+    <script type="text/javascript" src="{{ \URLHelper::asset('libs/plugins/select2/select2.full.min.js', 'admin') }}"></script>
     <script>
         $(document).ready(function () {
             $('#cover-image').change(function (event) {
@@ -38,6 +55,15 @@
                 autoclose: true,
                 pickerPosition: 'bottom-left',
                 format: 'yyyy/mm/dd'
+            });
+
+            var provinces = [];
+            $.each(masterData, function (key, value) {
+                provinces.push(value.name);
+            });
+
+            $('#province').select2({
+                "data": provinces
             });
         });
     </script>
@@ -187,21 +213,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group m-form__group row @if ($errors->has('province')) has-danger @endif">
-                                <label for="province">Khu vực(Tỉnh/TP)</label>
-                                <input type="text" class="form-control m-input" name="province" id="province" required value="{{ old('province') ? old('province') : $job->province }}">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group m-form__group row @if ($errors->has('district')) has-danger @endif">
-                                <label for="district">Quận huyện</label>
-                                <input type="text" class="form-control m-input" name="district" id="district" required value="{{ old('district') ? old('district') : $job->district }}">
-                            </div>
-                        </div>
-                    </div>
                     
                     <div class="row">
                         <div class="col-md-6">
@@ -238,7 +249,14 @@
                             </div>
                         </div>
                     </div>
-                   
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group row @if ($errors->has('province')) has-danger @endif">
+                                <label for="province">Khu vực(Tỉnh/TP)</label>
+                                <input type="text" class="form-control m-input" name="province" id="province" required value="{{ old('province') ? old('province') : $job->province }}">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('description')) has-danger @endif">
