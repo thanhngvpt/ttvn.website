@@ -14,14 +14,14 @@ class="background-white"
       <ul class="nav nav-tabs">
         @foreach ($fields as $key => $field)
         <li class="nav-item field-tab-click" data-field-id="{{$field->id}}">
-          <a class="nav-link @if($key==0) active @endif" data-toggle="tab" href="#field-tab-{{$field->id}}">{{$field->name}}</a>
+          <a class="nav-link @if($slug==$field->slug) active @endif" data-toggle="tab" href="#field-tab-{{$field->id}}">{{$field->name}}</a>
         </li>
         @endforeach
       </ul>
     </div>
     <div class="tab-content">
       @foreach($fields as $key => $field)
-      <div class="tab-pane @if($key==0) active @endif" id="field-tab-{{$field->id}}">
+      <div class="tab-pane @if($slug==$field->slug) active @endif" id="field-tab-{{$field->id}}">
         <div class="tech-intro">
           <div class="tech-left">
             <div class="title-border-bottom">

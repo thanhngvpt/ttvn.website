@@ -181,7 +181,7 @@
 					@endforeach
 				</div>
 				<div class="view-all-job">
-					<a href="" class="btn btn-outline-success">
+					<a href="{!! action('Web\JobController@listJob') !!}" class="btn btn-outline-success">
 						Xem tất cả
 					</a>
 				</div>
