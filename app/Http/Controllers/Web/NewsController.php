@@ -16,11 +16,17 @@ class NewsController extends Controller
     {
         $this->newRepo = $newRepo;
     }
-    public function index(PaginationRequest $request)
+    public function index(PaginationRequest $request, $category_slug)
     {
+        $category_id = 0;
         $categories = NewCategory::orderBy('order', 'asc')->get();
         $page =  $request->get('page', 1);
-        $category_id = $request->get('category_id', 0);
+
+        if ($category_slug != 'all') {
+            $category = NewCategory::where('slug', $category_slug)->first();
+            $category_id = $category->id;
+        }
+
         if ($category_id != 0) {
             $hot_news = TableNew::where('new_category_id', $category_id)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
         } else {
@@ -28,7 +34,7 @@ class NewsController extends Controller
         }
         
         $data = $this->newRepo->getByNewsCategory($page, $category_id);
-
+       
         if($request->ajax()){
             $html = View::make('pages.web.news-next-page', ['data' => $data])->render();
 
@@ -38,7 +44,8 @@ class NewsController extends Controller
         return view('pages.web.news', [
             'data' => $data,
             'categories' => $categories,
-            'hot_news' => $hot_news
+            'hot_news' => $hot_news,
+            'category_slug' => $category_slug
         ]);
     }
 

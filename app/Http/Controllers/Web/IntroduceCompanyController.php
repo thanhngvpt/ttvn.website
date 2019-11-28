@@ -15,7 +15,7 @@ class IntroduceCompanyController extends Controller
      * type = 1 => tab TTVN
      * type = 2 => tab BLD
     */
-    public function index()
+    public function index($type)
     {
         $introduce = Introduce::first();
         $save_values = SaveValue::take(12)->get();
@@ -29,7 +29,7 @@ class IntroduceCompanyController extends Controller
             'histories' => $histories,
             'leader_ships' => $leader_ships,
             'partners' => $partners,
-            // 'type' => $type
+            'type' => $type
         ]);
     }
 }

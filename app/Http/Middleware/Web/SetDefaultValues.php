@@ -3,6 +3,9 @@
 namespace App\Http\Middleware\Web;
 
 use App\Services\UserServiceInterface;
+use App\Models\NewCategory;
+use App\Models\Field;
+use \Request;
 
 class SetDefaultValues
 {
@@ -30,7 +33,14 @@ class SetDefaultValues
     public function handle($request, \Closure $next)
     {
         $user = $this->userService->getUser();
+        $menu_news_categories = NewCategory::orderBy('order', 'asc')->get();
+        $menu_fields = Field::all();
+        $path_url = Request::segment(1);
+        // dd($path_url);
         \View::share('authUser', $user);
+        \View::share('menu_news_categories', $menu_news_categories);
+        \View::share('menu_fields', $menu_fields);
+        \View::share('path_url', $path_url);
 
         return $next($request);
     }
