@@ -19,39 +19,18 @@
             <div class="description">
               Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
             </div>
-            <button class="btn btn-success">
+            <button class="btn btn-success" style="margin-bottom: 60px;">
               <img src="{{ asset('images/view-video.svg') }}" class="img-fluid" />
               <span><a href="{{$video->video_url}}">Xem video</a></span>
             </button>
           </div>
           <div class="img-top-slide">
-            <iframe width="648" height="490" src="{{$video->video_url}}" frameborder="0"/></iframe>
+              <img src="{!! $video->present()->coverImage()->present()->url !!}" class="img-fluid" />
           </div>
         </div>
       </div>
-      <div class="item-slide">
-        <div class="item-top-slide">
-          <div class="text-slide">
-            <div class="title">
-              Tập đoàn
-            </div>
-            <div class="content">
-              Trường Thành Việt Nam
-            </div>
-            <div class="description">
-              Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
-            </div>
-            <button class="btn btn-success">
-              <img src="{{ asset('images/view-video.svg') }}" class="img-fluid" />
-              <span><a href="{{$video->video_url}}">Xem video</a></span>
-            </button>
-          </div>
-          <div class="img-top-slide">
-            <iframe width="648" height="490" src="{{$video->video_url}}" frameborder="0"/></iframe>
-          </div>
-        </div>
-      </div>
-    @else
+      @endif
+
       @foreach($banners as $banner)
       <div class="item-slide">
           <div class="item-top-slide">
@@ -72,7 +51,6 @@
           </div>
         </div>
       @endforeach
-    @endif
   </div>
   <div class="icon-down-nav">
     <img src="{{ asset('images/icon-down-nav.svg') }}" class="img-fluid" />

@@ -411,13 +411,22 @@
                                         </a>
                                     </li>
 
+                                    <li class="m-menu__item @if( $menu=='admin_users') m-menu__item--active @endif" aria-haspopup="true">
+                                        <a href="{!! \URL::action('Admin\AdminUserController@index') !!}" class="m-menu__link ">
+                                            <i class="m-menu__link-icon la la-user-secret"></i>
+                                            <span class="m-menu__link-title">
+                                                <span class="m-menu__link-wrap">
+                                                    <span class="m-menu__link-text">
+                                                        Quản trị account
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </li>
-           
-
-            
-
             <!-- %%SIDEMENU%% -->
         </ul>
     </div>
