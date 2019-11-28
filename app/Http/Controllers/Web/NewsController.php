@@ -45,7 +45,7 @@ class NewsController extends Controller
             'data' => $data,
             'categories' => $categories,
             'hot_news' => $hot_news,
-            'category_slug' => $category_slug
+            'category_slug' => $category_slug,
         ]);
     }
 

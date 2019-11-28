@@ -87,6 +87,7 @@
 				</div>
 				@foreach($categories as $category)
 				<div class="tab-pane @if($category_slug == $category->slug) active show @endif container fade" data-category-slug="{{$category->slug}}" data-category-id="{{$category->id}}" id="news-tab-{{$category->id}}">
+					@if($category_slug == $category->slug)
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
 						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', $hot_new->slug) !!}'">
@@ -145,6 +146,7 @@
 							</ul>
 						</div>
 					</div>
+					@endif
 				@endforeach
 			</div>
 		</div>
