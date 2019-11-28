@@ -13,7 +13,7 @@
 		<div class="container">
 			<div class="navtab-custom">
 				<ul class="nav nav-tabs">
-					<li class="nav-item">
+					<li class="nav-item category-click" data-category-id="0">
 						<a class="nav-link @if($category_slug == 'all') active @endif" data-category-slug="all" data-category-id="0" data-toggle="tab" href="#tab_all">Tất cả</a>
 					</li>
 					@foreach($categories as $category)
