@@ -59,6 +59,13 @@
                     </a>
                     <div id="news-menu-xl" class="collapse menu-xl">
                         <ul class="menu-xl-child">
+                            <li>
+                                <a href="{!!action('Web\NewsController@index', 'all')!!}">
+                                        <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
+                                        Tất cả
+                                </a>
+
+                            </li>
                             @foreach($menu_news_categories as $menu_news_category)
                             <li>
                                 <a href="{!!action('Web\NewsController@index', $menu_news_category->slug)!!}">
@@ -151,6 +158,11 @@
                 </a>
                 <div id="news-menu-mb" class="collapse">
                     <ul class="menu-mb-child">
+                        <li>
+                            <a href="{!!action('Web\NewsController@index', 'all')!!}">
+                                Tất cả
+                            </a>
+                        </li>
                         @foreach($menu_news_categories as $menu_news_category)
                         <li>
                             <a href="{!!action('Web\NewsController@index', $menu_news_category->slug)!!}">

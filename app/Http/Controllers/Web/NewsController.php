@@ -21,7 +21,7 @@ class NewsController extends Controller
         $category_id = 0;
         $categories = NewCategory::orderBy('order', 'asc')->get();
         $page =  $request->get('page', 1);
-
+        
         if ($category_slug != 'all') {
             $category = NewCategory::where('slug', $category_slug)->first();
             $category_id = $category->id;

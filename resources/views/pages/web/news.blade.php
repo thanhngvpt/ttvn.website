@@ -184,7 +184,7 @@
 			let slug = $('.tab-pane.active').data('category-slug')
 
 			$.ajax({
-				url: "{{action('Web\NewsController@index', "+slug+")}}",
+				url: "/news-category/"+slug,
 				type: "GET",
 				data: {
 					_token: "{!! csrf_token() !!}",
@@ -192,6 +192,9 @@
 				},
 				success: function (res) {
 					$('.news-content').html(res)
+					$('html, body').animate({
+						scrollTop: $(".news-content").offset().top
+					}, 500);
 				}
 			});
 		})
