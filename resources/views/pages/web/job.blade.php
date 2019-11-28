@@ -17,7 +17,7 @@
 				{{$cultural_companies->content}}
 			</div>
 			<div class="btn-list-job">
-				<a href="#" class="btn">
+				<a href="{!! action('Web\JobController@listJob') !!}" class="btn">
 					Danh sách việc làm
 				</a>
 			</div>
