@@ -28,9 +28,9 @@ class NewsController extends Controller
         }
 
         if ($category_id != 0) {
-            $hot_news = TableNew::where('new_category_id', $category_id)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+            $hot_news = TableNew::where('new_category_id', $category_id)->where('display', 1)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
         } else {
-            $hot_news = TableNew::where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+            $hot_news = TableNew::where('is_enabled', 1)->where('display', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
         }
         
         $data = $this->newRepo->getByNewsCategory($page, $category_id);
@@ -56,12 +56,13 @@ class NewsController extends Controller
         if ($category_id != 0) {
             $hot_news = TableNew::where('new_category_id', $category_id)
                             ->where('is_enabled', 1)
+                            ->where('display', 1)
                             ->orderBy('order', 'esc')
                             ->orderBy('id', 'desc')
                             ->take(4)
                             ->get();
         } else {
-            $hot_news = TableNew::where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+            $hot_news = TableNew::where('is_enabled', 1)->where('display', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
         }
        
         

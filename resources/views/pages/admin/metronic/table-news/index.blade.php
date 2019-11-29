@@ -115,14 +115,14 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.table-news.columns.name')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('slug', trans('admin.pages.table-news.columns.slug')) !!}</th>
-                                                                                                                                                                                                                                                                                            <th>{!! \PaginationHelper::sort('display', trans('admin.pages.table-news.columns.display')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('order', trans('admin.pages.table-news.columns.order')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('meta_title', trans('admin.pages.table-news.columns.meta_title')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('meta_description', trans('admin.pages.table-news.columns.meta_description')) !!}</th>
-                                                                                                                                                                                                                                                                                            <th>{!! \PaginationHelper::sort('auth', trans('admin.pages.table-news.columns.auth')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('is_enabled', trans('admin.pages.table-news.columns.is_enabled')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.table-news.columns.name')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('id', 'Danh mục') !!}</th>
+                                    
+                                    <th>{!! \PaginationHelper::sort('order', 'Vị trí') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('meta_title', 'Meta title') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('meta_description', 'Meta description') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('auth', 'Tác giả') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('is_enabled', 'Trạng thái') !!}</th>
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
@@ -132,15 +132,14 @@
                                 @foreach( $tableNews as $tableNew )
                                     <tr>
                                         <td>{{ $tableNew->id }}</td>
-                                                                                                                            <td>{{ $tableNew->name }}</td>
-                                                                                                                            <td>{{ $tableNew->slug }}</td>
-                                                                                                                                                                                                                                                                                                                    <td>{{ $tableNew->display }}</td>
-                                                                                                                            <td>{{ $tableNew->order }}</td>
-                                                                                                                            <td>{{ $tableNew->meta_title }}</td>
-                                                                                                                            <td>{{ $tableNew->meta_description }}</td>
-                                                                                                                                                                                                                                                                                                                    <td>{{ $tableNew->auth }}</td>
-                                                                                                                            <td>{{ $tableNew->is_enabled }}</td>
-                                                                                <td>
+                                        <td>{{ $tableNew->name }}</td>
+                                        <td>{{ $tableNew->newCategory->name }}</td>
+                                        <td>{{ $tableNew->order }}</td>
+                                        <td>{{ $tableNew->meta_title }}</td>
+                                        <td>{{ $tableNew->meta_description }}</td>
+                                        <td>{{ $tableNew->auth }}</td>
+                                        <td>{{ $tableNew->is_enabled }}</td>
+                                        <td>
                                             <a href="{!! action('Admin\TableNewController@show', $tableNew->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>

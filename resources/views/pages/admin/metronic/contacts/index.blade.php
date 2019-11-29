@@ -42,14 +42,6 @@
             </div>
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
-                    <li class="m-portlet__nav-item">
-                        <a href="{!! action('Admin\ContactController@create') !!}" class="btn m-btn--pill m-btn--air btn-outline-success btn-sm">
-                            <span>
-                                <i class="la la-plus"></i>
-                                <span>Create New</span>
-                            </span>
-                        </a>
-                    </li>
                     <li class="m-portlet__nav-item"></li>
                     <li class="m-portlet__nav-item">
                         <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
@@ -115,11 +107,11 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.contacts.columns.name')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('email', trans('admin.pages.contacts.columns.email')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('phone', trans('admin.pages.contacts.columns.phone')) !!}</th>
-                                                                                                                                                                                                        <th>{!! \PaginationHelper::sort('message_type', trans('admin.pages.contacts.columns.message_type')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('is_read', trans('admin.pages.contacts.columns.is_read')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('name', 'Tên') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('email', trans('admin.pages.contacts.columns.email')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('phone', trans('admin.pages.contacts.columns.phone')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('phone', 'Nội dung') !!}</th>
+                                  
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
@@ -129,12 +121,12 @@
                                 @foreach( $contacts as $contact )
                                     <tr>
                                         <td>{{ $contact->id }}</td>
-                                                                                                                            <td>{{ $contact->name }}</td>
-                                                                                                                            <td>{{ $contact->email }}</td>
-                                                                                                                            <td>{{ $contact->phone }}</td>
-                                                                                                                                                                                                                        <td>{{ $contact->message_type }}</td>
-                                                                                                                            <td>{{ $contact->is_read }}</td>
-                                                                                <td>
+                                        <td>{{ $contact->name }}</td>
+                                        <td>{{ $contact->email }}</td>
+                                        <td>{{ $contact->phone }}</td>
+                                        <td>{{ $contact->content }}</td>
+                                       
+                                        <td>
                                             <a href="{!! action('Admin\ContactController@show', $contact->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>
