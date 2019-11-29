@@ -610,12 +610,55 @@ class="background-white introduce-page"
                 calculateWidth = container.width();
 
                 breakPoint = (calculateWidth + offset) + 'px';
-                backgroundGradient = `linear-gradient(90deg, #00263C 0%, #00263C ${breakPoint}, #57AE5B ${breakPoint}, #57AE5B 100%);`;
+                backgroundGradient = `linear-gradient(90deg, #00263C 0%, #00263C ${breakPoint}, #57AE5B ${breakPoint}, #57AE5B 100%)`;
+                configs = {
+                    1440: {
+                        bgDefault: `url('/images/introduce/square-header1.svg'), url('/images/introduce/square-header2.svg'), url('/images/introduce/square-header3.svg'), url('/images/introduce/header-green.svg')`,
+                        position: 'bottom -10% left -50px, top 50% right 30%',
+                        p3: {
+                            x: 43,
+                            y: 55
+                        }
+                    },
+                    1024: {
+                        bgDefault: `url('/images/introduce/square-header1-lg.svg'), url('/images/introduce/square-header2.svg'), url('/images/introduce/square-header3.svg'), url('/images/introduce/header-green.svg')`,
+                        position: 'left 0 bottom -40%, top 55% right 30%',
+                        p3: {
+                            x: 61,
+                            y: 108
+                        },
+                    }
+                }
 
-                if (window.screenWidth >= 768) {
-                    targetBg.css({'background': backgroundGradient});
+                position = ''
+                bg = ''
+                size = ''
+                Object.keys(configs).forEach(function(size) {
+                    if (window.screenWidth >= size) {
+                        data = configs[size]
+                        position = data.position;
+                        bg = `${data.bgDefault}, ${backgroundGradient}`;
+
+                        p3x = parseInt(breakPoint) + parseInt(data.p3.x)
+                        position += `, ${p3x}px  ${data.p3.y}px, bottom -4px left ${breakPoint}, 100%`
+                    }
+                })
+                obj = {
+                    'background-image': bg,
+                    'background-position': position
+                }
+
+                if (window.screenWidth >= 1024) {
+                    targetBg.css(obj);
+                } else {
+                    targetBg.attr('style', '')
                 }
             }
+
+            drawBackgroundHeader();
+            $(window).on('resize', function() {
+                drawBackgroundHeader();
+            })
             
 		});
 	</script>

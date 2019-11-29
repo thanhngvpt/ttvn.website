@@ -4,6 +4,7 @@
     }
 
     .navbar-top-area {
+        background-color: #00263C;
         .title-page {
             margin: 0;
             padding: 0;
@@ -68,6 +69,10 @@
         }
 
         .navbar-top-area {
+            background: url('/images/introduce/square-header1-lg.svg'), url('/images/introduce/square-header2.svg');
+            background-color: #00263C;
+            background-position: bottom -100% left -5%, top 40% right 20%;
+            background-repeat: no-repeat;
             .container {
                 padding: 60px 0;
             }
@@ -100,6 +105,8 @@
         }
 
         .navbar-top-area {
+            background-repeat: no-repeat;
+            background-size: 140px, 104px, 94px, 100% 16px,100%;
             .container {
                 padding-top: 132px;
                 padding-bottom: 100px;
@@ -122,6 +129,7 @@
 }
 @media (min-width: $break-mid-lg) {
     .introduce-page {
+        
 
     }   
 }
@@ -131,11 +139,13 @@
             max-width: 1320px;
         }
         .navbar-top-area {
+            background: linear-gradient(90deg, rgb(0, 38, 60) 0%, rgb(0, 38, 60) 1492.5px, rgb(87, 174, 91) 1492.5px, rgb(87, 174, 91) 100%);
+            background-size: 196px 192px, 104px, 123px, 100% 24px, 100%;
+            background-repeat: no-repeat;
+
             .container {
                 padding-top: 150px;
                 padding-bottom: 120px;
-
-                background: #00263C;
             }
         }
         
