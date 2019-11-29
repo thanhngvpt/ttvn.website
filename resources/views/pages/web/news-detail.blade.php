@@ -8,7 +8,7 @@
 	<div id="news-detail-page">
 		<div class="area-detail-news">
 			<a class="tag-news" href="#">
-				{{$news->newCategory->name}}
+				{{@$news->newCategory->name}}
 			</a>
 			<div class="title-news-detail">
 					{{$news->name}}
@@ -22,7 +22,7 @@
 			<div class="share-detail-news clearfix">
 				<div class="float-left">
 					<span class="tags-secondary">
-						{{$news->newCategory->name}}
+						{{@$news->newCategory->name}}
 					</span>
 				</div>
 				<div class="float-right">
@@ -59,7 +59,7 @@
 						</div>
 						<div class="content-news">
 							<div class="cate-news">
-									{{$news->newCategory->name}}
+									{{@$news->newCategory->name}}
 							</div>
 							<div class="title-news">
 									{{$news->name}}

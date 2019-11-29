@@ -20,7 +20,9 @@ class DataHighLight extends Base
      * @var array
      */
     protected $fillable = [
-        
+        'cover_image_id',
+                'title',
+                'data',
     ];
 
     /**
@@ -41,7 +43,10 @@ class DataHighLight extends Base
     }
 
     // Relations
-    
+    public function coverImage()
+    {
+        return $this->hasOne('App\Models\Image', 'id', 'cover_image_id');
+    }
 
     // Utility Functions
 

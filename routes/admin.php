@@ -55,7 +55,7 @@
         \Route::resource('videos', 'Admin\VideoController');
         \Route::resource('headings', 'Admin\HeadingController');
         \Route::resource('infor-groups', 'Admin\InforGroupController');
-        \Route::resource('data-high-lights', 'Admin\DataHighLightController');
+        // \Route::resource('data-high-lights', 'Admin\DataHighLightController');
         \Route::resource('companies', 'Admin\CompanyController');
         \Route::resource('introduces', 'Admin\IntroduceController');
         \Route::resource('partners', 'Admin\PartnerController');

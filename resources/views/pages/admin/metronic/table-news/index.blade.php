@@ -133,7 +133,7 @@
                                     <tr>
                                         <td>{{ $tableNew->id }}</td>
                                         <td>{{ $tableNew->name }}</td>
-                                        <td>{{ $tableNew->newCategory->name }}</td>
+                                        <td>{{ @$tableNew->newCategory->name }}</td>
                                         <td>{{ $tableNew->order }}</td>
                                         <td>{{ $tableNew->meta_title }}</td>
                                         <td>{{ $tableNew->meta_description }}</td>

@@ -108,7 +108,7 @@ class SaveValueController extends Controller
 
         if ($request->hasFile('cover-image')) {
             $file = $request->file('cover-image');
-
+            dd($file);
             $image = $this->fileUploadService->upload(
                 'banner_cover_image',
                 $file,

@@ -6,7 +6,7 @@
                     <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
                 </div>
                 <div class="cate-news">
-                        {{$item->newCategory->name}}
+                        {{@$item->newCategory->name}}
                 </div>
                 <div class="title-news">
                         {{$item->name}}

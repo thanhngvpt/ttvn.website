@@ -46,3 +46,5 @@ public/static/admin/metronic/css/compiled.css
 public/static/admin/metronic/js/compiled.js
 public/static/common/libs/metronic/css/compiled.css
 public/static/common/libs/metronic/js/compiled.js
+public/static/common/img/*/*
+public/static/common/file/*
