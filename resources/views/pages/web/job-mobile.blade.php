@@ -4,11 +4,15 @@
                 {{$job->name}}
         </div>
         <div class="des-job-mb">
+                @if(empty($job->company))
+                Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
+                @else
                 {{$job->company->name}}
+                @endif
         </div>
         <div class="info-job-mb">
             <img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
-            <span>{{$job->company->province}}</span>
+            <span>{{$job->province}}</span>
         </div>
         <div class="info-job-mb">
             <img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />

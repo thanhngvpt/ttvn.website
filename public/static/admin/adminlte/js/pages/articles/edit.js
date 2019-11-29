@@ -1,5 +1,5 @@
 $(function () {
-    $('.datetime-field').datetimepicker({'format': 'YYYY-MM-DD HH:mm:ss', 'defaultDate': new Date()});
+    // $('.datetime-field').datetimepicker({'format': 'YYYY-MM-DD HH:mm:ss', 'defaultDate': new Date()});
     
     $('#cover-image').change(function (event) {
         $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
