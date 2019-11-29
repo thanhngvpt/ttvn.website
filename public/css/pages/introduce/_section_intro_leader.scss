@@ -1,0 +1,100 @@
+.section-introduce-leader {
+    padding-bottom: 48px;
+    .section-head {
+        margin-bottom: 32px;
+        .section-title {
+        }
+    }
+
+    .section-body {
+        font-family: $f-opensan;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 25px;
+        color: $text-tech-item-desc;
+
+        .intro-leader-col {
+            margin-bottom: 16px;
+            padding: 0 8px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-md) {
+    .section-introduce-leader {
+        padding-bottom: 56px;
+        .section-head {
+            margin-bottom: 59px;
+            .section-title {
+                font-size: 24px;
+            }
+        }
+        .section-body {
+            .intro-leader-row {
+                display: flex;
+                margin-left: -8px;
+                margin-right: -8px;
+            }
+            .intro-leader-col {
+                -ms-flex: 0 0 50%;
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-lg) {
+    .section-introduce-leader {
+        padding-bottom: 64px;
+        .section-head {
+            margin-bottom: 64px;
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        .section-body {
+            .intro-leader-row {
+                margin-left: -12px;
+                margin-right: -12px;
+            }
+            .intro-leader-col {
+                -ms-flex: 0 0 50%;
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding: 0 12px;
+            }
+        }
+        
+    
+    }
+}
+
+@media (min-width: $break-xl) {
+    .section-introduce-leader {
+        padding-bottom: 120px;
+        .section-head {
+            margin-bottom: 88px;
+        }
+        .section-body {
+            .intro-leader-row {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+            .intro-leader-col {
+                -ms-flex: 0 0 33.333333%;
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+                padding: 0 15px;
+                &:first-child {
+                    margin-left: 33.333333%;
+                }
+            }
+        }
+    }
+}

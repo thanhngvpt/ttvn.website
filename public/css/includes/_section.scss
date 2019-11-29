@@ -1,0 +1,41 @@
+.section {
+    .section-head {
+        .section-title {
+            font-weight: $fz-eb-semibold;
+            font-size: 24px;
+            color: white;
+            font-family: $f-eb;
+        }
+    }
+}
+
+@media (min-width: $break-md) {
+    .section {
+        .section-head {
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-lg) {
+    .section {
+        .section-head {
+            .section-title {
+                font-size: 40px;
+                line-height: 64px;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-xl) {
+    .section {
+        .section-head {
+            .section-title {
+                font-size: 48px;
+            }
+        }
+    }
+}

@@ -1,0 +1,267 @@
+.section-history {
+    background: $bg-history;
+    padding: 48px 0;
+
+    .history-timeline {
+        overflow: hidden;
+        .timeline-list {
+            .wrapper {
+                display: flex;
+                align-items: center;
+                transition: all ease-in-out .2s;
+            }
+            .timeline-item {
+                font-family: $f-opensan;
+                font-weight: $fz-op-bold;
+                font-size: 16px;
+                line-height: 25px;
+                color: white;
+                padding: 0 24px;
+                cursor: pointer;
+            }
+        }
+        .timeline-bar {
+            .container {
+                padding: 0;
+            }
+            .timeline-rounder {
+                height: 2px;
+                width: 100%;
+                background: #004A74;
+                position: relative;
+                margin: 16px auto;
+            }
+            .timeline-progress {
+                background: #57AE5B;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                transition: all ease-in-out .4s;
+            }
+        }
+    }
+    .section-head {
+        display: none;
+    }
+    .section-body {
+        .history-row {
+            .history-col {
+
+            }
+
+            .section-title {
+                color: white;
+                padding: 40px 0 32px;
+            }
+        }
+
+        .history-content-list {
+            .history-content-slider {
+                margin-bottom: 40px;
+            }
+            .history-content-item {
+                font-family: $f-opensan;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 25px;
+                color: #B0D0E3;
+                padding: 1px;
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .history-row {
+        .history-col {
+            
+        }
+
+        .history-thumb-slider {
+            .slick-list {
+                img {
+                    padding: 1px;
+                }
+            }
+        }
+    }
+
+    .slick-append-arrows {
+        margin-top: 56px;
+        display: none;
+        .btn-slick-rounded {
+            background: none;
+            outline: none;
+            width: 86px;
+            height: 48px;
+            border: none;
+            padding: 0;
+            margin-right: 24px;
+            &:last-child {
+                margin: 0;
+            }
+            svg {
+                path, rect {
+                    stroke: white;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $break-md) {
+    .section-history {
+        padding: 65px 0 56px;
+
+        .section-body {
+            .history-content-list {
+                .history-content-slider {
+                    margin-bottom: 0;
+                    width: 100%;
+                    overflow: hidden;
+                }
+            }
+        }
+        .history-timeline {
+            overflow: hidden;
+            .timeline-list {
+                .wrapper {
+                    justify-content: space-around;
+                }
+            }
+        }
+        
+
+        .history-row {
+            display: flex;
+            .history-col {
+                flex: 0 0 100%;
+                max-width: 50%;
+                padding: 0 10px;
+                overflow: hidden;
+
+                .col-wrapper {
+                    width: 100%;
+                }
+            }
+
+            .history-col-thumb {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .col-wrapper {
+                    padding-left: 17px;
+                    padding-bottom: 17px;
+                }
+            }
+
+            .history-thumb-slider {
+                position: relative;
+                .slick-list {
+                    z-index: 10;
+                    img {
+                        padding: 1px;
+                    }
+                }
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 13, 0, 0.16);
+                    transform: translate(-17px, 16px);
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                }
+            }
+        }
+
+        .slick-append-arrows {
+            display: block;
+        }
+    }
+}
+
+@media (min-width: $break-lg) {
+    .section-history {
+        padding: 88px 0;
+        .container {
+            max-width: 936px;
+        }
+
+        .history-row {
+            margin-left: -34px;
+            margin-right: -34px;
+            .history-col {
+                padding: 0 17px;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-xl) {
+    .section-history {
+        padding: 88px 0 56px;
+        .container {
+            max-width: 1320px;
+        }
+        .section-head {
+            display: block;
+            .section-title {
+                padding: 127px 0 104px;
+                font-size: 56px;
+                color: white;
+            }
+        }
+        .section-body {
+            .history-row {
+                .section-title {
+                    display: none;
+                }
+
+                .history-col-content {
+                    padding: 0 100px 0 115px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+
+        .slick-append-arrows {
+            margin-top: 64px;
+        }
+
+        .history-timeline {
+            .timeline-list {
+                .wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                }
+                .timeline-item {
+                    font-family: $f-opensan;
+                    font-weight: $fz-op-bold;
+                    font-size: 16px;
+                    line-height: 25px;
+                    color: white;
+                    padding: 0 24px;
+                }
+            }
+
+            .timeline-bar {
+
+            }
+        }
+    }
+}
+
+@media (min-width: $break-xxl) {
+    .section-history {
+    
+    }
+}
