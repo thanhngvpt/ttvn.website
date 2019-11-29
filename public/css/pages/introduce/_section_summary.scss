@@ -1,0 +1,163 @@
+.introduce-page {
+    .section-intro-common {
+        .section-head {
+            .section-title {
+                margin-bottom: 32px;
+            }
+        }
+
+        .section-body {
+            background: #EFFCF1;
+            p {
+                margin: 0;
+            }
+            .container-wrapper {
+                padding: 40px 0px;
+            }
+
+            .col-intro-summary {
+                font-family: $f-opensan;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 25px;
+                color: #515151;
+                position: relative;
+            }
+
+            .thumb-introduce {
+                display: none;
+                z-index: 100;
+            }
+
+            .view-more-intro {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                text-decoration: none;
+                display: none;
+                .view-more-wrapper {
+                    display: flex;
+                    background: #fff;
+                    padding: 24px 32px 24px 102px;
+                    align-items: center;
+                    justify-content: space-between;
+                    transform: translate(-90px, 0);
+                }
+                .view-more-text {
+                    font-family: $f-opensan;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 25px;
+                    color: $text-tech-item-desc;
+                }
+                .view-more-icon {
+                    width: 24px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $break-md) {
+    .introduce-page {
+        .section-intro-common {
+            .section-head {
+                .section-title {
+                    margin-bottom: 40px;
+                }
+            }
+
+            .section-body {
+            }
+        }
+    }   
+}
+
+@media (min-width: $break-lg) {
+    .introduce-page {
+        .section-intro-common {
+            .section-head {
+                .section-title {
+                    margin-bottom: 40px;
+                }
+            }
+
+            .section-body {
+                background: linear-gradient(90deg, white 50%, #EFFCF1 50%);
+                .container-wrapper {
+                    padding: 0;
+                    background: #EFFCF1;
+                }
+                .col-intro-summary {
+                    padding-top: 105px;
+                    padding-bottom: 105px;
+                    &:first-child {
+                        margin-left: 33.333333%;
+                    }
+                }
+
+                .thumb-introduce {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    
+                    img {
+                        position: absolute;
+                        top: 0;
+                        right: 100%;
+                        transform: translate(100%, 56px);
+                        width: 33.6798336798%;
+                    }
+                }
+
+                .view-more-intro {
+                    display: block;
+                }
+            }
+        }
+    } 
+}
+@media (min-width: $break-mid-lg) {
+    .introduce-page {
+
+    }   
+}
+@media (min-width: $break-xl) {
+    .introduce-page {
+        .section-intro-common {
+            .section-head {
+                .section-title {
+                    margin-bottom: 64px;
+                }
+            }
+
+            .section-body {
+                .container-wrapper {
+                    
+                }
+
+                .col-intro-summary {
+                    padding-top: 175px;
+                    padding-bottom: 175px;
+                }
+
+                .thumb-introduce {
+                    img {
+                        transform: translate(100%, 80px);
+                    }
+                }
+            }
+        }
+    }   
+}
+
+@media (min-width: $break-xxl) {
+    .introduce-page {
+
+    }   
+}

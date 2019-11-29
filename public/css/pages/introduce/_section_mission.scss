@@ -1,0 +1,138 @@
+.section-mission {
+    padding: 48px 0;
+    .container {
+        padding: 0 18px;
+    }
+    .section-head {
+        .section-title {
+            margin-bottom: 32px;
+        }
+    }
+
+    .section-body {
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mission-col-info {
+            order: 2;
+
+            .section-title {
+                display: none;
+            }
+    
+            .mission-desc {
+                font-family: $f-opensan;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 25px;
+                color: $text-tech-item-desc;
+                p {
+                    margin: 0;
+                }
+            }
+        }
+
+        .mission-col-thumb {
+            order: 1;
+            margin-bottom: 24px;
+        }
+    }
+}
+
+@media (min-width: $break-md) {
+    .section-mission {
+        padding: 88px 0;
+        .container {
+            padding: 0 24px;
+        }
+        .section-head {
+            display: none;
+        }
+
+        .section-body {
+            .wrapper {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .mission-col {
+                flex: 0 0 100%;
+                max-width: 50%;
+            }
+    
+            .mission-col-info {
+                order: 1;
+                padding-right: 8px;
+                display: flex;
+                align-items: center;
+    
+                .section-title {
+                    display: block;
+                    margin-bottom: 48px;
+                }
+        
+                .mission-desc {}
+            }
+    
+            .mission-col-thumb {
+                order: 2;
+                margin: 0;
+                padding-left: 8px;
+            } 
+        }
+    }
+}
+
+@media (min-width: $break-lg) {
+    .section-mission {
+        padding: 88px 0 0;
+        .section-body {
+            .mission-col {
+                flex: inherit;
+                max-width: inherit;
+            }
+            .mission-col-info {
+                padding-right: 45px;
+                max-width: inherit;
+                flex: 1;
+                .section-title {
+                    margin-bottom: 56px;
+                }
+            }
+            .mission-col-thumb {
+                padding-left: 45px;
+                img {
+                    width: 445px;
+                }
+            } 
+        }
+    }
+}
+
+@media (min-width: $break-xl) {
+    .section-mission {
+        padding: 100px 0 0;
+        .section-body {
+            .wrapper {
+                max-width: 1096px;
+            }
+            .mission-col-info {
+                max-width: inherit;
+                flex: 1;
+                padding-right: 30px;
+                .section-title {
+                    margin-bottom: 56px;
+                }
+            }
+            .mission-col-thumb {
+                padding-left: 30px;
+                img {
+                    width: 648px;
+                }
+            } 
+        }
+    }
+}

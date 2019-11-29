@@ -1,116 +1,122 @@
 @extends('pages.web.layouts.app')
 
 @section('title-navbar')
-	Lĩnh vực hoạt động
+	{{-- Lĩnh vực hoạt động --}}
 @endsection
 
 @section('body-class')
-class="background-white"
+class="background-white page-scope-activities"
 @endsection
 
 @section('content')
-	<div id="field-page">
-    <div class="container">
-      <ul class="nav nav-tabs">
-        @foreach ($fields as $key => $field)
-        <li class="nav-item field-tab-click" data-field-id="{{$field->id}}">
-          <a class="nav-link @if($slug==$field->slug) active @endif" data-toggle="tab" href="#field-tab-{{$field->id}}">{{$field->name}}</a>
-        </li>
-        @endforeach
-      </ul>
-    </div>
-    <div class="tab-content">
-      @foreach($fields as $key => $field)
-      <div class="tab-pane @if($slug==$field->slug) active @endif" id="field-tab-{{$field->id}}">
-        <div class="tech-intro">
-          <div class="tech-left">
-            <div class="title-border-bottom">
-              {{$field->title}}
+	<div id="field-page" class="section-page section">
+        <div class="section-head">
+            <div class="container">
+                <h1 class="section-title">Lĩnh vực hoạt động</h1>
             </div>
-            <div class="des-tech-intro">
-              <p>{{$field->content}}</p>
-            </div>
-          </div>
-          <div class="tech-right">
-            <img src="{!! $field->present()->coverImage()->present()->url !!}" class="img-fluid" />
-          </div>
         </div>
-        <div class="tech-frame">
-          <div class="container">
-            <div class="tech-list">
-              <div class="tech-column-one">
-                <div class="tech-item">
-                  <div class="tech-line"></div>
-                  <img src="{!! $field->present()->icon1Image()->present()->url !!}" class="img-fluid" />
-                  <div class="tech-item-title">
-                    {{$field->charact_1}}
-                  </div>
-                  <div class="tech-item-des">
-                      {{$field->des_1}}
-                  </div>
-                </div>
-                <div class="tech-item tech-item-down">
-                  <div class="tech-line"></div>
-                  <img src="{!! $field->present()->icon2Image()->present()->url !!}" class="img-fluid" />
-                  <div class="tech-item-title">
-                      {{$field->charact_2}}
-                  </div>
-                  <div class="tech-item-des">
-                      {{$field->des_2}}
-                  </div>
-                </div>
-              </div>
-              <div class="tech-column-two">
-                <div class="tech-item">
-                  <div class="tech-line"></div>
-                  <img src="{!! $field->present()->icon3Image()->present()->url !!}" class="img-fluid" />
-                  <div class="tech-item-title">
-                      {{$field->charact_3}}
-                  </div>
-                  <div class="tech-item-des">
-                      {{$field->des_3}}
-                  </div>
-                </div>
-              </div>
-              <div class="tech-column-three">
-                <img src="{!! $field->present()->cover2Image()->present()->url !!}" class="img-fluid" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      @endforeach
-    </div>
-  </div>
-@endsection
 
-@section('content-after')
-  <main>
-    <div class="field-project">
-      <div class="title-field-project">
-        Dự án
-      </div>
-      <div class="content-page">
-        <div class="slide-projects">
-          @foreach($projects as $project)
-          <a href="#" class="item-news">
-            <div class="img-news">
-              <img src="{!! $project->present()->coverImage()->present()->url !!}" class="img-fluid" />
+        <div class="tab-controls">
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    @foreach ($fields as $key => $field)
+                        <li class="nav-item field-tab-click" data-field-id="{{$field->id}}">
+                            <a class="nav-link @if($slug==$field->slug) active @endif" data-toggle="tab" href="#field-tab-{{$field->id}}">{{$field->name}}</a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
-            <div class="content-news">
-              <div class="title-news">
-                {{$project->name}}
-              </div>
-              <div class="des-news">
-                  {{$project->address}}
-              </div>
-            </div>
-          </a>
-          @endforeach
         </div>
-      </div>
+
+        <div class="tab-content">
+            @foreach($fields as $key => $field)
+                <div class="tab-pane @if($slug==$field->slug) active @endif" id="field-tab-{{$field->id}}">
+                    <div class="tech-intro">
+                        <div class="text-information">
+                            <div class="container">
+                                <div class="text-content">
+                                    <div class="intro-title">{{$field->title}}</div>
+                                    <div class="intro-desc">
+                                        <p>{!! $field->content !!}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tech-thumb">
+                            <div class="container">
+                                <img src="{!! $field->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-frame">
+                        <div class="tech-bg"></div>
+                        <div class="container">
+                            <div class="tech-list">
+                                <div class="tech-column-one">
+                                    <div class="tech-item">
+                                        <div class="tech-line"></div>
+                                        <img src="{!! $field->present()->icon1Image()->present()->url !!}" class="img-fluid tech-item-icon" />
+                                        <div class="tech-item-title">{{$field->charact_1}}</div>
+                                        <div class="tech-item-desc">{{$field->des_1}}</div>
+                                    </div>
+                                    <div class="tech-item tech-item-down">
+                                        <div class="tech-line"></div>
+                                        <img src="{!! $field->present()->icon2Image()->present()->url !!}" class="img-fluid tech-item-icon" />
+                                        <div class="tech-item-title">{{$field->charact_2}}</div>
+                                        <div class="tech-item-desc">{{$field->des_2}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="tech-column-two">
+                                    <div class="tech-item item-only-thumb text-center">
+                                        <img src="{!! $field->present()->cover2Image()->present()->url !!}" class="img-fluid" />
+                                    </div>
+                                    <div class="tech-item">
+                                        <div class="tech-line"></div>
+                                        <img src="{!! $field->present()->icon3Image()->present()->url !!}" class="img-fluid tech-item-icon" />
+                                        <div class="tech-item-title">{{$field->charact_3}}</div>
+                                        <div class="tech-item-desc">{{$field->des_3}}</div>
+                                    </div>
+                                </div>
+                                <div class="tech-column-three">
+                                    <img src="{!! $field->present()->cover2Image()->present()->url !!}" class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+  </div>
+
+  <section class="section section-projects">
+    <div class="section-head">
+        <div class="container">
+            <h2 class="section-title">Dự án</h2>
+        </div>
     </div>
-  </main>
+
+    <div class="section-body">
+        <div class="container">
+            <div class="slide-projects">
+                @foreach($projects as $project)
+                    <div href="#" class="slide-item">
+                        <div class="item-wrapper">
+                            <div class="slide-item-thumb">
+                                <img src="{!! $project->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                            </div>
+                            <div class="slide-item-content">
+                                <div class="slide-item-title">{{$project->name}}</div>
+                                <div class="slide-item-desc">{{$project->address}}</div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+  </section>
 @endsection
 
 @section('page-styles')
@@ -123,61 +129,8 @@ class="background-white"
     .navbar-top-area .title-page {
       color: #ffffff;
     }
-    .page-content {
-      background-image: url('../images/bg-scope-active.png');
-	    background-repeat: no-repeat;
-      background-position: bottom right;
-      background-color: #f7f7f7;
-      background-size: cover;
-    }
     .navbar-top-area {
       background-image: none;
-    }
-
-    @media screen and (min-width: 1024px) and (max-width: 1439px) {
-      .item-news .title-news {
-        font-size: 16px;
-        line-height: 25px;
-        margin-bottom: 16px;
-      }
-      .field-project {
-        padding-bottom: 48px;
-      }
-      .slick-dots {
-        display: none !important;
-      }
-    }
-
-    @media screen and (max-width: 1023px) and (min-width: 768px) {
-      #field-page .tech-frame {
-        overflow: hidden;
-        padding-bottom: 0px;
-      }
-    }
-    
-    @media screen and (max-width: 767px) {
-      .field-project {
-        padding-bottom: 100px;
-      }
-      .field-project .title-field-project {
-        font-size: 24px;
-        line-height: 36px;
-        margin-bottom: 24px;
-      }
-      .content-page {
-        width: 100%;
-      }
-      main .prev-arrow {
-        left: 0;
-        z-index: 2;
-      }
-      main .next-arrow {
-        right: 0;
-        z-index: 2;
-      }
-      .slick-dotted.slick-slider {
-        margin-bottom: 0;
-      }
     }
   </style>
 @endsection
@@ -186,104 +139,164 @@ class="background-white"
 	<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-  			$('.history-slide').slick({
-  				infinite: true,
-  				slidesToShow: 1,
-  				slidesToScroll: 1,
-  				prevArrow: '<img src="{{ asset("images/icon-left-develop.png") }}" class="img-fluid prev-arrow" />',
-  				nextArrow: '<img src="{{ asset("images/icon-right-develop.png") }}" class="img-fluid next-arrow" />'
-        });
-        
-        $('.partner-slide').slick({
-  				slidesToShow: 6,
-          slidesToScroll: 3,
-          dots: true
-        });
-        
-        $('.leader-slide').slick({
-  				slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true
-  			});
-
-        $('.slide-projects').slick({
-          infinite: true,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          dots: true,
-          prevArrow: '<img src="{{ asset("images/arrow-left-ad.svg") }}" class="img-fluid prev-arrow" />',
-          nextArrow: '<img src="{{ asset("images/arrow-right-ad.svg") }}" class="img-fluid next-arrow" />',
-          responsive: [
-					{
-						breakpoint: 1023,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: 767,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
-						}
-					}
-				]
-        });
-
-        $('.next-arrow').mouseover(function () {
-          $(this).attr('src', '{{ asset("images/arrow-right-active.svg") }}');
-        })
-        .mouseout(function () {
-          $(this).attr('src', '{{ asset("images/arrow-right-ad.svg") }}');
-        })
-
-        $('.prev-arrow').mouseover(function () {
-          $(this).attr('src', '{{ asset("images/arrow-left-active.svg") }}');
-        })
-        .mouseout(function () {
-          $(this).attr('src', '{{ asset("images/arrow-left-ad.svg") }}');
-        })
-
-        $(document).on('click', '.field-tab-click', function() {
-          let field_id = $(this).data('field-id');
-          
-          $.ajax({
-            url: "{{action('Web\ScopeActiveController@getProjects')}}",
-            type: "GET",
-            data: {
-              _token: "{!! csrf_token() !!}",
-              field_id: field_id
-            },
-            success: function (res) {
-              $('.content-page').html(res)
-              $('.slide-projects').not('.slick-initialized').slick({
-                infinite: true,
+            slickOption = {
+                infinite: false,
                 slidesToShow: 3,
                 slidesToScroll: 1,
-                dots: true,
-                prevArrow: '<img src="{{ asset("images/arrow-left-ad.svg") }}" class="img-fluid prev-arrow" />',
-                nextArrow: '<img src="{{ asset("images/arrow-right-ad.svg") }}" class="img-fluid next-arrow" />',
+                rows: 0,
+                dots: false,
+                prevArrow: `<button class="btn btn-slick-control slick-prev slick-arrow"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="stroke-round" d="M29.8784 13.8784L18.1213 2.12132C16.9497 0.949747 15.0503 0.949747 13.8787 2.12132L2.12162 13.8784C0.950043 15.05 0.950043 16.9495 2.12162 18.121L13.8787 29.8781C15.0503 31.0497 16.9497 31.0497 18.1213 29.8781L29.8784 18.121C31.05 16.9495 31.05 15.05 29.8784 13.8784Z" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path class="stroke-center" d="M17 10L11 16L17 22" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`,
+                nextArrow: `<button class="btn btn-slick-control slick-next slick-arrow"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="stroke-round" d="M2.12162 18.1216L13.8787 29.8787C15.0503 31.0503 16.9497 31.0503 18.1213 29.8787L29.8784 18.1216C31.05 16.95 31.05 15.0505 29.8784 13.879L18.1213 2.12191C16.9497 0.950339 15.0503 0.950339 13.8787 2.12191L2.12161 13.879C0.950042 15.0505 0.950042 16.95 2.12162 18.1216Z" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path class="stroke-center" d="M15 22L21 16L15 10" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg><button>`,
                 responsive: [
-                {
-                  breakpoint: 1023,
-                  settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                  }
-                },
-                {
-                  breakpoint: 767,
-                  settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                  }
-                }
-              ]
-              });
+                    {
+                        breakpoint: 1439,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                        }
+                    },
+                    {
+                        breakpoint: 1023,
+                        settings: {
+                            slidesToShow: 2.5,
+                            slidesToScroll: 2,
+                            arrows: false,
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1.1,
+                            slidesToScroll: 1,
+                            arrows: false,
+                            dots: false
+                        }
+                    }
+                ]
             }
-          });
-        })
+
+            $('.slide-projects').slick(slickOption);
+
+            $('.field-tab-click').on('click', function(e) {
+                let field_id = $(this).data('field-id');
+                
+                $.ajax({
+                    url: "{{action('Web\ScopeActiveController@getProjects')}}",
+                    type: "GET",
+                    data: {
+                        _token: "{!! csrf_token() !!}",
+                        field_id: field_id
+                    },
+                    success: function (res) {
+                        $('.slide-projects').slick('unslick');
+                        $('.slide-projects').html(res);
+                        $('.slide-projects').not('.slick-initialized').slick(slickOption);
+                    }
+                });
+            });
+
+            
 		});
+
+        function drawBackgroundTriangle()
+        {
+            target = $('#tech-frame');
+            appendArea = $('.tech-bg');
+            maxWidth = $('.tab-pane.active .tech-frame').width();
+            maxHeight = $('.tab-pane.active .tech-frame').height();
+            outterHeight = $('.tab-pane.active .tech-frame').outerHeight()
+
+            configs = {
+                0: {
+                    offset: maxHeight - 376,
+                    botOffset: -110
+                },
+                768: {
+                    offset: 165,
+                    botOffset: -175
+                },
+                1024: {
+                    offset: 150,
+                    botOffset: 70,
+                },
+                1440: {
+                    offset: 40,
+                    botOffset: 0
+                }
+            }
+
+            var offset = 0;
+            var endY = maxHeight
+            Object.keys(configs).forEach(function(width) {
+                if (maxWidth >= width) {
+                    offset = configs[width].offset
+                    endY = maxHeight + configs[width].botOffset
+                }
+            })
+
+            startX = 0
+            startY = offset
+
+            endX = maxWidth
+            endPoint = outterHeight > endX ? outterHeight : endX
+            
+
+            html = `
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${endX} ${outterHeight}">
+                    <defs><style>.cls-1{fill:#f6f7f6;}.cls-2{fill:rgba(255,255,255,.4);}</style></defs>
+                    <polygon class="cls-1" points="${startX} ${startY} ${endX} ${endY} ${endX} ${outterHeight}  0 ${endPoint} 0 ${startY}"/>
+                </svg>
+            `;
+
+            //canhhuyen = Math.pow(maxHeight, 2) + Math
+
+            appendArea.html(html)
+        }
+
+        function repositionTabs()
+        {
+            tabControl = $('.tab-controls .nav-tabs')
+            tabItems = tabControl.find('.nav-item');
+            screenWidth = $(window).width();
+
+            activeTab = tabControl.find('.nav-link.active').closest('.nav-item')
+
+            currentLi = $(activeTab).closest('li.nav-item');
+            currentIndex = tabItems.index(currentLi)
+            offset = {x: 0, y: 0};
+
+            tabWidth = tabItems.width();
+
+            if (currentIndex == 0)
+                offset.x = '18px'
+            else if (currentIndex == tabItems.length - 1)
+                offset.x = '-' + (tabWidth*(tabItems.length - 1) - tabWidth/(tabItems.length - 1) - 18) + 'px'
+            else
+                offset.x = '-' + ( tabWidth - (tabWidth/tabItems.length) * currentIndex) + 'px'
+
+            if (screenWidth >= 768)
+                offset.x = 0
+
+            tabControl.css({
+                'transform': `translate(${offset.x}, ${offset.y})`
+            })
+        }
+
+        $(document).ready(function() {
+            drawBackgroundTriangle();
+            $(window).on('resize', function() {
+                drawBackgroundTriangle();
+                repositionTabs();
+                setTimeout(function() {
+                    drawBackgroundTriangle();
+                    repositionTabs();
+                }, 300);
+            })
+
+            repositionTabs();
+            $('.tab-controls .nav-link').on('shown.bs.tab', function(e) {
+                repositionTabs();
+            })
+        })
 	</script>
 @endsection

@@ -1,5 +1,5 @@
 <?php namespace App\Repositories;
 
-interface DataHighlightRepositoryInterface extends SingleKeyModelRepositoryInterface
+interface DataHighLightRepositoryInterface extends SingleKeyModelRepositoryInterface
 {
 }

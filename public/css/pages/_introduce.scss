@@ -1,0 +1,163 @@
+.introduce-page {
+    .container {
+        padding: 0 21px;
+    }
+
+    .navbar-top-area {
+        .title-page {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding-top: 60px;
+            padding-bottom: 32px;
+        }
+    }
+
+    .tab-controls {
+        margin-bottom: 48px;
+        .nav-tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: inherit;
+            .nav-item {
+                flex: 1;
+                .nav-link {
+                    font-family: $f-opensan;
+                    font-weight: $fz-op-semibold;
+                    font-size: 16px;
+                    line-height: 32px;
+                    color: $color-intro-tab-normal;
+                    transition: all ease .2s;
+                    cursor: pointer;
+                    &::before {
+                        display: block;
+                        content: '';
+                        margin-bottom: 16px;
+                        height: 8px;
+                        background: white;
+                        transition: all ease .2s;
+                        padding: 0;
+                        cursor: pointer;
+                    }
+    
+                    &.active, &:hover {
+                        color: $text-tech-item-title;
+                        &::before {
+                            padding: 0;
+                            background: $text-item-divider
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+    .common-intro-summary {
+
+    }
+}
+
+@media (min-width: $break-md) {
+    .introduce-page {
+        .container {
+            max-width: 736px;
+            padding: 0;
+        }
+
+        .navbar-top-area {
+            .container {
+                padding: 60px 0;
+            }
+        }
+
+        .tab-controls {
+            margin-bottom: 72px;
+            .container {
+                padding: 0;
+            }
+            .nav-tabs {
+                .nav-item {
+                    .nav-link {
+                        font-size: 20px;
+                        line-height: 32px;
+                        &::before {
+                            margin-bottom: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }   
+}
+
+@media (min-width: $break-lg) {
+    .introduce-page {
+        .container {
+            max-width: 936px;
+        }
+
+        .navbar-top-area {
+            .container {
+                padding-top: 132px;
+                padding-bottom: 100px;
+            }
+        }
+
+        .tab-controls {
+            margin-bottom: 72px;
+            .nav-tabs {
+                .nav-item {
+                    .nav-link {
+                        &::before {
+                            margin-bottom: 27px;
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}
+@media (min-width: $break-mid-lg) {
+    .introduce-page {
+
+    }   
+}
+@media (min-width: $break-xl) {
+    .introduce-page {
+        .container {
+            max-width: 1320px;
+        }
+        .navbar-top-area {
+            .container {
+                padding-top: 150px;
+                padding-bottom: 120px;
+
+                background: #00263C;
+            }
+        }
+        
+        .tab-controls {
+            margin-bottom: 136px;
+            .nav-tabs {
+                .nav-item {
+                    .nav-link {
+                        &::before {
+                        }
+                    }
+                }
+            }
+        }
+    }   
+}
+
+@import "./introduce/section_intro";
+@import "./introduce/section_summary";
+@import "./introduce/section_mission";
+@import "./introduce/section_core";
+@import "./introduce/section_history";
+@import "./introduce/section_partner";
+@import "./introduce/section_intro_leader";
+@import "./introduce/section_member";

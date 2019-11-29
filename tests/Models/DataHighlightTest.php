@@ -1,32 +1,32 @@
 <?php namespace Tests\Models;
 
-use App\Models\DataHighlight;
+use App\Models\DataHighLight;
 use Tests\TestCase;
 
-class DataHighlightTest extends TestCase
+class DataHighLightTest extends TestCase
 {
 
     protected $useDatabase = true;
 
     public function testGetInstance()
     {
-        /** @var  \App\Models\DataHighlight $dataHighlight */
-        $dataHighlight = new DataHighlight();
-        $this->assertNotNull($dataHighlight);
+        /** @var  \App\Models\DataHighLight $dataHighLight */
+        $dataHighLight = new DataHighLight();
+        $this->assertNotNull($dataHighLight);
     }
 
     public function testStoreNew()
     {
-        /** @var  \App\Models\DataHighlight $dataHighlight */
-        $dataHighlightModel = new DataHighlight();
+        /** @var  \App\Models\DataHighLight $dataHighLight */
+        $dataHighLightModel = new DataHighLight();
 
-        $dataHighlightData = factory(DataHighlight::class)->make();
-        foreach( $dataHighlightData->toFillableArray() as $key => $value ) {
-            $dataHighlightModel->$key = $value;
+        $dataHighLightData = factory(DataHighLight::class)->make();
+        foreach( $dataHighLightData->toFillableArray() as $key => $value ) {
+            $dataHighLightModel->$key = $value;
         }
-        $dataHighlightModel->save();
+        $dataHighLightModel->save();
 
-        $this->assertNotNull(DataHighlight::find($dataHighlightModel->id));
+        $this->assertNotNull(DataHighLight::find($dataHighLightModel->id));
     }
 
 }

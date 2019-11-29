@@ -1,0 +1,95 @@
+.section-partners {
+    padding: 48px 0 30px;
+    .section-head {
+        text-align: center;
+        margin-bottom: 32px;
+        .section-title {
+            font-family: $f-eb;
+            font-style: normal;
+            font-weight: $fz-eb-semibold;
+            font-size: 20px;
+            line-height: 100%;
+            color: $text-tech-item-title;
+            &::after {
+                content: '';
+                display: block;
+                width: 112px;
+                background: #7BC47F;
+                margin: 16px auto auto;
+                height: 2px;
+            }
+        }
+        .section-subtitle {
+            display: none;
+        }
+    }
+
+    .partner-slider {
+        .partner-item {
+            text-align: center;
+            img {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-md) {
+    .section-partners {
+        padding: 56px 0 48px;
+        .section-head {
+            .section-title {
+                font-size: 24px;
+            }
+
+            .section-subtitle {
+                font-family: $f-opensan;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 25px;
+                text-align: center;
+                color: $text-tech-item-desc;
+                max-width: 486px;
+                margin: 24px auto auto;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-lg) {
+    .section-partners {
+        padding: 88px 0;
+        .section-head {
+            margin-bottom: 40px;;
+            .section-title {
+                font-size: 32px;
+            }
+            .section-subtitle {
+                max-width: 872px;
+            }
+        }
+
+        .partner-slider {
+            margin-bottom: 40px;
+        }
+
+        .slick-dots {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: inherit;
+            top: inherit;
+            left: inherit;
+            margin-top: 40px;
+        }
+    }
+}
+
+@media (min-width: $break-xl) {
+    .section-partners {
+        padding: 110px 0 160px;
+    
+    }
+}
