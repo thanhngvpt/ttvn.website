@@ -25,7 +25,9 @@
             </button>
           </div>
           <div class="img-top-slide">
+            @if(!empty($video->present()->coverImage()))
               <img src="{!! $video->present()->coverImage()->present()->url !!}" class="img-fluid" />
+            @endif
           </div>
         </div>
       </div>
@@ -46,7 +48,9 @@
               </div>
             </div>
             <div class="img-top-slide">
+              @if(!empty($banner->present()->coverImage()))
               <img src="{!! $banner->present()->coverImage()->present()->url !!}" class="img-fluid" />
+              @endif
             </div>
           </div>
         </div>
@@ -78,7 +82,9 @@ class="background-white"
             <div class="col-md-4">
               <a class="item-top-field" href="{!! action('Web\ScopeActiveController@index', $field->slug) !!}">
                 <div class="img-topfield">
+                  @if(!empty($field->present()->homeImage()))
                   <img src="{!! $field->present()->homeImage()->present()->url !!}" class="img-fluid">
+                  @endif
                 </div>
                 <div class="title-topfield">
                   {{$field->name}}
@@ -117,8 +123,12 @@ class="background-white"
             </a>
           </div>
           <div class="img-top-intro">
+            @if(!empty($inforGroup->present()->thumbnailImage()))
             <img src="{!! $inforGroup->present()->thumbnailImage()->present()->url !!}" class="img-fluid img-intro-after" />
+            @endif
+            @if(!empty($inforGroup->present()->coverImage()))
             <img src="{!! $inforGroup->present()->coverImage()->present()->url !!}" class="img-fluid img-intro-before" />
+            @endif
           </div>
         </div>
         <div class="top-sumarry">
@@ -126,7 +136,9 @@ class="background-white"
             @foreach($dataHighlights as $dataHighlight)
             <div class="col-md-3">
               <div class="col-top-sumary">
+                @if(!empty($dataHighlight->present()->coverImage()))
                 <img src="{!! $dataHighlight->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                @endif
                 <div class="number">
                   {{$dataHighlight->data}}
                 </div>
@@ -162,7 +174,9 @@ class="background-white"
                 @foreach($news as $item)
                 <a href="{{action('Web\NewsController@details', $item->slug)}}" class="item-news">
                   <div class="img-news">
+                    @if(!empty($item->present()->coverImage()))
                     <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                    @endif
                   </div>
                   <div class="content-news">
                     <div class="cate-news">
@@ -201,7 +215,9 @@ class="background-white"
                 <div class="partner-slide">
                   @foreach ($companies as $company)
                   <div class="item-slide">
+                    @if(!empty($company->present()->coverImage()))
                     <img src="{!! $company->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                    @endif
                   </div>
                   @endforeach
                 </div>

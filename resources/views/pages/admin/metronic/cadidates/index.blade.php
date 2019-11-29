@@ -42,14 +42,6 @@
             </div>
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
-                    <li class="m-portlet__nav-item">
-                        <a href="{!! action('Admin\CadidateController@create') !!}" class="btn m-btn--pill m-btn--air btn-outline-success btn-sm">
-                            <span>
-                                <i class="la la-plus"></i>
-                                <span>Create New</span>
-                            </span>
-                        </a>
-                    </li>
                     <li class="m-portlet__nav-item"></li>
                     <li class="m-portlet__nav-item">
                         <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
@@ -115,12 +107,11 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.cadidates.columns.name')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('phone', trans('admin.pages.cadidates.columns.phone')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('email', trans('admin.pages.cadidates.columns.email')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('file', trans('admin.pages.cadidates.columns.file')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('link_job', trans('admin.pages.cadidates.columns.link_job')) !!}</th>
-                                    
+                                    <th>{!! \PaginationHelper::sort('name', 'Tên') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('phone', 'Phone') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('email', 'Email') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('file', 'CV') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('link_job', 'Công việc ứng tuyển') !!}</th>                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
                             </thead>
@@ -128,13 +119,13 @@
                             <tbody>
                                 @foreach( $cadidates as $cadidate )
                                     <tr>
-                                        <td>{{ $cadidate->id }}</td>
-                                                                                                                            <td>{{ $cadidate->name }}</td>
-                                                                                                                            <td>{{ $cadidate->phone }}</td>
-                                                                                                                            <td>{{ $cadidate->email }}</td>
-                                                                                                                            <td>{{ $cadidate->file }}</td>
-                                                                                                                            <td>{{ $cadidate->link_job }}</td>
-                                                                                <td>
+                                            <td>{{ $cadidate->id }}</td>
+                                            <td>{{ $cadidate->name }}</td>
+                                            <td>{{ $cadidate->phone }}</td>
+                                            <td>{{ $cadidate->email }}</td>
+                                            <td><a href="{{ $cadidate->file }}">File</a></td>
+                                            <td><a href="{{ $cadidate->link_job }}">Link</a></td>
+                                            <td>
                                             <a href="{!! action('Admin\CadidateController@show', $cadidate->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>

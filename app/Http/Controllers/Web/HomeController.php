@@ -26,7 +26,7 @@ class HomeController extends Controller
         $dataHighlights = DataHighlight::get();
         $companies = Company::where('is_enabled', 1)->get();
         $categories = NewCategory::get();
-        $news = TableNew::take(9)->orderBy('id', 'desc')->get();
+        $news = TableNew::take(9)->orderBy('id', 'desc')->where('display', 1)->where('is_enabled', 1)->get();
         $heading = Heading::orderBy('id', 'desc')->first();
 
         return view('pages.web.home', [
@@ -46,7 +46,7 @@ class HomeController extends Controller
     {
         // dd($request->get('cate_id'));
         $cate_id = $request->get('cate_id');
-        $news = TableNew::where('new_category_id', $cate_id)->take(9)->orderBy('id', 'desc')->get();
+        $news = TableNew::where('new_category_id', $cate_id)->where('is_enabled', 1)->where('display', 1)->take(9)->orderBy('id', 'desc')->get();
         $html = View::make('pages.web.news-by-category', ['news' => $news])->render();
 
         return $html;
