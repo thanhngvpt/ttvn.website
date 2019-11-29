@@ -21,8 +21,11 @@ body {
 	.navbar-toggler {
 		border: none;
 	}
-	.navbar-toggler-icon {
+	.toggle-menu-white {
 		background-image: url('../images/icon-menu.svg');
+	}
+	.toggle-menu-color {
+		background-image: url('../images/icon-menu-color.svg');
 	}
 }
 .logo-img {
@@ -38,6 +41,57 @@ body {
 	background-size: cover;
 
 	.navbar {
+		-webkit-transition: all 200ms;
+		transition: all 200ms;
+		
+		.navbar-brand-white {
+			display: block;
+		}
+		.navbar-brand-color {
+			display: none;
+		}
+		.language-white {
+			display: block;
+		}
+		.language-color {
+			display: none;
+		}
+
+		&.navbar-fixed {
+			position: fixed;
+			background-color: #ffffff;
+			top: 0%;
+			left: 0;
+			right: 0;
+			padding-top: 32px;
+			padding-bottom: 32px;
+			box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+			z-index: 2;
+
+			.navbar-brand-white {
+				display: none;
+			}
+			.navbar-brand-color {
+				display: block;
+			}
+			.language-white {
+				display: none;
+			}
+			.language-color {
+				display: block;
+			}
+			li {
+				.nav-link {
+					color: #9e9e9e !important;
+				}
+				&.active {
+					a {
+						color: #57AE5B !important;
+					}
+				}
+			}
+		}
+
 		padding-top: 27px;
 
 		.navbar-brand {
@@ -86,6 +140,8 @@ body {
 	position: absolute;
 	top: 56px;
 	z-index: 2;
+	border-radius: 8px;
+	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
 }
 .menu-xl-child {
 	padding: 20px 32px;
@@ -2627,6 +2683,27 @@ main {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+	.navbar-top-area {
+		.navbar {
+			.toggle-menu-white {
+				display: block;
+			}
+			.toggle-menu-color {
+				display: none;
+			}
+			&.navbar-fixed {
+				padding-top: 25px;
+				padding-bottom: 25px;
+
+				.toggle-menu-white {
+					display: none;
+				}
+				.toggle-menu-color {
+					display: block;
+				}
+			}
+		}
+	}
 	#job-detail-page {
 		padding-top: 56px;
 		padding-bottom: 56px;
@@ -3413,6 +3490,27 @@ main {
 }
 
 @media screen and (max-width: 767px) {
+	.navbar-top-area {
+		.navbar {
+			.toggle-menu-white {
+				display: block;
+			}
+			.toggle-menu-color {
+				display: none;
+			}
+			&.navbar-fixed {
+				padding-top: 25px;
+				padding-bottom: 25px;
+
+				.toggle-menu-white {
+					display: none;
+				}
+				.toggle-menu-color {
+					display: block;
+				}
+			}
+		}
+	}
 	#news-detail-page {
 		.area-detail-news {
 			padding-top: 32px;
@@ -3459,6 +3557,7 @@ main {
 	}
 	.logo-img {
 		margin-left: 2px;
+		height: 24px;
 	}
 	#contact-page {
 		.form-contact-area {

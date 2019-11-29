@@ -1,10 +1,14 @@
 <div class="navbar-top-area">
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand navbar-brand-white" href="#">
             <img src="{{ asset('images/logo.svg') }}" class="img-fluid logo-img">
         </a>
+        <a class="navbar-brand navbar-brand-color" href="#">
+            <img src="{{ asset('images/logo-color.svg') }}" class="img-fluid logo-img">
+        </a>
         <button class="navbar-toggler" type="button" onclick="$('#collapsibleNavbar').addClass('show')">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon toggle-menu-white"></span>
+            <span class="navbar-toggler-icon toggle-menu-color"></span>
         </button>
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" >
@@ -54,7 +58,8 @@
                 </li>
             </ul>
             <div class="icon-change-language position-relative">
-                <img src="{{ asset('images/icon-change-language.svg') }}" class="img-fluid" data-toggle="collapse" data-target="#language-menu-xl">
+                <img src="{{ asset('images/icon-change-language.svg') }}" class="img-fluid language-white" data-toggle="collapse" data-target="#language-menu-xl">
+                <img src="{{ asset('images/icon-change-language-color.svg') }}" class="img-fluid language-color" data-toggle="collapse" data-target="#language-menu-xl">
                 <div id="language-menu-xl" class="collapse menu-xl">
                     <ul class="menu-xl-child">
                         <li>
