@@ -1,5 +1,5 @@
 .section-core-values {
-    padding: 48px 0 0;
+    padding: 0 0 48px;
     .container {
         padding: 0 18px;
     }
@@ -80,7 +80,7 @@
 
 @media (min-width: $break-md) {
     .section-core-values {
-        padding: 88px 0 0;
+        padding: 0 0 88px;
         .container {
             padding: 0 24px;
         }
@@ -146,6 +146,7 @@
 
 @media (min-width: $break-lg) {
     .section-core-values {
+        padding: 88px 0;
         .section-body {
 
             .mission-col-info {

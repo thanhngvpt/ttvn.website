@@ -613,7 +613,7 @@ class="background-white introduce-page"
                 backgroundGradient = `linear-gradient(90deg, #00263C 0%, #00263C ${breakPoint}, #57AE5B ${breakPoint}, #57AE5B 100%);`;
 
                 if (window.screenWidth >= 768) {
-                    targetBg.css({'background', backgroundGradient});
+                    targetBg.css({'background': backgroundGradient});
                 }
             }
             
