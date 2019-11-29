@@ -50,12 +50,7 @@
                 $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
             });
 
-            $('.datetime-picker').datetimepicker({
-                todayHighlight: true,
-                autoclose: true,
-                pickerPosition: 'bottom-left',
-                format: 'yyyy/mm/dd'
-            });
+            $('.datetime-picker').datepicker({format: 'yyyy/mm/dd',});
 
             var provinces = [];
             $.each(masterData, function (key, value) {
@@ -212,8 +207,9 @@
                             <div class="form-group m-form__group row @if ($errors->has('company_id')) has-danger @endif">
                                 <label for="company_id">Công ty</label>
                                 <select name="company_id" id="company_id" class="form-control m-input">
+                                    <option value="0" @if($job->company_id == 0) selected @endif>Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)</option>
                                     @foreach($companies as $company)
-                                    <option value="{{$company->id}}">{{$company->name}}</option>
+                                    <option value="{{$company->id}}" @if($job->company_id == $company->id) selected @endif>{{$company->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -240,11 +236,6 @@
                             <div class="form-group m-form__group row input-group date @if ($errors->has('end_time')) has-danger @endif">
                                 <label for="end_time" class="label-datetimepicker">@lang('admin.pages.jobs.columns.end_time')</label>
                                 <input type="text" class="form-control m-input datetime-picker" readonly="" id="end_time" name="end_time">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">
-                                        <i class="la la-calendar-check-o glyphicon-th"></i>
-                                    </span>
-                                </div>
                             </div>
                         </div>
 

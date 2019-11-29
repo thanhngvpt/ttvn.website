@@ -217,11 +217,11 @@ class="background-white"
         <div class="description">
             {{$heading->support_description}}
         </div>
-        <form action="" method="">
+        <form action="{!! action('Web\ContactController@index') !!}" method="POST">
           <div class="form-consultation">
-            <input type="email" name="email" placeholder="Email" class="form-control" />
-            <input type="text" name="phone" placeholder="Số điện thoại" class="form-control" />
-            <button type="submit" class="btn">
+            <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
+            <input type="text" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
+            <button type="button" id="submit" class="btn">
               Gửi
             </button>
           </div>
@@ -347,5 +347,31 @@ class="background-white"
 				$(this).attr('src', '{{ asset("images/arrow-left-ad.svg") }}');
 			})
     })
+
+    $(document).on('click', '#submit', function() {
+			let email = $('#email').val();
+			let phone = $('#phone').val();
+
+			$.ajax({
+				url: "{!! action('Web\ContactController@index') !!}",
+				type: "POST",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					email: email,
+					phone: phone,
+				},
+				success: function (res) {
+					$('#email').val("");
+					$('#phone').val("");
+					let message = document.createElement("message");
+						message.innerHTML='Thông tin của bạn đã được gửi <br> Chúng tôi sẽ liên hệ tư vấn với bạn trong thời gian sớm nhất'
+					Swal.fire(
+						'Thành công!',
+						message,
+						'success'
+						)
+				}
+			});
+		})
 	</script>
 @endsection
