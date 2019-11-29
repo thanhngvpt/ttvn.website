@@ -143,9 +143,9 @@ class LeaderShipController extends Controller
                     'title'       => $request->input('title_page', ''),
                 ]
             );
-        }
 
-        if ($filePath) $this->leaderShipRepository->update($leaderShip, ['file' => $filePath]);
+            if ($filePath) $this->leaderShipRepository->update($leaderShip, ['file' => $filePath]);
+        }
 
         if( empty($leaderShip) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
@@ -253,9 +253,9 @@ class LeaderShipController extends Controller
                     'title'       => $request->input('title_page', ''),
                 ]
             );
-        }
 
-        if ($filePath) $this->leaderShipRepository->update($leaderShip, ['file' => $filePath]);
+            if ($filePath) $this->leaderShipRepository->update($leaderShip, ['file' => $filePath]);
+        }
 
         return redirect()->action('Admin\LeaderShipController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));
