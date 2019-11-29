@@ -7,7 +7,7 @@ use App\Models\Field;
 use App\Models\Video;
 use App\Models\Banner;
 use App\Models\InforGroup;
-use App\Models\DataHighlight;
+use App\Models\DataHighLight;
 use App\Models\Company;
 use App\Models\NewCategory;
 use App\Models\TableNew;
@@ -23,7 +23,7 @@ class HomeController extends Controller
         $video = Video::first();
         $banners = Banner::where('is_enabled', 1)->orderBy('order', 'asc')->get();
         $inforGroup = InforGroup::first();
-        $dataHighlights = DataHighlight::get();
+        $dataHighlights = DataHighLight::get();
         // dd($dataHighlights);
         $companies = Company::where('is_enabled', 1)->get();
         $categories = NewCategory::get();
