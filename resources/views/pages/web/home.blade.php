@@ -180,7 +180,7 @@ class="background-white"
                   </div>
                   <div class="content-news">
                     <div class="cate-news">
-                      {{$item->newCategory->name}}
+                      {{@$item->newCategory->name}}
                     </div>
                     <div class="title-news">
                       {{$item->name}}

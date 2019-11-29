@@ -24,6 +24,7 @@ class HomeController extends Controller
         $banners = Banner::where('is_enabled', 1)->orderBy('order', 'asc')->get();
         $inforGroup = InforGroup::first();
         $dataHighlights = DataHighlight::get();
+        // dd($dataHighlights);
         $companies = Company::where('is_enabled', 1)->get();
         $categories = NewCategory::get();
         $news = TableNew::take(9)->orderBy('id', 'desc')->where('display', 1)->where('is_enabled', 1)->get();
