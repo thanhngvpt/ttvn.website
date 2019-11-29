@@ -1,0 +1,223 @@
+.section-leaders {
+    background: #EFFCF1;
+    .container {
+        padding: 0;
+        max-width: 100%;
+    }
+    .list-leaders {
+        position: relative;
+        .leaders-slider {
+            margin: 0;
+            .slick-track {
+                padding: 48px 18px 90px;
+            }
+        }
+
+        .leaders-slide-item {
+            padding: 0 8px;
+            .item-wrapper {
+                background: #57AE5B;
+                box-shadow: 0px 32px 56px rgba(0, 0, 0, 0.16);
+            }
+
+            .leaders-info {
+                padding: 24px 43px;
+                text-align: center;
+            }
+
+            .name-leader {
+                font-family: $f-eb;
+                font-style: normal;
+                font-weight: $fz-eb-semibold;
+                font-size: 16px;
+                line-height: 100%;
+                color: white;
+            }
+
+            .role-company {
+                font-family: $f-opensan;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 25px;
+                color: #C1EAC5;
+                text-transform: uppercase;
+                margin-top: 8px;
+            }
+        }
+
+        .slick-dots {
+            bottom: 48px;
+            background: none;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            li {
+                width: auto;
+                height: auto;
+                margin: 0;
+                padding: 0 4px;
+                display: inline-block;
+                button {
+                    width: 16px;
+                    height: 2px;
+                    background: #003C5F;
+                    text-indent: -9999px;
+                }
+                &.slick-active, &:hover {
+                    button {
+                        background: #57AE5B;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $break-md) {
+    .section-leaders {
+        background: linear-gradient(180deg, rgba(239,252,241,1) 0%, rgba(239,252,241,1) 51.4545454545%, rgba(255,255,255,1) 51.4545454545%, rgba(255,255,255,1) 100%);
+        .container {
+            padding: 0;
+            max-width: 100%;
+        }
+
+        .list-leaders {
+            .leaders-slider {
+                .slick-track {
+                    padding: 48px 18px 80px;
+                }
+            }
+
+            .leaders-slide-item {
+                padding: 0 12px;
+                &:hover {
+                    .item-wrapper {
+                        background: #57AE5B;
+                    }
+                }
+
+                .name-leader {
+                    font-size: 20px;
+                }
+    
+                .role-company {
+                    font-size: 16px;
+                    line-height: 25px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $break-lg) {
+    .section-leaders {
+        position: relative;
+        background: none;
+        .bg-leader-out {
+            position: absolute;
+            height: 577px;
+            top: 0;
+            left: 0;
+            width: 50%;
+            background: #EFFCF1;
+        }
+        .container {
+            max-width: 936px;
+            position: relative;
+        }
+
+        .bg-leader {
+            position: absolute;
+            width: 75%;
+            height: 577px;
+            background: #EFFCF1;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .list-leaders {
+            flex: 0 0 66.666667%;
+            max-width: 66.666667%;
+            margin-left: 33.333333%;
+            padding: 0 12px;
+            z-index: 100;
+            
+            .leaders-slider {
+                .slick-track {
+                    padding: 64px 0;
+                }
+            }
+
+            .leaders-slide-item {
+                &:hover {
+                    .item-wrapper {
+                        box-shadow: 0px 12px 26px rgba(0, 0, 0, 0.16);
+                    }
+
+                    .name-leader {
+                        color: white;
+                    }
+                    .role-company {
+                        color: #C1EAC5;
+                    }
+                }
+                .item-wrapper {
+                    background: white;
+                    box-shadow: none;
+                    margin-bottom: 24px;
+                    transition: all ease .2s;
+                }
+
+                .name-leader {
+                    font-size: 20px;
+                    line-height: 100%;
+                    color: #222222;
+                    white-space: nowrap;
+                }
+
+                .role-company {
+                    font-size: 16px;
+                    line-height: 25px;
+                    color: #7E7E7E;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $break-xl) {
+    .section-leaders {
+        .container {
+            max-width: 1332px;
+            position: relative;
+        }
+
+        .bg-leader-out {
+            height: 815px;
+        }
+        .bg-leader {
+            width: 75%;
+            height: 815px;
+        }
+
+        .list-leaders {
+            .leaders-slider {
+                .slick-track {
+                    padding: 88px 18px;
+                }
+            }
+
+            .leaders-slide-item {
+                &:hover {
+                    .item-wrapper {
+                        box-shadow: 0px 22px 36px rgba(0, 0, 0, 0.16);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -104,7 +104,6 @@ class AdminUserController extends Controller
                 'email',
                 'password',
                 're_password',
-                'locale',
             ]
         );
         $exist = $this->adminUserRepository->findByEmail($input['email']);
@@ -129,7 +128,7 @@ class AdminUserController extends Controller
                 ->withErrors(trans('admin.errors.general.save_failed'));
         }
 
-        $this->adminUserRoleRepository->setAdminUserRoles($adminUser->id, $request->input('role', []));
+        $this->adminUserRoleRepository->setAdminUserRoles($adminUser->id, ['super_user']);
 
         if ($request->hasFile('profile_image')) {
             $file       = $request->file('profile_image');
@@ -213,7 +212,7 @@ class AdminUserController extends Controller
         );
 
         $adminUser = $this->adminUserRepository->update($adminUser, $input);
-        $this->adminUserRoleRepository->setAdminUserRoles($id, $request->input('role', []));
+        $this->adminUserRoleRepository->setAdminUserRoles($id, ['super_user']);
 
         if ($request->hasFile('profile_image')) {
             $file = $request->file('profile_image');

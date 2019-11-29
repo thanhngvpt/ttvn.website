@@ -166,27 +166,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="m-form__group form-group row" style="padding-top: 0;">
-                                    <label for="role" class="col-md-2 col-form-label">@lang('admin.pages.admin-users.columns.permissions')</label>
-                                    <div class="col-md-12 ">
-                                        @if( $authUser->hasRole(\App\Models\AdminUserRole::ROLE_SUPER_USER) )
-                                            <label class="m-checkbox" style="margin-right: 20px;">
-                                                <input type="checkbox" name="role[]" value="{{ \App\Models\AdminUserRole::ROLE_SUPER_USER }}" class="hidden" @if( $adminUser->hasRole(\App\Models\AdminUserRole::ROLE_SUPER_USER, false) ) checked @endif >
-                                                @lang('admin.roles.super_user')
-                                                <span></span>
-                                            </label>
-                                        @endif
-
-                                        @if( $authUser->hasRole(\App\Models\AdminUserRole::ROLE_ADMIN) )
-                                            <label class="m-checkbox">
-                                                <input type="checkbox" name="role[]" value="{{ \App\Models\AdminUserRole::ROLE_ADMIN }}" class="hidden" @if( $adminUser->hasRole(\App\Models\AdminUserRole::ROLE_ADMIN, false) ) checked @endif >
-                                                @lang('admin.roles.admin')
-                                                <span></span>
-                                            </label>
-                                        @endif
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

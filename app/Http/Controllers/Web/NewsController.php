@@ -16,19 +16,25 @@ class NewsController extends Controller
     {
         $this->newRepo = $newRepo;
     }
-    public function index(PaginationRequest $request)
+    public function index(PaginationRequest $request, $category_slug)
     {
+        $category_id = 0;
         $categories = NewCategory::orderBy('order', 'asc')->get();
         $page =  $request->get('page', 1);
-        $category_id = $request->get('category_id', 0);
+        
+        if ($category_slug != 'all') {
+            $category = NewCategory::where('slug', $category_slug)->first();
+            $category_id = $category->id;
+        }
+
         if ($category_id != 0) {
-            $hot_news = TableNew::where('new_category_id', $category_id)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+            $hot_news = TableNew::where('new_category_id', $category_id)->where('display', 1)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
         } else {
-            $hot_news = TableNew::where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+            $hot_news = TableNew::where('is_enabled', 1)->where('display', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
         }
         
         $data = $this->newRepo->getByNewsCategory($page, $category_id);
-
+       
         if($request->ajax()){
             $html = View::make('pages.web.news-next-page', ['data' => $data])->render();
 
@@ -38,7 +44,8 @@ class NewsController extends Controller
         return view('pages.web.news', [
             'data' => $data,
             'categories' => $categories,
-            'hot_news' => $hot_news
+            'hot_news' => $hot_news,
+            'category_slug' => $category_slug,
         ]);
     }
 
@@ -49,12 +56,13 @@ class NewsController extends Controller
         if ($category_id != 0) {
             $hot_news = TableNew::where('new_category_id', $category_id)
                             ->where('is_enabled', 1)
+                            ->where('display', 1)
                             ->orderBy('order', 'esc')
                             ->orderBy('id', 'desc')
                             ->take(4)
                             ->get();
         } else {
-            $hot_news = TableNew::where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+            $hot_news = TableNew::where('is_enabled', 1)->where('display', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
         }
        
         
@@ -68,7 +76,7 @@ class NewsController extends Controller
     public function details($slug)
     {
         $news = TableNew::where('slug', $slug)->first();
-        $new_relations = TableNew::where('new_category_id', $news->id)->orderBy('order', 'desc')->take(12)->get();
+        $new_relations = TableNew::where('new_category_id', $news->new_category_id)->orderBy('order', 'desc')->take(12)->get();
        
         return view('pages.web.news-detail', [
             'news' => $news,

@@ -1,6 +1,6 @@
 <div class="slide-top-news">
     @foreach($news as $item)
-        <a href="#" class="item-news">
+        <a href="#" class="item-news" onclick="location.href='{!! action('Web\NewsController@details', $item->slug) !!}'">
             <div class="img-news">
             <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
             </div>

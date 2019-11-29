@@ -17,7 +17,7 @@
 				{{$cultural_companies->content}}
 			</div>
 			<div class="btn-list-job">
-				<a href="#" class="btn">
+				<a href="{!! action('Web\JobController@listJob') !!}" class="btn">
 					Danh sách việc làm
 				</a>
 			</div>
@@ -140,10 +140,14 @@
 										{{$job->name}}
 									</a>
 									<div class="company-job">
+										@if(empty($job->company))
+										Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
+										@else
 										{{$job->company->name}}
+										@endif
 									</div>
 								</td>
-								<td>{{$job->company->province}}</td>
+								<td>{{$job->province}}</td>
 								<td>{{$job->number}}</td>
 								<td>{{$job->salary }} triệu</td>
 								<td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
@@ -159,11 +163,15 @@
 								{{$job->name}}
 						</div>
 						<div class="des-job-mb">
-								{{$job->company->name}}
+								@if(empty($job->company))
+									Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
+								@else
+									{{$job->company->name}}
+								@endif
 						</div>
 						<div class="info-job-mb">
 							<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
-							<span>{{$job->company->province}}</span>
+							<span>{{$job->province}}</span>
 						</div>
 						<div class="info-job-mb">
 							<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />

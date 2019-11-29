@@ -28,7 +28,7 @@
     "mockery/mockery": "1.1.0",
     "phpunit/phpunit": "~7.3.0",
     "fzaninotto/faker": "^1.8.0",
-    "phpspec/phpspec": "~5.0.0",
+    "phpspec/phpspec": "5.*",
     "barryvdh/laravel-debugbar": "~3.1.5",
     "barryvdh/laravel-ide-helper": "^2.1",
     "symfony/css-selector": "4.0.*",

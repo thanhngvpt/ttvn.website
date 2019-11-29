@@ -4,6 +4,12 @@
 @stop
 
 @section('styles')
+    <style>
+        #home-image-preview {
+            height: 150px;
+            width: 150px;
+        }
+    </style>
 @stop
 
 @section('scripts')
@@ -115,21 +121,11 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.fields.columns.name')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('slug', trans('admin.pages.fields.columns.slug')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('meta_title', trans('admin.pages.fields.columns.meta_title')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('meta_description', trans('admin.pages.fields.columns.meta_description')) !!}</th>
-                                                                                                                                                                                                        <th>{!! \PaginationHelper::sort('title', trans('admin.pages.fields.columns.title')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('content', trans('admin.pages.fields.columns.content')) !!}</th>
-                                                                                                                                                                                                        <th>{!! \PaginationHelper::sort('charact_1', trans('admin.pages.fields.columns.charact_1')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('des_1', trans('admin.pages.fields.columns.des_1')) !!}</th>
-                                                                                                                                                                                                        <th>{!! \PaginationHelper::sort('charact_2', trans('admin.pages.fields.columns.charact_2')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('des_2', trans('admin.pages.fields.columns.des_2')) !!}</th>
-                                                                                                                                                                                                        <th>{!! \PaginationHelper::sort('charact_3', trans('admin.pages.fields.columns.charact_3')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('des_3', trans('admin.pages.fields.columns.des_3')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('order', trans('admin.pages.fields.columns.order')) !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('is_enabled', trans('admin.pages.fields.columns.is_enabled')) !!}</th>
-                                    
+                                    <th>{!! \PaginationHelper::sort('name', 'Tên') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('name', 'Ảnh') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('meta_title', 'Meta title') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('order', 'Vị trí') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('is_enabled', 'Trạng thái') !!}</th>
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
                             </thead>
@@ -138,21 +134,28 @@
                                 @foreach( $fields as $field )
                                     <tr>
                                         <td>{{ $field->id }}</td>
-                                                                                                                            <td>{{ $field->name }}</td>
-                                                                                                                            <td>{{ $field->slug }}</td>
-                                                                                                                            <td>{{ $field->meta_title }}</td>
-                                                                                                                            <td>{{ $field->meta_description }}</td>
-                                                                                                                                                                                                                        <td>{{ $field->title }}</td>
-                                                                                                                            <td>{{ $field->content }}</td>
-                                                                                                                                                                                                                        <td>{{ $field->charact_1 }}</td>
-                                                                                                                            <td>{{ $field->des_1 }}</td>
-                                                                                                                                                                                                                        <td>{{ $field->charact_2 }}</td>
-                                                                                                                            <td>{{ $field->des_2 }}</td>
-                                                                                                                                                                                                                        <td>{{ $field->charact_3 }}</td>
-                                                                                                                            <td>{{ $field->des_3 }}</td>
-                                                                                                                            <td>{{ $field->order }}</td>
-                                                                                                                            <td>{{ $field->is_enabled }}</td>
-                                                                                <td>
+                                        <td>{{ $field->name }}</td>
+                                        <td>
+                                            @if( !empty($field->present()->homeImage()) )
+                                            <img id="home-image-preview" style="max-width: 100%;" src="{!! $field->present()->homeImage()->present()->url !!}" alt="" class="margin"/>
+                                            @else
+                                            <img id="home-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                            @endif
+                                        </td>
+                                        <td>{{ $field->meta_title }}</td>
+                                        <td>{{ $field->order }}</td>
+                                        <td>
+                                            @if($field->is_enabled)
+                                                <span class="m--font-success">
+                                                    Enabled
+                                                </span>
+                                            @else
+                                                <span class="m--font-warning">
+                                                    Disabled
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td>
                                             <a href="{!! action('Admin\FieldController@show', $field->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>

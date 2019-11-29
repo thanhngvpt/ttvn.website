@@ -165,7 +165,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('meta_title')) has-danger @endif">
                                 <label for="meta_title">Meta title</label>
-                                <input type="text" class="form-control m-input" name="meta_title" id="meta_title" required value="{{ old('meta_title') ? old('meta_title') : $culturalCompany->meta_title }}">
+                                <input type="text" class="form-control m-input" name="meta_title" id="meta_title"  value="{{ old('meta_title') ? old('meta_title') : $culturalCompany->meta_title }}">
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('meta_description1')) has-danger @endif">
                                 <label for="meta_description1">Meta description</label>
-                                <input type="text" class="form-control m-input" name="meta_description1" id="meta_description1" required value="{{ old('meta_description1') ? old('meta_description1') : $culturalCompany->meta_description1 }}">
+                                <input type="text" class="form-control m-input" name="meta_description1" id="meta_description1"  value="{{ old('meta_description1') ? old('meta_description1') : $culturalCompany->meta_description1 }}">
                             </div>
                         </div>
                     </div>

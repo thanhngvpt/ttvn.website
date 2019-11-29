@@ -1,14 +1,14 @@
 <?php namespace App\Repositories\Eloquent;
 
-use \App\Repositories\DataHighlightRepositoryInterface;
-use \App\Models\DataHighlight;
+use \App\Repositories\DataHighLightRepositoryInterface;
+use \App\Models\DataHighLight;
 
-class DataHighlightRepository extends SingleKeyModelRepository implements DataHighlightRepositoryInterface
+class DataHighLightRepository extends SingleKeyModelRepository implements DataHighLightRepositoryInterface
 {
 
     public function getBlankModel()
     {
-        return new DataHighlight();
+        return new DataHighLight();
     }
 
     public function rules()

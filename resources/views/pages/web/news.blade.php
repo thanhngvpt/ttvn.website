@@ -13,12 +13,12 @@
 		<div class="container">
 			<div class="navtab-custom">
 				<ul class="nav nav-tabs">
-					<li class="nav-item">
-						<a class="nav-link active" data-category-id="0" data-toggle="tab" href="#tab_all">Tất cả</a>
+					<li class="nav-item category-click" data-category-id="0">
+						<a class="nav-link @if($category_slug == 'all') active @endif" data-category-slug="all" data-category-id="0" data-toggle="tab" href="#tab_all">Tất cả</a>
 					</li>
 					@foreach($categories as $category)
-					<li class="nav-item category-click">
-						<a class="nav-link" data-toggle="tab" data-category-id="{{$category->id}}" href="#news-tab-{{$category->id}}">{{$category->name}}</a>
+					<li class="nav-item category-click" data-category-id="{{$category->id}}">
+						<a class="nav-link @if($category_slug == $category->slug) active @endif" data-toggle="tab" data-category-slug="{{$category->slug}}" data-category-id="{{$category->id}}" href="#news-tab-{{$category->id}}">{{$category->name}}</a>
 					</li>
 					@endforeach
 				</ul>
@@ -26,7 +26,7 @@
 			
 			<!-- Tab panes -->
 			<div class="tab-content">
-				<div class="tab-pane active" data-category-id="0" id="tab_all">
+				<div class="tab-pane @if($category_slug == 'all') active show @endif" data-category-slug="all" data-category-id="0" id="tab_all">
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
 						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', $hot_new->slug) !!}'">
@@ -86,8 +86,66 @@
 					</div>
 				</div>
 				@foreach($categories as $category)
-				<div class="tab-pane container fade" data-category-id={{$category->id}} id="news-tab-{{$category->id}}">
-					
+				<div class="tab-pane @if($category_slug == $category->slug) active show @endif container fade" data-category-slug="{{$category->slug}}" data-category-id="{{$category->id}}" id="news-tab-{{$category->id}}">
+					@if($category_slug == $category->slug)
+					<div class="news-slide">
+						@foreach($hot_news as $hot_new)
+						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', $hot_new->slug) !!}'">
+							<div class="item-slide-news">
+								<div class="img-slide-news">
+									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
+								</div>
+								<div class="content-slide-news">
+									<button class="btn tag-news">
+										{{$hot_new->newCategory->name}}
+									</button>
+									<div class="title-slide-news">
+											{{$hot_new->name}}
+									</div>
+									<div class="des-slide-news">
+											{!!$hot_new->sapo!!}
+									</div>
+									<div class="date-slide-news">
+											{!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
+									</div>
+								</div>
+							</div>
+						</div>
+						@endforeach
+					</div>
+					<div class="news-content">
+						<div class="row list-news">
+							@foreach($data['news'] as $item)
+							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', $item->slug) !!}'">
+								<div class="item-news">
+									<div class="img-news">
+										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+									</div>
+									<div class="cate-news">
+											{{$item->newCategory->name}}
+									</div>
+									<div class="title-news">
+											{{$item->name}}
+									</div>
+									<div class="des-news">
+											{!!$item->sapo!!}
+									</div>
+									<div class="date-news">
+											{!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
+									</div>
+								</div>
+							</div>
+							@endforeach
+						</div>
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
+							@for($i=1;$i<=$data['total_page'];$i++)
+							<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
+							@endfor
+							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+						</ul>
+					</div>
+					@endif
 				</div>
 				@endforeach
 			</div>
@@ -119,28 +177,34 @@
   				prevArrow: '<img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid prev-arrow" />',
   				nextArrow: '<img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid next-arrow" />'
 			  });
+
+			  $('.nav-link').on('show.bs.tab', function(){
+				$('.slick-slider').slick("setPosition")
+			  });
 		});
 
 		$(document).on('click', '.child-item', function() {
 			let next_page = $(this).data('page-number');
-			let category_id = $('.tab-pane.active').data('category-id')
+			let slug = $('.tab-pane.active').data('category-slug')
 
 			$.ajax({
-				url: "{{action('Web\NewsController@index')}}",
+				url: "/news-category/"+slug,
 				type: "GET",
 				data: {
 					_token: "{!! csrf_token() !!}",
 					page: next_page,
-					category_id: category_id
 				},
 				success: function (res) {
 					$('.news-content').html(res)
+					$('html, body').animate({
+						scrollTop: $(".news-content").offset().top
+					}, 500);
 				}
 			});
 		})
 
 		$(document).on('click', '.category-click', function() {
-			let category_id = $('.tab-pane.active').data('category-id')
+			let category_id = $(this).data('category-id')
 			
 			$.ajax({
 				url: "{{action('Web\NewsController@getNewsViaCategory')}}",
@@ -150,7 +214,7 @@
 					category_id: category_id
 				},
 				success: function (res) {
-					$('.tab-pane.active').html(res)
+					$('#news-tab-'+ category_id).html(res)
 					$('.news-slide').not('.slick-initialized').slick({
 						infinite: true,
 						slidesToShow: 1,
@@ -159,6 +223,10 @@
 						prevArrow: '<img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid prev-arrow" />',
 						nextArrow: '<img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid next-arrow" />'
 					});
+					setTimeout(function() {
+						$('.slick-slider').slick("setPosition")
+
+					}, 300)
 				}
 			});
 		})

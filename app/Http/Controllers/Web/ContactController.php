@@ -15,6 +15,7 @@ class ContactController extends Controller
         $contact->fill($data);
         $contact->save();
 
-        return back()->with('success','Bạn đã gửi thông tin thành công!');
+        
+        return 'success';
     }
 }

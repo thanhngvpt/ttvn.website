@@ -1,0 +1,41 @@
+.introduce-page {
+    .section-intro {
+        .section-title {
+            font-family: $f-eb;
+            font-weight: $fz-eb-semibold;
+            font-size: 20px;
+            line-height: 100%;
+            color: $text-tech-item-title;
+        }
+        .title-border-bot {
+            &::after {
+                content: '';
+                display: block;
+                margin-top: 16px;
+                padding-top: 2px;
+                width: 112px;
+                background-color: $color-border-title;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-md) {
+    .introduce-page {
+        .section-intro {
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-lg) {
+    .introduce-page {
+    }
+}
+
+@media (min-width: $break-xl) {
+    .introduce-page {
+    }
+}

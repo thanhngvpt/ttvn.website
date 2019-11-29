@@ -13,10 +13,10 @@
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" >
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Trang chủ</a>
+                <li class="nav-item @if($path_url == null) active @endif">
+                    <a class="nav-link" href="/">Trang chủ</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if($path_url == 'introduce-company') active @endif">
                     <a class="nav-link" data-toggle="collapse" data-target="#introduce-menu-xl">
                         Giới thiệu
                         <i class="fas fa-caret-down"></i>
@@ -24,13 +24,13 @@
                     <div id="introduce-menu-xl" class="collapse menu-xl">
                         <ul class="menu-xl-child">
                             <li>
-                                <a href="https://www.google.com/">
+                                <a href="{!!action('Web\IntroduceCompanyController@index', 'ttvn')!!}">
                                     <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
                                     Về TTVN Group
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.google.com/">
+                                <a href="{!!action('Web\IntroduceCompanyController@index', 'leader')!!}">
                                     <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />       
                                     Ban lãnh đạo
                                 </a>
@@ -38,23 +38,54 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                <li class="nav-item @if($path_url == 'scope-active') active @endif">
+                    <a class="nav-link" data-toggle="collapse" data-target="#field-menu-xl">
                         Lĩnh vực hoạt động
                         <i class="fas fa-caret-down"></i>
                     </a>
+                    <div id="field-menu-xl" class="collapse menu-xl">
+                        <ul class="menu-xl-child">
+                            @foreach($menu_fields as $menu_field)
+                            <li>
+                                <a href="{!!action('Web\ScopeActiveController@index', $menu_field->slug)!!}">
+                                    <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
+                                    {{$menu_field->name}}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Tin tức
+                <li class="nav-item @if($path_url == 'news-category') active @endif">
+                    <a class="nav-link" data-toggle="collapse" data-target="#news-menu-xl">
+                            Tin tức
                         <i class="fas fa-caret-down"></i>
                     </a>
+                    <div id="news-menu-xl" class="collapse menu-xl">
+                        <ul class="menu-xl-child">
+                            <li>
+                                <a href="{!!action('Web\NewsController@index', 'all')!!}">
+                                        <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
+                                        Tất cả
+                                </a>
+
+                            </li>
+                            @foreach($menu_news_categories as $menu_news_category)
+                            <li>
+                                <a href="{!!action('Web\NewsController@index', $menu_news_category->slug)!!}">
+                                    <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
+                                    {{$menu_news_category->name}}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tuyển dụng</a>
+                <li class="nav-item @if($path_url == 'job') active @endif">
+                    <a class="nav-link" href="{!! action('Web\JobController@index') !!}">Tuyển dụng</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Liên hệ</a>
+                <li class="nav-item @if($path_url == 'contact') active @endif">
+                    <a class="nav-link" href="/contact">Liên hệ</a>
                 </li>
             </ul>
             <div class="icon-change-language position-relative">
@@ -81,52 +112,79 @@
     </nav>
     <div id="collapsibleNavbar">
         <div class="logo-menu">
-            <a href="#">
+            <a href="/">
                 <img src="{{ asset('images/logo-footer.svg') }}" class="img-fluid" />
             </a>
             <img src="{{ asset('images/close-modal.svg') }}" onclick="$('#collapsibleNavbar').removeClass('show')" class="img-fluid" />
         </div>
         <ul class="menu-mb-parent">
             <li>
-                <a href="#" class="active">
+                <a href="/" class="@if($path_url == null) active @endif">
                     Trang chủ
                 </a>
             </li>
             <li>
-                <a data-toggle="collapse" data-target="#introduce-menu-mb">
+                <a data-toggle="collapse" data-target="#introduce-menu-mb" class="@if($path_url == 'introduce-company') active @endif">
                     Giới thiệu
                     <i class="fas fa-caret-right"></i>
                 </a>
                 <div id="introduce-menu-mb" class="collapse">
                     <ul class="menu-mb-child">
                         <li>
-                            <a href="https://www.google.com/">Về TTVN Group</a>
+                            <a href="{!!action('Web\IntroduceCompanyController@index', 'ttvn')!!}">Về TTVN Group</a>
                         </li>
                         <li>
-                            <a href="https://www.google.com/">Ban lãnh đạo</a>
+                            <a href="{!!action('Web\IntroduceCompanyController@index', 'leader')!!}">Ban lãnh đạo</a>
                         </li>
                     </ul>
                 </div>
             </li>
             <li>
-                <a href="#">
-                    Lĩnh vực hoạt động
-                    <i class="fas fa-caret-right"></i>
+                <a data-toggle="collapse" data-target="#field-menu-mb" class="@if($path_url == 'scope-active') active @endif">
+                        Lĩnh vực hoạt động
+                        <i class="fas fa-caret-right"></i>
                 </a>
+                <div id="field-menu-mb" class="collapse">
+                    <ul class="menu-mb-child">
+                        @foreach($menu_fields as $menu_field)
+                        <li>
+                            <a href="{!!action('Web\ScopeActiveController@index', $menu_field->slug)!!}">
+                                {{$menu_field->name}}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </li>
             <li>
-                <a href="#">
-                    Tin tức
-                    <i class="fas fa-caret-right"></i>
+                <a data-toggle="collapse" data-target="#news-menu-mb" class="@if($path_url == 'news-category') active @endif">
+                        Tin tức
+                        <i class="fas fa-caret-right"></i>
                 </a>
+                <div id="news-menu-mb" class="collapse">
+                    <ul class="menu-mb-child">
+                        <li>
+                            <a href="{!!action('Web\NewsController@index', 'all')!!}">
+                                Tất cả
+                            </a>
+                        </li>
+                        @foreach($menu_news_categories as $menu_news_category)
+                        <li>
+                            <a href="{!!action('Web\NewsController@index', $menu_news_category->slug)!!}">
+                                {{$menu_news_category->name}}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </li>
             <li>
-                <a href="#">
+                <a href="{!! action('Web\JobController@index') !!}" class="@if($path_url == 'job') active @endif">
                     Tuyển dụng
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/contact" class="@if($path_url == 'contact') active @endif">
                     Liên hệ
                 </a>
             </li>

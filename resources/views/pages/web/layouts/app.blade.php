@@ -24,6 +24,8 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     <script>
         $(window).scroll(function(e) {
             var scroll = $(window).scrollTop();

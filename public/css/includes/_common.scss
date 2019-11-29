@@ -1,0 +1,107 @@
+.btn-slick-control {
+    box-shadow: none;
+    display: block;
+    &.slick-next, &.slick-prev {
+        width: inherit;
+        height: inherit;
+    }
+    &::before, &::after {
+        display: none;
+    }
+    &:hover, &:focus, &.focus {
+        box-shadow: none;
+    }
+    svg {
+        path.stroke-round, path.stroke-center {
+            color: #626262;
+            stroke: currentColor;
+        }
+    }
+
+    &:hover {
+        svg {
+            path.stroke-round{
+                color: #57AE5B;
+                fill: currentColor;
+            }
+
+            path.stroke-center {
+                color: white;
+            }
+        }
+    }
+}
+
+.slick-item, .btn-slick-control {
+    outline: none !important;
+}
+
+.slide-control-single {
+    .btn-slick-head {
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        &:first-child {
+            margin-right: 56px;
+        }
+        svg {
+            path {
+                color: #C1EAC5;
+                stroke: currentColor;
+            }
+        }
+
+        &:hover {
+            svg {
+                path {
+                    color: #57AE5B;
+                    stroke: currentColor;
+                }
+            }
+        }
+    }
+}
+
+.slick-control-alone {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    .btn-slick-control {
+        background: #EFFCF1;
+        padding: 24px 73px;
+        display: inline-block;
+        border-radius: 0;
+        svg {
+            path {
+                color: #C1EAC5;
+                stroke: currentColor;
+            }
+        }
+
+        &:hover {
+            svg {
+                path {
+                    color: #57AE5B;
+                    stroke: currentColor;
+                }
+            }
+        }
+    }
+
+    &.control-prev {
+        text-align: right;
+        .btn-slick-control {
+            margin-right: -1px;
+            margin-bottom: -1px;
+        }
+    }
+
+    &.control-next {
+        text-align: left;
+        .btn-slick-control {
+            margin-left: -1px;
+            margin-bottom: -1px;
+        }
+    }
+}

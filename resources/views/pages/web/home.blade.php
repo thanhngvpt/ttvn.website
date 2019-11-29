@@ -19,39 +19,20 @@
             <div class="description">
               Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
             </div>
-            <button class="btn btn-success">
+            <button class="btn btn-success" style="margin-bottom: 60px;">
               <img src="{{ asset('images/view-video.svg') }}" class="img-fluid" />
               <span><a href="{{$video->video_url}}">Xem video</a></span>
             </button>
           </div>
           <div class="img-top-slide">
-            <iframe width="648" height="490" src="{{$video->video_url}}" frameborder="0"/></iframe>
+            @if(!empty($video->present()->coverImage()))
+              <img src="{!! $video->present()->coverImage()->present()->url !!}" class="img-fluid" />
+            @endif
           </div>
         </div>
       </div>
-      <div class="item-slide">
-        <div class="item-top-slide">
-          <div class="text-slide">
-            <div class="title">
-              Tập đoàn
-            </div>
-            <div class="content">
-              Trường Thành Việt Nam
-            </div>
-            <div class="description">
-              Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
-            </div>
-            <button class="btn btn-success">
-              <img src="{{ asset('images/view-video.svg') }}" class="img-fluid" />
-              <span><a href="{{$video->video_url}}">Xem video</a></span>
-            </button>
-          </div>
-          <div class="img-top-slide">
-            <iframe width="648" height="490" src="{{$video->video_url}}" frameborder="0"/></iframe>
-          </div>
-        </div>
-      </div>
-    @else
+      @endif
+
       @foreach($banners as $banner)
       <div class="item-slide">
           <div class="item-top-slide">
@@ -67,12 +48,13 @@
               </div>
             </div>
             <div class="img-top-slide">
+              @if(!empty($banner->present()->coverImage()))
               <img src="{!! $banner->present()->coverImage()->present()->url !!}" class="img-fluid" />
+              @endif
             </div>
           </div>
         </div>
       @endforeach
-    @endif
   </div>
   <div class="icon-down-nav">
     <img src="{{ asset('images/icon-down-nav.svg') }}" class="img-fluid" />
@@ -100,7 +82,9 @@ class="background-white"
             <div class="col-md-4">
               <a class="item-top-field" href="{!! action('Web\ScopeActiveController@index', $field->slug) !!}">
                 <div class="img-topfield">
+                  @if(!empty($field->present()->homeImage()))
                   <img src="{!! $field->present()->homeImage()->present()->url !!}" class="img-fluid">
+                  @endif
                 </div>
                 <div class="title-topfield">
                   {{$field->name}}
@@ -132,15 +116,19 @@ class="background-white"
             <div class="description">
               <p>{{$inforGroup->description}}</p>
             </div>
-            <a href="#" class="btn btn-outline-success">
+            <a href="{{action('Web\IntroduceCompanyController@index', 'ttvn')}}" class="btn btn-outline-success">
               Xem thêm
               <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid ml-2 btn-no-hover" />
               <img src="{{ asset('images/arrow-right-hover-new.svg') }}" class="img-fluid ml-2 btn-hover" />
             </a>
           </div>
           <div class="img-top-intro">
+            @if(!empty($inforGroup->present()->thumbnailImage()))
             <img src="{!! $inforGroup->present()->thumbnailImage()->present()->url !!}" class="img-fluid img-intro-after" />
+            @endif
+            @if(!empty($inforGroup->present()->coverImage()))
             <img src="{!! $inforGroup->present()->coverImage()->present()->url !!}" class="img-fluid img-intro-before" />
+            @endif
           </div>
         </div>
         <div class="top-sumarry">
@@ -148,7 +136,9 @@ class="background-white"
             @foreach($dataHighlights as $dataHighlight)
             <div class="col-md-3">
               <div class="col-top-sumary">
+                @if(!empty($dataHighlight->present()->coverImage()))
                 <img src="{!! $dataHighlight->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                @endif
                 <div class="number">
                   {{$dataHighlight->data}}
                 </div>
@@ -184,11 +174,13 @@ class="background-white"
                 @foreach($news as $item)
                 <a href="{{action('Web\NewsController@details', $item->slug)}}" class="item-news">
                   <div class="img-news">
+                    @if(!empty($item->present()->coverImage()))
                     <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                    @endif
                   </div>
                   <div class="content-news">
                     <div class="cate-news">
-                      {{$item->newCategory->name}}
+                      {{@$item->newCategory->name}}
                     </div>
                     <div class="title-news">
                       {{$item->name}}
@@ -205,7 +197,7 @@ class="background-white"
               <div class="tab-pane container active" id="cate-{{$category->id}}"></div>
             @endforeach
             <div class="text-center">
-              <a href="{{action('Web\NewsController@index')}}" class="btn btn-outline-success btn-see-more-news">
+              <a href="{{action('Web\NewsController@index', 'all')}}" class="btn btn-outline-success btn-see-more-news">
                 Xem tất cả
               </a>
             </div>
@@ -223,7 +215,9 @@ class="background-white"
                 <div class="partner-slide">
                   @foreach ($companies as $company)
                   <div class="item-slide">
+                    @if(!empty($company->present()->coverImage()))
                     <img src="{!! $company->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                    @endif
                   </div>
                   @endforeach
                 </div>
@@ -239,11 +233,11 @@ class="background-white"
         <div class="description">
             {{$heading->support_description}}
         </div>
-        <form action="" method="">
+        <form action="{!! action('Web\ContactController@index') !!}" method="POST">
           <div class="form-consultation">
-            <input type="email" name="email" placeholder="Email" class="form-control" />
-            <input type="text" name="phone" placeholder="Số điện thoại" class="form-control" />
-            <button type="submit" class="btn">
+            <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
+            <input type="text" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
+            <button type="button" id="submit" class="btn">
               Gửi
             </button>
           </div>
@@ -369,5 +363,31 @@ class="background-white"
 				$(this).attr('src', '{{ asset("images/arrow-left-ad.svg") }}');
 			})
     })
+
+    $(document).on('click', '#submit', function() {
+			let email = $('#email').val();
+			let phone = $('#phone').val();
+
+			$.ajax({
+				url: "{!! action('Web\ContactController@index') !!}",
+				type: "POST",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					email: email,
+					phone: phone,
+				},
+				success: function (res) {
+					$('#email').val("");
+					$('#phone').val("");
+					let message = document.createElement("message");
+						message.innerHTML='Thông tin của bạn đã được gửi <br> Chúng tôi sẽ liên hệ tư vấn với bạn trong thời gian sớm nhất'
+					Swal.fire(
+						'Thành công!',
+						message,
+						'success'
+						)
+				}
+			});
+		})
 	</script>
 @endsection

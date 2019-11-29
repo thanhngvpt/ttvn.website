@@ -1,0 +1,21 @@
+.container-custom {
+
+}
+
+@media (min-width: $break-md) {
+    .container-custom {
+    
+    }
+}
+
+@media (min-width: $break-lg) {
+    .container-custom {
+    
+    }
+}
+
+@media (min-width: $break-xl) {
+    .container-custom {
+        // max-width: 1320px;
+    }
+}

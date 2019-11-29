@@ -31,12 +31,7 @@
                 $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
             });
 
-            $('.datetime-picker').datetimepicker({
-                todayHighlight: true,
-                autoclose: true,
-                pickerPosition: 'bottom-left',
-                format: 'yyyy/mm/dd'
-            });
+            $('.datetime-picker').datepicker({format: 'yyyy/mm/dd',});
         });
 
         Boilerplate.imageUploadUrl = "{!! URL::action('Admin\ArticleController@postImage') !!}";

@@ -2,15 +2,15 @@
 
 use Tests\TestCase;
 
-class DataHighlightControllerTest extends TestCase
+class DataHighLightControllerTest extends TestCase
 {
 
     protected $useDatabase = true;
 
     public function testGetInstance()
     {
-        /** @var  \App\Http\Controllers\Admin\DataHighlightController $controller */
-        $controller = \App::make(\App\Http\Controllers\Admin\DataHighlightController::class);
+        /** @var  \App\Http\Controllers\Admin\DataHighLightController $controller */
+        $controller = \App::make(\App\Http\Controllers\Admin\DataHighLightController::class);
         $this->assertNotNull($controller);
     }
 
@@ -23,29 +23,29 @@ class DataHighlightControllerTest extends TestCase
 
     public function testGetList()
     {
-        $response = $this->action('GET', 'Admin\DataHighlightController@index');
+        $response = $this->action('GET', 'Admin\DataHighLightController@index');
         $this->assertResponseOk();
     }
 
     public function testCreateModel()
     {
-        $this->action('GET', 'Admin\DataHighlightController@create');
+        $this->action('GET', 'Admin\DataHighLightController@create');
         $this->assertResponseOk();
     }
 
     public function testStoreModel()
     {
-        $dataHighlight = factory(\App\Models\DataHighlight::class)->make();
-        $this->action('POST', 'Admin\DataHighlightController@store', [
+        $dataHighLight = factory(\App\Models\DataHighLight::class)->make();
+        $this->action('POST', 'Admin\DataHighLightController@store', [
                 '_token' => csrf_token(),
-            ] + $dataHighlight->toArray());
+            ] + $dataHighLight->toArray());
         $this->assertResponseStatus(302);
     }
 
     public function testEditModel()
     {
-        $dataHighlight = factory(\App\Models\DataHighlight::class)->create();
-        $this->action('GET', 'Admin\DataHighlightController@show', [$dataHighlight->id]);
+        $dataHighLight = factory(\App\Models\DataHighLight::class)->create();
+        $this->action('GET', 'Admin\DataHighLightController@show', [$dataHighLight->id]);
         $this->assertResponseOk();
     }
 
@@ -53,35 +53,35 @@ class DataHighlightControllerTest extends TestCase
     {
         $faker = \Faker\Factory::create();
 
-        $dataHighlight = factory(\App\Models\DataHighlight::class)->create();
+        $dataHighLight = factory(\App\Models\DataHighLight::class)->create();
 
         $name = $faker->name;
-        $id = $dataHighlight->id;
+        $id = $dataHighLight->id;
 
-        $dataHighlight->name = $name;
+        $dataHighLight->name = $name;
 
-        $this->action('PUT', 'Admin\DataHighlightController@update', [$id], [
+        $this->action('PUT', 'Admin\DataHighLightController@update', [$id], [
                 '_token' => csrf_token(),
-            ] + $dataHighlight->toArray());
+            ] + $dataHighLight->toArray());
         $this->assertResponseStatus(302);
 
-        $newDataHighlight = \App\Models\DataHighlight::find($id);
-        $this->assertEquals($name, $newDataHighlight->name);
+        $newDataHighLight = \App\Models\DataHighLight::find($id);
+        $this->assertEquals($name, $newDataHighLight->name);
     }
 
     public function testDeleteModel()
     {
-        $dataHighlight = factory(\App\Models\DataHighlight::class)->create();
+        $dataHighLight = factory(\App\Models\DataHighLight::class)->create();
 
-        $id = $dataHighlight->id;
+        $id = $dataHighLight->id;
 
-        $this->action('DELETE', 'Admin\DataHighlightController@destroy', [$id], [
+        $this->action('DELETE', 'Admin\DataHighLightController@destroy', [$id], [
                 '_token' => csrf_token(),
             ]);
         $this->assertResponseStatus(302);
 
-        $checkDataHighlight = \App\Models\DataHighlight::find($id);
-        $this->assertNull($checkDataHighlight);
+        $checkDataHighLight = \App\Models\DataHighLight::find($id);
+        $this->assertNull($checkDataHighLight);
     }
 
 }
