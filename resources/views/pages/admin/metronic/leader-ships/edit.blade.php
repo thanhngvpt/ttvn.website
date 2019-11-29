@@ -4,6 +4,8 @@
 @stop
 
 @section('styles')
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/css/froala_style.min.css' rel='stylesheet' type='text/css' />
     <style>
         .row {
             margin-bottom: 15px;
@@ -13,6 +15,7 @@
 
 @section('scripts')
     <script src="{!! \URLHelper::asset('libs/metronic/demo/default/custom/crud/forms/validation/form-controls.js', 'admin') !!}"></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/js/froala_editor.pkgd.min.js'></script>
     <script>
         $(document).ready(function () {
             $('#cover-image').change(function (event) {
@@ -25,8 +28,24 @@
                 pickerPosition: 'bottom-left',
                 format: 'yyyy/mm/dd hh:ii'
             });
+
+            Boilerplate.imageUploadUrl = "{!! URL::action('Admin\ArticleController@postImage') !!}";
+            Boilerplate.imageUploadParams = {
+                "article_id" : "{!! empty($leaderShip->id) ? 0 : $leaderShip->id !!}",
+                "_token": "{!! csrf_token() !!}"
+            };
+            Boilerplate.imagesLoadURL = "{!! URL::action('Admin\ArticleController@getImages') !!}";
+            Boilerplate.imagesLoadParams = {
+                "article_id" : "{!! empty($leaderShip->id) ? 0 : $leaderShip->id !!}"
+            };
+            Boilerplate.imageDeleteURL = "{!! URL::action('Admin\ArticleController@deleteImage') !!}";
+            Boilerplate.imageDeleteParams = {
+                "_token": "{!! csrf_token() !!}",
+                "article_id" : "{!! empty($leaderShip->id) ? 0 : $leaderShip->id !!}"
+            };
         });
     </script>
+    <script src="{{ \URLHelper::asset('js/pages/articles/edit.js', 'admin/metronic') }}"></script>
 @stop
 
 @section('title')
@@ -128,7 +147,7 @@
                             <div class="col-md-12">
                                 <div class="form-group m-form__group row @if ($errors->has('file_text')) has-danger @endif">
                                     <label for="file_text">Hồ sơ</label>
-                                    <input type="text" class="form-control m-input" name="file_text" id="file_text" required value="{{ old('file_text') ? old('file_text') : $leaderShip->file_text }}">
+                                    <textarea id="froala-editor" type="text" class="form-control m-input" name="file_text" required>{{ old('file_text') ? old('file_text') : $leaderShip->file_text }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -140,14 +159,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('file')) has-danger @endif">
                                 <label for="file">@lang('admin.pages.leader-ships.columns.file')</label>
                                 <input type="file" class="form-control m-input" name="file" id="file" required value="{{ old('file') ? old('file') : $leaderShip->file }}">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">

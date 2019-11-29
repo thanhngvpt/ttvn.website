@@ -12,7 +12,7 @@ class DataHighLight extends Base
      *
      * @var string
      */
-    protected $table = 'data_high_lights';
+    protected $table = 'data_highlights';
 
     /**
      * The attributes that are mass assignable.
