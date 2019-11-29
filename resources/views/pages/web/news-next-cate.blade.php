@@ -7,7 +7,7 @@
             </div>
             <div class="content-slide-news">
                 <button class="btn tag-news">
-                    {{$hot_new->newCategory->name}}
+                    {{@$hot_new->newCategory->name}}
                 </button>
                 <div class="title-slide-news">
                         {{$hot_new->name}}
@@ -32,7 +32,7 @@
                         <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
                     </div>
                     <div class="cate-news">
-                            {{$item->newCategory->name}}
+                            {{@$item->newCategory->name}}
                     </div>
                     <div class="title-news">
                             {{$item->name}}

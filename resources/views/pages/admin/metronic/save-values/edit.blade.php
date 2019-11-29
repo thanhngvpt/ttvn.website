@@ -95,7 +95,7 @@
                 </div>
             @endif
 
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\SaveValueController@store') !!}@else{!! action('Admin\SaveValueController@update', [$saveValue->id]) !!}@endif" method="POST"     >
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\SaveValueController@store') !!}@else{!! action('Admin\SaveValueController@update', [$saveValue->id]) !!}@endif" method="POST" enctype="multipart/form-data">
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 

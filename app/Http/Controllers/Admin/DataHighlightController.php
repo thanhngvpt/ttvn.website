@@ -168,9 +168,11 @@ class DataHighlightController extends Controller
                 'data',
             ]
         );
+        
         $dataHighlight = $this->dataHighlightRepository->update($dataHighlight, $input);
         if ($request->hasFile('cover-image')) {
             $currentImage = $dataHighlight->coverImage;
+            
             $file = $request->file('cover-image');
             $newImage = $this->fileUploadService->upload(
                 'banner_cover_image',
@@ -179,8 +181,9 @@ class DataHighlightController extends Controller
                     'entity_type' => 'banner_cover_image',
                     'entity_id'   => $dataHighlight->id,
                     'title'       => $request->input('title', ''),
-                ]
-            );
+                    ]
+                );
+                
             if (!empty($newImage)) {
                 $this->dataHighlightRepository->update($dataHighlight, ['cover_image_id' => $newImage->id]);
                 if (!empty($currentImage)) {
