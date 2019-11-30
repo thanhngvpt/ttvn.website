@@ -39,7 +39,7 @@ class DataHighLight extends Base
     public static function boot()
     {
         parent::boot();
-        parent::observe(new \App\Observers\DataHighLightObserver);
+        // parent::observe(new \App\Observers\DataHighLightObserver);
     }
 
     // Relations
