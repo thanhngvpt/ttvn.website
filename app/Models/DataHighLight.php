@@ -12,7 +12,7 @@ class DataHighLight extends Base
      *
      * @var string
      */
-    protected $table = 'data_high_lights';
+    protected $table = 'data_highlights';
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,9 @@ class DataHighLight extends Base
      * @var array
      */
     protected $fillable = [
-        
+        'cover_image_id',
+                'title',
+                'data',
     ];
 
     /**
@@ -37,11 +39,14 @@ class DataHighLight extends Base
     public static function boot()
     {
         parent::boot();
-        parent::observe(new \App\Observers\DataHighLightObserver);
+        // parent::observe(new \App\Observers\DataHighLightObserver);
     }
 
     // Relations
-    
+    public function coverImage()
+    {
+        return $this->hasOne('App\Models\Image', 'id', 'cover_image_id');
+    }
 
     // Utility Functions
 
