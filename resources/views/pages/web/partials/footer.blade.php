@@ -64,7 +64,7 @@
 					<a class="item-content-footer" href="{!!action('Web\ScopeActiveController@index', $menu_fields[0]->slug)!!}">Lĩnh vực hoạt động</a>
 					<a class="item-content-footer" href="{!!action('Web\NewsController@index', 'all')!!}">Tin tức</a>
 					<a class="item-content-footer" href="{!! action('Web\JobController@index') !!}">Tuyển Dụng</a>
-					<a class="item-content-footer" href="/contact">Liên hệ</a>
+					<a class="item-content-footer" href="/lien-he">Liên hệ</a>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-3 col-footer connect-us">

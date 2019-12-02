@@ -29,7 +29,7 @@
 				<div class="tab-pane @if($category_slug == 'all') active show @endif" data-category-slug="all" data-category-id="0" id="tab_all">
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
-						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', $hot_new->slug) !!}'">
+						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
 							<div class="item-slide-news">
 								<div class="img-slide-news">
 									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
@@ -55,7 +55,7 @@
 					<div class="news-content">
 						<div class="row list-news">
 							@foreach($data['news'] as $item)
-							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', $item->slug) !!}'">
+							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}'">
 								<div class="item-news">
 									<div class="img-news">
 										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
@@ -90,7 +90,7 @@
 					@if($category_slug == $category->slug)
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
-						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', $hot_new->slug) !!}'">
+						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
 							<div class="item-slide-news">
 								<div class="img-slide-news">
 									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
@@ -116,7 +116,7 @@
 					<div class="news-content">
 						<div class="row list-news">
 							@foreach($data['news'] as $item)
-							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', $item->slug) !!}'">
+							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}'">
 								<div class="item-news">
 									<div class="img-news">
 										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
@@ -188,7 +188,7 @@
 			let slug = $('.tab-pane.active').data('category-slug')
 
 			$.ajax({
-				url: "/news-category/"+slug,
+				url: "/tin-tuc/"+slug,
 				type: "GET",
 				data: {
 					_token: "{!! csrf_token() !!}",

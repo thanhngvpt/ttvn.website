@@ -28,30 +28,30 @@
 });
 
 \Route::group(['middleware' => ['web.values']], function () {
-    Route::get('/', 'Web\HomeController@index');
     Route::get('new-by-category', 'Web\HomeController@getNewByCate');
+    Route::get('get-news-via-category', 'Web\NewsController@getNewsViaCategory');
+    Route::get('/', 'Web\HomeController@index');
 
-    Route::get('contact', function () {
+    Route::get('lien-he', function () {
         return view('pages.web.contact');
     });
 
-    Route::get('job', 'Web\JobController@index');
+    Route::get('van-hoa-doanh-nghiep', 'Web\JobController@index');
 
-    Route::get('list-job', 'Web\JobController@listJob');
-    Route::get('job/{slug}', 'Web\JobController@detail')->name('job.details');
+    Route::get('van-hoa-doanh-nghiep/tuyen-dung', 'Web\JobController@listJob');
+    Route::get('van-hoa-doanh-nghiep/tuyen-dung/{slug}', 'Web\JobController@detail')->name('job.details');
     Route::post('post-cv', 'Web\JobController@postCV');
 
     // Route::get('job-detail', function () {
     //     return view('pages.web.job-detail');
     // });
 
-    Route::get('news/{slug}', 'Web\NewsController@details');
-
-    Route::get('introduce-company/{type}', 'Web\IntroduceCompanyController@index');
-
-    Route::get('scope-active/{slug}', 'Web\ScopeActiveController@index');
-    Route::get('news-category/{category}', 'Web\NewsController@index');
-    Route::get('get-news-via-category', 'Web\NewsController@getNewsViaCategory');
+    
+    Route::get('gioi-thieu-tap-doan/{type}', 'Web\IntroduceCompanyController@index');
+    
+    Route::get('/{slug}', 'Web\ScopeActiveController@index');
+    Route::get('tin-tuc/{category}', 'Web\NewsController@index');
+    Route::get('tin-tuc/{category}/{slug}', 'Web\NewsController@details');
     Route::get('get-project-via-field', 'Web\ScopeActiveController@getProjects');
     Route::post('post-contact', 'Web\ContactController@index')->name('post-contact');
 });

@@ -172,7 +172,7 @@ class="background-white"
               <div class="area-top-news">
                 <div class="slide-top-news">
                   @foreach($news as $item)
-                  <a href="{{action('Web\NewsController@details', $item->slug)}}" class="item-news">
+                  <a href="{{action('Web\NewsController@details',[$item->newCategory->slug, $item->slug])}}" class="item-news">
                     <div class="img-news">
                       @if(!empty($item->present()->coverImage()))
                       <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />

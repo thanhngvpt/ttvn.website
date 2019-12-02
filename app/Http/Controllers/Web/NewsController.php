@@ -62,7 +62,11 @@ class NewsController extends Controller
                             ->take(4)
                             ->get();
         } else {
-            $hot_news = TableNew::where('is_enabled', 1)->where('display', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+            $hot_news = TableNew::where('is_enabled', 1)
+                                ->where('display', 1)
+                                ->orderBy('order', 'esc')
+                                ->orderBy('id', 'desc')
+                                ->take(4)->get();
         }
        
         
@@ -73,7 +77,7 @@ class NewsController extends Controller
         return $html;
     }
 
-    public function details($slug)
+    public function details($category, $slug)
     {
         $news = TableNew::where('slug', $slug)->first();
         $new_relations = TableNew::where('new_category_id', $news->new_category_id)->orderBy('order', 'desc')->take(12)->get();
