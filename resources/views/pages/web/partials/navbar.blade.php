@@ -85,7 +85,7 @@
                     <a class="nav-link" href="{!! action('Web\JobController@index') !!}">Tuyển dụng</a>
                 </li>
                 <li class="nav-item @if($path_url == 'contact') active @endif">
-                    <a class="nav-link" href="/contact">Liên hệ</a>
+                    <a class="nav-link" href="/lien-he">Liên hệ</a>
                 </li>
             </ul>
             <div class="icon-change-language position-relative">
@@ -184,7 +184,7 @@
                 </a>
             </li>
             <li>
-                <a href="/contact" class="@if($path_url == 'contact') active @endif">
+                <a href="/lien-he" class="@if($path_url == 'contact') active @endif">
                     Liên hệ
                 </a>
             </li>
