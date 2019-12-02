@@ -153,7 +153,8 @@ class="background-white introduce-page"
                                 <div class="col-wrapper">
                                     <div class="values-thumb-slider">
                                         @foreach($save_values as $save_value)
-                                        <img src="{!! $save_values->first()->present()->coverImage()->present()->url !!}" class="img-fluid"> @endforeach
+                                            <img src="{!! $save_values->first()->present()->coverImage()->present()->url !!}" class="img-fluid"> 
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="slick-control-alone control-prev">
@@ -211,7 +212,8 @@ class="background-white introduce-page"
                                     <div class="col-wrapper">
                                         <div class="history-thumb-slider">
                                             @foreach($histories as $key => $history)
-                                            <img src="{!! $history->present()->coverImage()->present()->url !!}" class="img-fluid" /> @endforeach
+                                                <img src="{!! $history->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -232,9 +234,10 @@ class="background-white introduce-page"
                         <div class="container">
                             <div class="partner-slider">
                                 @foreach($partners as $partner)
-                                <a href="{{$partner->link}}" target="_blank" title="{{ $partner->name }}" class="partner-item">
+                                    <a href="{{$partner->link}}" target="_blank" title="{{ $partner->name }}" class="partner-item">
                                         <img src="{!! $partner->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                                    </a> @endforeach
+                                    </a> 
+                                @endforeach
                             </div>
                             <div class="partner-dots"></div>
                         </div>
@@ -271,22 +274,22 @@ class="background-white introduce-page"
                         <div class="list-leaders">
                             <div class="leaders-slider">
                                 @foreach($leader_ships as $key => $leader_ship)
-                                <div class="leaders-slide-item" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
-                                    <div class="item-wrapper">
-                                        <div class="leaders-thumb">
-                                            <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                                        </div>
-
-                                        <div class="leaders-info">
-                                            <div class="name-leader">
-                                                {{$leader_ship->name}}
+                                    <div class="leaders-slide-item" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
+                                        <div class="item-wrapper">
+                                            <div class="leaders-thumb">
+                                                <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
                                             </div>
-                                            <div class="role-company">
-                                                {{$leader_ship->position}}
+
+                                            <div class="leaders-info">
+                                                <div class="name-leader">
+                                                    {{$leader_ship->name}}
+                                                </div>
+                                                <div class="role-company">
+                                                    {{$leader_ship->position}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                             <div class="leader-dots"></div>
@@ -294,36 +297,36 @@ class="background-white introduce-page"
                     </div>
 
                     @foreach($leader_ships as $leader_ship)
-                    <div class="modal modal-member-detail" id="show-detail-leader-{{$leader_ship->id}}">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <button type="button" class="close" data-dismiss="modal">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19 5L5 19" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
-                                            <path d="M19 19L5 5" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
-                                        </svg>
-                                    </button>
-                                    <div class="img-detail-list">
-                                        <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                                    </div>
-                                    <div class="info-leader">
-                                        <div class="leader-data">
-                                            <div class="name-leader">
-                                                {{$leader_ship->name}}
-                                            </div>
-                                            <div class="role-company">
-                                                {{$leader_ship->position}}
-                                            </div>
+                        <div class="modal modal-member-detail" id="show-detail-leader-{{$leader_ship->id}}">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19 5L5 19" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+                                                <path d="M19 19L5 5" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+                                            </svg>
+                                        </button>
+                                        <div class="img-detail-list">
+                                            <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
                                         </div>
-                                        <div class="detail-leader">
-                                            <p>{!! $leader_ship->file_text !!}</p>
+                                        <div class="info-leader">
+                                            <div class="leader-data">
+                                                <div class="name-leader">
+                                                    {{$leader_ship->name}}
+                                                </div>
+                                                <div class="role-company">
+                                                    {{$leader_ship->position}}
+                                                </div>
+                                            </div>
+                                            <div class="detail-leader">
+                                                <p>{!! $leader_ship->file_text !!}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
