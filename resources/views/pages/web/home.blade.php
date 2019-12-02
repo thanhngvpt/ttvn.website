@@ -169,80 +169,81 @@ class="background-white"
           <!-- Tab panes -->
           <div class="tab-content">
             <div class="tab-pane container active" id="tab_all">
-            <div class="area-top-news">
-              <div class="slide-top-news">
-                @foreach($news as $item)
-                <a href="{{action('Web\NewsController@details', $item->slug)}}" class="item-news">
-                  <div class="img-news">
-                    @if(!empty($item->present()->coverImage()))
-                    <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                    @endif
-                  </div>
-                  <div class="content-news">
-                    <div class="cate-news">
-                      {{@$item->newCategory->name}}
+              <div class="area-top-news">
+                <div class="slide-top-news">
+                  @foreach($news as $item)
+                  <a href="{{action('Web\NewsController@details', $item->slug)}}" class="item-news">
+                    <div class="img-news">
+                      @if(!empty($item->present()->coverImage()))
+                      <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                      @endif
                     </div>
-                    <div class="title-news">
-                      {{$item->name}}
+                    <div class="content-news">
+                      <div class="cate-news">
+                        {{@$item->newCategory->name}}
+                      </div>
+                      <div class="title-news">
+                        {{$item->name}}
+                      </div>
+                      <div class="date-news">
+                          {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
+                      </div>
                     </div>
-                    <div class="date-news">
-                        {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
-                    </div>
-                  </div>
+                  </a>
+                  @endforeach
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="{{action('Web\NewsController@index', 'all')}}" class="btn btn-outline-success btn-see-more-news">
+                  Xem tất cả
                 </a>
-                @endforeach
               </div>
             </div>
             @foreach ($categories as $category)
               <div class="tab-pane container active" id="cate-{{$category->id}}"></div>
             @endforeach
-            <div class="text-center">
-              <a href="{{action('Web\NewsController@index', 'all')}}" class="btn btn-outline-success btn-see-more-news">
-                Xem tất cả
-              </a>
-            </div>
           </div>
         </div>
       </div>
-      <div class="top-partners">
-        <div class="container">
-          <div class="partner-intro">
-            <div class="title-border-bottom">
-                {{$heading->title_company}}
-            </div>
-            <div class="container">
-              <div class="area-partner-slide">
-                <div class="partner-slide">
-                  @foreach ($companies as $company)
-                  <div class="item-slide">
-                    @if(!empty($company->present()->coverImage()))
-                    <img src="{!! $company->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                    @endif
-                  </div>
-                  @endforeach
+    </div>
+    <div class="top-partners">
+      <div class="container">
+        <div class="partner-intro">
+          <div class="title-border-bottom">
+              {{$heading->title_company}}
+          </div>
+          <div class="container">
+            <div class="area-partner-slide">
+              <div class="partner-slide">
+                @foreach ($companies as $company)
+                <div class="item-slide">
+                  @if(!empty($company->present()->coverImage()))
+                  <img src="{!! $company->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                  @endif
                 </div>
+                @endforeach
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="top-consultation">
-        <div class="title">
-            {{$heading->title_support}}
-        </div>
-        <div class="description">
-            {{$heading->support_description}}
-        </div>
-        <form action="{!! action('Web\ContactController@index') !!}" method="POST">
-          <div class="form-consultation">
-            <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
-            <input type="text" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
-            <button type="button" id="submit" class="btn">
-              Gửi
-            </button>
-          </div>
-        </form>
+    </div>
+    <div class="top-consultation">
+      <div class="title">
+          {{$heading->title_support}}
       </div>
+      <div class="description">
+          {{$heading->support_description}}
+      </div>
+      <form action="{!! action('Web\ContactController@index') !!}" method="POST">
+        <div class="form-consultation">
+          <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
+          <input type="text" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
+          <button type="button" id="submit" class="btn">
+            Gửi
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 @endsection

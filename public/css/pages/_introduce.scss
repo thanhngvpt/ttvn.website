@@ -1,3 +1,7 @@
+.navbar-top-area {
+    position: relative;
+    z-index: 888
+}
 .introduce-page {
     .container {
         padding: 0 21px;
@@ -5,6 +9,8 @@
 
     .navbar-top-area {
         background-color: #00263C;
+        position: relative;
+        z-index: 888;
         .title-page {
             margin: 0;
             padding: 0;
@@ -21,6 +27,7 @@
             display: flex;
             flex-wrap: nowrap;
             justify-content: inherit;
+            margin: 0;
             .nav-item {
                 flex: 1;
                 .nav-link {
@@ -59,6 +66,87 @@
     .common-intro-summary {
 
     }
+
+    .modal-member-detail {
+        .modal-dialog {
+            max-width: 871px;
+            max-height: 852px;
+            margin-top: 100px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .modal-content {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 78px;
+        }
+        .modal-body {
+            position: relative;
+            padding: 0;
+            padding-bottom: 32px;
+            .close {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+                opacity: 1;
+                svg path {
+                    color: white;
+                    fill: currentColor;
+                }
+            }
+            .img-detail-list {
+                padding: 72px 0 0;
+                background: linear-gradient(180deg, rgba(87,174,91,1) 0%, rgba(87,174,91,1) 62.9411764706%, rgba(255,255,255,1) 62.9411764706%, rgba(255,255,255,1) 100%);
+                width: 100%;
+                display: flex;
+                align-items: center;
+                img {
+                    width: 250px;
+                    height: 262px;
+                    margin: auto;
+                }
+            }
+
+            .info-leader {
+                .leader-data {
+                    width: 252px;
+                    margin: 24px auto auto;
+                    text-align: center;
+                    .name-leader {
+                        font-family: $f-eb;
+                        font-style: normal;
+                        font-weight: $fz-eb-semibold;
+                        font-size: 20px;
+                        line-height: 100%;
+                        color: #222222;
+                    }
+
+                    .role-company {
+                        font-family: $f-opensan;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 25px;
+                        color: #9E9E9E;
+                        margin-top: 16px;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            .detail-leader {
+                overflow: auto;
+                margin: 34px auto auto;
+                font-family: $f-opensan;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 32px;
+                color: #000000;
+                padding: 0 16px;
+            }
+        }
+    }
 }
 
 @media (min-width: $break-md) {
@@ -95,7 +183,30 @@
                 }
             }
         }
-    }   
+
+        .modal-member-detail {
+            .modal-dialog {
+                margin: 50px auto;
+            }
+            .modal-content {
+                margin-bottom: 0;
+            }
+
+            .modal-body {
+                padding-bottom: 47px;
+                .img-detail-list {
+                    img {
+                        width: 252px;
+                        height: 264px;
+                    }
+                }
+
+                .detail-leader {
+                    padding: 0 62px;
+                }
+            }
+        }
+    }
 }
 
 @media (min-width: $break-lg) {
@@ -114,7 +225,7 @@
         }
 
         .tab-controls {
-            margin-bottom: 72px;
+            margin-bottom: 88px;
             .nav-tabs {
                 .nav-item {
                     .nav-link {
@@ -129,7 +240,9 @@
 }
 @media (min-width: $break-mid-lg) {
     .introduce-page {
-        
+        .tab-controls {
+            margin-bottom: 136px;
+        }
 
     }   
 }
@@ -157,6 +270,83 @@
                         &::before {
                         }
                     }
+                }
+            }
+        }
+
+        .modal-member-detail {
+            .modal-dialog {
+                max-width: 871px;
+                max-height: 852px;
+            }
+            .modal-content {
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .modal-body {
+                position: relative;
+                padding-bottom: 47px;
+                .close {
+                    position: absolute;
+                    top: 24px;
+                    right: 24px;
+                    opacity: 1;
+                    svg path {
+                        color: white;
+                        fill: currentColor;
+                    }
+                }
+                .img-detail-list {
+                    padding: 72px 0 0;
+                    background: linear-gradient(180deg, rgba(87,174,91,1) 0%, rgba(87,174,91,1) 62.9411764706%, rgba(255,255,255,1) 62.9411764706%, rgba(255,255,255,1) 100%);
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    img {
+                        width: 252px;
+                        height: 264px;
+                        margin: auto;
+                    }
+                }
+
+                .info-leader {
+                    .leader-data {
+                        width: 252px;
+                        margin: 24px auto auto;
+                        text-align: center;
+                        .name-leader {
+                            font-family: $f-eb;
+                            font-style: normal;
+                            font-weight: $fz-eb-semibold;
+                            font-size: 20px;
+                            line-height: 100%;
+                            color: #222222;
+                        }
+
+                        .role-company {
+                            font-family: $f-opensan;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 16px;
+                            line-height: 25px;
+                            color: #9E9E9E;
+                            margin-top: 10px;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+
+                .detail-leader {
+                    max-height: 350px;
+                    max-width: 648px;
+                    overflow: auto;
+                    margin: 32px auto auto;
+                    font-family: $f-opensan;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 32px;
+                    color: #000000;
                 }
             }
         }

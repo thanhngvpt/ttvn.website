@@ -153,7 +153,8 @@ class="background-white introduce-page"
                                 <div class="col-wrapper">
                                     <div class="values-thumb-slider">
                                         @foreach($save_values as $save_value)
-                                        <img src="{!! $save_values->first()->present()->coverImage()->present()->url !!}" class="img-fluid"> @endforeach
+                                            <img src="{!! $save_values->first()->present()->coverImage()->present()->url !!}" class="img-fluid"> 
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="slick-control-alone control-prev">
@@ -211,7 +212,8 @@ class="background-white introduce-page"
                                     <div class="col-wrapper">
                                         <div class="history-thumb-slider">
                                             @foreach($histories as $key => $history)
-                                            <img src="{!! $history->present()->coverImage()->present()->url !!}" class="img-fluid" /> @endforeach
+                                                <img src="{!! $history->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -232,9 +234,10 @@ class="background-white introduce-page"
                         <div class="container">
                             <div class="partner-slider">
                                 @foreach($partners as $partner)
-                                <a href="{{$partner->link}}" class="partner-item">
+                                    <a href="{{$partner->link}}" target="_blank" title="{{ $partner->name }}" class="partner-item">
                                         <img src="{!! $partner->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                                    </a> @endforeach
+                                    </a> 
+                                @endforeach
                             </div>
                             <div class="partner-dots"></div>
                         </div>
@@ -271,22 +274,22 @@ class="background-white introduce-page"
                         <div class="list-leaders">
                             <div class="leaders-slider">
                                 @foreach($leader_ships as $key => $leader_ship)
-                                <div class="leaders-slide-item" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
-                                    <div class="item-wrapper">
-                                        <div class="leaders-thumb">
-                                            <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                                        </div>
-
-                                        <div class="leaders-info">
-                                            <div class="name-leader">
-                                                {{$leader_ship->name}}
+                                    <div class="leaders-slide-item" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
+                                        <div class="item-wrapper">
+                                            <div class="leaders-thumb">
+                                                <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
                                             </div>
-                                            <div class="role-company">
-                                                {{$leader_ship->position}}
+
+                                            <div class="leaders-info">
+                                                <div class="name-leader">
+                                                    {{$leader_ship->name}}
+                                                </div>
+                                                <div class="role-company">
+                                                    {{$leader_ship->position}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                             <div class="leader-dots"></div>
@@ -294,31 +297,36 @@ class="background-white introduce-page"
                     </div>
 
                     @foreach($leader_ships as $leader_ship)
-                    <div class="modal" id="show-detail-leader-{{$leader_ship->id}}">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="img-detail-list">
-                                        <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
-                                    </div>
-                                    <div class="info-leader">
-                                        <div class="name-leader">
-                                            {{$leader_ship->name}}
+                        <div class="modal modal-member-detail" id="show-detail-leader-{{$leader_ship->id}}">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19 5L5 19" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+                                                <path d="M19 19L5 5" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+                                            </svg>
+                                        </button>
+                                        <div class="img-detail-list">
+                                            <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
                                         </div>
-                                        <div class="role-compay">
-                                            {{$leader_ship->position}}
-                                        </div>
-                                        <div class="detail-leader">
-                                            <p>{{$leader_ship->file_text}}</p>
+                                        <div class="info-leader">
+                                            <div class="leader-data">
+                                                <div class="name-leader">
+                                                    {{$leader_ship->name}}
+                                                </div>
+                                                <div class="role-company">
+                                                    {{$leader_ship->position}}
+                                                </div>
+                                            </div>
+                                            <div class="detail-leader">
+                                                <p>{!! $leader_ship->file_text !!}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -362,7 +370,6 @@ class="background-white introduce-page"
                 if (screenWidth < 1024) {
                     targetHeight.css({height: 'auto'});
                 } else {
-                    console.log(targetPos.height(), offsetY, target.height())
                     blockHeight = (targetPos.height() + offsetY) - target.height()
                     newHeight = blockHeight
                     targetHeight.css({'height': newHeight + 'px'});
@@ -424,7 +431,6 @@ class="background-white introduce-page"
                 arrows: true,
                 infinite: false,
                 rows: 0,
-                adaptiveHeight: true,
                 asNavFor: '.history-thumb-slider',
                 appendArrows: '.slick-append-arrows',
                 prevArrow: `<button class="btn-slick-rounded btn-prev"><svg viewBox="0 0 86 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="85" height="45" rx="7.5"/><path d="M45 28L41 24L45 20" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`,
@@ -447,11 +453,23 @@ class="background-white introduce-page"
                 timeRounder = $('.timeline-rounder');
 
                 currentIndex = $('.history-content-slider').slick('slickCurrentSlide');
-
                 years = $('.timeline-list .timeline-item')
+
+                // set active for year
+                years.each((index, item) => {
+                    if (index <= currentIndex) {
+                        $(item).addClass('active')
+                    } else {
+                        $(item).removeClass('active')
+                    }
+                })
+
+                currentIndex = currentIndex <= 0 ? 1 : currentIndex + 1
+
+                
                 barItemWidth = timeRounder.width()/years.length
 
-                currentProgress = barItemWidth * currentIndex + barItemWidth
+                currentProgress = barItemWidth * currentIndex
 
                 if (window.screenWidth < 768) {
                         padding = parseInt($('.timeline-list .container').css('padding-left'));
@@ -463,12 +481,12 @@ class="background-white introduce-page"
                 scrollTimeline();
             }
 
-            function scrollTimeline() {
+            function scrollTimeline(next) {
                 listYear = $('.timeline-list');
                 years = listYear.find('.timeline-item');
                 container = listYear.find('.container')
 
-                currentIndex = $('.history-content-slider').slick('slickCurrentSlide');
+                currentIndex = next >= 0 ? next : $('.history-content-slider').slick('slickCurrentSlide');
 
                 itemWidth = years.width()
                 padding = parseInt(container.css('padding-left')) * 2;
@@ -483,8 +501,9 @@ class="background-white introduce-page"
             }
 
             drawTimelineProgress();
-            $('.history-thumb-slider').on('beforeChange', function(e, slick, currentSlide, nextSlide) {
-                drawTimelineProgress(nextSlide);
+
+            $('.history-thumb-slider').on('afterChange', function(e, slick, currentSlide) {
+                drawTimelineProgress(currentSlide);
             });
 
             $('.timeline-list .timeline-item').on('click', function(e) {
@@ -503,6 +522,8 @@ class="background-white introduce-page"
                 arrows: false,
                 infinite: false,
                 rows: 0,
+                autoplay: true,
+                autoplaySpeed: 5000,
                 slidesToShow: 6,
                 slidesToScroll: 6,
                 responsive: [
@@ -558,7 +579,7 @@ class="background-white introduce-page"
                         }
                     },
                     {
-                        breakpoint: 1023,
+                        breakpoint: 1024,
                         settings: {
                             slidesToShow: 2.5,
                             slidesToScroll: 2,
@@ -576,6 +597,14 @@ class="background-white introduce-page"
                     },
                     {
                         breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1.2,
+                            slidesToScroll: 1,
+                            rows: 1,
+                        }
+                    },
+                    {
+                        breakpoint: 320,
                         settings: {
                             slidesToShow: 1.2,
                             slidesToScroll: 1,
