@@ -20,7 +20,7 @@ class IntroduceCompanyController extends Controller
         $introduce = Introduce::first();
         $save_values = SaveValue::take(12)->get();
         $histories  = History::get();
-        $leader_ships = LeaderShip::orderBy('order', 'desc')->get();
+        $leader_ships = LeaderShip::orderBy('order', 'asc')->get();
         $partners = Partner::orderBy('id', 'desc')->get();
 
         return view('pages.web.introduce-company', [
