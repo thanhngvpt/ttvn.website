@@ -47,18 +47,18 @@
         }
 
         .slick-dots {
-            bottom: 48px;
+            bottom: 28px;
             background: none;
             display: flex;
             flex-wrap: nowrap;
             align-items: center;
             justify-content: center;
-            z-index: 100;
+            z-index: 500;
             li {
                 width: auto;
                 height: auto;
                 margin: 0;
-                padding: 0 4px;
+                padding: 10px 4px;
                 display: inline-block;
                 button {
                     width: 16px;
@@ -108,6 +108,10 @@
                     line-height: 25px;
                 }
             }
+
+            .slick-dots {
+                bottom: 0;
+            }   
         }
     }
 }
@@ -116,6 +120,8 @@
     .section-leaders {
         position: relative;
         background: none;
+        padding-bottom: 88px;
+
         .bg-leader-out {
             position: absolute;
             height: 577px;
@@ -148,11 +154,13 @@
             
             .leaders-slider {
                 .slick-track {
-                    padding: 64px 0;
+                    padding: 56px 0;
                 }
             }
 
             .leaders-slide-item {
+                padding: 0 12px;
+
                 &:hover {
                     .item-wrapper {
                         box-shadow: 0px 12px 26px rgba(0, 0, 0, 0.16);
@@ -185,12 +193,22 @@
                     color: #7E7E7E;
                 }
             }
+
+            .slick-dots {
+                li {
+                    padding: 10px 8px;
+                    button {
+                        width: 40px;
+                    }
+                }
+            }
         }
     }
 }
 
 @media (min-width: $break-xl) {
     .section-leaders {
+        padding-bottom: 168px;
         .container {
             max-width: 1332px;
             position: relative;
@@ -205,13 +223,23 @@
         }
 
         .list-leaders {
+            .slick-slide {
+                visibility: hidden;
+                &.slick-active {
+                    visibility: visible;
+                }
+            }
             .leaders-slider {
                 .slick-track {
-                    padding: 88px 18px;
+                    padding: 88px 18px 44px;
                 }
             }
 
             .leaders-slide-item {
+                padding: 0 20px;
+                .item-wrapper {
+                    margin-bottom: 40px;
+                }
                 &:hover {
                     .item-wrapper {
                         box-shadow: 0px 22px 36px rgba(0, 0, 0, 0.16);
