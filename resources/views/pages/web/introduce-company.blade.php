@@ -502,16 +502,23 @@ class="background-white introduce-page"
 
                 currentIndex = next >= 0 ? next : $('.history-content-slider').slick('slickCurrentSlide');
 
-                itemWidth = years.width()
+                item = years[0]
+                itemWidth = item.clientWidth
                 padding = parseInt(container.css('padding-left')) * 2;
 
                 totalWidth = itemWidth * years.length + padding
                 
-                offsetX = itemWidth * currentIndex
-                if (window.screenWidth >= 768) 
+                offsetX = (itemWidth/2) * currentIndex
+                space = 'inherit'
+                if (totalWidth < window.screenWidth) {
                     offsetX = 0
+                    space = 'space-around'
+                }
 
-                container.css({transform: `translate(-${offsetX}px, 0)`})
+                container.css({
+                    transform: `translate(-${offsetX}px, 0)`,
+                    justifyContent: space
+                })
             }
 
             drawTimelineProgress();
@@ -607,6 +614,7 @@ class="background-white introduce-page"
                             slidesToShow: 1.2,
                             slidesToScroll: 1,
                             rows: 1,
+                            dots: false,
                         }
                     },
                     {
@@ -615,6 +623,7 @@ class="background-white introduce-page"
                             slidesToShow: 1.2,
                             slidesToScroll: 1,
                             rows: 1,
+                            dots: false
                         }
                     },
                     {
@@ -623,6 +632,7 @@ class="background-white introduce-page"
                             slidesToShow: 1.2,
                             slidesToScroll: 1,
                             rows: 1,
+                            dots: false
                         }
                     },
                 ]
