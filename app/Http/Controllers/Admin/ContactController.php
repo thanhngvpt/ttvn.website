@@ -29,8 +29,8 @@ class ContactController extends Controller
     {
         $paginate['limit']      = $request->limit();
         $paginate['offset']     = $request->offset();
-        $paginate['order']      = $request->order();
-        $paginate['direction']  = $request->direction();
+        $paginate['order']      = 'id';
+        $paginate['direction']  = 'desc';
         $paginate['baseUrl']    = action('Admin\ContactController@index');
 
         $filter = [];
@@ -42,6 +42,12 @@ class ContactController extends Controller
         $count = $this->contactRepository->countByFilter($filter);
         $contacts = $this->contactRepository->getByFilter($filter, $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit']);
 
+        $contact_not_read = $this->contactRepository->allByIsRead(0);
+        $contact_not_read->map(function($item) {
+            $item->is_read = 1;
+            $item->save();
+        });
+        
         return view(
             'pages.admin.' . config('view.admin') . '.contacts.index',
             [
@@ -108,6 +114,9 @@ class ContactController extends Controller
     public function show($id)
     {
         $contact = $this->contactRepository->find($id);
+        $contact->is_read = 1;
+        $contact->save();
+
         if( empty($contact) ) {
             abort(404);
         }

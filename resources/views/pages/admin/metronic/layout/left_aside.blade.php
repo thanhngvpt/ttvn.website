@@ -365,7 +365,13 @@
                                             <span class="m-menu__link-text">
                                                 Quản trị
                                             </span>
+                                            @if($count_contact)
+                                            <span class="m-badge m-badge--success">
+                                                {{$count_contact}}
+                                            </span>
+                                            @endif
                                         </span>
+                                        
                                     </span>
                                     <span class="m-menu__ver-arrow la la-angle-right"></span>
                                 </a>
@@ -406,6 +412,11 @@
                                                     <span class="m-menu__link-text">
                                                         Liên hệ
                                                     </span>
+                                                    @if($count_contact)
+                                                    <span class="m-badge m-badge--success">
+                                                        {{$count_contact}}
+                                                    </span>
+                                                    @endif
                                                 </span>
                                             </span>
                                         </a>

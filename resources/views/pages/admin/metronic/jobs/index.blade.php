@@ -125,6 +125,7 @@
                                     <th>{!! \PaginationHelper::sort('salary', trans('admin.pages.jobs.columns.salary')) !!}</th>
                                     <th>{!! \PaginationHelper::sort('end_time', trans('admin.pages.jobs.columns.end_time')) !!}</th>
                                     <th>{!! \PaginationHelper::sort('order', trans('admin.pages.jobs.columns.order')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('order', 'Thời gian') !!}</th>
                                                                                                                                                                                                         <th>{!! \PaginationHelper::sort('is_enabled', trans('admin.pages.jobs.columns.is_enabled')) !!}</th>
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
@@ -146,6 +147,8 @@
                                         <td>{{ $job->end_time }}</td>
                                         <td>{{ $job->order }}</td>
                                         <td>{{ $job->is_enabled }}</td>
+                                        <td>{!!  date('d/m/Y', (strtotime( $job->created_at))) !!}</td>
+                                        
                                         <td>
                                             <a href="{!! action('Admin\JobController@show', $job->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>

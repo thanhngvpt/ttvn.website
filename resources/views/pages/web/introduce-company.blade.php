@@ -35,7 +35,9 @@ class="background-white introduce-page"
                     <div class="section-body">
                         <div class="common-intro-summary">
                             <div class="thumb-introduce">
+                                @if(!empty($introduce->present()->contentImage()))
                                 <img src="{!! $introduce->present()->contentImage()->present()->url !!}" />
+                                @endif
                             </div>
                             <div class="container">
                                 <div class="container-wrapper">
@@ -78,7 +80,9 @@ class="background-white introduce-page"
                                 </div>
                             </div>
                             <div class="mission-col mission-col-thumb">
+                                @if(!empty($introduce->present()->missionImage()))
                                 <img src="{!! $introduce->present()->missionImage()->present()->url !!}" class="img-fluid">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -153,7 +157,9 @@ class="background-white introduce-page"
                                 <div class="col-wrapper">
                                     <div class="values-thumb-slider">
                                         @foreach($save_values as $save_value)
+                                        @if(!empty($save_values->first()->present()->coverImage()))
                                             <img src="{!! $save_values->first()->present()->coverImage()->present()->url !!}" class="img-fluid"> 
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>
@@ -212,7 +218,9 @@ class="background-white introduce-page"
                                     <div class="col-wrapper">
                                         <div class="history-thumb-slider">
                                             @foreach($histories as $key => $history)
+                                            @if(!empty($history->present()->coverImage()))
                                                 <img src="{!! $history->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>
@@ -235,7 +243,9 @@ class="background-white introduce-page"
                             <div class="partner-slider">
                                 @foreach($partners as $partner)
                                     <a href="{{$partner->link}}" target="_blank" title="{{ $partner->name }}" class="partner-item">
+                                            @if(!empty($partner->present()->coverImage()))
                                         <img src="{!! $partner->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                        @endif
                                     </a> 
                                 @endforeach
                             </div>
@@ -277,7 +287,9 @@ class="background-white introduce-page"
                                     <div class="leaders-slide-item" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
                                         <div class="item-wrapper">
                                             <div class="leaders-thumb">
+                                                    @if(!empty($leader_ship->present()->coverImage()))
                                                 <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                                @endif
                                             </div>
 
                                             <div class="leaders-info">
@@ -308,7 +320,9 @@ class="background-white introduce-page"
                                             </svg>
                                         </button>
                                         <div class="img-detail-list">
+                                                @if(!empty($leader_ship->present()->coverImage()))
                                             <img src="{!! $leader_ship->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                            @endif
                                         </div>
                                         <div class="info-leader">
                                             <div class="leader-data">

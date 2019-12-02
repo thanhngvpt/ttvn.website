@@ -4,6 +4,12 @@
 @stop
 
 @section('styles')
+    <style>
+        #cover-image-preview {
+            height: 150px;
+            width: 150px;
+        }
+    </style>
 @stop
 
 @section('scripts')
@@ -115,7 +121,9 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('date_start', trans('admin.pages.histories.columns.date_start')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('id', 'ảnh') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('date_start', 'Năm') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('id', 'Sự kiện') !!}</th>
                                                                                                                                                                                                             
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
@@ -125,8 +133,14 @@
                                 @foreach( $histories as $history )
                                     <tr>
                                         <td>{{ $history->id }}</td>
-                                                                                                                            <td>{{ $history->date_start }}</td>
-                                                                                                                                                                                                                                                                        <td>
+                                            <td style="width: 200px;">@if( !empty($history->present()->coverImage()) )
+                                                    <img id="cover-image-preview" style="max-width: 100%;" src="{!! $history->present()->coverImage()->present()->url !!}" alt="" class="margin"/>
+                                                    @else
+                                                    <img id="cover-image-preview" style="max-width: 100%;" src="{!! \URLHelper::asset('img/no_image.jpg', 'common') !!}" alt="" class="margin"/>
+                                                    @endif</td>
+                                            <td>{{ $history->date_start }}</td>
+                                            <td>{{ $history->content }}</td>
+                                            <td>
                                             <a href="{!! action('Admin\HistoryController@show', $history->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
                                             </a>
