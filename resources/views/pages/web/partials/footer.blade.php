@@ -6,51 +6,51 @@
 		<div class="row">
 			<div class="col-md-6 col-lg-3 col-footer">
 				<div class="title-col-footer">
-					Trụ sở Hà Nội
+					{{$footer->hn_name}}
 				</div>
 				<div class="content-col-footer">
 					<div class="item-content-footer">
 						<span class="title">
 							Địa chỉ:
 						</span>
-						Tầng 2, Tòa nhà HEAC, số 14-16 Hàm Long, Q.Hoàn Kiếm, TP Hà Nội
+						{{$footer->hn_address}}
 					</div>
 					<div class="item-content-footer">
 						<span class="title">
 							Tel:
 						</span>
-						(84) 24.22300.555
+						{{$footer->hn_phone}}
 					</div>
 					<div class="item-content-footer">
 						<span class="title">
 							Fax:
 						</span>
-						(84) 24.383.98974
+						{{$footer->hn_fax}}
 					</div>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-4 col-footer office-column">
 				<div class="title-col-footer">
-					VP Đại diện tại TP Hồ Chí Minh
+					{{$footer->other_name}}
 				</div>
 				<div class="content-col-footer">
 					<div class="item-content-footer" style="width: 80%">
 						<span class="title">
 							Địa chỉ:
 						</span>
-						Tầng 5, Tòa nhà Saigon Center Tower 1, số 65 Lê Lợi, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh.
+						{{$footer->other_address}}
 					</div>
 					<div class="item-content-footer">
 						<span class="title">
 							Tel:
 						</span>
-						(84) 24.22300.555
+						{{$footer->other_phone}}
 					</div>
 					<div class="item-content-footer">
 						<span class="title">
 							Fax:
 						</span>
-						(84) 24.383.98974
+						{{$footer->other_fax}}
 					</div>
 				</div>
 			</div>
@@ -59,12 +59,12 @@
 					Danh mục
 				</div>
 				<div class="content-col-footer">
-					<a class="item-content-footer" href="#">Trang chủ</a>
-					<a class="item-content-footer" href="#">Giới thiệu tập đoàn</a>
-					<a class="item-content-footer" href="#">Lĩnh vực hoạt động</a>
-					<a class="item-content-footer" href="#">Tin tức</a>
-					<a class="item-content-footer" href="#">Tuyển Dụng</a>
-					<a class="item-content-footer" href="#">Liên hệ</a>
+					<a class="item-content-footer" href="/">Trang chủ</a>
+					<a class="item-content-footer" href="{!!action('Web\IntroduceCompanyController@index', 'ttvn')!!}">Giới thiệu tập đoàn</a>
+					<a class="item-content-footer" href="{!!action('Web\ScopeActiveController@index', $menu_fields[0]->slug)!!}">Lĩnh vực hoạt động</a>
+					<a class="item-content-footer" href="{!!action('Web\NewsController@index', 'all')!!}">Tin tức</a>
+					<a class="item-content-footer" href="{!! action('Web\JobController@index') !!}">Tuyển Dụng</a>
+					<a class="item-content-footer" href="/contact">Liên hệ</a>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-3 col-footer connect-us">
@@ -73,17 +73,17 @@
 				</div>
 				<ul class="contact-us-social">
 					<li>
-						<a href="#">
+						<a href="{{$footer->fb_link}}">
 							<img src="{{ asset('images/icon-facebook.svg') }}" class="img-fluid">
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="{{$footer->skype_link}}">
 							<img src="{{ asset('images/icon-skype.svg') }}" class="img-fluid">
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="{{$footer->email}}">
 							<img src="{{ asset('images/icon-google.svg') }}" class="img-fluid">
 						</a>
 					</li>
