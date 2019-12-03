@@ -14,7 +14,9 @@ class ContactController extends Controller
         $data = $request->only(['name', 'email', 'phone', 'content']);
         $contact->fill($data);
         $contact->save();
-
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json('success');
+        }
         
         return 'success';
     }

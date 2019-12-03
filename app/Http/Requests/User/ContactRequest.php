@@ -23,12 +23,22 @@ class ContactRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'email' => 'required|email',
             'name' => 'required',
             'phone' => 'required|alpha_num|min:9|max:11',
             'content' => 'required'
         ];
+
+        if ($this->request->has('form_from_home')) {
+            $rules = [
+                'email' => 'required|email',
+                'phone' => 'required|alpha_num|min:9|max:11'
+            ];
+        }
+    
+
+        return $rules;
     }
 
     public function messages()

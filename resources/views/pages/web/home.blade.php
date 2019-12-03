@@ -15,7 +15,7 @@
 @section('nav-slide')
 <main class="position-relative">
     <div class="top-page-slide">
-        @if (!empty($video))
+        {{-- @if (!empty($video))
         <div class="item-slide">
             <div class="item-top-slide">
                 <div class="text-slide">
@@ -35,29 +35,39 @@
                 </div>
             </div>
         </div>
-        @endif
+        @endif --}}
 
         <div class="item-slide">
             <div class="item-top-slide">
                 <div class="text-slide">
-                    <div class="title">
-                        Tập đoàn
-                    </div>
-                    <div class="content">
-                        Trường Thành Việt Nam
-                    </div>
+                    <div class="title">Tập đoàn</div>
+                    <div class="content">Trường Thành Việt Nam</div>
                     <div class="description">
                         Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
                     </div>
+                    @if (!empty($video))
+                    <a href="{{$video->video_url}}" class="btn btn-success" style="display: none">
+                        <img src="{{ asset('images/view-video.svg') }}" class="img-fluid" />
+                        <span>Xem video</span>
+                    </a>
+                    @endif
+                    <div class="top-page-slider-dots"></div>
                 </div>
                 <div class="img-top-slide">
-                    @if(!empty($banners->first()->present()->coverImage()))
-                    <img src="{!! $banners->first()->present()->coverImage()->present()->url !!}" class="img-fluid" /> @endif
+                    <div class="top-bg"></div>
+                    <div class="top-slider">
+                        @if (!empty($video))
+                            <img src="{!! $video->present()->coverImage()->present()->url !!}" class="img-fluid item-video"/>
+                        @endif
+                        @foreach($banners as $banner)
+                            <img src="{!! $banners->first()->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
         
-        @foreach($banners as $banner)
+        {{-- @foreach($banners as $banner)
             <div class="item-slide">
                 <div class="item-top-slide">
                     <div class="text-slide">
@@ -77,7 +87,7 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @endforeach --}}
 
     </div>
     <div class="icon-down-nav">
@@ -257,15 +267,11 @@
         <div class="description">
             {{$heading->support_description}}
         </div>
-        <form action="{!! action('Web\ContactController@index') !!}" method="POST">
-            <div class="form-consultation">
-                <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
-                <input type="text" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
-                <button type="button" id="submit" class="btn">
-                    Gửi
-                </button>
-            </div>
-        </form>
+        {!! Form::open(['action' => 'Web\ContactController@index', 'class' => 'form-consultation', 'method' => 'POST']) !!}
+            <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
+            <input type="text" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
+            <button type="submit" id="submit" class="btn">Gửi</button>
+        {!! Form::close() !!}
     </div>
 </div>
 @endsection
@@ -310,13 +316,39 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 	<script type="text/javascript">
         $(document).ready(function(){
-            $('.top-page-slide').slick({
+            $('.top-slider').slick({
                 infinite: true,
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 dots: true,
-                arrows: false
+                arrows: false,
+                rows: 0,
+                autoplay: false,
+                autoplaySpeed: 3000,
+                appendDots: '.top-page-slider-dots',
+                responsive: [
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            dots: false,
+                            autoplay: false
+                        }
+                    },
+                ]
             });
+
+            function showVideo() {
+                current = $('.top-slider').slick('slickCurrentSlide');
+                item = $('.top-slider img.slick-active');
+                $('.text-slide .btn-success').hide();
+                if (item.hasClass('item-video')) {
+                    $('.text-slide .btn-success').show();
+                }
+            }
+            showVideo();
+            $('.top-slider').on('afterChange', function(event, slick, current) {
+                showVideo()
+            })
 
             $('.slide-top-news').slick({
                 infinite: true,
@@ -388,28 +420,28 @@
                 $(this).attr('src', '{{ asset("images/arrow-left-ad.svg") }}');
             });
 
-            $(document).on('click', '#submit', function() {
-                let email = $('#email').val();
-                let phone = $('#phone').val();
+            $('.form-consultation').on('submit', function(e) {
+                e.preventDefault();
+                let formData = new FormData($('.form-consultation')[0]);
+                formData.append('form_from_home', 1);
 
                 $.ajax({
                     url: "{!! action('Web\ContactController@index') !!}",
                     type: "POST",
-                    data: {
-                        _token: "{!! csrf_token() !!}",
-                        email: email,
-                        phone: phone,
-                    },
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function (res) {
+                        console.log(res)
+                        $('.form-consultation')[0].reset();
                         $('#email').val("");
                         $('#phone').val("");
                         let message = document.createElement("message");
                             message.innerHTML='Thông tin của bạn đã được gửi <br> Chúng tôi sẽ liên hệ tư vấn với bạn trong thời gian sớm nhất'
-                        Swal.fire(
-                            'Thành công!',
-                            message,
-                            'success'
-                            )
+                        Swal.fire('Thành công!', message, 'success')
+                    },
+                    error: function(response) {
+                        Swal.fire('Lỗi!', 'Vui lòng nhập đầy đủ thông tin và thử lại!', 'error')
                     }
                 });
             })
