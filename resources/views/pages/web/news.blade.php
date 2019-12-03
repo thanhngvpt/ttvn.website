@@ -9,7 +9,14 @@
 @if( isset($category_active) && !empty($category_active))
 {{$category_active->meta_title}}
 @else
-Tất cả tin tức
+@foreach ($meta as $item)
+   	 <?php 
+      $url = trim( $item->link, "/" );
+	  ?>
+	@if(Request::url() === $url)
+		{{$item->meta_title}}
+	@endif	
+@endforeach
 @endif
 @endsection
 

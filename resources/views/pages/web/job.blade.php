@@ -2,9 +2,9 @@
 @section('title')
 {{@$cultural_companies->meta_title}}
 @endsection
-{{--  @section('title-navbar')
+@section('title-navbar')
 	{{@$cultural_companies->title_page}}
-@endsection  --}}
+@endsection
 
 @section('content')
 	<div id="job-page">

@@ -168,8 +168,8 @@ class="background-white introduce-page"
                                 <div class="col-wrapper">
                                     <div class="values-thumb-slider">
                                         @foreach($save_values as $save_value)
-                                        @if(!empty($save_values->first()->present()->coverImage()))
-                                            <img src="{!! $save_values->first()->present()->coverImage()->present()->url !!}" class="img-fluid"> 
+                                        @if(!empty($save_value->present()->coverImage()))
+                                            <img src="{!! $save_value->present()->coverImage()->present()->url !!}" class="img-fluid"> 
                                             @endif
                                         @endforeach
                                     </div>
