@@ -125,7 +125,7 @@ class="background-white"
             <div class="description">
               <p>{{$inforGroup->description}}</p>
             </div>
-            <a href="{{action('Web\IntroduceCompanyController@index', 'ttvn')}}" class="btn btn-outline-success">
+            <a href="{{action('Web\IntroduceCompanyController@index')}}" class="btn btn-outline-success">
               Xem thêm
               <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid ml-2 btn-no-hover" />
               <img src="{{ asset('images/arrow-right-hover-new.svg') }}" class="img-fluid ml-2 btn-hover" />
@@ -203,7 +203,7 @@ class="background-white"
                 </div>
               </div>
               <div class="text-center">
-                <a href="{{action('Web\NewsController@index', 'tat-ca')}}" class="btn btn-outline-success btn-see-more-news">
+                <a href="{{action('Web\NewsController@all')}}" class="btn btn-outline-success btn-see-more-news">
                   Xem tất cả
                 </a>
               </div>
