@@ -5,7 +5,16 @@
 @endsection
 
 @section('title')
-	{{$news->meta_title}}
+@foreach ($meta as $item)
+    <?php 
+      $url = explode('/', $item->link);
+      array_pop($url);
+      $url = implode('/', $url);
+    ?>
+	@if(Request::url() === $url)
+		{{$item->meta_title}}
+	@endif	
+@endforeach
 @endsection
 
 @section('content')
