@@ -3,6 +3,10 @@
 @section('title-navbar')
 	Danh sách tin tuyển dụng
 @endsection
+@section('title')
+Danh sách tin tuyển dụng
+@endsection
+
 
 @section('content')
 	<div id="list-job-page">
