@@ -242,16 +242,22 @@ class="background-white page-scope-activities"
 
             endX = maxWidth
             endPoint = outterHeight > endX ? outterHeight : endX
+
+            rotate = calculateTriangle();
+
+            widthBlur = maxWidth * 0.5701663202
+            offset1 = widthBlur*0.3573381951
+            offset2 = widthBlur*0.07657247037
             
 
             html = `
                 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${endX} ${outterHeight}">
-                    <defs><style>.cls-1{fill:#f6f7f6;}.cls-2{fill:rgba(255,255,255,.4);}</style></defs>
+                    <defs><style>.cls-1{fill:#f6f7f6;}.cls-2{fill:rgba(255,255,255,.1);}</style></defs>
+                    <rect class="cls-2" width="${widthBlur}" height="${widthBlur}" style="transform: rotate(${rotate}deg) translate(34%, -${offset2}px);"></rect>
+                    <rect class="cls-2" width="${widthBlur}" height="${widthBlur}" style="transform: rotate(${rotate}deg) translate(57%, -25%);"></rect>
                     <polygon class="cls-1" points="${startX} ${startY} ${endX} ${endY} ${endX} ${outterHeight}  0 ${endPoint} 0 ${startY}"/>
                 </svg>
             `;
-
-            //canhhuyen = Math.pow(maxHeight, 2) + Math
 
             appendArea.html(html)
         }
@@ -283,6 +289,26 @@ class="background-white page-scope-activities"
             tabControl.css({
                 'transform': `translate(${offset.x}, ${offset.y})`
             })
+        }
+
+        Math.radians = function(degrees) {
+            return degrees * Math.PI / 180;
+        }
+
+        Math.degrees = function(radians) {
+            return radians * 180 / Math.PI;
+        }
+
+        function calculateTriangle()
+        {
+            AB = $('.tab-pane.active .tech-frame').width(); //width
+            AC = $('.tab-pane.active .tech-frame').height(); //height
+            BC = Math.sqrt(Math.pow(AB, 2) + Math.pow(AC, 2));
+
+            console.log(`AB: ${AB}, AC: ${AC}, BC: ${BC}`)
+            angleB = Math.acos(AB/BC)
+
+            return Math.degrees(angleB)
         }
 
         $(document).ready(function() {

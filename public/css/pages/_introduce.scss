@@ -149,6 +149,14 @@
     }
 }
 
+@media (min-width: $break-sm) {
+    .introduce-page {
+        .container {
+            max-width: 100%;
+        }
+    }
+}
+
 @media (min-width: $break-md) {
     .introduce-page {
         .container {

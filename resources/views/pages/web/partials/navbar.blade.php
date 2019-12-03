@@ -17,11 +17,11 @@
                     <a class="nav-link" href="/">Trang chủ</a>
                 </li>
                 <li class="nav-item @if($path_url == 'introduce-company') active @endif">
-                    <a class="nav-link" data-toggle="collapse" data-target="#introduce-menu-xl">
+                    <a class="nav-link">
                         Giới thiệu
                         <i class="fas fa-caret-down"></i>
                     </a>
-                    <div id="introduce-menu-xl" class="collapse menu-xl">
+                    <div id="introduce-menu-xl" class="menu-xl">
                         <ul class="menu-xl-child">
                             <li>
                                 <a href="{!!action('Web\IntroduceCompanyController@index', 'ttvn')!!}">
@@ -39,11 +39,11 @@
                     </div>
                 </li>
                 <li class="nav-item @if($path_url == 'scope-active') active @endif">
-                    <a class="nav-link" data-toggle="collapse" data-target="#field-menu-xl">
+                    <a class="nav-link">
                         Lĩnh vực hoạt động
                         <i class="fas fa-caret-down"></i>
                     </a>
-                    <div id="field-menu-xl" class="collapse menu-xl">
+                    <div id="field-menu-xl" class="menu-xl">
                         <ul class="menu-xl-child">
                             @foreach($menu_fields as $menu_field)
                             <li>
@@ -57,11 +57,11 @@
                     </div>
                 </li>
                 <li class="nav-item @if($path_url == 'news-category') active @endif">
-                    <a class="nav-link" data-toggle="collapse" data-target="#news-menu-xl">
+                    <a class="nav-link">
                             Tin tức
                         <i class="fas fa-caret-down"></i>
                     </a>
-                    <div id="news-menu-xl" class="collapse menu-xl">
+                    <div id="news-menu-xl" class="menu-xl">
                         <ul class="menu-xl-child">
                             <li>
                                 <a href="{!!action('Web\NewsController@index', 'all')!!}">
