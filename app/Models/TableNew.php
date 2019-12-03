@@ -1,12 +1,8 @@
 <?php namespace App\Models;
 
 
-
 class TableNew extends Base
 {
-
-    
-
     /**
      * The database table used by the model.
      *
