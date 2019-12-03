@@ -32,12 +32,21 @@
 				<div class="item-form-contact">
 					{{--  is-invalid class error  --}}
 					<input type="email" required name="email" id="email" class="form-control" placeholder="Email">
+					<div class="invalid-feedback">
+						Email không  được bỏ trống
+					</div>
 				</div>
 				<div class="item-form-contact">
 					<input type="text" name="name" id="name" required class="form-control" placeholder="Họ và tên">
+					<div class="invalid-feedback">
+						Tên không  được bỏ trống
+					</div>
 				</div>
 				<div class="item-form-contact">
 					<input type="number" name="phone" id="phone" required class="form-control" placeholder="Số điện thoại">
+					<div class="invalid-feedback">
+						Số điện thoại không  được bỏ trống
+					</div>
 				</div>
 				<div class="item-form-contact">
 					<textarea name="content" placeholder="Nội dung" id="content" required class="form-control" rows="5"></textarea>
@@ -59,6 +68,19 @@
 			let name = $('#name').val();
 			let phone = $('#phone').val();
 			let content = $('#content').val();
+			if (email == "") {
+				$('#email').addClass('is-invalid')
+				return;
+			}
+			if (name == "") {
+				$('#name').addClass('is-invalid')
+				return;
+			}
+
+			if (phone == "") {
+				$('#phone').addClass('is-invalid')
+				return;
+			}
 
 			$.ajax({
 				url: "{!! action('Web\ContactController@index') !!}",

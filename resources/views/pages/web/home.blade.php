@@ -246,7 +246,7 @@ class="background-white"
       </div>
       <form action="{!! action('Web\ContactController@index') !!}" method="POST">
         <div class="form-consultation">
-          <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
+          <input type="email" name="email" id="email" placeholder="Email" class="form-control"/>
           <input type="text" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
           <button type="button" id="submit" class="btn">
             Gửi

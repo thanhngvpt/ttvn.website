@@ -11,7 +11,7 @@
 @section('content')
 	<div id="news-detail-page">
 		<div class="area-detail-news">
-			<a class="tag-news" href="#">
+			<a class="tag-news" href="{!! action('Web\NewsController@index', @$news->newCategory->slug) !!}">
 				{{@$news->newCategory->name}}
 			</a>
 			<div class="title-news-detail">
