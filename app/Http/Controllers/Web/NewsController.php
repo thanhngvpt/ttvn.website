@@ -18,9 +18,11 @@ class NewsController extends Controller
     }
     public function index(PaginationRequest $request, $category_slug)
     {
+        if ($category_slug == 'tat-ca') $category_slug = 'all';
         $category_id = 0;
         $categories = NewCategory::orderBy('order', 'asc')->get();
         $page =  $request->get('page', 1);
+        $category_active = NewCategory::where('slug', $category_slug)->first();
         
         if ($category_slug != 'all') {
             $category = NewCategory::where('slug', $category_slug)->first();
@@ -46,6 +48,7 @@ class NewsController extends Controller
             'categories' => $categories,
             'hot_news' => $hot_news,
             'category_slug' => $category_slug,
+            'category_active' => $category_active,
         ]);
     }
 

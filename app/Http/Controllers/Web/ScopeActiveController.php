@@ -12,12 +12,15 @@ class ScopeActiveController extends Controller
 {
     public function index($slug)
     {
+        $field_active = Field::where('slug', $slug)->first();
+        
         $fields = Field::where('is_enabled', 1)->take(3)->orderBy('order', 'asc')->get();
-        $projects = Project::where('field_id', $fields[0]->id)->take(9)->orderBy('order', 'asc')->get();
+        $projects = Project::where('field_id', $field_active->id)->take(9)->orderBy('order', 'asc')->get();
         return view('pages.web.scope-active', [
             'fields' => $fields,
             'projects' => $projects,
-            'slug' => $slug
+            'slug' => $slug,
+            'field_active' => $field_active
         ]);
     }
 
