@@ -68,7 +68,7 @@
 					processData: false,
 					contentType: false,
 					success: function (res) {
-						$('#formData').reset();
+						$('#formData')[0].reset();
 						let message = document.createElement("message");
 							message.innerHTML='Thông tin của bạn đã được gửi <br> Chúng tôi sẽ liên hệ tư vấn với bạn trong thời gian sớm nhất'
 							Swal.fire(
