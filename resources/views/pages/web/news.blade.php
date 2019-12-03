@@ -14,7 +14,7 @@
 			<div class="navtab-custom">
 				<ul class="nav nav-tabs">
 					<li class="nav-item category-click" data-category-id="0">
-						<a class="nav-link @if($category_slug == 'all') active @endif" data-category-slug="all" data-category-id="0" data-toggle="tab" href="#tab_all">Tất cả</a>
+						<a class="nav-link @if($category_slug == 'all') active @endif" data-category-slug="all" data-category-id="0" data-toggle="tab" href="#news-tab-0">Tất cả</a>
 					</li>
 					@foreach($categories as $category)
 					<li class="nav-item category-click" data-category-id="{{$category->id}}">
@@ -26,7 +26,7 @@
 			
 			<!-- Tab panes -->
 			<div class="tab-content">
-				<div class="tab-pane @if($category_slug == 'all') active show @endif" data-category-slug="all" data-category-id="0" id="tab_all">
+				<div class="tab-pane @if($category_slug == 'all') active show @endif" data-category-slug="all" data-category-id="0" id="news-tab-0">
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
 						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
@@ -77,11 +77,11 @@
 							@endforeach
 						</div>
 						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
+							<li class="page-item previous-page"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
 							@for($i=1;$i<=$data['total_page'];$i++)
 							<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
 							@endfor
-							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+							<li class="page-item next-page"><a class="page-link"><i class="fas fa-chevron-right"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -137,13 +137,15 @@
 							</div>
 							@endforeach
 						</div>
+						@if($data['total_page'] > 1)
 						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
+							<li class="page-item previous-page"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
 							@for($i=1;$i<=$data['total_page'];$i++)
 							<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
 							@endfor
-							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+							<li class="page-item next-page"><a class="page-link"><i class="fas fa-chevron-right"></i></a></li>
 						</ul>
+						@endif
 					</div>
 					@endif
 				</div>
@@ -227,6 +229,49 @@
 						$('.slick-slider').slick("setPosition")
 
 					}, 300)
+				}
+			});
+		})
+
+		$(document).on('click', '.next-page', function() {
+			let current_page = $('.page-item.active').data('page-number');
+			let next_page = parseInt(current_page) + 1;
+			console.log(current_page)
+
+			let slug = $('.tab-pane.active').data('category-slug')
+			$.ajax({
+				url: "/tin-tuc/"+slug,
+				type: "GET",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					page: next_page,
+				},
+				success: function (res) {
+					$('.news-content').html(res)
+					$('html, body').animate({
+						scrollTop: $(".news-content").offset().top
+					}, 500);
+				}
+			});
+		})
+
+		$(document).on('click', '.previous-page', function() {
+			let current_page = $('.page-item.active').data('page-number');
+			let next_page = parseInt(current_page) - 1;
+
+			let slug = $('.tab-pane.active').data('category-slug')
+			$.ajax({
+				url: "/tin-tuc/"+slug,
+				type: "GET",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					page: next_page,
+				},
+				success: function (res) {
+					$('.news-content').html(res)
+					$('html, body').animate({
+						scrollTop: $(".news-content").offset().top
+					}, 500);
 				}
 			});
 		})
