@@ -1,6 +1,6 @@
 @extends('pages.web.layouts.app')
 @section('title')
-{{$meta->meta_title}}
+{{@$meta->meta_title}}
 @endsection
 @section('nav-header')
 @endsection
