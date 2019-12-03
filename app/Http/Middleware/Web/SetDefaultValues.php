@@ -39,7 +39,7 @@ class SetDefaultValues
         $menu_fields = Field::all();
         $path_url = Request::segment(1);
         $footer = Footer::first();
-        $meta = Meta::first();
+        $meta = Meta::all();
         // dd($path_url);
         \View::share('authUser', $user);
         \View::share('menu_news_categories', $menu_news_categories);
