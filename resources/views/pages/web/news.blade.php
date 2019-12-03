@@ -77,11 +77,11 @@
 							@endforeach
 						</div>
 						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
+							<li class="page-item previous-page"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
 							@for($i=1;$i<=$data['total_page'];$i++)
 							<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
 							@endfor
-							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+							<li class="page-item next-page"><a class="page-link"><i class="fas fa-chevron-right"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -139,11 +139,11 @@
 						</div>
 						@if($data['total_page'] > 1)
 						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
+							<li class="page-item previous-page"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
 							@for($i=1;$i<=$data['total_page'];$i++)
 							<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
 							@endfor
-							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
+							<li class="page-item next-page"><a class="page-link"><i class="fas fa-chevron-right"></i></a></li>
 						</ul>
 						@endif
 					</div>
@@ -229,6 +229,49 @@
 						$('.slick-slider').slick("setPosition")
 
 					}, 300)
+				}
+			});
+		})
+
+		$(document).on('click', '.next-page', function() {
+			let current_page = $('.page-item.active').data('page-number');
+			let next_page = parseInt(current_page) + 1;
+			console.log(current_page)
+
+			let slug = $('.tab-pane.active').data('category-slug')
+			$.ajax({
+				url: "/tin-tuc/"+slug,
+				type: "GET",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					page: next_page,
+				},
+				success: function (res) {
+					$('.news-content').html(res)
+					$('html, body').animate({
+						scrollTop: $(".news-content").offset().top
+					}, 500);
+				}
+			});
+		})
+
+		$(document).on('click', '.previous-page', function() {
+			let current_page = $('.page-item.active').data('page-number');
+			let next_page = parseInt(current_page) - 1;
+
+			let slug = $('.tab-pane.active').data('category-slug')
+			$.ajax({
+				url: "/tin-tuc/"+slug,
+				type: "GET",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					page: next_page,
+				},
+				success: function (res) {
+					$('.news-content').html(res)
+					$('html, body').animate({
+						scrollTop: $(".news-content").offset().top
+					}, 500);
 				}
 			});
 		})
