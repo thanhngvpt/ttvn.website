@@ -47,6 +47,7 @@
             </div>
             @endforeach
         </div>
+        @if($data['total_page'] > 1)
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
             @for($i=1;$i<=$data['total_page'];$i++)
@@ -54,4 +55,6 @@
             @endfor
             <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
         </ul>
+        @endif
     </div>
+    

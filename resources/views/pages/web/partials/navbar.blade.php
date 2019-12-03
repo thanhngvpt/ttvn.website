@@ -1,6 +1,6 @@
 <div class="navbar-top-area">
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand navbar-brand-white" href="#">
+        <a class="navbar-brand navbar-brand-white" href="/">
             <img src="{{ asset('images/logo.svg') }}" class="img-fluid logo-img">
         </a>
         <a class="navbar-brand navbar-brand-color" href="#">

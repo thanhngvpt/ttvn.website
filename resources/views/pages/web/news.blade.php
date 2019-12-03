@@ -14,7 +14,7 @@
 			<div class="navtab-custom">
 				<ul class="nav nav-tabs">
 					<li class="nav-item category-click" data-category-id="0">
-						<a class="nav-link @if($category_slug == 'all') active @endif" data-category-slug="all" data-category-id="0" data-toggle="tab" href="#tab_all">Tất cả</a>
+						<a class="nav-link @if($category_slug == 'all') active @endif" data-category-slug="all" data-category-id="0" data-toggle="tab" href="#news-tab-0">Tất cả</a>
 					</li>
 					@foreach($categories as $category)
 					<li class="nav-item category-click" data-category-id="{{$category->id}}">
@@ -26,7 +26,7 @@
 			
 			<!-- Tab panes -->
 			<div class="tab-content">
-				<div class="tab-pane @if($category_slug == 'all') active show @endif" data-category-slug="all" data-category-id="0" id="tab_all">
+				<div class="tab-pane @if($category_slug == 'all') active show @endif" data-category-slug="all" data-category-id="0" id="news-tab-0">
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
 						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
@@ -137,6 +137,7 @@
 							</div>
 							@endforeach
 						</div>
+						@if($data['total_page'] > 1)
 						<ul class="pagination">
 							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
 							@for($i=1;$i<=$data['total_page'];$i++)
@@ -144,6 +145,7 @@
 							@endfor
 							<li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
 						</ul>
+						@endif
 					</div>
 					@endif
 				</div>
