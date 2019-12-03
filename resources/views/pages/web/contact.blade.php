@@ -24,37 +24,30 @@
 	@endif
 	<div id="contact-page">
 		<div class="form-contact-area">
-			<form method="POST" action="{!! action('Web\ContactController@index') !!}" class="form-contact">
-				@csrf
+			{!! Form::open(['action' => 'Web\ContactController@index', 'class' => 'form-contact', 'method' => 'POST', 'id' => 'formData']) !!}
 				<div class="title-contact">
 					Liên hệ với chúng tôi
 				</div>
 				<div class="item-form-contact">
-					{{--  is-invalid class error  --}}
-					<input type="email" required name="email" id="email" class="form-control" placeholder="Email">
-					<div class="invalid-feedback">
-						Email không  được bỏ trống
-					</div>
+					{!! Form::email('email', null, ['class' => 'form-control ' . ($errors->has('email') ? 'is-invalid' : ''), 'placeholder' => 'Email', 'id' => 'email', 'type' => 'email']) !!}
+					@if ($errors->has('email')) <div class="invalid-feedback">{{ $errors->first('email') }}</div> @endif
 				</div>
 				<div class="item-form-contact">
-					<input type="text" name="name" id="name" required class="form-control" placeholder="Họ và tên">
-					<div class="invalid-feedback">
-						Tên không  được bỏ trống
-					</div>
+					{!! Form::text('name', null, ['class' => 'form-control ' . ($errors->has('name') ? 'is-invalid' : ''), 'placeholder' => 'Họ và tên', 'id' => 'name']) !!}
+					@if ($errors->has('name')) <div class="invalid-feedback">{{ $errors->first('name') }}</div> @endif
 				</div>
 				<div class="item-form-contact">
-					<input type="number" name="phone" id="phone" required class="form-control" placeholder="Số điện thoại">
-					<div class="invalid-feedback">
-						Số điện thoại không  được bỏ trống
-					</div>
+					{!! Form::number('phone', null, ['class' => 'form-control ' . ($errors->has('phone') ? 'is-invalid' : ''), 'placeholder' => 'Số điện thoại', 'id' => 'phone']) !!}
+					@if ($errors->has('phone')) <div class="invalid-feedback">{{ $errors->first('phone') }}</div> @endif
 				</div>
 				<div class="item-form-contact">
-					<textarea name="content" placeholder="Nội dung" id="content" required class="form-control" rows="5"></textarea>
+					{!! Form::textarea('content', null, ['class' => 'form-control ' . ($errors->has('content') ? 'is-invalid' : ''), 'id' => 'content', 'placeholder' => 'Nội dung', 'rows' => 5]) !!}
+					@if ($errors->has('content')) <div class="invalid-feedback">{{ $errors->first('content') }}</div> @endif
 				</div>
 				<div class="text-center">
-					<button type="button" id="submit" class="btn btn-outline-success">Gửi</button>
+					<button type="submit" id="submit" class="btn btn-outline-success">Gửi</button>
 				</div>
-			</form>
+			{!! Form::close() !!}
 		</div>
 		<div class="contact-map">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1062393246775!2d105.7760800144074!3d21.028434693166517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b2f431c099%3A0xe44043bacd461128!2zQuG6v24geGUgTeG7uSDEkMOsbmg!5e0!3m2!1svi!2s!4v1571506147155!5m2!1svi!2s" width="2560" height="657" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
@@ -63,49 +56,48 @@
 @endsection
 @section('page-scripts')
 	<script>
-		$(document).on('click', '#submit', function() {
-			let email = $('#email').val();
-			let name = $('#name').val();
-			let phone = $('#phone').val();
-			let content = $('#content').val();
-			if (email == "") {
-				$('#email').addClass('is-invalid')
-				return;
-			}
-			if (name == "") {
-				$('#name').addClass('is-invalid')
-				return;
-			}
+		$(document).ready(function() {
+			$('.form-contact').on('submit', function(e) {
+				e.preventDefault();
+				let formData = new FormData($('#formData')[0]);
 
-			if (phone == "") {
-				$('#phone').addClass('is-invalid')
-				return;
-			}
+				$.ajax({
+					url: "{!! action('Web\ContactController@index') !!}",
+					type: "POST",
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (res) {
+						$('#formData').reset();
+						let message = document.createElement("message");
+							message.innerHTML='Thông tin của bạn đã được gửi <br> Chúng tôi sẽ liên hệ tư vấn với bạn trong thời gian sớm nhất'
+							Swal.fire(
+								'Thành công!',
+								message,
+								'success'
+							)
+					},
+					error: function (response) {
+						obj = response.responseJSON
+						$('.invalid-feedback').remove();
+						if (typeof obj == "string") {
+							Swal.fire('Lỗi!', response.responseJSON, 'error')
+							return false;
+						}
 
-			$.ajax({
-				url: "{!! action('Web\ContactController@index') !!}",
-				type: "POST",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					email: email,
-					name: name,
-					phone: phone,
-					content: content
-				},
-				success: function (res) {
-					$('#email').val("");
-					$('#name').val("");
-					$('#phone').val("");
-					$('#content').val("");
-					let message = document.createElement("message");
-						message.innerHTML='Thông tin của bạn đã được gửi <br> Chúng tôi sẽ liên hệ tư vấn với bạn trong thời gian sớm nhất'
-					Swal.fire(
-						'Thành công!',
-						message,
-						'success'
-						)
-				}
-			});
+						errors = obj.errors
+						Object.keys(errors).forEach(key => {
+							$('#' + key).addClass('is-invalid');
+							$('#' + key).closest('.item-form-contact').append(`<div class="invalid-feedback">${errors[key][0]}</div>`);
+						});
+					}
+				});
+			})
+
+			$('.form-control').on('input paste change', function() {
+				$(this).removeClass('is-invalid');
+				$(this).closest('.item-form-contact').find('.invalid-feedback').remove();
+			})
 		})
 	</script>
 @endsection

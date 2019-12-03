@@ -10,6 +10,7 @@
   	<link rel="shortcut icon" href="/favicon.ico">
 
   	@stack('meta')
+	@stack('plugins')
   	@stack('styles')
   	@yield('page-styles')
 </head>
