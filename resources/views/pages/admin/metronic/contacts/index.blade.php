@@ -111,6 +111,7 @@
                                     <th>{!! \PaginationHelper::sort('email', trans('admin.pages.contacts.columns.email')) !!}</th>
                                     <th>{!! \PaginationHelper::sort('phone', trans('admin.pages.contacts.columns.phone')) !!}</th>
                                     <th>{!! \PaginationHelper::sort('phone', 'Nội dung') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('created_at', 'Thời gian') !!}</th>
                                   
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
@@ -119,17 +120,18 @@
 
                             <tbody>
                                 @foreach( $contacts as $contact )
-                                    <tr>
+                                    <tr @if(!$contact->is_read) style="background-color: aliceblue;" @endif>
                                         <td>{{ $contact->id }}</td>
                                         <td>{{ $contact->name }}</td>
                                         <td>{{ $contact->email }}</td>
                                         <td>{{ $contact->phone }}</td>
                                         <td>{{ $contact->content }}</td>
+                                        <td>{!!  date('d/m/Y', (strtotime( $contact->created_at))) !!}</td>
                                        
                                         <td>
-                                            <a href="{!! action('Admin\ContactController@show', $contact->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
+                                            {{-- <a href="{!! action('Admin\ContactController@show', $contact->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>
-                                            </a>
+                                            </a> --}}
                                             <a href="javascript:;" data-delete-url="{!! action('Admin\ContactController@destroy', $contact->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
                                                 <i class="la la-trash"></i>
                                             </a>

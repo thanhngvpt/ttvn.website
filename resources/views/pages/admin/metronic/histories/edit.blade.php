@@ -31,7 +31,9 @@
                 $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
             });
 
-            $('.datetime-picker').datepicker({format: 'yyyy/mm/dd',});
+            $('.datetime-picker').datepicker({format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years"});
         });
 
         Boilerplate.imageUploadUrl = "{!! URL::action('Admin\ArticleController@postImage') !!}";

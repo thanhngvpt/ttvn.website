@@ -104,13 +104,15 @@
 			<div class="download-cv">
 				Ứng viên có thể tải mẫu ứng tuyển <a href="#">Tại đây</a>
 			</div>
+			@if($data['total_page'] > 1)
 			<ul class="pagination">
-				<li class="page-item"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
+				<li class="page-item previous-page"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
 				@for($i=1;$i<=$data['total_page'];$i++)
 					<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
 				@endfor
-				<li class="page-item"><a class="page-link"><i class="fas fa-chevron-right"></i></a></li>
+				<li class="page-item next-page"><a class="page-link"><i class="fas fa-chevron-right"></i></a></li>
 			</ul>
+			@endif
 		</div>
 	</div>
 @endsection
@@ -176,6 +178,68 @@
 					$('#tbody').html(res.html_desktop)
 					$('.list-job-mb').html(res.html_mobile)
 					$('.pagination').html(res.paginate)
+
+				}
+			});
+		})
+
+		$(document).on('click', '.next-page', function() {
+			let current_page = $('.page-item.active').data('page-number');
+			let next_page = parseInt(current_page) + 1;
+
+			let category_id = $('#category').val()
+			let province = $('#province').val()
+			let keyword = $('#keyword').val()
+		
+			$.ajax({
+				url: "{{action('Web\JobController@listJob')}}",
+				type: "GET",
+				dataType:"json",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					page: next_page,
+					category_id:category_id,
+					province:province,
+					keyword:keyword
+				},
+				success: function (res) {
+					$('#tbody').html(res.html_desktop)
+					$('.list-job-mb').html(res.html_mobile)
+					$('.pagination').html(res.paginate)
+					$('html, body').animate({
+						scrollTop: $(".list-job").offset().top
+					}, 500);
+
+				}
+			});
+		})
+
+		$(document).on('click', '.previous-page', function() {
+			let current_page = $('.page-item.active').data('page-number');
+			let next_page = parseInt(current_page) - 1;
+
+			let category_id = $('#category').val()
+			let province = $('#province').val()
+			let keyword = $('#keyword').val()
+		
+			$.ajax({
+				url: "{{action('Web\JobController@listJob')}}",
+				type: "GET",
+				dataType:"json",
+				data: {
+					_token: "{!! csrf_token() !!}",
+					page: next_page,
+					category_id:category_id,
+					province:province,
+					keyword:keyword
+				},
+				success: function (res) {
+					$('#tbody').html(res.html_desktop)
+					$('.list-job-mb').html(res.html_mobile)
+					$('.pagination').html(res.paginate)
+					$('html, body').animate({
+						scrollTop: $(".list-job").offset().top
+					}, 500);
 
 				}
 			});

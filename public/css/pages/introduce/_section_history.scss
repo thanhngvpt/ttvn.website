@@ -15,9 +15,12 @@
                 font-weight: $fz-op-bold;
                 font-size: 16px;
                 line-height: 25px;
-                color: white;
+                color: #004A74;
                 padding: 0 24px;
                 cursor: pointer;
+                &.active, &:hover {
+                    color: white;
+                }
             }
         }
         .timeline-bar {
@@ -29,7 +32,7 @@
                 width: 100%;
                 background: #004A74;
                 position: relative;
-                margin: 16px auto;
+                margin: 16px auto auto;
             }
             .timeline-progress {
                 background: #57AE5B;
@@ -53,6 +56,7 @@
             .section-title {
                 color: white;
                 padding: 40px 0 32px;
+                margin: 0;
             }
         }
 
@@ -111,11 +115,46 @@
     }
 }
 
+@media (min-width: $break-mid-sm) {
+    .section-history {
+        .history-timeline {
+            .timeline-list {
+                .wrapper {
+                    //justify-content: space-between;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $break-sm) {
+    .section-history {
+        .history-timeline {
+            .timeline-list {
+                .wrapper {
+                    //justify-content: space-between;
+                }
+            }
+        }
+    }
+}
+
 @media (min-width: $break-md) {
     .section-history {
         padding: 65px 0 56px;
 
         .section-body {
+            .history-row {
+                .section-title {
+                    padding: 56px 0 32px;
+                }
+
+                .history-col-thumb {
+                    .col-wrapper {
+                        margin-top: 17px;
+                    }
+                }
+            }
             .history-content-list {
                 .history-content-slider {
                     margin-bottom: 0;
@@ -126,6 +165,11 @@
         }
         .history-timeline {
             overflow: hidden;
+            .timeline-bar {
+                .container {
+                    padding: 0 10px;
+                }
+            }
             .timeline-list {
                 .wrapper {
                     justify-content: space-around;
@@ -189,15 +233,32 @@
 @media (min-width: $break-lg) {
     .section-history {
         padding: 88px 0;
+        background-image: url(/images/introduce/history-bg-single.svg);
+        background-position: top right 100%;
+        background-size: cover;
         .container {
             max-width: 936px;
         }
+        .history-timeline {
+            .timeline-bar {
+                .container {
+                    padding: 0;
+                }
+            }
+        }
 
-        .history-row {
-            margin-left: -34px;
-            margin-right: -34px;
-            .history-col {
-                padding: 0 17px;
+        
+
+        .section-body {
+            .history-row {
+                margin-left: -17px;
+                margin-right: -17px;
+                .history-col {
+                    padding: 0 17px;
+                }
+                .section-title  {
+                    padding: 88px 0 48px;
+                }
             }
         }
     }
@@ -206,15 +267,20 @@
 @media (min-width: $break-xl) {
     .section-history {
         padding: 88px 0 56px;
+        background-image: url(/images/introduce/history-bg.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
         .container {
             max-width: 1320px;
         }
         .section-head {
             display: block;
             .section-title {
-                padding: 127px 0 104px;
+                padding: 127px 0 30px;
                 font-size: 56px;
                 color: white;
+                margin: 0;
             }
         }
         .section-body {
@@ -244,11 +310,8 @@
                     justify-content: space-around;
                 }
                 .timeline-item {
-                    font-family: $f-opensan;
-                    font-weight: $fz-op-bold;
                     font-size: 16px;
                     line-height: 25px;
-                    color: white;
                     padding: 0 24px;
                 }
             }

@@ -1,6 +1,6 @@
 <div class="slide-top-news">
     @foreach($news as $item)
-        <a href="#" class="item-news" onclick="location.href='{!! action('Web\NewsController@details', $item->slug) !!}'">
+        <a href="#" class="item-news" onclick="location.href='{!! action('Web\NewsController@details',[$item->newCategory->slug, $item->slug]) !!}'">
             <div class="img-news">
             <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
             </div>
@@ -19,7 +19,7 @@
     @endforeach
 </div>
 <div class="text-center">
-    <a href="#" class="btn btn-outline-success btn-see-more-news">
+    <a href="{!! action('Web\NewsController@index', 'all') !!}" class="btn btn-outline-success btn-see-more-news">
         Xem tất cả
     </a>
 </div>

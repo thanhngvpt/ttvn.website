@@ -157,7 +157,7 @@ class="background-white"
           <div class="area-nav-news">
             <ul class="nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" data-category-id="0" href="#tab_all">Tất cả</a>
+                <a class="nav-link active" data-toggle="tab" data-category-id="0" href="#cate-0">Tất cả</a>
               </li>
               @foreach ($categories as $category)
               <li class="nav-item">
@@ -168,11 +168,11 @@ class="background-white"
           </div>
           <!-- Tab panes -->
           <div class="tab-content">
-            <div class="tab-pane container active" id="tab_all">
+            <div class="tab-pane container active" id="cate-0">
               <div class="area-top-news">
                 <div class="slide-top-news">
                   @foreach($news as $item)
-                  <a href="{{action('Web\NewsController@details', $item->slug)}}" class="item-news">
+                  <a href="{{action('Web\NewsController@details',[$item->newCategory->slug, $item->slug])}}" class="item-news">
                     <div class="img-news">
                       @if(!empty($item->present()->coverImage()))
                       <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />

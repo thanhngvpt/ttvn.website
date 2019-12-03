@@ -28,7 +28,7 @@ class JobController extends Controller
     }
     public function index()
     {
-        $cultural_companies = CulturalCompany::first();
+        $cultural_companies = CulturalCompany::orderBy('id', 'desc')->first();
         $criteria_candidate = CriteriaCandidate::all();
         $jobs = Job::take(5)->orderBy('id', 'desc')->get();
         

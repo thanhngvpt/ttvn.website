@@ -4,6 +4,7 @@ namespace App\Http\Middleware\Admin;
 
 use App\Services\AdminUserNotificationServiceInterface;
 use App\Services\AdminUserServiceInterface;
+use App\Models\Contact;
 
 class SetDefaultValues
 {
@@ -38,6 +39,7 @@ class SetDefaultValues
     public function handle($request, \Closure $next)
     {
         $user = $this->adminUserService->getUser();
+        $count_contact = Contact::where('is_read', 0)->count();
         \View::share('authUser', $user);
         \View::share('menu', '');
 
@@ -51,6 +53,7 @@ class SetDefaultValues
 
         \View::share('unreadNotificationCount', $notificationCount);
         \View::share('notifications', $notifications);
+        \View::share('count_contact', $count_contact);
 
         return $next($request);
     }

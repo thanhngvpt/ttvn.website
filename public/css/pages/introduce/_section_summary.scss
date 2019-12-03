@@ -89,6 +89,10 @@
                 .container-wrapper {
                     padding: 0;
                     background: #EFFCF1;
+                    background-image: url(/images/introduce/bg-white.svg);
+                    background-repeat: no-repeat;
+                    background-position: bottom right 100%;
+                    background-size: 500px 73px;
                 }
                 .col-intro-summary {
                     padding-top: 105px;
@@ -132,7 +136,7 @@
         .section-intro-common {
             .section-head {
                 .section-title {
-                    margin-bottom: 64px;
+                    margin-bottom: 66px;
                 }
             }
 
