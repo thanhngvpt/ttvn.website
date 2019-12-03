@@ -3,7 +3,7 @@
         <a class="navbar-brand navbar-brand-white" href="/">
             <img src="{{ asset('images/logo.svg') }}" class="img-fluid logo-img">
         </a>
-        <a class="navbar-brand navbar-brand-color" href="#">
+        <a class="navbar-brand navbar-brand-color" href="/">
             <img src="{{ asset('images/logo-color.svg') }}" class="img-fluid logo-img">
         </a>
         <button class="navbar-toggler" type="button" onclick="$('#collapsibleNavbar').addClass('show')">
