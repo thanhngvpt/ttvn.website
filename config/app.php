@@ -194,6 +194,8 @@ return [
         App\Providers\ServiceBindServiceProvider::class,
         App\Providers\HelperBindServiceProvider::class,
 
+        Collective\Html\HtmlServiceProvider::class,
+
     ], $additionalProviders),
 
     /*
@@ -253,6 +255,9 @@ return [
         'RedirectHelper'         => App\Facades\RedirectHelper::class,
         'CacheHelper'            => App\Facades\CacheHelper::class,
         /* NEW FACADE */
+
+        'Form'                  => Collective\Html\FormFacade::class,
+        'Html'                  => Collective\Html\HtmlFacade::class,
     ],
 
     'offline_mode'         => env('OFFLINE_MODE', null),
