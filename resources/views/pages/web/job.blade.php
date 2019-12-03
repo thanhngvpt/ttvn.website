@@ -1,5 +1,7 @@
 @extends('pages.web.layouts.app')
-
+@section('title')
+{{$cultural_companies->meta_title}}
+@endsection
 @section('title-navbar')
 	{{$cultural_companies->title_page}}
 @endsection

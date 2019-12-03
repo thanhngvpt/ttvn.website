@@ -4,6 +4,11 @@
 	Tin tức - sự kiện
 @endsection
 
+
+@section('title')
+	Tin tức - sự kiện
+@endsection
+
 @section('body-class')
 	class="background-white"
 @endsection
