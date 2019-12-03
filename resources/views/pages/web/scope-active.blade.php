@@ -4,16 +4,7 @@
 	{{-- Lĩnh vực hoạt động --}}
 @endsection
 @section('title')
-@foreach ($meta as $item)
-    <?php 
-      $url = explode('/', $item->link);
-      array_pop($url);
-      $url = implode('/', $url);
-    ?>
-	@if(Request::url() === $url)
-		{{$item->meta_title}}
-	@endif	
-@endforeach
+{{$field_active->meta_title}}
 @endsection
 
 @section('body-class')

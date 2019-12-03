@@ -9,9 +9,7 @@
 @section('title')
 @foreach ($meta as $item)
     <?php 
-      $url = explode('/', $item->link);
-      array_pop($url);
-      $url = implode('/', $url);
+    $url = trim( $item->link, "/" );
     ?>
 	@if(Request::url() === $url)
 		{{$item->meta_title}}

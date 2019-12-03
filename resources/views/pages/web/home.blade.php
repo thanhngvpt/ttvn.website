@@ -2,9 +2,7 @@
 @section('title')
 @foreach ($meta as $item)
     <?php 
-      $url = explode('/', $item->link);
-      array_pop($url);
-      $url = implode('/', $url);
+    $url = trim( $item->link, "/" );
     ?>
 	@if(Request::url() === $url)
 		{{$item->meta_title}}
@@ -205,7 +203,7 @@ class="background-white"
                 </div>
               </div>
               <div class="text-center">
-                <a href="{{action('Web\NewsController@index', 'all')}}" class="btn btn-outline-success btn-see-more-news">
+                <a href="{{action('Web\NewsController@index', 'tat-ca')}}" class="btn btn-outline-success btn-see-more-news">
                   Xem tất cả
                 </a>
               </div>

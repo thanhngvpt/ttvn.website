@@ -64,7 +64,7 @@
                     <div id="news-menu-xl" class="menu-xl">
                         <ul class="menu-xl-child">
                             <li>
-                                <a href="{!!action('Web\NewsController@index', 'all')!!}">
+                                <a href="{!!action('Web\NewsController@index', 'tat-ca')!!}">
                                         <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
                                         Tất cả
                                 </a>
@@ -164,7 +164,7 @@
                 <div id="news-menu-mb" class="collapse">
                     <ul class="menu-mb-child">
                         <li>
-                            <a href="{!!action('Web\NewsController@index', 'all')!!}">
+                            <a href="{!!action('Web\NewsController@index', 'tat-ca')!!}">
                                 Tất cả
                             </a>
                         </li>
