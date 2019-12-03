@@ -24,13 +24,13 @@
                     <div id="introduce-menu-xl" class="menu-xl">
                         <ul class="menu-xl-child">
                             <li>
-                                <a href="{!!action('Web\IntroduceCompanyController@index', 'ttvn')!!}">
+                                <a href="{!!action('Web\IntroduceCompanyController@index')!!}">
                                     <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
                                     Về TTVN Group
                                 </a>
                             </li>
                             <li>
-                                <a href="{!!action('Web\IntroduceCompanyController@index', 'leader')!!}">
+                                <a href="{!!action('Web\IntroduceCompanyController@leader')!!}">
                                     <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />       
                                     Ban lãnh đạo
                                 </a>
@@ -64,7 +64,7 @@
                     <div id="news-menu-xl" class="menu-xl">
                         <ul class="menu-xl-child">
                             <li>
-                                <a href="{!!action('Web\NewsController@index', 'tat-ca')!!}">
+                                <a href="{!!action('Web\NewsController@all')!!}">
                                         <img src="{{ asset('images/arrow-right-new.svg') }}" class="img-fluid" />
                                         Tất cả
                                 </a>
@@ -131,10 +131,10 @@
                 <div id="introduce-menu-mb" class="collapse">
                     <ul class="menu-mb-child">
                         <li>
-                            <a href="{!!action('Web\IntroduceCompanyController@index', 'ttvn')!!}">Về TTVN Group</a>
+                            <a href="{!!action('Web\IntroduceCompanyController@index')!!}">Về TTVN Group</a>
                         </li>
                         <li>
-                            <a href="{!!action('Web\IntroduceCompanyController@index', 'leader')!!}">Ban lãnh đạo</a>
+                            <a href="{!!action('Web\IntroduceCompanyController@leader')!!}">Ban lãnh đạo</a>
                         </li>
                     </ul>
                 </div>
@@ -164,7 +164,7 @@
                 <div id="news-menu-mb" class="collapse">
                     <ul class="menu-mb-child">
                         <li>
-                            <a href="{!!action('Web\NewsController@index', 'tat-ca')!!}">
+                            <a href="{!!action('Web\NewsController@all')!!}">
                                 Tất cả
                             </a>
                         </li>

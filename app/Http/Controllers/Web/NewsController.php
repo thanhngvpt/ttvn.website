@@ -90,4 +90,19 @@ class NewsController extends Controller
             'new_relations' => $new_relations
         ]); 
     }
+
+    public function all()
+    {
+        $page = 1;
+        $categories = NewCategory::orderBy('order', 'asc')->get();
+        $hot_news = TableNew::where('new_category_id', $categories[0]->id)->where('display', 1)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+        $data = $this->newRepo->getByNewsCategory($page, 0);
+       
+        return view('pages.web.news', [
+            'data' => $data,
+            'categories' => $categories,
+            'hot_news' => $hot_news,
+            'category_slug' => 'all'
+        ]);
+    }
 }

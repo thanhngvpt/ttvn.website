@@ -6,7 +6,7 @@
 
 
 @section('title')
-@if(!empty($category_active))
+@if( isset($category_active) && !empty($category_active))
 {{$category_active->meta_title}}
 @else
 Tất cả tin tức

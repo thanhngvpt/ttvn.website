@@ -1,4 +1,7 @@
 @extends('pages.web.layouts.app')
+@section('title')
+	{{$job->meta_title}}
+@endsection
 
 @section('title-navbar')
 	<div class="mb-2">
