@@ -12,6 +12,8 @@ body {
 	padding-left: 24px;
 	font-size: 12px;
 	line-height: 18px;
+	text-align: left;
+	display: block;
 }
 .form-control.is-invalid {
 	background-image: url('../images/icon-invalid.svg');
@@ -1599,6 +1601,7 @@ main {
 			}
 		}
 		.btn {
+			height: 48px;
 			width: 154px;
 			background-color: #ffffff;
 			border-radius: 8px;
