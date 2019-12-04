@@ -60,7 +60,7 @@
                             <img src="{!! $video->present()->coverImage()->present()->url !!}" class="img-fluid item-video"/>
                         @endif
                         @foreach($banners as $banner)
-                            <img src="{!! $banners->first()->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                            <img src="{!! $banner->present()->coverImage()->present()->url !!}" class="img-fluid" />
                         @endforeach
                     </div>
                 </div>
@@ -134,6 +134,8 @@
         </div>
     </div>
     <div class="top-content">
+        <div class="bg-top-content-right"><img src="/images/home/square-big-company.svg" class="img-fluid" alt=""></div>
+        <div class="bg-top-content-left"><img src="/images/home/square-small-company-1.svg" class="img-fluid" alt=""></div>
         <div class="container">
             <div class="top-intro">
                 <div class="text-top-intro">
@@ -156,9 +158,15 @@
             </a>
                 </div>
                 <div class="img-top-intro">
+                    <img src="/images/home/short-square-1.svg" alt="" class="img-fluid bg-square-top">
+                    <img src="/images/home/short-square-2.svg" alt="" class="img-fluid bg-square-bottom">
+                    <img src="/images/home/short-square-3.svg" alt="" class="img-fluid bg-square-center">
                     @if(!empty($inforGroup->present()->thumbnailImage()))
-                    <img src="{!! $inforGroup->present()->thumbnailImage()->present()->url !!}" class="img-fluid img-intro-after" /> @endif @if(!empty($inforGroup->present()->coverImage()))
-                    <img src="{!! $inforGroup->present()->coverImage()->present()->url !!}" class="img-fluid img-intro-before" /> @endif
+                        <img src="{!! $inforGroup->present()->thumbnailImage()->present()->url !!}" class="img-fluid img-intro-after" /> 
+                    @endif 
+                    @if(!empty($inforGroup->present()->coverImage()))
+                        <img src="{!! $inforGroup->present()->coverImage()->present()->url !!}" class="img-fluid img-intro-before" />
+                    @endif
                 </div>
             </div>
             <div class="top-sumarry">
