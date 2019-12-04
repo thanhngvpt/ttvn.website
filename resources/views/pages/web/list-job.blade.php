@@ -3,6 +3,17 @@
 @section('title-navbar')
 	Danh sách tin tuyển dụng
 @endsection
+@section('title')
+@foreach ($meta as $item)
+    <?php 
+	$url = trim( $item->link, "/" );
+    ?>
+	@if(Request::url() === $url)
+		{{$item->meta_title}}
+	@endif	
+@endforeach
+@endsection
+
 
 @section('content')
 	<div id="list-job-page">

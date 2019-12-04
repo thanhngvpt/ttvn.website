@@ -18,9 +18,11 @@ class NewsController extends Controller
     }
     public function index(PaginationRequest $request, $category_slug)
     {
+        if ($category_slug == 'tat-ca') $category_slug = 'all';
         $category_id = 0;
         $categories = NewCategory::orderBy('order', 'asc')->get();
         $page =  $request->get('page', 1);
+        $category_active = NewCategory::where('slug', $category_slug)->first();
         
         if ($category_slug != 'all') {
             $category = NewCategory::where('slug', $category_slug)->first();
@@ -46,6 +48,7 @@ class NewsController extends Controller
             'categories' => $categories,
             'hot_news' => $hot_news,
             'category_slug' => $category_slug,
+            'category_active' => $category_active,
         ]);
     }
 
@@ -86,5 +89,20 @@ class NewsController extends Controller
             'news' => $news,
             'new_relations' => $new_relations
         ]); 
+    }
+
+    public function all()
+    {
+        $page = 1;
+        $categories = NewCategory::orderBy('order', 'asc')->get();
+        $hot_news = TableNew::where('new_category_id', $categories[0]->id)->where('display', 1)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+        $data = $this->newRepo->getByNewsCategory($page, 0);
+       
+        return view('pages.web.news', [
+            'data' => $data,
+            'categories' => $categories,
+            'hot_news' => $hot_news,
+            'category_slug' => 'all'
+        ]);
     }
 }

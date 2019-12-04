@@ -6,6 +6,17 @@
     </div>
 @endsection
 
+@section('title')
+@foreach ($meta as $item)
+    <?php 
+    $url = trim( $item->link, "/" );
+    ?>
+	@if(Request::url() === $url)
+		{{$item->meta_title}}
+	@endif	
+@endforeach
+@endsection
+
 @section('body-class')
 class="background-white introduce-page"
 @endsection
@@ -157,8 +168,8 @@ class="background-white introduce-page"
                                 <div class="col-wrapper">
                                     <div class="values-thumb-slider">
                                         @foreach($save_values as $save_value)
-                                        @if(!empty($save_values->first()->present()->coverImage()))
-                                            <img src="{!! $save_values->first()->present()->coverImage()->present()->url !!}" class="img-fluid"> 
+                                        @if(!empty($save_value->present()->coverImage()))
+                                            <img src="{!! $save_value->present()->coverImage()->present()->url !!}" class="img-fluid"> 
                                             @endif
                                         @endforeach
                                     </div>
@@ -242,7 +253,7 @@ class="background-white introduce-page"
                         <div class="container">
                             <div class="partner-slider">
                                 @foreach($partners as $partner)
-                                    <a href="{{$partner->link}}" target="_blank" title="{{ $partner->name }}" class="partner-item">
+                                    <a href="{{$partner->link ? $partner->link : 'javascript::void(0);'}}" @if($partner->link) target="_blank" @endif title="{{ $partner->name }}" class="partner-item">
                                             @if(!empty($partner->present()->coverImage()))
                                         <img src="{!! $partner->present()->coverImage()->present()->url !!}" class="img-fluid" />
                                         @endif
@@ -541,10 +552,10 @@ class="background-white introduce-page"
             $('.partner-slider').slick({
                 dots: true,
                 arrows: false,
-                infinite: false,
+                infinite: true,
                 rows: 0,
                 autoplay: true,
-                autoplaySpeed: 5000,
+                autoplaySpeed: 3000,
                 slidesToShow: 6,
                 slidesToScroll: 6,
                 responsive: [

@@ -15,7 +15,7 @@ class IntroduceCompanyController extends Controller
      * type = 1 => tab TTVN
      * type = 2 => tab BLD
     */
-    public function index($type)
+    public function index()
     {
         $introduce = Introduce::first();
         $save_values = SaveValue::take(12)->get();
@@ -29,7 +29,25 @@ class IntroduceCompanyController extends Controller
             'histories' => $histories,
             'leader_ships' => $leader_ships,
             'partners' => $partners,
-            'type' => $type
+            'type' => 'ttvn'
+        ]);
+    }
+
+    public function leader()
+    {
+        $introduce = Introduce::first();
+        $save_values = SaveValue::take(12)->get();
+        $histories  = History::get();
+        $leader_ships = LeaderShip::orderBy('order', 'asc')->get();
+        $partners = Partner::orderBy('id', 'desc')->get();
+
+        return view('pages.web.introduce-company', [
+            'introduce' => $introduce,
+            'save_values' => $save_values,
+            'histories' => $histories,
+            'leader_ships' => $leader_ships,
+            'partners' => $partners,
+            'type' => 'leader'
         ]);
     }
 }

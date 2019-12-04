@@ -4,10 +4,14 @@
 	class="background-white no-title-page"
 @endsection
 
+@section('title')
+{{@$news->meta_title}}
+@endsection
+
 @section('content')
 	<div id="news-detail-page">
 		<div class="area-detail-news">
-			<a class="tag-news" href="#">
+			<a class="tag-news" href="{!! action('Web\NewsController@index', @$news->newCategory->slug) !!}">
 				{{@$news->newCategory->name}}
 			</a>
 			<div class="title-news-detail">
@@ -59,16 +63,16 @@
 						</div>
 						<div class="content-news">
 							<div class="cate-news">
-									{{@$news->newCategory->name}}
+									{{@$new_relation->newCategory->name}}
 							</div>
 							<div class="title-news">
-									{{$news->name}}
+									{{$new_relation->name}}
 							</div>
 							<div class="des-news">
-									{{$news->sapo}}
+									{{$new_relation->sapo}}
 							</div>
 							<div class="date-news">
-									{!!  date('d/m/Y', (strtotime( $news->created_at))) !!}
+									{!!  date('d/m/Y', (strtotime( $new_relation->created_at))) !!}
 							</div>
 						</div>
 					</a>

@@ -3,6 +3,9 @@
 @section('title-navbar')
 	{{-- Lĩnh vực hoạt động --}}
 @endsection
+@section('title')
+{{$field_active->meta_title}}
+@endsection
 
 @section('body-class')
 class="background-white page-scope-activities"

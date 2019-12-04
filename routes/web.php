@@ -38,6 +38,10 @@
 
     Route::get('van-hoa-doanh-nghiep', 'Web\JobController@index');
 
+    Route::get('gioi-thieu-tap-doan', 'Web\IntroduceCompanyController@index');
+    Route::get('ban-lanh-dao', 'Web\IntroduceCompanyController@leader');
+    Route::get('tin-tuc', 'Web\NewsController@all');
+
     Route::get('van-hoa-doanh-nghiep/tuyen-dung', 'Web\JobController@listJob');
     Route::get('van-hoa-doanh-nghiep/tuyen-dung/{slug}', 'Web\JobController@detail')->name('job.details');
     Route::post('post-cv', 'Web\JobController@postCV');
@@ -47,7 +51,7 @@
     // });
 
     
-    Route::get('gioi-thieu-tap-doan/{type}', 'Web\IntroduceCompanyController@index');
+    // Route::get('gioi-thieu-tap-doan/{type}', 'Web\IntroduceCompanyController@index');
     
     Route::get('/{slug}', 'Web\ScopeActiveController@index');
     Route::get('tin-tuc/{category}', 'Web\NewsController@index');

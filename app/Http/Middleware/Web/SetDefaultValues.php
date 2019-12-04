@@ -6,6 +6,7 @@ use App\Services\UserServiceInterface;
 use App\Models\NewCategory;
 use App\Models\Field;
 use App\Models\Footer;
+use App\Models\Meta;
 use \Request;
 
 class SetDefaultValues
@@ -38,12 +39,14 @@ class SetDefaultValues
         $menu_fields = Field::all();
         $path_url = Request::segment(1);
         $footer = Footer::first();
+        $meta = Meta::all();
         // dd($path_url);
         \View::share('authUser', $user);
         \View::share('menu_news_categories', $menu_news_categories);
         \View::share('menu_fields', $menu_fields);
         \View::share('path_url', $path_url);
         \View::share('footer', $footer);
+        \View::share('meta', $meta);
 
         return $next($request);
     }
