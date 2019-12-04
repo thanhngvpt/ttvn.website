@@ -97,6 +97,8 @@ body {
         line-height: 24px; }
       .navbar-top-area .navbar li.active a {
         color: #57AE5B !important; }
+      .navbar-top-area .navbar li.active li a {
+        color: #222222 !important; }
     .navbar-top-area .navbar .icon-change-language {
       line-height: 32px;
       margin-right: 48px; }
