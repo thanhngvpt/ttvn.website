@@ -60,7 +60,7 @@
                             <img src="{!! $video->present()->coverImage()->present()->url !!}" class="img-fluid item-video"/>
                         @endif
                         @foreach($banners as $banner)
-                            <img src="{!! $banners->first()->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                            <img src="{!! $banner->present()->coverImage()->present()->url !!}" class="img-fluid" />
                         @endforeach
                     </div>
                 </div>
