@@ -20,10 +20,10 @@ $("#froala-editor").froalaEditor({
 }).on('froalaEditor.focus', function (e, editor) {
 
 }).on('froalaEditor.image.inserted', function (e, editor, img) {
-
-}).on('froalaEditor.image.error', function (e, editor, error) {
     img.wrapAll('<div class="foala-image"></div>');
     img.attr("width", "100%");
+}).on('froalaEditor.image.error', function (e, editor, error) {
+   
 }).on('froalaEditor.image.removed', function (e, editor, $img) {
     Boilerplate.imageDeleteParams.src = $img.attr('src');
     
