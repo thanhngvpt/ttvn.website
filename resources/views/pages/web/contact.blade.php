@@ -29,7 +29,7 @@
 					Liên hệ với chúng tôi
 				</div>
 				<div class="item-form-contact">
-					{!! Form::email('email', null, ['class' => 'form-control ' . ($errors->has('email') ? 'is-invalid' : ''), 'placeholder' => 'Email', 'id' => 'email', 'type' => 'email']) !!}
+					{!! Form::text('text', null, ['class' => 'form-control ' . ($errors->has('email') ? 'is-invalid' : ''), 'placeholder' => 'Email', 'id' => 'email', 'type' => 'email']) !!}
 					@if ($errors->has('email')) <div class="invalid-feedback">{{ $errors->first('email') }}</div> @endif
 				</div>
 				<div class="item-form-contact">
@@ -37,7 +37,7 @@
 					@if ($errors->has('name')) <div class="invalid-feedback">{{ $errors->first('name') }}</div> @endif
 				</div>
 				<div class="item-form-contact">
-					{!! Form::number('phone', null, ['class' => 'form-control ' . ($errors->has('phone') ? 'is-invalid' : ''), 'placeholder' => 'Số điện thoại', 'id' => 'phone']) !!}
+					{!! Form::text('phone', null, ['class' => 'form-control ' . ($errors->has('phone') ? 'is-invalid' : ''), 'placeholder' => 'Số điện thoại', 'id' => 'phone']) !!}
 					@if ($errors->has('phone')) <div class="invalid-feedback">{{ $errors->first('phone') }}</div> @endif
 				</div>
 				<div class="item-form-contact">
@@ -81,7 +81,9 @@
 						obj = response.responseJSON
 						$('.invalid-feedback').remove();
 						if (typeof obj == "string") {
-							Swal.fire('Lỗi!', response.responseJSON, 'error')
+							let message = document.createElement("message");
+							message.innerHTML='Thông tin của  chưa được được gửi. <br/>Vấn đề có thể liên quan tới đường truyền internet của bạn.'
+							Swal.fire('Xảy ra lỗi!', message, 'error')
 							return false;
 						}
 

@@ -12,6 +12,8 @@
 @section('nav-header')
 @endsection
 
+@section('body-class', 'class=home-page')
+
 @section('nav-slide')
 <main class="position-relative">
     <div class="top-page-slide">
@@ -275,10 +277,16 @@
         <div class="description">
             {{$heading->support_description}}
         </div>
-        {!! Form::open(['action' => 'Web\ContactController@index', 'class' => 'form-consultation', 'method' => 'POST']) !!}
-            <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
-            <input type="text" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
-            <button type="submit" id="submit" class="btn">Gửi</button>
+        {!! Form::open(['action' => 'Web\ContactController@index', 'class' => 'form-consultation form-inline', 'method' => 'POST']) !!}
+            <div class="form-group">
+                <input type="text" name="email" id="email" placeholder="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="number" name="phone" id="phone" placeholder="Số điện thoại" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submit" class="btn">Gửi</button>
+            </div>
         {!! Form::close() !!}
     </div>
 </div>
@@ -312,11 +320,6 @@
       }
     }
 
-    @media screen and (max-width: 767px) {
-      .navbar-top-area {
-        background-image: url('../images/bg-header-home-xs.svg');
-      }
-    }
   </style>
 @endsection
 
@@ -449,7 +452,20 @@
                         Swal.fire('Thành công!', message, 'success')
                     },
                     error: function(response) {
-                        Swal.fire('Lỗi!', 'Vui lòng nhập đầy đủ thông tin và thử lại!', 'error')
+                        obj = response.responseJSON
+						$('.invalid-feedback').remove();
+						if (typeof obj == "string") {
+                            let message = document.createElement("message");
+							message.innerHTML='Thông tin của  chưa được được gửi. <br/>Vấn đề có thể liên quan tới đường truyền internet của bạn.'
+							Swal.fire('Xảy ra lỗi!', message, 'error')
+							return false;
+						}
+
+						errors = obj.errors
+						Object.keys(errors).forEach(key => {
+							$('#' + key).addClass('is-invalid');
+							$('#' + key).closest('.form-group').append(`<div class="invalid-feedback">${errors[key][0]}</div>`);
+						});
                     }
                 });
             })
