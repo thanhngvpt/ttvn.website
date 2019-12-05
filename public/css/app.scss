@@ -140,6 +140,11 @@ body {
 				a {
 					color: #57AE5B !important;
 				}
+				li {
+					a {
+						color: #222222 !important;
+					}
+				}
 			}
 		}
 		.icon-change-language {
@@ -994,12 +999,20 @@ main {
 		line-height: 32px;
 		font-weight: bold;
 		color: #222222;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
 	}
 	.des-news {
 		font-size: 14px;
 		line-height: 22px;
 		color: #515151;
 		margin-bottom: 16px;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
 	}
 	.date-news {
 		font-size: 14px;
@@ -1265,6 +1278,10 @@ main {
 .top-field {
 	padding-top: 135px;
 	padding-bottom: 160px;
+	background-image: url(/images/home/square-services.svg);
+	background-repeat: no-repeat;
+	background-size: 32px;
+	background-position: left 10.13513514% bottom 86px;
 
 	.title-top-field {
 		margin-bottom: 24px;
@@ -1337,17 +1354,39 @@ main {
 }
 
 .top-content {
-	padding-top: 97px;
+	padding-top: 140px;
 	background-color: #F8FAFE;
+	position: relative;
+	.bg-top-content-right {
+		position: absolute;
+		top: 0;
+		right: -40px;
+		transform: translate(0, -50%);
+		img {
+			width: 204px;
+			height: 206px;
+		}
+	}
+
+	.bg-top-content-left {
+		position: absolute;
+		top: 0;
+		left: 4.0540540541%;
+		transform: translate(0, -50%);
+		img {
+			width: 63px;
+			height: 63px;
+		}
+	}
 }
 .top-intro {
 	display: flex;
 	margin-bottom: 173px;
+	justify-content: space-between;
+	align-items: center;
 }
 .text-top-intro {
-	padding-top: 48px;
 	width: 500px;
-	margin-right: 132px;
 
 	.title-1 {
 		font-family: "EB Garamond", serif;
@@ -1411,19 +1450,38 @@ main {
 }
 .img-top-intro {
 	position: relative;
-	width: calc(100% - 632px);
+	.bg-square-top, .bg-square-bottom, .bg-square-center {
+		position: absolute;
+		z-index: 30;
+	}
+	.bg-square-top {
+		width: 73px;
+		height: 73px;
+		top: -16px;
+		left: -16px;
+	}
+	.bg-square-bottom {
+		width: 140px;
+		bottom: -32px;
+		right: -32px;
+	}
+
+	.bg-square-center {
+		width: 63px;
+		bottom: -120px;
+		right: 135px;
+	}
 
 	.img-intro-after {
-		float: right;
-		border-radius: 16px;
-		width: 286px;
+		position: absolute;
+		top: -113px;
+		right: -88px;
+		z-index: 50;
 	}
 	.img-intro-before {
-		position: absolute;
-		top: 112px;
-		right: 88px;
-		border-radius: 16px;
 		width: 630px;
+		position: relative;
+		z-index: 100;
 	}
 }
 .top-sumarry {
@@ -1632,6 +1690,7 @@ main {
 	.form-consultation {
 		display: flex;
 		justify-content: center;
+		align-items: flex-start;
 
 		input {
 			width: 312px;
@@ -2027,6 +2086,7 @@ main {
 	}
 	.top-field {
 		padding-top: 88px;
+		background-position: left 2.489019034% bottom 67px;
 		.item-top-field {
 			padding-left: 32px;
 			padding-right: 32px;
@@ -2070,6 +2130,14 @@ main {
 	}
 	.top-content {
 		padding-top: 88px;
+		.bg-top-content-right {
+			display: none;
+		}
+		.bg-top-content-left {
+			top: 23px;
+			left: -18px;
+			transform: none;
+		}
 	}
 	.text-top-intro {
 		padding-top: 0;
@@ -2081,15 +2149,42 @@ main {
 		}
 	}
 	.img-top-intro {
-		width: calc(100% - 431px);
+		width: 487px;
+		position: relative;
 
+		.bg-square-top, .bg-square-bottom, .bg-square-center {
+			position: absolute;
+			z-index: 30;
+		}
+		.bg-square-top {
+			width: 73px;
+			height: 73px;
+			top: -16px;
+			left: -16px;
+		}
+		.bg-square-bottom {
+			width: 103px;
+			bottom: -23px;
+			right: -16px;
+		}
+	
+		.bg-square-center {
+			width: 48px;
+			bottom: -124px;
+			right: 193px;
+		}
+	
 		.img-intro-after {
 			width: 131px;
+			position: absolute;
+			top: -63px;
+			right: -56px;
+			z-index: 50;
 		}
 		.img-intro-before {
-			top: 68px;
-			left: 0;
-			right: initial;
+			width: 630px;
+			position: relative;
+			z-index: 100;
 		}
 	}
 	.top-sumarry {
@@ -2646,6 +2741,7 @@ main {
 	.top-field {
 		padding-top: 64px;
 		padding-bottom: 64px;
+		background-image: none;
 		
 		.item-top-field {
 			padding-left: 32px;
@@ -2688,21 +2784,52 @@ main {
 		margin-bottom: 88px;
 	}
 	.img-top-intro {
-		width: calc(100% - 338px);
-
-		.img-intro-before {
-			left: 0;
-			top: 124px;
-			right: initial;
+		width: 397px;
+		.bg-square-top, .bg-square-bottom, .bg-square-center {
+			position: absolute;
+			z-index: 30;
 		}
+		.bg-square-top {
+			display: none;
+		}
+		.bg-square-bottom {
+			width: 103px;
+			bottom: -38px;
+			right: -51px;
+		}
+	
+		.bg-square-center {
+			width: 48px;
+			bottom: -124px;
+			right: 193px;
+		}
+	
 		.img-intro-after {
 			width: 131px;
-			margin-top: 55px;
-			margin-right: -60px;
+			position: absolute;
+			top: -63px;
+			right: -56px;
+			z-index: 50;
+		}
+		.img-intro-before {
+			width: 630px;
+			position: relative;
+			z-index: 100;
 		}
 	}
 	.top-content {
 		padding-top: 88px;
+		.bg-top-content-right ,.bg-top-content-left {
+			display: none;
+		}
+
+		.bg-top-content-left {
+			display: block;
+			top: 62px;
+			right: 27.04081633%;
+			left: inherit;
+			width: 26px;
+		}
 	}
 	.text-top-intro {
 		width: 296px;
@@ -2783,7 +2910,8 @@ main {
 		padding-bottom: 48px;
 	}
 	.area-top-news {
-		overflow: auto;
+		overflow: hidden;
+		overflow-x: auto;
 	}
 	.slide-top-news {
 		margin: 0;
@@ -3356,6 +3484,7 @@ main {
 	}
 	.top-field {
 		padding-top: 32px;
+		background-image: none;
 
 		.title-top-field {
 			font-size: 24px;
@@ -3411,6 +3540,10 @@ main {
 	}
 	.top-content {
 		padding-top: 56px;
+		overflow: hidden;
+		.bg-top-content-right ,.bg-top-content-left {
+			display: none;
+		}
 	}
 	
 	.text-top-intro {
@@ -3455,13 +3588,34 @@ main {
 	.img-top-intro {
 		width: 100%;
 
-		.img-intro-before {
-			position: relative;
-			top: initial;
-			right: initial;
+		.bg-square-top, .bg-square-bottom, .bg-square-center {
+			position: absolute;
+			z-index: 30;
 		}
+		.bg-square-top {
+			display: block;
+			width: 48px;
+			height: 48px;
+			top: -12px;
+			left: -12px;
+		}
+		.bg-square-bottom {
+			width: 103px;
+			bottom: -23px;
+			right: -45px;
+		}
+	
+		.bg-square-center {
+			display: none;
+		}
+	
 		.img-intro-after {
 			display: none;
+		}
+		.img-intro-before {
+			width: 630px;
+			position: relative;
+			z-index: 100;
 		}
 	}
 	.top-sumarry {
@@ -3529,7 +3683,8 @@ main {
 		}
 	}
 	.area-top-news {
-		overflow: auto;
+		overflow: hidden;
+		overflow-x: auto;
 	}
 	.slide-top-news {
 		margin: 0;
@@ -3590,7 +3745,6 @@ main {
 			input {
 				width: calc(100% - 36px);
 				margin: auto;
-				margin-bottom: 24px;
 			}
 			.btn {
 				width: calc(100% - 36px);
@@ -3666,3 +3820,5 @@ $bg-history: #00263C;
 @import './includes/scope_active';
 
 @import './pages/introduce';
+
+@import './pages/home';

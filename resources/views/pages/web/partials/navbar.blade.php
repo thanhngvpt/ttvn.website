@@ -16,7 +16,7 @@
                 <li class="nav-item @if($path_url == null) active @endif">
                     <a class="nav-link" href="/">Trang chủ</a>
                 </li>
-                <li class="nav-item @if($path_url == 'introduce-company') active @endif">
+                <li class="nav-item @if($path_url == 'gioi-thieu-tap-doan' || $path_url == 'ban-lanh-dao') active @endif">
                     <a class="nav-link">
                         Giới thiệu
                         <i class="fas fa-caret-down"></i>
@@ -56,7 +56,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item @if($path_url == 'news-category') active @endif">
+                <li class="nav-item @if($path_url == 'tin-tuc') active @endif">
                     <a class="nav-link">
                             Tin tức
                         <i class="fas fa-caret-down"></i>
@@ -81,10 +81,10 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item @if($path_url == 'job') active @endif">
+                <li class="nav-item @if($path_url == 'van-hoa-doanh-nghiep') active @endif">
                     <a class="nav-link" href="{!! action('Web\JobController@index') !!}">Tuyển dụng</a>
                 </li>
-                <li class="nav-item @if($path_url == 'contact') active @endif">
+                <li class="nav-item @if($path_url == 'lien-he') active @endif">
                     <a class="nav-link" href="/lien-he">Liên hệ</a>
                 </li>
             </ul>
