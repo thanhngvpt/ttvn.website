@@ -117,5 +117,11 @@ class JobController extends Controller
             } 
                 
         }  
+
+        if (empty($candidates)) {
+            return back()->with('error','Gửi thông tin thất bại');
+        }
+
+        return back()->with('success','Bạn đã gửi thông tin thành công!');
     }
 }

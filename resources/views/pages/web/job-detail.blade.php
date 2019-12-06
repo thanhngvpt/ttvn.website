@@ -32,6 +32,18 @@
 @endsection
 
 @section('content')
+	@if ($message = Session::get('success'))
+	<div class="alert alert-success alert-block">
+		<button type="button" class="close" data-dismiss="alert">×</button>	
+			<strong>{{ $message }}</strong>
+	</div>
+	@endif
+	@if ($message = Session::get('error'))
+	<div class="alert alert-danger alert-block">
+		<button type="button" class="close" data-dismiss="alert">×</button>	
+			<strong>{{ $message }}</strong>
+	</div>
+	@endif
 	<div id="job-detail-page">
 		<div class="content-job-detail">
 			<div class="title-job-detail">
@@ -50,9 +62,9 @@
 					@csrf
 					<input type="hidden" value="{{$job->slug}}" name="slug">
 					<div class="input-apply-group">
-						<input type="text" name="name" placeholder="Họ và tên" class="form-control">
-						<input type="email" name="email" placeholder="Email" class="form-control">
-						<input type="text" name="phone" placeholder="Số điện thoại" class="form-control">
+						<input type="text" name="name" required placeholder="Họ và tên" class="form-control">
+						<input type="email" name="email" required placeholder="Email" class="form-control">
+						<input type="text" name="phone" required placeholder="Số điện thoại" class="form-control">
 						<div class="btn-upload-file-apply display-md" onclick="$('#file_apply').click()">
 							Tải lên CV của bạn.
 						</div>
@@ -60,7 +72,7 @@
 					<div class="btn-upload-file-apply hidden-md" onclick="$('#file_apply').click()">
 						Tải lên CV của bạn.
 					</div>
-					<input type="file" name="file" id="file_apply" value="{{ old('file') ?? old('file')}}">
+					<input type="file" required name="file" id="file_apply" value="{{ old('file') ?? old('file')}}">
 					<div class="btn-submit-apply">
 						<button type="submit" class="btn">Nộp hồ sơ ứng tuyển</button>
 					</div>
