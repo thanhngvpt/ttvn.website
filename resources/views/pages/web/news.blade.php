@@ -48,7 +48,9 @@
 						<a class="item-slide cursor-pointer" href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}">
 							<div class="item-slide-news">
 								<div class="img-slide-news">
+										@if(!empty($hot_new->present()->coverImage()))
 									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
+									@endif
 								</div>
 								<div class="content-slide-news">
 									<div class="btn tag-news">{{@$hot_new->newCategory->name}}</div>
@@ -66,7 +68,9 @@
 							<div class="col-xl-4 col-md-6">
 								<a class="item-news" href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}">
 									<div class="img-news">
+											@if(!empty($item->present()->coverImage()))
 										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+										@endif
 									</div>
 									<div class="cate-news">{{@$item->newCategory->name}}</div>
 									<div class="title-news">{{$item->name}}</div>
@@ -93,7 +97,9 @@
 						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
 							<div class="item-slide-news">
 								<div class="img-slide-news">
+										@if(!empty($hot_new->present()->coverImage()))
 									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
+									@endif
 								</div>
 								<div class="content-slide-news">
 									<button class="btn tag-news">
@@ -119,7 +125,9 @@
 							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}'">
 								<div class="item-news">
 									<div class="img-news">
+											@if(!empty($item->present()->coverImage()))
 										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+										@endif
 									</div>
 									<div class="cate-news">
 											{{@$item->newCategory->name}}

@@ -59,10 +59,14 @@
                     <div class="top-bg"></div>
                     <div class="top-slider">
                         @if (!empty($video))
+                        @if(!empty($video->present()->coverImage()))
                             <img src="{!! $video->present()->coverImage()->present()->url !!}" class="img-fluid item-video"/>
                         @endif
+                        @endif
                         @foreach($banners as $banner)
+                        @if(!empty($banner->present()->coverImage()))
                             <img src="{!! $banner->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                        @endif
                         @endforeach
                     </div>
                 </div>
