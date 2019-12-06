@@ -66,11 +66,17 @@
 						<input type="email" name="email" required placeholder="Email" class="form-control">
 						<input type="text" name="phone" required placeholder="Số điện thoại" class="form-control">
 						<div class="btn-upload-file-apply display-md" onclick="$('#file_apply').click()">
-							Tải lên CV của bạn.
+							<span class="note-upload-cv">Tải lên CV của bạn.</span>
+							<div class="preview-fileupload">
+								<i class="fas fa-times"></i>
+							</div>
 						</div>
 					</div>
 					<div class="btn-upload-file-apply hidden-md" onclick="$('#file_apply').click()">
-						Tải lên CV của bạn.
+						<span class="note-upload-cv">Tải lên CV của bạn.</span>
+						<div class="preview-fileupload">
+							<i class="fas fa-times"></i>
+						</div>
 					</div>
 					<input type="file" required name="file" id="file_apply" value="{{ old('file') ?? old('file')}}">
 					<div class="btn-submit-apply">
@@ -88,4 +94,24 @@
 			padding-bottom: 87px;
 		}
 	</style>
+@endsection
+
+@section('page-scripts')
+		<script>
+			$('#file_apply').on('change', function (e) {
+				let files = e.target.files
+				if (files.length) {
+					let filename = files[0].name
+					$('.note-upload-cv').html(filename)
+					$('.preview-fileupload').css('display', 'block')
+				}
+			});
+
+			$('.preview-fileupload').on('click', function (event) {
+				event.stopPropagation();
+				$('#file_apply').val(null);
+				$('.note-upload-cv').html('Tải lên CV của bạn.')
+				$('.preview-fileupload').css('display', 'none')
+			});
+		</script>
 @endsection
