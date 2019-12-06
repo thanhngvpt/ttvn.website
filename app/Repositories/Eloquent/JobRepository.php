@@ -26,7 +26,7 @@ class JobRepository extends SingleKeyModelRepository implements JobRepositoryInt
         $count = $query->count();
         $total_page = intval($count / $page_size) + (($count % $page_size) == 0 ? 0 : 1);
         
-        $jobs = $query->orderBy('id', 'desc')->limit($page_size)->offset($offset)->get();
+        $jobs = $query->orderBy('order', 'asc')->orderBy('id', 'desc')->limit($page_size)->offset($offset)->get();
 
         return [
             'jobs' => $jobs,
