@@ -53,9 +53,9 @@
     
     // Route::get('gioi-thieu-tap-doan/{type}', 'Web\IntroduceCompanyController@index');
     
+    Route::get('get-project-via-field', 'Web\ScopeActiveController@getProjects');
     Route::get('/{slug}', 'Web\ScopeActiveController@index');
     Route::get('tin-tuc/{category}', 'Web\NewsController@index');
     Route::get('tin-tuc/{category}/{slug}', 'Web\NewsController@details');
-    Route::get('get-project-via-field', 'Web\ScopeActiveController@getProjects');
     Route::post('post-contact', 'Web\ContactController@index')->name('post-contact');
 });
