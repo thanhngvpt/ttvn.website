@@ -25,9 +25,7 @@ class ContactRequest extends FormRequest
     {
         $rules = [
             'email' => 'required|email',
-            'name' => 'required',
-            'phone' => 'required|alpha_num|min:9|max:11',
-            'content' => 'required'
+            'phone' => 'required|alpha_num|min:9|max:11'
         ];
 
         if ($this->request->has('form_from_home')) {
