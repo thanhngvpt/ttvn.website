@@ -7,6 +7,7 @@ use App\Http\Requests\PaginationRequest;
 use \App\Repositories\TableNewRepositoryInterface;
 use App\Models\NewCategory;
 use App\Models\TableNew;
+use App\Models\Footer;
 use View;
 
 class NewsController extends Controller
@@ -84,10 +85,12 @@ class NewsController extends Controller
     {
         $news = TableNew::where('slug', $slug)->first();
         $new_relations = TableNew::where('new_category_id', $news->new_category_id)->orderBy('order', 'desc')->take(12)->get();
+        $footer = Footer::first();
        
         return view('pages.web.news-detail', [
             'news' => $news,
-            'new_relations' => $new_relations
+            'new_relations' => $new_relations,
+            'footer' => $footer
         ]); 
     }
 

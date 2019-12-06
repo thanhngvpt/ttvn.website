@@ -32,12 +32,12 @@
 				<div class="float-right">
 					<ul class="news-social">
 						<li>
-							<a href="#">
+							<a href="{{@$footer->fb_link}}">
 								<img src="{{ asset('images/icon-facebook-share.svg') }}" class="img-fluid" />
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="mailto:{{@$footer->email}}">
 								<img src="{{ asset('images/icon-google-share.svg') }}" class="img-fluid" />
 							</a>
 						</li>

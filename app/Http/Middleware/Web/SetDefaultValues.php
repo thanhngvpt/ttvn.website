@@ -36,7 +36,7 @@ class SetDefaultValues
     {
         $user = $this->userService->getUser();
         $menu_news_categories = NewCategory::orderBy('order', 'asc')->get();
-        $menu_fields = Field::all();
+        $menu_fields = Field::orderBy('order', 'asc')->get();
         $path_url = Request::segment(1);
         $footer = Footer::first();
         $meta = Meta::all();
