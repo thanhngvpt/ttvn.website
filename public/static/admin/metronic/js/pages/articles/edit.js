@@ -4,6 +4,7 @@ $("#keywords").tagsinput({
 
 // for Froala editor
 $("#froala-editor").froalaEditor({
+    imageDefaultWidth: 0,
     toolbarInline: false,
     pastePlain: true,
     heightMin: 200,
@@ -20,7 +21,7 @@ $("#froala-editor").froalaEditor({
 }).on('froalaEditor.focus', function (e, editor) {
 
 }).on('froalaEditor.image.inserted', function (e, editor, img) {
-    img.wrapAll('<div class="foala-image"></div>');
+    img.wrapAll('<div class="foala-image" style=" margin: 10px 0; width: 100%;"></div>');
     img.attr("width", "100%");
 }).on('froalaEditor.image.error', function (e, editor, error) {
    

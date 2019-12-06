@@ -22,6 +22,12 @@
     
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <style>
+        .foala-image{
+            margin: 10px 0;
+            width: 100%;
+        }
+    </style>
 @endpush
 
 @push('scripts')
