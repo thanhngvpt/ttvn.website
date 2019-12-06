@@ -811,6 +811,7 @@ footer {
 			margin-bottom: 32px;
 			border-radius: 8px;
 			cursor: pointer;
+			position: relative;
 		}
 		#file_apply {
 			display: none;
@@ -1378,6 +1379,12 @@ main {
 			height: 63px;
 		}
 	}
+}
+.preview-fileupload {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 24px;
 }
 .top-intro {
 	display: flex;
