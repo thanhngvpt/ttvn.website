@@ -1,0 +1,42 @@
+.top-consultation {
+    .form-consultation {
+        .form-group {
+            max-width: 312px;
+        }
+        .form-control.is-invalid {
+            border-color: inherit;
+            background-image: url("../images/icon-invalid-black.svg");
+        }
+        .invalid-feedback {
+            color: #00263C;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .top-consultation {
+        .form-consultation {
+            .form-group {
+                max-width: 297px;
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    .home-page {
+        .navbar-top-area {
+            background-image: none;
+            border-bottom: solid 24px #57AE5B;
+        }
+    }
+
+    .top-consultation {
+        .form-consultation {
+            .form-group {
+                max-width: calc(100% - 36px);
+                margin: auto;
+                margin-bottom: 24px;
+            }
+        }
+    }
+}

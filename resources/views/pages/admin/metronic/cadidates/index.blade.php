@@ -123,8 +123,8 @@
                                             <td>{{ $cadidate->name }}</td>
                                             <td>{{ $cadidate->phone }}</td>
                                             <td>{{ $cadidate->email }}</td>
-                                            <td><a href="{{ $cadidate->file }}">File</a></td>
-                                            <td><a href="{{ $cadidate->link_job }}">Link</a></td>
+                                            <td><a href="{{ $cadidate->file }}" target="_blank">File</a></td>
+                                            <td><a href="{{ $cadidate->link_job }}" target="_blank">Link</a></td>
                                             <td>
                                             <a href="{!! action('Admin\CadidateController@show', $cadidate->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>

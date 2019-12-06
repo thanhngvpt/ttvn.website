@@ -1697,6 +1697,7 @@ main {
 	.form-consultation {
 		display: flex;
 		justify-content: center;
+		align-items: flex-start;
 
 		input {
 			width: 312px;
@@ -2916,7 +2917,8 @@ main {
 		padding-bottom: 48px;
 	}
 	.area-top-news {
-		overflow: auto;
+		overflow: hidden;
+		overflow-x: auto;
 	}
 	.slide-top-news {
 		margin: 0;
@@ -3688,7 +3690,8 @@ main {
 		}
 	}
 	.area-top-news {
-		overflow: auto;
+		overflow: hidden;
+		overflow-x: auto;
 	}
 	.slide-top-news {
 		margin: 0;
@@ -3749,7 +3752,6 @@ main {
 			input {
 				width: calc(100% - 36px);
 				margin: auto;
-				margin-bottom: 24px;
 			}
 			.btn {
 				width: calc(100% - 36px);
@@ -3825,3 +3827,5 @@ $bg-history: #00263C;
 @import './includes/scope_active';
 
 @import './pages/introduce';
+
+@import './pages/home';

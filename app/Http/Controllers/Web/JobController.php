@@ -30,7 +30,7 @@ class JobController extends Controller
     {
         $cultural_companies = CulturalCompany::orderBy('id', 'desc')->first();
         $criteria_candidate = CriteriaCandidate::all();
-        $jobs = Job::take(5)->orderBy('id', 'desc')->get();
+        $jobs = Job::take(5)->orderBy('order', 'asc')->orderBy('id', 'desc')->get();
         
         return view('pages.web.job', [
             'cultural_companies' => $cultural_companies,
@@ -117,5 +117,11 @@ class JobController extends Controller
             } 
                 
         }  
+
+        if (empty($candidates)) {
+            return back()->with('error','Gửi thông tin thất bại');
+        }
+
+        return back()->with('success','Bạn đã gửi thông tin thành công!');
     }
 }
