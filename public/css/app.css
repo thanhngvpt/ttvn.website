@@ -679,6 +679,8 @@ footer {
 #news-page {
   background-color: #ffffff;
   border-bottom: 1px solid #eeeeee; }
+  #news-page .item-slide {
+    text-decoration: none; }
   #news-page .item-slide-news {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -818,9 +820,12 @@ main .nav-tabs {
     color: #515151;
     margin-bottom: 16px;
     overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical; }
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 44px; }
   .item-news .date-news {
     font-size: 14px;
     line-height: 22px;
@@ -2899,6 +2904,11 @@ body {
   overflow: hidden;
   overflow-y: auto; }
 
+.cursor-pointer {
+  cursor: pointer; }
+  .cursor-pointer * {
+    cursor: pointer; }
+
 .section .section-head .section-title {
   font-weight: 600;
   font-size: 24px;
@@ -4549,8 +4559,7 @@ body {
         .section-leaders .list-leaders .leaders-slide-item .name-leader {
           font-size: 20px;
           line-height: 100%;
-          color: #222222;
-          white-space: nowrap; }
+          color: #222222; }
         .section-leaders .list-leaders .leaders-slide-item .role-company {
           font-size: 16px;
           line-height: 25px;

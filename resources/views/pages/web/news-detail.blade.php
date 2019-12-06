@@ -15,10 +15,10 @@
 				{{@$news->newCategory->name}}
 			</a>
 			<div class="title-news-detail">
-					{{$news->name}}
+				{{$news->name}}
 			</div>
 			<div class="date-detail-news">
-					{!!  date('d/m/Y', (strtotime( $news->created_at))) !!}
+				{!!  date('d/m/Y', (strtotime( $news->created_at))) !!}
 			</div>
 			<div class="content-detail-news">
 				{!! $news->content !!}
@@ -29,7 +29,7 @@
 						{{@$news->newCategory->name}}
 					</span>
 				</div>
-				<div class="float-right">
+				{{-- <div class="float-right">
 					<ul class="news-social">
 						<li>
 							<a href="#">
@@ -47,7 +47,7 @@
 							</a>
 						</li>
 					</ul>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 		<div class="relation-news">
