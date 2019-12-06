@@ -59,7 +59,9 @@
 					@foreach($new_relations as $new_relation)
 					<a href="{!! action('Web\NewsController@details', [$new_relation->newCategory->slug, $new_relation->slug]) !!}" class="item-news">
 						<div class="img-news">
+							@if(!empty($new_relation->present()->coverImage()))
 							<img src="{!! $new_relation->present()->coverImage()->present()->url !!}" class="img-fluid" />
+							@endif
 						</div>
 						<div class="content-news">
 							<div class="cate-news">

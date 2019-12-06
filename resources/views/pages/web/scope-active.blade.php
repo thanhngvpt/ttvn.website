@@ -47,7 +47,9 @@ class="background-white page-scope-activities"
                         </div>
                         <div class="tech-thumb">
                             <div class="container">
+                                    @if(!empty($field->present()->coverImage()))
                                 <img src="{!! $field->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -59,13 +61,17 @@ class="background-white page-scope-activities"
                                 <div class="tech-column-one">
                                     <div class="tech-item">
                                         <div class="tech-line"></div>
+                                        @if(!empty($field->present()->icon1Image()))
                                         <img src="{!! $field->present()->icon1Image()->present()->url !!}" class="img-fluid tech-item-icon" />
+                                        @endif
                                         <div class="tech-item-title">{{$field->charact_1}}</div>
                                         <div class="tech-item-desc">{{$field->des_1}}</div>
                                     </div>
                                     <div class="tech-item tech-item-down">
                                         <div class="tech-line"></div>
+                                        @if(!empty($field->present()->icon2Image()))
                                         <img src="{!! $field->present()->icon2Image()->present()->url !!}" class="img-fluid tech-item-icon" />
+                                        @endif
                                         <div class="tech-item-title">{{$field->charact_2}}</div>
                                         <div class="tech-item-desc">{{$field->des_2}}</div>
                                     </div>
@@ -73,17 +79,23 @@ class="background-white page-scope-activities"
 
                                 <div class="tech-column-two">
                                     <div class="tech-item item-only-thumb text-center">
+                                            @if(!empty($field->present()->cover2Image()))
                                         <img src="{!! $field->present()->cover2Image()->present()->url !!}" class="img-fluid" />
+                                        @endif
                                     </div>
                                     <div class="tech-item">
                                         <div class="tech-line"></div>
+                                        @if(!empty($field->present()->icon3Image()))
                                         <img src="{!! $field->present()->icon3Image()->present()->url !!}" class="img-fluid tech-item-icon" />
+                                        @endif
                                         <div class="tech-item-title">{{$field->charact_3}}</div>
                                         <div class="tech-item-desc">{{$field->des_3}}</div>
                                     </div>
                                 </div>
                                 <div class="tech-column-three">
+                                        @if(!empty($field->present()->cover2Image()))
                                     <img src="{!! $field->present()->cover2Image()->present()->url !!}" class="img-fluid" />
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -107,7 +119,9 @@ class="background-white page-scope-activities"
                     <div href="#" class="slide-item">
                         <div class="item-wrapper">
                             <div class="slide-item-thumb">
+                                    @if(!empty($project->present()->coverImage()))
                                 <img src="{!! $project->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                @endif
                             </div>
                             <div class="slide-item-content">
                                 <div class="slide-item-title">{{$project->name}}</div>
