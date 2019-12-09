@@ -1,6 +1,6 @@
 
 @foreach($data['jobs'] as $job)
-<tr onclick="location.href='{!! action('Web\JobController@detail', $job->slug) !!}'">
+<tr data-link="{!! action('Web\JobController@detail', $job->slug) !!}" class="cursor-pointer click-action">
     <td>
         <a href="#" class="name-job">
             {{$job->name}}
@@ -18,4 +18,5 @@
     <td>{{$job->salary }}</td>
     <td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
 </tr>
+<tr class="row-spacer"><td colspan="100"></td></tr>
 @endforeach

@@ -14,6 +14,7 @@ use \App\Repositories\JobRepositoryInterface;
 use App\Http\Requests\PaginationRequest;
 
 use App\Services\FileUploadServiceInterface;
+use App\Http\Requests\User\JobSubmitRequest;
 
 class JobController extends Controller
 {
@@ -47,7 +48,7 @@ class JobController extends Controller
         $keyword = $request->get('keyword', null);
         
         $job_categories = JobCategory::all();
-        $data = $this->jobRepo->getByJobCategory($page,$category_id, $province, $keyword);
+        $data = $this->jobRepo->getByJobCategory($page, $category_id, $province, $keyword);
 
         if($request->ajax()){
             $html_mobile = View::make('pages.web.job-mobile',
@@ -70,7 +71,8 @@ class JobController extends Controller
             return [
                 'html_mobile' =>  $html_mobile,
                 'html_desktop' => $html_desktop,
-                'paginate' => $paginate
+                'paginate' => $paginate,
+                'count' => $data['count']
             ];
         }
 
@@ -89,7 +91,7 @@ class JobController extends Controller
         ]);
     }
 
-    public function postCV(PaginationRequest $request)
+    public function postCV(JobSubmitRequest $request)
     {
         $input = $request->only([
             'name', 'email', 'phone'

@@ -22,7 +22,7 @@
 				<div class="title-search-job">
 					Tìm kiếm việc làm
 				</div>
-				<form method="POST" action="">
+				<form method="POST" action="#" id="form-search">
 					<div class="search-keyword">
 						<input type="text" id="keyword" name="keyword" class="form-control" placeholder="Từ khóa">
 						<img src="{{ asset('images/icon-search.png') }}" class="img-fluid">
@@ -41,9 +41,13 @@
 						</select>
 					</div>
 					<div class="btn-search-job">
-						<button type="button" id="submit-search" class="btn">Tìm kiếm</button>
+						<button type="submit" id="submit-search" class="btn">Tìm kiếm</button>
 					</div>
 				</form>
+			</div>
+			<div class="box-search-result">
+				<p class="search-counter"><span class="count-num">04</span> kết quả tìm kiếm</p>
+				<hr>
 			</div>
 			<div class="list-job">
 				<table>
@@ -58,23 +62,32 @@
 					</thead>
 					<tbody id="tbody">
 						@foreach($data['jobs'] as $job)
-						<tr onclick="location.href='{!! action('Web\JobController@detail', $job->slug) !!}'">
+						<tr data-link="{!! action('Web\JobController@detail', $job->slug) !!}" class="cursor-pointer click-action">
 							<td>
-								<a href="#" class="name-job">
-									{{$job->name}}
-								</a>
-								<div class="company-job">
-									@if(empty($job->company))
-									Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
-									@else
-									{{$job->company->name}}
-									@endif
+								<div class="wrapper-first">
+									<a href="#" class="name-job">
+										{{$job->name}}
+									</a>
+									<div class="company-job">
+										@if(empty($job->company))
+										Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
+										@else
+										{{$job->company->name}}
+										@endif
+									</div>
 								</div>
 							</td>
 							<td>{{$job->province}}</td>
 							<td>{{$job->number}}</td>
 							<td>{{$job->salary }}</td>
-							<td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
+							<td>
+								<div class="wrapper-last">
+								{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}
+								</div>
+							</td>
+						</tr>
+						<tr class="row-spacer">
+							<td colspan="100"></td>
 						</tr>
 						@endforeach
 					</tbody>
@@ -116,7 +129,7 @@
 				Ứng viên có thể tải mẫu ứng tuyển <a href="#">Tại đây</a>
 			</div>
 			@if($data['total_page'] > 1)
-			<ul class="pagination">
+			<ul class="pagination arrow-pagination">
 				<li class="page-item previous-page"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
 				@for($i=1;$i<=$data['total_page'];$i++)
 					<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
@@ -135,125 +148,130 @@
                 provinces.push(value.name);
 			});
 			$.each(provinces, function(key, value) {   
-				$('#province')
-					.append($("<option></option>")
-							   .attr("value",value)
-							   .text(value)); 
-		   });
-		})
-		$(document).on('click', '.child-item', function() {
-			let next_page = $(this).data('page-number');
-			let category_id = $('#category').val()
-			let province = $('#province').val()
-			let keyword = $('#keyword').val()
-		
-			$.ajax({
-				url: "{{action('Web\JobController@listJob')}}",
-				type: "GET",
-				dataType:"json",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					page: next_page,
-					category_id:category_id,
-					province:province,
-					keyword:keyword
-				},
-				success: function (res) {
-					$('#tbody').html(res.html_desktop)
-					$('.list-job-mb').html(res.html_mobile)
-					$('.pagination').html(res.paginate)
-					$('html, body').animate({
-						scrollTop: $(".list-job").offset().top
-					}, 500);
+				$('#province').append($("<option></option>").attr("value",value).text(value)); 
+		   	});
 
-				}
+			function scrollToTop(topPos) {
+				$('html, body').animate({scrollTop: topPos}, 500);
+			}
+
+			$(document).on('click', '.child-item', function() {
+				let next_page = $(this).data('page-number');
+				let category_id = $('#category').val()
+				let province = $('#province').val()
+				let keyword = $('#keyword').val()
+			
+				$.ajax({
+					url: "{{action('Web\JobController@listJob')}}",
+					type: "GET",
+					dataType:"json",
+					data: {
+						_token: "{!! csrf_token() !!}",
+						page: next_page,
+						category_id:category_id,
+						province:province,
+						keyword:keyword
+					},
+					success: function (res) {
+						$('#tbody').html(res.html_desktop)
+						$('.list-job-mb').html(res.html_mobile)
+						$('.pagination').html(res.paginate)
+						scrollToTop($(".list-job").offset().top - 100)
+					}
+				});
+			})
+
+			$('#form-search').on('submit', function(e) {
+				e.preventDefault();
+
+				let category_id = $('#category').val()
+				let province = $('#province').val()
+				let keyword = $('#keyword').val()
+			
+				$.ajax({
+					url: "{{action('Web\JobController@listJob')}}",
+					type: "GET",
+					dataType:"json",
+					beforeSend: function() {
+						$('.box-search-result').hide();
+					},
+					data: {
+						_token: "{!! csrf_token() !!}",
+						category_id:category_id,
+						province:province,
+						keyword:keyword
+					},
+					success: function (res) {
+						$('#tbody').html(res.html_desktop)
+						$('.list-job-mb').html(res.html_mobile)
+						$('.pagination').html(res.paginate);
+						$('.count-num').text(parseInt(res.count) > 9 ? res.count : '0' + res.count);
+						$('.box-search-result').show();
+					}
+				});
+			})
+
+			$(document).on('click', '.next-page', function() {
+				let current_page = $('.page-item.active').data('page-number');
+				let next_page = parseInt(current_page) + 1;
+
+				let category_id = $('#category').val()
+				let province = $('#province').val()
+				let keyword = $('#keyword').val()
+			
+				$.ajax({
+					url: "{{action('Web\JobController@listJob')}}",
+					type: "GET",
+					dataType:"json",
+					data: {
+						_token: "{!! csrf_token() !!}",
+						page: next_page,
+						category_id:category_id,
+						province:province,
+						keyword:keyword
+					},
+					success: function (res) {
+						$('#tbody').html(res.html_desktop)
+						$('.list-job-mb').html(res.html_mobile)
+						$('.pagination').html(res.paginate)
+						scrollToTop($(".list-job").offset().top - 100)
+
+					}
+				});
+			})
+
+			$(document).on('click', '.previous-page', function() {
+				let current_page = $('.page-item.active').data('page-number');
+				let next_page = parseInt(current_page) - 1;
+
+				let category_id = $('#category').val()
+				let province = $('#province').val()
+				let keyword = $('#keyword').val()
+			
+				$.ajax({
+					url: "{{action('Web\JobController@listJob')}}",
+					type: "GET",
+					dataType:"json",
+					data: {
+						_token: "{!! csrf_token() !!}",
+						page: next_page,
+						category_id:category_id,
+						province:province,
+						keyword:keyword
+					},
+					success: function (res) {
+						$('#tbody').html(res.html_desktop)
+						$('.list-job-mb').html(res.html_mobile)
+						$('.pagination').html(res.paginate)
+						scrollToTop($(".list-job").offset().top - 100)
+					}
+				});
 			});
-		})
 
-		$(document).on('click', '#submit-search', function() {
-			let category_id = $('#category').val()
-			let province = $('#province').val()
-			let keyword = $('#keyword').val()
+			$(document).on('click', 'tr.click-action', function() {
+				location.href = $(this).attr('data-link')
+			})
+		})
 		
-			$.ajax({
-				url: "{{action('Web\JobController@listJob')}}",
-				type: "GET",
-				dataType:"json",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					category_id:category_id,
-					province:province,
-					keyword:keyword
-				},
-				success: function (res) {
-					$('#tbody').html(res.html_desktop)
-					$('.list-job-mb').html(res.html_mobile)
-					$('.pagination').html(res.paginate)
-
-				}
-			});
-		})
-
-		$(document).on('click', '.next-page', function() {
-			let current_page = $('.page-item.active').data('page-number');
-			let next_page = parseInt(current_page) + 1;
-
-			let category_id = $('#category').val()
-			let province = $('#province').val()
-			let keyword = $('#keyword').val()
-		
-			$.ajax({
-				url: "{{action('Web\JobController@listJob')}}",
-				type: "GET",
-				dataType:"json",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					page: next_page,
-					category_id:category_id,
-					province:province,
-					keyword:keyword
-				},
-				success: function (res) {
-					$('#tbody').html(res.html_desktop)
-					$('.list-job-mb').html(res.html_mobile)
-					$('.pagination').html(res.paginate)
-					$('html, body').animate({
-						scrollTop: $(".list-job").offset().top
-					}, 500);
-
-				}
-			});
-		})
-
-		$(document).on('click', '.previous-page', function() {
-			let current_page = $('.page-item.active').data('page-number');
-			let next_page = parseInt(current_page) - 1;
-
-			let category_id = $('#category').val()
-			let province = $('#province').val()
-			let keyword = $('#keyword').val()
-		
-			$.ajax({
-				url: "{{action('Web\JobController@listJob')}}",
-				type: "GET",
-				dataType:"json",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					page: next_page,
-					category_id:category_id,
-					province:province,
-					keyword:keyword
-				},
-				success: function (res) {
-					$('#tbody').html(res.html_desktop)
-					$('.list-job-mb').html(res.html_mobile)
-					$('.pagination').html(res.paginate)
-					$('html, body').animate({
-						scrollTop: $(".list-job").offset().top
-					}, 500);
-
-				}
-			});
-		})
 	</script>
 @endsection

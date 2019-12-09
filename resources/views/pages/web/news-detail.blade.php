@@ -1,7 +1,7 @@
 @extends('pages.web.layouts.app')
 
 @section('body-class')
-	class="background-white no-title-page"
+	class="background-white no-title-page page-detail-title"
 @endsection
 
 @section('title')
@@ -58,23 +58,25 @@
 				<div class="slide-relation-news">
 					@foreach($new_relations as $new_relation)
 					<a href="{!! action('Web\NewsController@details', [$new_relation->newCategory->slug, $new_relation->slug]) !!}" class="item-news">
-						<div class="img-news">
-							@if(!empty($new_relation->present()->coverImage()))
-							<img src="{!! $new_relation->present()->coverImage()->present()->url !!}" class="img-fluid" />
-							@endif
-						</div>
-						<div class="content-news">
-							<div class="cate-news">
-									{{@$new_relation->newCategory->name}}
+						<div class="item-news-wrapper">
+							<div class="img-news">
+								@if(!empty($new_relation->present()->coverImage()))
+									<img src="{!! $new_relation->present()->coverImage()->present()->url !!}" class="img-fluid" />
+								@endif
 							</div>
-							<div class="title-news">
-									{{$new_relation->name}}
-							</div>
-							<div class="des-news">
-									{{$new_relation->sapo}}
-							</div>
-							<div class="date-news">
-									{!!  date('d/m/Y', (strtotime( $new_relation->created_at))) !!}
+							<div class="content-news">
+								<div class="cate-news">
+										{{@$new_relation->newCategory->name}}
+								</div>
+								<div class="title-news">
+										{{$new_relation->name}}
+								</div>
+								<div class="des-news">
+										{{$new_relation->sapo}}
+								</div>
+								<div class="date-news">
+										{!!  date('d/m/Y', (strtotime( $new_relation->created_at))) !!}
+								</div>
 							</div>
 						</div>
 					</a>
@@ -83,24 +85,6 @@
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('page-styles')
-	<style>
-		.navbar-top-area {
-			background-image: url('{{ asset("images/bg-menu-newsdetail.svg") }}')
-		}
-		.navbar-top-area .navbar {
-			padding-top: 32px;
-			padding-bottom: 32px;
-		}
-		@media screen and (min-width: 768px) and (max-width: 1023px) {
-			.navbar-top-area {
-				background-image: none;
-				background-color: #00263C;
-			}
-		}
-	</style>
 @endsection
 
 @section('page-scripts')
@@ -117,15 +101,16 @@
 					{
 						breakpoint: 1023,
 						settings: {
-							slidesToShow: 2,
+							slidesToShow: 2.1,
 							slidesToScroll: 2
 						}
 					},
 					{
 						breakpoint: 767,
 						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
+							slidesToShow: 1.1,
+							slidesToScroll: 1,
+							arrows: false
 						}
 					}
 				]

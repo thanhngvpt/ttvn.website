@@ -1,0 +1,214 @@
+#job-detail-page {
+	padding-top: 32px;
+	padding-bottom: 112px;
+	border-bottom: 1px solid #eee;
+	background-color: #ffffff;
+
+	.content-job-detail {
+		width: 648px;
+		margin: auto;
+		.title-job-detail {
+			font-size: 22px;
+			line-height: 44px;
+			font-weight: 600;
+			color: #000000;
+			margin-top: 56px;
+			margin-bottom: 16px;
+		}
+		.des-job-detail {
+			font-size: 16px;
+			line-height: 32px;
+			color: #000000;
+		}
+	}
+	.container-detail-job {
+		width: 1096px;
+		margin: auto;
+	}
+	.area-apply {
+		margin-top: 56px;
+		padding: 55px 188px;
+		border-radius: 8px;
+        box-shadow: 0px 16px 32px rgba(87, 174, 91, 0.32);
+        background-image: url(/images/common-bg/box-green-1/bg-left.svg), url(/images/common-bg/box-green-1/bg-right.svg), url(/images/common-bg/box-green-1/bg-bottom-2.svg);
+        background-repeat: no-repeat;
+        background-position: top left, top right 17.5145985401%, bottom left 88px;
+        background-color: #57AE5B;
+
+		.title-apply {
+			font-size: 32px;
+			line-height: 51px;
+			font-weight: 600;
+			color: #ffffff;
+			text-align: center;
+			margin-bottom: 48px;
+		}
+		.input-apply-group {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 24px;
+
+			input {
+				height: 48px;
+				width: 224px;
+				padding-left: 24px;
+				padding-right: 24px;
+				color: #ffffff;
+				background-color: rgba(193, 234, 197, 0.56);
+				border-radius: 8px;
+
+				&::placeholder {
+					color: rgba(255, 255, 255, 0.64);
+				}
+			}
+		}
+		.btn-upload-file-apply {
+			line-height: 48px;
+			font-size: 16px;
+			color: #ffffff;
+			padding-left: 24px;
+			padding-right: 24px;
+			background-color: rgba(193, 234, 197, 0.56);
+			border: 1px dashed #ffffff;
+			margin-bottom: 32px;
+			border-radius: 8px;
+			cursor: pointer;
+			position: relative;
+		}
+		#file_apply {
+			display: none;
+		}
+		.btn-submit-apply {
+			text-align: center;
+
+			.btn {
+				height: 48px;
+				font-size: 16px;
+				color: #57AE5B;
+				font-weight: 600;
+				background-color: #ffffff;
+				border-radius: 8px;
+				padding-left: 32px;
+				padding-right: 32px;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@media (max-width: 1439px) {
+    #job-detail-page {
+		.container-detail-job {
+			width: 936px;
+		}
+		.area-apply {
+			padding: 48px 108px;
+            margin-top: 48px;
+            background-position: top left, top right 21px, bottom left 88px;
+
+			.title-apply {
+				margin-bottom: 40px;
+			}
+			.btn-upload-file-apply {
+				margin-bottom: 3px;
+			}
+		}
+	}
+}
+
+@media (max-width: 1023px) {
+    #job-detail-page {
+        padding-top: 56px;
+		padding-bottom: 56px;
+		.container-detail-job {
+			width: calc(100% - 48px);
+			margin-left: 24px;
+            margin-right: 24px;
+            
+            .title-job-detail {
+				margin-top: 0;
+			}
+		}
+		.area-apply {
+            padding: 40px 64px;
+            background-image: url(/images/common-bg/box-green-1/bg-left.svg), url(/images/common-bg/box-green-1/bg-bottom-2.svg);
+            background-position: top left, bottom right 13.884354%;
+
+			.input-apply-group {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 32px;
+
+				input {
+					width: 49%;
+
+					&:first-child {
+						float: left;
+						margin-bottom: 24px;
+					}
+					&:nth-child(2) {
+						float: right;
+						margin-bottom: 24px;
+					}
+					&:nth-child(3) {
+						float: left;
+					}
+				}
+				.btn-upload-file-apply {
+					float: right;
+                    width: 49%;
+                    margin-bottom: 0;
+				}
+			}
+		}
+		.display-md {
+			display: block;
+		}
+		.hidden-md {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+    #job-detail-page {
+		padding-bottom: 56px;
+
+		.content-job-detail {
+			width: initial;
+			padding-left: 18px;
+			padding-right: 18px;
+
+			.title-job-detail {
+				margin-top: 0;
+			}
+		}
+		.container-detail-job {
+			padding-left: 18px;
+			padding-right: 18px;
+			width: 100%;
+		}
+		.area-apply {
+            padding: 40px 16px 44px 16px;
+            background-image: url(/images/common-bg/box-green-1/bg-left.svg);
+            background-position: top left;
+
+			.title-apply {
+				font-size: 20px;
+				line-height: 44px;
+				margin-bottom: 28px;
+			}
+			.input-apply-group {
+				display: block;
+
+				input {
+					width: 100%;
+					margin-bottom: 16px;
+				}
+				.btn-upload-file-apply {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}

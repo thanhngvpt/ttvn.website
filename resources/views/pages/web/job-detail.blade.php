@@ -58,13 +58,13 @@
 				<div class="title-apply">
 					Ứng tuyển cho vị trí này
 				</div>
-				<form method="POST" action="{!! action('Web\JobController@postCV') !!}" enctype="multipart/form-data">
+				<form method="POST" action="{!! action('Web\JobController@postCV') !!}" enctype="multipart/form-data" class="form-cv">
 					@csrf
 					<input type="hidden" value="{{$job->slug}}" name="slug">
 					<div class="input-apply-group">
-						<input type="text" name="name" required placeholder="Họ và tên" class="form-control">
-						<input type="email" name="email" required placeholder="Email" class="form-control">
-						<input type="text" name="phone" required placeholder="Số điện thoại" class="form-control">
+						<input type="text" name="name" placeholder="Họ và tên" class="form-control">
+						<input type="text" name="email" placeholder="Email" class="form-control">
+						<input type="number" name="phone" placeholder="Số điện thoại" class="form-control">
 						<div class="btn-upload-file-apply display-md" onclick="$('#file_apply').click()">
 							<span class="note-upload-cv">Tải lên CV của bạn.</span>
 							<div class="preview-fileupload">
@@ -78,7 +78,7 @@
 							<i class="fas fa-times"></i>
 						</div>
 					</div>
-					<input type="file" required name="file" id="file_apply" value="{{ old('file') ?? old('file')}}">
+					<input type="file" name="file" id="file_apply" value="{{ old('file') ?? old('file')}}">
 					<div class="btn-submit-apply">
 						<button type="submit" class="btn">Nộp hồ sơ ứng tuyển</button>
 					</div>
@@ -113,5 +113,47 @@
 				$('.note-upload-cv').html('Tải lên CV của bạn.')
 				$('.preview-fileupload').css('display', 'none')
 			});
+
+			$('.form-cv').on('submit', function(e) {
+				e.preventDefault();
+				let formData = new FormData($('.form-cv')[0]);
+
+				$.ajax({
+					url: "{!! action('Web\JobController@postCV') !!}",
+					type: "POST",
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (res) {
+						$('.form-cv')[0].reset();
+						let message = document.createElement("message");
+							message.innerHTML='Thông tin của bạn đã được gửi <br> Chúng tôi sẽ liên hệ tư vấn với bạn trong thời gian sớm nhất'
+							Swal.fire(
+								'Thành công!',
+								message,
+								'success'
+							)
+					},
+					error: function (response) {
+						obj = response.responseJSON
+						let message = document.createElement("message");
+						if (typeof obj == "string") {
+							message.innerHTML='Thông tin của  chưa được được gửi. <br/>Vấn đề có thể liên quan tới đường truyền internet của bạn.'
+							Swal.fire('Xảy ra lỗi!', message, 'error')
+							return false;
+						}
+
+						errors = obj.errors
+						msg = ''
+						Object.keys(errors).forEach(key => {
+							msg +=`${errors[key][0]}<br/>`;
+						});
+
+						message.innerHTML = msg;
+						Swal.fire('Xảy ra lỗi!', message, 'error')
+						return false;
+					}
+				});
+			})
 		</script>
 @endsection

@@ -3,8 +3,9 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+// use App\Http\Requests\PaginationRequest;
 
-class ContactRequest extends FormRequest
+class JobSubmitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,33 +24,25 @@ class ContactRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
+            'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|alpha_num|min:9|max:11'
+            'phone' => 'required|alpha_numeric|min:8|max:11',
+            'file' => 'required'
         ];
-
-        if ($this->request->has('form_from_home')) {
-            $rules = [
-                'email' => 'required|email',
-                'phone' => 'required|alpha_num|min:9|max:11'
-            ];
-        }
-    
-
-        return $rules;
     }
 
     public function messages()
     {
         return [
-            'email.email' => 'Vui lòng nhập đúng email em',
-            'email.required' => 'Vui lòng nhập đúng email rq',
             'name.required' => 'Vui lòng nhập họ và tên',
+            'email.required' => 'Vui lòng nhập đúng email',
+            'email.email' => 'Vui lòng nhập đúng email',
             'phone.required' => 'Vui lòng nhập số điện thoại từ 8-11 số',
             'phone.alpha_num' => 'Vui lòng nhập số điện thoại từ 8-11 số',
             'phone.min' => 'Vui lòng nhập số điện thoại từ 8-11 số',
             'phone.max' => 'Vui lòng nhập số điện thoại từ 8-11 số',
-            'content.required' => 'Vui lòng nhập nội dung'
+            'file.required' => 'Vui lòng tải lên CV của bạn',
         ];
     }
 }

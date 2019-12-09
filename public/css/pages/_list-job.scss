@@ -1,0 +1,350 @@
+#list-job-page {
+	.area-list-job {
+		width: 1096px;
+		margin: auto;
+        background-color: #f7f7f7;
+        padding: 56px 0 112px;
+	}
+	.form-search-job {
+		padding: 56px 80px;
+        margin-bottom: 54px;
+        box-shadow: 0px 16px 32px rgba(87, 174, 91, 0.32);
+        background-color: #57AE5B;
+        border-radius: 8px;
+        background-image: url(/images/common-bg/box-green-1/bg-left.svg), url(/images/common-bg/box-green-1/bg-right.svg), url(/images/common-bg/box-green-1/bg-bottom.svg);
+        background-repeat: no-repeat;
+        background-position: top left, top right 16.5145985401%, bottom right 51.1%;
+
+		.title-search-job {
+			font-size: 32px;
+			line-height: 51px;
+			font-weight: 600;
+			color: #ffffff;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+		form {
+			display: flex;
+			justify-content: space-between;
+		}
+		.search-keyword {
+            max-width: 312px;
+            width: 100%;
+			position: relative;
+
+			input {
+				font-size: 16px;
+				height: 48px;
+				font-weight: 600;
+				background-color: rgba(193, 234, 197, 0.56);
+				padding: 12px 22px 11px 64px;
+				width: 100%;
+                border-radius: 8px;
+                border: none;
+                box-shadow: 0px 1px 0px rgba(0, 119, 5, 0.56), inset 0px 2px 4px rgba(0, 48, 2, 0.48);
+
+				&::placeholder {
+					color: #ffffff;
+				}
+			}
+			img {
+				position: absolute;
+				top: 14px;
+				left: 26px;
+			}
+		}
+		.select-option-job {
+            max-width: 200px;
+            width: 100%;
+
+			select {
+				height: 48px;
+				padding: 0 24px;
+				font-size: 16px;
+				color: #515151;
+				font-weight: 600;
+                border-radius: 8px;
+                background-image: url(/images/form/select-down.svg);
+                background-repeat: no-repeat;
+                background-position: top 50% right 12%;
+                background-color: white;
+                border: none;
+                width: 100%;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+			}
+		}
+		.btn-search-job {
+            max-width: 154px;
+            width: 100%;
+
+			button {
+				height: 48px;
+				font-size: 16px;
+				color: #57AE5B;
+				font-weight: 600;
+				background-color: #ffffff;
+				border-radius: 8px;
+                width: 100%;
+                box-shadow: 0px 2px 0px #36883A, inset 0px 2px 0px rgba(0, 0, 0, 0.08);
+			}
+		}
+    }
+
+    .box-search-result {
+        display: none;
+        margin-bottom: 16px;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 22px;
+        color: #222222;
+        .search-counter {
+            margin-bottom: 12px;
+        }
+        hr {
+            width: 100%;
+            border: none;
+            border-bottom: solid 1px #9E9E9E;
+            margin: 0;
+        }
+    }
+    
+    .list-job {
+        table {
+            width: 100%;
+    
+            thead {
+                th {
+                    font-size: 12px;
+                    line-height: 18px;
+                    font-weight: 600;
+                    color: #626262;
+                    padding: 16px 40px;
+                    white-space: nowrap;
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        padding: 32px 40px;
+                        background: white;
+                        &:first-child {
+                            border-radius: 8px 0 0 8px;
+                        }
+                        &:last-child {
+                            border-radius: 0 8px 8px 0;
+                        }
+
+                        .name-job {
+                            display: block;
+                            font-size: 20px;
+                            line-height: 32px;
+                            font-weight: bold;
+                            color: #000000;
+                            margin-bottom: 8px;
+                        }
+                        .company-job {
+                            font-size: 14px;
+                            line-height: 22px;
+                            color: #626262;
+                        }
+                    }
+
+                    &.row-spacer {
+                        td {
+                            padding: 8px 0;
+                            background: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .list-job-mb {
+        display: none;
+    }
+
+	.download-cv {
+		font-size: 14px;
+		line-height: 22px;
+		color: #000000;
+		margin-bottom: 90px;
+	}
+}
+
+@media (max-width: 1439px) {
+    #list-job-page {
+		.area-list-job {
+			width: 936px;
+			padding: 40px 0 88px;
+		}
+		.form-search-job {
+            padding: 40px 57px 47px 57px;
+            background-position: top left, top right 22px, bottom right 40%;
+
+			.search-keyword {
+				max-width: 264px;
+			}
+			.facilty {
+				max-width: 170px;
+			}
+			.workarea {
+				max-width: 163px;
+			}
+        }
+        
+        .download-cv {
+            margin-bottom: 56px;
+        }
+
+        .list-job table {
+            thead {
+                th {
+                    padding: 16px 20px;
+    
+                    &:first-child {
+                        width: 50%;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        padding: 32px 24px;
+                        font-size: 14px;
+            
+                        &:first-child {
+                            padding-left: 40px;;
+                        }
+                        .name-job {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+	}
+}
+
+@media (max-width: 1023px) {
+    #list-job-page {
+		.download-cv {
+			margin-bottom: 56px;
+		}
+		.pagination {
+			margin-bottom: 0;
+		}
+		.area-list-job {
+			width: 736px;
+			padding: 48px 0 56px;
+		}
+		.form-search-job {
+            background-image: url(/images/common-bg/box-green-1/bg-left.svg), url(/images/common-bg/box-green-1/bg-bottom.svg);
+            background-position: top left, bottom right 21.190476%;
+			padding: 40px 62px;
+			margin-bottom: 32px;
+			
+			.title-search-job {
+				margin-bottom: 32px;
+			}
+			form {
+				display: block;
+			}
+			.search-keyword {
+				max-width: 610px;
+				margin-bottom: 23px;
+			}
+			.facilty {
+				display: inline-flex;
+				max-width: 180px;
+				margin-right: 20px;
+			}
+			.workarea {
+				display: inline-flex;
+				max-width: 180px;
+				margin-right: 20px;
+			}
+			.btn-search-job {
+				display: inline-flex;
+                max-width: 202px;
+                width: 100%;
+			}
+        }
+        
+        .list-job table {
+            thead {
+                th {
+                    padding: 16px 9px;
+    
+                    &:first-child {
+                        width: 48%;
+                    }
+                }
+            }
+            tbody {
+                td {
+                    padding: 32px 16px;
+                    font-size: 14px;
+        
+                    .name-job {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+	}
+}
+
+@media (max-width: 767px) {
+    #list-job-page {
+		.area-list-job {
+            width: calc(100% - 36px);
+            padding: 0;
+		}
+		.form-search-job {
+            border-radius: 8px;
+            padding: 40px 24px 36px;
+            margin-top: 32px;
+            background-image: url(/images/common-bg/box-green-1/bg-left.svg);
+            background-position: top left;
+            .select-option-job, .btn-search-job {
+                max-width: 100%;
+            }
+            .select-option-job, .search-keyword {
+                margin-bottom: 16px;
+            }
+            .btn-search-job {
+                margin-top: 8px;
+            }
+            .select-option-job select {
+                padding: 0 16px;
+                background-position: top 50% right 16px;
+            }
+
+			.title-search-job {
+				font-size: 20px;
+				line-height: 32px;
+				margin-bottom: 24px;
+			}
+			form {
+				display: block;
+			}
+        }
+        
+        .list-job {
+            display: none;
+        }
+
+        .list-job-mb {
+            display: block;
+        }
+
+		.pagination {
+			margin-bottom: 0;
+		}
+		.download-cv {
+			margin-bottom: 40px;
+		}
+	}
+}

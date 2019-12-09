@@ -1,0 +1,101 @@
+.section-cultural {
+    padding: 123px 0 128px;
+
+    .content-job-page {
+        max-width: 1093px;
+    }
+
+    .cultural-job {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        .column-left {
+            width: 424px;
+            .title-border-bottom {
+                font-family: $f-eb;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 100%;
+                color: #222222;
+                margin-bottom: 48px;
+            }
+
+            .des-curtural-job {
+                font-size: 16px;
+                line-height: 25px;
+                color: #515151;
+            }
+        }
+        .column-right {
+            width: 536px;
+        }
+
+        .nav-tabs {
+            margin-bottom: 24px;
+    
+            .nav-item {
+                color: #9E9E9E;
+                text-align: left;
+                padding: 8px 32px 8px 0;
+                font-weight: 600;
+                font-size: 20px;
+    
+                &:hover {
+                    border-color: #ffffff;
+                }
+                &.active {
+                    color: #57AE5B;
+                    border-color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1439px) {
+    .section-cultural {
+        padding: 88px 0;
+        .cultural-job {
+            .column-left {
+                width: 427px;
+            }
+            .column-right {
+                width: 454px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .section-cultural {
+        .cultural-job {
+            .column-left {
+                width: 48%;
+            }
+            .column-right {
+                width: 48%;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .section-cultural {
+        padding: 56px 0;
+        .cultural-job {
+            flex-direction: column;
+
+            .column-left, .column-right {
+                width: 100%;
+            }
+            .column-left {
+                margin-bottom: 32px;
+                .title-border-bottom {
+                    font-size: 24px;
+                    line-height: 100%;
+                }
+            }
+        }
+    }
+}
