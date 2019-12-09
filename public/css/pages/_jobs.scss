@@ -1,0 +1,76 @@
+#job-page {
+    background-color: #ffffff;
+
+	.content-job-page {
+		width: 1124px;
+		margin: auto;
+	}
+	
+}
+
+@media (max-width: 1439px) {
+    #job-page {
+		.content-job-page {
+			width: 936px;
+
+			.title-three-job {
+				margin-top: 0;
+			}
+		}
+		.userfind-job {
+			padding: 88px 80px 80px 80px;
+		}
+		
+	}
+}
+
+@media (max-width: 1023px) {
+    #job-page {
+		.content-job-page {
+            width: 736px;
+		}
+		.userfind-job {
+			padding: 72px 64px 70px 64px;
+
+			.des-userfind-job {
+				width: initial;
+			}
+        }
+	}
+}
+
+@media (max-width: 767px) {
+    #job-page {
+		.content-job-page {
+			width: calc(100% - 36px);
+        }
+        
+		.three-column-job {
+			.title-three-job {
+				margin-top: 8px;
+				margin-bottom: 56px;
+			}
+			.col-md-4 {
+				margin-bottom: 40px;
+
+				&:last-child {
+					margin-bottom: 8px;
+				}
+			}
+		}
+		.userfind-job {
+			width: 100%;
+			padding: 48px 24px;
+
+			.des-userfind-job {
+				width: initial;
+			}
+        }
+	}
+}
+
+@import "./jobs/section_introduce";
+@import "./jobs/section_reason";
+@import "./jobs/section_cultural";
+@import "./jobs/section_find";
+@import "./jobs/section-detail-jobs";

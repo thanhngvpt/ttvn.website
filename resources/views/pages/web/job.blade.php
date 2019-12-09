@@ -8,7 +8,7 @@
 
 @section('content')
 	<div id="job-page">
-		<div class="content-job-page">
+		<div class="content-job-page section-introduce">
 			<div class="img-job-page">
 				<img src="{!! $cultural_companies->present()->coverImage()->present()->url !!}" class="img-fluid">
 			</div>
@@ -24,188 +24,168 @@
 				</a>
 			</div>
 		</div>
-		<div class="three-column-job">
+		<div class="three-column-job section-job-reason">
 			<div class="content-job-page">
 				<div class="title-three-job">
 					Tại sao chọn TTVN
 				</div>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4 reason-item">
 						<div class="title-reason-job clearfix">
-							<div class="col-left">
-									@if(!empty($cultural_companies->present()->icon1Image()))
-								<img src="{!! $cultural_companies->present()->icon1Image()->present()->url !!}">
-								@endif
-							</div>
-							<div class="col-left">
-									<span>{{$cultural_companies->reason1}}</span>
-							</div>
+							@if(!empty($cultural_companies->present()->icon1Image()))
+							<img src="{!! $cultural_companies->present()->icon1Image()->present()->url !!}">
+							@endif
+							<span>{{$cultural_companies->reason1}}</span>
 						</div>
-						<div class="content-reason-job">
-								{{$cultural_companies->detail1}}
-						</div>
+						<div class="content-reason-job">{{$cultural_companies->detail1}}</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 reason-item">
 						<div class="title-reason-job clearfix">
-							<div class="col-left">
-									@if(!empty($cultural_companies->present()->icon2Image()))
-								<img src="{!! $cultural_companies->present()->icon2Image()->present()->url !!}" class="img-fluid">
-								@endif
-							</div>
-							<div class="col-left">
-								<span>{{$cultural_companies->reason2}}</span>
-							</div>
+							@if(!empty($cultural_companies->present()->icon2Image()))
+							<img src="{!! $cultural_companies->present()->icon2Image()->present()->url !!}" class="img-fluid">
+							@endif
+							<span>{{$cultural_companies->reason2}}</span>
 						</div>
-						<div class="content-reason-job">
-								{{$cultural_companies->detail2}}
-						</div>
+						<div class="content-reason-job">{{$cultural_companies->detail2}}</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 reason-item">
 						<div class="title-reason-job clearfix">
-							<div class="col-left">
-									@if(!empty($cultural_companies->present()->icon3Image()))
+							@if(!empty($cultural_companies->present()->icon3Image()))
 								<img src="{!! $cultural_companies->present()->icon3Image()->present()->url !!}" class="img-fluid">
-								@endif
-							</div>
-							<div class="col-left">
-								<span>{{$cultural_companies->reason3}}</span>
-							</div>
+							@endif
+							<span>{{$cultural_companies->reason3}}</span>
 						</div>
-						<div class="content-reason-job">
-								{{$cultural_companies->detail3}}
-						</div>
+						<div class="content-reason-job">{{$cultural_companies->detail3}}</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="content-job-page">
-			<div class="cultural-job">
-				<div class="column-left">
-					<div class="title-border-bottom">
-							{{$cultural_companies->ttvn_title}}
+
+		<div class="section-cultural">
+			<div class="content-job-page">
+				<div class="cultural-job">
+					<div class="column-left">
+						<div class="title-border-bottom">{{$cultural_companies->ttvn_title}}</div>
+						<div class="des-cultural-job">{!! $cultural_companies->ttvn_content !!}</div>	
 					</div>
-					<div class="des-cultural-job">
-							{{$cultural_companies->ttvn_content}}
-					</div>	
-				</div>
-				<div class="column-right">
+					<div class="column-right">
 						@if(!empty($cultural_companies->present()->ttvnImage()))
-					<img src="{!! $cultural_companies->present()->ttvnImage()->present()->url !!}" class="img-fluid">
-					@endif
+						<img src="{!! $cultural_companies->present()->ttvnImage()->present()->url !!}" class="img-fluid">
+						@endif
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="detail-jobs">
+
+		<div class="section-who-find">
 			<div class="container">
 				<div class="userfind-job">
-					<div class="title-userfind-job">
-						Chúng tôi tìm ai?
-					</div>
+					<div class="title-userfind-job">Chúng tôi tìm ai?</div>
 					<div class="des-userfind-job">
 						{{$cultural_companies->we_find_introduce}}
 					</div>
-					@foreach($criteria_candidate as $key => $value)
-					@if ($key % 4 == 0)
 					<div class="skill-job">
-						@endif
-						@if ($key % 2 == 0)
-						<div class="item-skill-job">
-						@endif
-							<div class="title-skill-job">
-									@if(!empty($value->present()->iconImage()))
-								<img src="{!! $value->present()->iconImage()->present()->url !!}" class="img-fluid">
-								@endif
-								<span>{{$value->name}}</span>
-							</div>
-							<div class="des-skill-job">
-									{{$value->content}}
-							</div>
-						@if($key % 2 == 1)	
-						</div>
-						@endif
-					@if($key % 4 == 3)	
-					</div>
-					@endif
-					@endforeach
-				</div>
-			</div>
-			<div class="content-job-page">
-				<div class="title-feature-job">
-					Danh sách việc làm nổi bật
-				</div>
-				<div class="list-job">
-					<table>
-						<thead>
-							<tr>
-								<th>TÊN</th>
-								<th>ĐỊA ĐIỂM</th>
-								<th>SỐ LƯỢNG</th>
-								<th>MỨC LƯƠNG</th>
-								<th>HẠN NỘP</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($jobs as $job)
-							<tr onclick="location.href='{!! action('Web\JobController@detail', $job->slug) !!}'">
-								<td>
-									<a href="#" class="name-job">
-										{{$job->name}}
-									</a>
-									<div class="company-job">
-										@if(empty($job->company))
-										Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
-										@else
-										{{$job->company->name}}
+						@foreach($criteria_candidate as $key => $value)
+							<div class="item-skill-job">
+								<div class="item-wrapper">
+									<div class="title-skill-job">
+										@if(!empty($value->present()->iconImage()))
+											<img src="{!! $value->present()->iconImage()->present()->url !!}" class="img-fluid">
 										@endif
+										<span>{{$value->name}}</span>
 									</div>
-								</td>
-								<td>{{$job->province}}</td>
-								<td>{{$job->number}}</td>
-								<td>{{$job->salary }}</td>
-								<td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-				<div class="list-job-mb">
-					@foreach($jobs as $job)
-					<div class="item-job-mb">
-						<div class="name-job-mb">
-								{{$job->name}}
-						</div>
-						<div class="des-job-mb">
-								@if(empty($job->company))
-									Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
-								@else
-									{{$job->company->name}}
-								@endif
-						</div>
-						<div class="info-job-mb">
-							<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
-							<span>{{$job->province}}</span>
-						</div>
-						<div class="info-job-mb">
-							<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
-							<span>{{$job->number}}</span>
-						</div>
-						<div class="info-job-mb">
-							<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
-							<span>{{$job->salary }}</span>
-						</div>
-						<div class="info-job-mb">
-							<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
-							<span>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</span>
-						</div>
+									<div class="des-skill-job">
+											{{$value->content}}
+									</div>
+								</div>
+							</div>
+						@endforeach
 					</div>
-					@endforeach
-				</div>
-				<div class="view-all-job">
-					<a href="{!! action('Web\JobController@listJob') !!}" class="btn btn-outline-success">
-						Xem tất cả
-					</a>
 				</div>
 			</div>
+		</div>
+
+		<div id="list-job-page" class="detail-jobs">
+				<div class="content-job-page">
+					<div class="title-feature-job">
+						Danh sách việc làm nổi bật
+					</div>
+					<div class="list-job">
+						<table>
+							<thead>
+								<tr>
+									<th>TÊN</th>
+									<th>ĐỊA ĐIỂM</th>
+									<th>SỐ LƯỢNG</th>
+									<th>MỨC LƯƠNG</th>
+									<th>HẠN NỘP</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($jobs as $job)
+								<tr onclick="location.href='{!! action('Web\JobController@detail', $job->slug) !!}'" class="cursor-pointer">
+									<td>
+										<a href="#" class="name-job">
+											{{$job->name}}
+										</a>
+										<div class="company-job">
+											@if(empty($job->company))
+											Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
+											@else
+												{{$job->company->name}}
+											@endif
+										</div>
+									</td>
+									<td>{{$job->province}}</td>
+									<td>{{$job->number}}</td>
+									<td>{{$job->salary }} triệu</td>
+									<td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
+								</tr>
+								<tr class="row-spacer">
+									<td colspan="100"></td>
+								</tr>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+					<div class="list-job-mb">
+						@foreach($jobs as $job)
+						<div class="item-job-mb">
+							<div class="name-job-mb">
+									{{$job->name}}
+							</div>
+							<div class="des-job-mb">
+									@if(empty($job->company))
+										Công ty CP Tập đoàn Trường Thành Việt Nam (TTVN Group)
+									@else
+										{{$job->company->name}}
+									@endif
+							</div>
+							<div class="info-job-mb">
+								<img src="{{ asset('images/icon-info-1.svg') }}" class="img-fluid" />
+								<span>{{$job->province}}</span>
+							</div>
+							<div class="info-job-mb">
+								<img src="{{ asset('images/icon-info-2.svg') }}" class="img-fluid" />
+								<span>{{$job->number}}</span>
+							</div>
+							<div class="info-job-mb">
+								<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
+								<span>{{$job->salary }} triệu</span>
+							</div>
+							<div class="info-job-mb">
+								<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
+								<span>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</span>
+							</div>
+						</div>
+						@endforeach
+					</div>
+					<div class="view-all-job">
+						<a href="{!! action('Web\JobController@listJob') !!}" class="btn btn-outline-success">
+							Xem tất cả
+						</a>
+					</div>
+				</div>
 		</div>
 	</div>
 @endsection

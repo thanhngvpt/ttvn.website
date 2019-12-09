@@ -121,3 +121,33 @@ body {
         cursor: pointer;
     }
 }
+
+.pagination {
+	justify-content: center;
+
+	.page-item {
+        cursor: pointer;
+        * {
+            cursor: pointer;
+        }
+		.page-link {
+			background: none;
+			border: none;
+            color: #626262;
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+		&.active {
+			.page-link {
+				border: 1px solid #515151;
+				border-radius: 4px;
+				background-color: #ffffff;
+				padding: 6px 12px;
+				margin: 0 10px;
+			}
+        }
+	}
+}

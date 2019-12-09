@@ -1,0 +1,162 @@
+.section-who-find {
+    background-image: url(/images/job/bg-find.svg);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-color: #F7F7F7;
+    background-size: 100%;
+    padding-bottom: 168px;
+    .container {
+        max-width: 1320px;
+    }
+    .userfind-job {
+        background-color: #57AE5B;
+        box-shadow: 0px 16px 32px rgba(87, 174, 91, 0.32);
+        border-radius: 8px;
+        background-image: url(/images/common-bg/box-who-find/bg-top-left.svg), url(/images/common-bg/box-who-find/bg-top-right.svg), url(/images/common-bg/box-who-find/bg-bottom-left.svg), url(/images/common-bg/box-who-find/bg-bottom-right.svg);
+        background-repeat: no-repeat;
+        background-position: top left, top 13.99730821% right 6.1363636364%, bottom -45px left 11.409091%, bottom -42px right 7.5%;
+        padding: 88px 226px;
+    }
+
+    .title-userfind-job {
+        font-size: 32px;
+        font-weight: 600;
+        font-family: $f-eb;
+        color: #ffffff;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+    .des-userfind-job {
+        width: 648px;
+        font-size: 16px;
+        line-height: 25px;
+        color: #EFFCF1;
+        text-align: center;
+        margin-bottom: 64px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .skill-job {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        display: flex;
+        .item-skill-job {
+            max-width: 380px;
+            margin-bottom: 40px;
+            &:nth-child(3), &:nth-child(4) {
+                margin-bottom: 0;
+            }
+            .title-skill-job {
+                display: flex;
+                align-items: flex-end;
+                margin-bottom: 30px;
+                img {
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 30px;
+                }
+                span {
+                    font-weight: bold;
+                    font-size: 16px;
+                    line-height: 25px;
+                    color: #FFFFFF;
+                }
+            }
+            .des-skill-job {
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 32px;
+                color: #EFFCF1;
+            }
+        }
+    }
+}
+
+@media (max-width: 1439px) {
+    .section-who-find {
+        padding-bottom: 88px;
+        .container {
+            max-width: 934px;
+        }
+        .userfind-job {
+            background-image: url(/images/common-bg/box-who-find/bg-top-left.svg), url(/images/common-bg/box-who-find/bg-bottom-left.svg);
+            background-position: top left, bottom -45px left 14.409091%;
+            padding: 88px 80px 80px;
+        }
+
+        .skill-job {
+            .item-skill-job {
+                max-width: 370px;
+                margin-bottom: 48px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .section-who-find {
+        padding-bottom: 80px;
+        .container {
+            max-width: 736px;
+        }
+        .des-userfind-job {
+            max-width: 548px;
+            margin-bottom: 72px;
+        }
+
+        .userfind-job {
+            background-position: top left, bottom -45px left 20.409091%;
+        }
+        .skill-job {
+            .item-skill-job {
+                max-width: 48%;
+                margin-bottom: 43px;
+                .title-skill-job {
+                    margin-bottom: 24px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .section-who-find {
+        padding-bottom: 56px;
+        .container {
+            max-width: calc(100% - 36px);
+            padding: 0;
+        }
+
+        .title-userfind-job {
+            font-size: 24px;
+        }
+        .des-userfind-job {
+            margin-bottom: 48px;
+        }
+
+        .userfind-job {
+            padding: 48px 24px;
+            background-image: none;
+        }
+
+        .skill-job {
+            .item-skill-job {
+                max-width: 100%;
+                margin-bottom: 48px;
+                &:nth-child(3), &:nth-child(4) {
+                    margin-bottom: 48px;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .title-skill-job {
+                    display: flex;
+                    align-items: flex-end;
+                    margin-bottom: 24px;
+                }
+            }
+        }
+    }
+}

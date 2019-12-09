@@ -31,7 +31,8 @@ class JobRepository extends SingleKeyModelRepository implements JobRepositoryInt
         return [
             'jobs' => $jobs,
             'total_page' => $total_page,
-            'current_page' => $page
+            'current_page' => $page,
+            'count' => $count
         ];
         
     }

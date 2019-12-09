@@ -166,13 +166,6 @@
 @section('page-styles')
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
-	<style>
-		@media screen and (min-width: 1440px) {
-			.navbar-top-area {
-				background-image: url('../images/bg-news.svg');
-			}
-		}
-	</style>
 @endsection
 
 @section('page-scripts')
