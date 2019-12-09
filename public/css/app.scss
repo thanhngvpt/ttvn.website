@@ -1231,7 +1231,7 @@ main {
 			margin-bottom: 56px;
 
 			span {
-				text-decoration: underline;
+				text-decoration: none;
 				font-weight: bold;
 			}
 		}
@@ -1484,6 +1484,8 @@ main {
 		top: -113px;
 		right: -88px;
 		z-index: 50;
+		width: 286px;
+		height: 274px;
 	}
 	.img-intro-before {
 		width: 630px;
@@ -2183,6 +2185,7 @@ main {
 	
 		.img-intro-after {
 			width: 131px;
+			height: 125px;
 			position: absolute;
 			top: -63px;
 			right: -56px;
