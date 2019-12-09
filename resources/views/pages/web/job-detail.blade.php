@@ -21,7 +21,7 @@
 		<div class="detail-job-right">
 			<div class="item-number-detail">
 				<img src="{{ asset('images/icon-job-3.svg') }}" class="img-fluid" />
-				<span>{{$job->salary}} triệu</span>
+				<span>{{$job->salary}}</span>
 			</div>
 			<div class="item-number-detail">
 				<img src="{{ asset('images/icon-job-4.svg') }}" class="img-fluid" />

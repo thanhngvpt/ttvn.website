@@ -161,7 +161,7 @@
 								</td>
 								<td>{{$job->province}}</td>
 								<td>{{$job->number}}</td>
-								<td>{{$job->salary }} triệu</td>
+								<td>{{$job->salary }}</td>
 								<td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
 							</tr>
 							@endforeach
@@ -191,7 +191,7 @@
 						</div>
 						<div class="info-job-mb">
 							<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
-							<span>{{$job->salary }} triệu</span>
+							<span>{{$job->salary }}</span>
 						</div>
 						<div class="info-job-mb">
 							<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />

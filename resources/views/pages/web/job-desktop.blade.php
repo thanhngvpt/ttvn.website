@@ -15,7 +15,7 @@
     </td>
     <td>{{$job->province}}</td>
     <td>{{$job->number}}</td>
-    <td>{{$job->salary }} triệu</td>
+    <td>{{$job->salary }}</td>
     <td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
 </tr>
 @endforeach
