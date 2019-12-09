@@ -837,6 +837,9 @@ footer {
 #news-page {
 	background-color: #ffffff;
 	border-bottom: 1px solid #eeeeee;
+	.item-slide {
+		text-decoration: none;
+	}
 
 	.item-slide-news {
 		display: flex;
@@ -1011,9 +1014,11 @@ main {
 		color: #515151;
 		margin-bottom: 16px;
 		overflow: hidden;
+		text-overflow: ellipsis;
 		display: -webkit-box;
-		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		max-height: 44px;
 	}
 	.date-news {
 		font-size: 14px;

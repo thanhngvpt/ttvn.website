@@ -33,7 +33,9 @@
 					<div class="col-md-4">
 						<div class="title-reason-job clearfix">
 							<div class="col-left">
+									@if(!empty($cultural_companies->present()->icon1Image()))
 								<img src="{!! $cultural_companies->present()->icon1Image()->present()->url !!}">
+								@endif
 							</div>
 							<div class="col-left">
 									<span>{{$cultural_companies->reason1}}</span>
@@ -46,7 +48,9 @@
 					<div class="col-md-4">
 						<div class="title-reason-job clearfix">
 							<div class="col-left">
+									@if(!empty($cultural_companies->present()->icon2Image()))
 								<img src="{!! $cultural_companies->present()->icon2Image()->present()->url !!}" class="img-fluid">
+								@endif
 							</div>
 							<div class="col-left">
 								<span>{{$cultural_companies->reason2}}</span>
@@ -59,7 +63,9 @@
 					<div class="col-md-4">
 						<div class="title-reason-job clearfix">
 							<div class="col-left">
+									@if(!empty($cultural_companies->present()->icon3Image()))
 								<img src="{!! $cultural_companies->present()->icon3Image()->present()->url !!}" class="img-fluid">
+								@endif
 							</div>
 							<div class="col-left">
 								<span>{{$cultural_companies->reason3}}</span>
@@ -83,7 +89,9 @@
 					</div>	
 				</div>
 				<div class="column-right">
+						@if(!empty($cultural_companies->present()->ttvnImage()))
 					<img src="{!! $cultural_companies->present()->ttvnImage()->present()->url !!}" class="img-fluid">
+					@endif
 				</div>
 			</div>
 		</div>
@@ -104,7 +112,9 @@
 						<div class="item-skill-job">
 						@endif
 							<div class="title-skill-job">
+									@if(!empty($value->present()->iconImage()))
 								<img src="{!! $value->present()->iconImage()->present()->url !!}" class="img-fluid">
+								@endif
 								<span>{{$value->name}}</span>
 							</div>
 							<div class="des-skill-job">
@@ -151,7 +161,7 @@
 								</td>
 								<td>{{$job->province}}</td>
 								<td>{{$job->number}}</td>
-								<td>{{$job->salary }} triệu</td>
+								<td>{{$job->salary }}</td>
 								<td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
 							</tr>
 							@endforeach
@@ -181,7 +191,7 @@
 						</div>
 						<div class="info-job-mb">
 							<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
-							<span>{{$job->salary }} triệu</span>
+							<span>{{$job->salary }}</span>
 						</div>
 						<div class="info-job-mb">
 							<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />

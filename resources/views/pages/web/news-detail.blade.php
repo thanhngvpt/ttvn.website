@@ -15,10 +15,10 @@
 				{{@$news->newCategory->name}}
 			</a>
 			<div class="title-news-detail">
-					{{$news->name}}
+				{{$news->name}}
 			</div>
 			<div class="date-detail-news">
-					{!!  date('d/m/Y', (strtotime( $news->created_at))) !!}
+				{!!  date('d/m/Y', (strtotime( $news->created_at))) !!}
 			</div>
 			<div class="content-detail-news">
 				{!! $news->content !!}
@@ -29,15 +29,15 @@
 						{{@$news->newCategory->name}}
 					</span>
 				</div>
-				<div class="float-right">
+				{{-- <div class="float-right">
 					<ul class="news-social">
 						<li>
-							<a href="#">
+							<a href="{{@$footer->fb_link}}">
 								<img src="{{ asset('images/icon-facebook-share.svg') }}" class="img-fluid" />
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="mailto:{{@$footer->email}}">
 								<img src="{{ asset('images/icon-google-share.svg') }}" class="img-fluid" />
 							</a>
 						</li>
@@ -47,7 +47,7 @@
 							</a>
 						</li>
 					</ul>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 		<div class="relation-news">
@@ -59,7 +59,9 @@
 					@foreach($new_relations as $new_relation)
 					<a href="{!! action('Web\NewsController@details', [$new_relation->newCategory->slug, $new_relation->slug]) !!}" class="item-news">
 						<div class="img-news">
+							@if(!empty($new_relation->present()->coverImage()))
 							<img src="{!! $new_relation->present()->coverImage()->present()->url !!}" class="img-fluid" />
+							@endif
 						</div>
 						<div class="content-news">
 							<div class="cate-news">

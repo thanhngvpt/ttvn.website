@@ -83,7 +83,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{@$footer->email}}">
+						<a href="mailto:{{@$footer->email}}">
 							<img src="{{ asset('images/icon-google.svg') }}" class="img-fluid">
 						</a>
 					</li>

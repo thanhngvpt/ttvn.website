@@ -45,59 +45,47 @@
 				<div class="tab-pane @if($category_slug == 'all') active show @endif" data-category-slug="all" data-category-id="0" id="news-tab-0">
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
-						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
+						<a class="item-slide cursor-pointer" href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}">
 							<div class="item-slide-news">
 								<div class="img-slide-news">
+										@if(!empty($hot_new->present()->coverImage()))
 									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
+									@endif
 								</div>
 								<div class="content-slide-news">
-									<button class="btn tag-news">
-										{{@$hot_new->newCategory->name}}
-									</button>
-									<div class="title-slide-news">
-											{{$hot_new->name}}
-									</div>
-									<div class="des-slide-news">
-											{!!$hot_new->sapo!!}
-									</div>
-									<div class="date-slide-news">
-											{!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
-									</div>
+									<div class="btn tag-news">{{@$hot_new->newCategory->name}}</div>
+									<div class="title-slide-news">{{$hot_new->name}}</div>
+									<div class="des-slide-news">{!!$hot_new->sapo!!}</div>
+									<div class="date-slide-news">{!! date('d/m/Y', (strtotime( $hot_new->created_at))) !!}</div>
 								</div>
 							</div>
-						</div>
+						</a>
 						@endforeach
 					</div>
 					<div class="news-content">
 						<div class="row list-news">
 							@foreach($data['news'] as $item)
-							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}'">
-								<div class="item-news">
+							<div class="col-xl-4 col-md-6">
+								<a class="item-news" href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}">
 									<div class="img-news">
+											@if(!empty($item->present()->coverImage()))
 										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+										@endif
 									</div>
-									<div class="cate-news">
-											{{@$item->newCategory->name}}
-									</div>
-									<div class="title-news">
-											{{$item->name}}
-									</div>
-									<div class="des-news">
-											{!!$item->sapo!!}
-									</div>
-									<div class="date-news">
-											{!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
-									</div>
-								</div>
+									<div class="cate-news">{{@$item->newCategory->name}}</div>
+									<div class="title-news">{{$item->name}}</div>
+									<div class="des-news">{!!$item->sapo!!}</div>
+									<div class="date-news">{!! date('d/m/Y', (strtotime( $item->created_at))) !!}</div>
+								</a>
 							</div>
 							@endforeach
 						</div>
 						<ul class="pagination">
-							<li class="page-item previous-page"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
+							<li class="page-item previous-page"><a href="javascript:void(0);" class="page-link"><i class="fas fa-chevron-left"></i></a></li>
 							@for($i=1;$i<=$data['total_page'];$i++)
-							<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a class="page-link">{{$i}}</a></li>
+							<li class="page-item @if ($data['current_page'] == $i) active @endif child-item" data-page-number="{{$i}}"><a href="javascript:void(0);" class="page-link">{{$i}}</a></li>
 							@endfor
-							<li class="page-item next-page"><a class="page-link"><i class="fas fa-chevron-right"></i></a></li>
+							<li class="page-item next-page"><a href="javascript:void(0);" class="page-link"><i class="fas fa-chevron-right"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -109,7 +97,9 @@
 						<div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
 							<div class="item-slide-news">
 								<div class="img-slide-news">
+										@if(!empty($hot_new->present()->coverImage()))
 									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
+									@endif
 								</div>
 								<div class="content-slide-news">
 									<button class="btn tag-news">
@@ -135,7 +125,9 @@
 							<div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}'">
 								<div class="item-news">
 									<div class="img-news">
+											@if(!empty($item->present()->coverImage()))
 										<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
+										@endif
 									</div>
 									<div class="cate-news">
 											{{@$item->newCategory->name}}
@@ -192,13 +184,21 @@
   				slidesToShow: 1,
   				slidesToScroll: 1,
   				dots: true,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				rows: 0,
   				prevArrow: '<img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid prev-arrow" />',
   				nextArrow: '<img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid next-arrow" />'
 			  });
 
-			  $('.nav-link').on('show.bs.tab', function(){
+			$('.nav-link').on('show.bs.tab', function(){
 				$('.slick-slider').slick("setPosition")
-			  });
+			});
+
+			$('[data-link]').on('click', function(e) {
+				if ($(this).attr('data-link'))
+					location.href = $(this).attr('data-link')
+			})
 		});
 
 		$(document).on('click', '.child-item', function() {
@@ -252,7 +252,6 @@
 		$(document).on('click', '.next-page', function() {
 			let current_page = $('.page-item.active').data('page-number');
 			let next_page = parseInt(current_page) + 1;
-			console.log(current_page)
 
 			let slug = $('.tab-pane.active').data('category-slug')
 			$.ajax({
