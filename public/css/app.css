@@ -741,7 +741,6 @@ main .nav-tabs {
     color: #515151;
     margin-bottom: 16px;
     overflow: hidden;
-    -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -1104,9 +1103,7 @@ main .nav-tabs {
     position: absolute;
     top: -113px;
     right: -88px;
-    z-index: 50;
-    width: 286px;
-    height: 274px; }
+    z-index: 50; }
   .img-top-intro .img-intro-before {
     width: 630px;
     position: relative;
@@ -1612,8 +1609,6 @@ main .nav-tabs {
       bottom: -124px;
       right: 193px; }
     .img-top-intro .img-intro-after {
-      width: 131px;
-      height: 125px;
       position: absolute;
       top: -63px;
       right: -56px;
