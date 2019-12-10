@@ -6,6 +6,10 @@
 	{{@$cultural_companies->title_page}}
 @endsection
 
+@section('nav-header')
+	@include('pages.web.partials.title-style-1', ['content' => @$cultural_companies->title_page])
+@endsection
+
 @section('content')
 	<div id="job-page">
 		<div class="content-job-page section-introduce">
@@ -78,6 +82,9 @@
 		</div>
 
 		<div class="section-who-find">
+			<div class="section-find-bg">
+				
+			</div>
 			<div class="container">
 				<div class="userfind-job">
 					<div class="title-userfind-job">Chúng tôi tìm ai?</div>
@@ -138,7 +145,7 @@
 									</td>
 									<td>{{$job->province}}</td>
 									<td>{{$job->number}}</td>
-									<td>{{$job->salary }} triệu</td>
+									<td>{{$job->salary }}</td>
 									<td>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</td>
 								</tr>
 								<tr class="row-spacer">
@@ -171,7 +178,7 @@
 							</div>
 							<div class="info-job-mb">
 								<img src="{{ asset('images/icon-info-3.svg') }}" class="img-fluid" />
-								<span>{{$job->salary }} triệu</span>
+								<span>{{$job->salary }}</span>
 							</div>
 							<div class="info-job-mb">
 								<img src="{{ asset('images/icon-info-4.svg') }}" class="img-fluid" />
@@ -188,4 +195,30 @@
 				</div>
 		</div>
 	</div>
+@endsection
+
+@section('page-scripts')
+	<script type="text/javascript">
+		function drawBgFind() {
+			maxHeight = $('.section-find-bg').height();
+			maxWidth = $('.section-find-bg').width();
+			ratio  = 0.08212058212;
+			offset = (maxHeight* ratio)
+
+			html = `
+				<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${maxWidth} ${maxHeight}">
+					<defs><style>.cls-1{fill:#f7f7f7;}</style></defs>
+					<polygon class="cls-1" points="${maxWidth} ${offset} ${maxWidth} ${maxHeight} 0 ${maxHeight} 0 ${maxHeight} ${maxWidth} ${offset}"/>
+				</svg>
+			`;
+
+			$('.section-find-bg').html(html);
+		}
+		window.onload = drawBgFind
+		$(document).ready(function() {
+			$(window).on('resize', function() {
+				drawBgFind();
+			})
+		});
+	</script>
 @endsection

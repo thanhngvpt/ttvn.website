@@ -3,6 +3,39 @@
 	{{$job->meta_title}}
 @endsection
 
+@section('nav-header')
+	<?php ob_start(); ?>
+		<div class="page-title-main mb-2">
+			{{$job->name}}
+		</div>
+		<div class="number-detail-job">
+			<div class="detail-job-left">
+				<div class="item-number-detail">
+					<img src="{{ asset('images/icon-job-1.svg') }}" class="img-fluid" />
+					<span>{{$job->province}}</span>
+				</div>
+				<div class="item-number-detail">
+					<img src="{{ asset('images/icon-job-2.svg') }}" class="img-fluid" />
+					<span>{{$job->number}}</span>
+				</div>
+			</div>
+			<div class="detail-job-right">
+				<div class="item-number-detail">
+					<img src="{{ asset('images/icon-job-3.svg') }}" class="img-fluid" />
+					<span>{{$job->salary}}</span>
+				</div>
+				<div class="item-number-detail">
+					<img src="{{ asset('images/icon-job-4.svg') }}" class="img-fluid" />
+					<span>{!!  date('d/m/Y', (strtotime( $job->end_time))) !!}</span>
+				</div>
+			</div>
+		</div>
+	<?php
+		$detail = ob_get_clean();
+	?>
+	@include('pages.web.partials.title-style-1', ['content' => $detail, 'html' => true])
+@endsection
+
 @section('title-navbar')
 	<div class="mb-2">
 		{{$job->name}}

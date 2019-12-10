@@ -3,6 +3,11 @@
 @section('title-navbar')
 	Danh sách tin tuyển dụng
 @endsection
+
+@section('nav-header')
+	@include('pages.web.partials.title-style-1', ['content' => 'Danh sách tin tuyển dụng'])
+@endsection
+
 @section('title')
 @foreach ($meta as $item)
     <?php 

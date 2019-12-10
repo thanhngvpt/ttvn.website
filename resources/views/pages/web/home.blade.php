@@ -16,29 +16,11 @@
 
 @section('nav-slide')
 <main class="position-relative">
+    <div class="bg-home">
+        <div class="bg-left"></div>
+        <div class="bg-right"><div class="border-bottom"></div></div>
+    </div>
     <div class="top-page-slide">
-        {{-- @if (!empty($video))
-        <div class="item-slide">
-            <div class="item-top-slide">
-                <div class="text-slide">
-                    <div class="title">Tập đoàn</div>
-                    <div class="content">Trường Thành Việt Nam</div>
-                    <div class="description">
-                        Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
-                    </div>
-                    <a href="{{$video->video_url}}" class="btn btn-success" style="margin-bottom: 60px;">
-                        <img src="{{ asset('images/view-video.svg') }}" class="img-fluid" />
-                        <span>Xem video</span>
-                    </a>
-                </div>
-                <div class="img-top-slide">
-                    @if(!empty($video->present()->coverImage()))
-                    <img src="{!! $video->present()->coverImage()->present()->url !!}" class="img-fluid" /> @endif
-                </div>
-            </div>
-        </div>
-        @endif --}}
-
         <div class="item-slide">
             <div class="item-top-slide">
                 <div class="text-slide">
@@ -72,29 +54,6 @@
                 </div>
             </div>
         </div>
-        
-        {{-- @foreach($banners as $banner)
-            <div class="item-slide">
-                <div class="item-top-slide">
-                    <div class="text-slide">
-                        <div class="title">
-                            Tập đoàn
-                        </div>
-                        <div class="content">
-                            Trường Thành Việt Nam
-                        </div>
-                        <div class="description">
-                            Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
-                        </div>
-                    </div>
-                    <div class="img-top-slide">
-                        @if(!empty($banner->present()->coverImage()))
-                        <img src="{!! $banner->present()->coverImage()->present()->url !!}" class="img-fluid" /> @endif
-                    </div>
-                </div>
-            </div>
-        @endforeach --}}
-
     </div>
     <div class="icon-down-nav">
         <img src="{{ asset('images/icon-down-nav.svg') }}" class="img-fluid" />

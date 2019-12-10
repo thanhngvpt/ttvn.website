@@ -4,6 +4,10 @@
 	Tin tức - sự kiện
 @endsection
 
+@section('nav-header')
+	@include('pages.web.partials.title-style-1', ['content' => 'Tin tức - sự kiện'])
+@endsection
+
 
 @section('title')
 @if( isset($category_active) && !empty($category_active))

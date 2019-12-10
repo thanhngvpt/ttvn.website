@@ -1,0 +1,220 @@
+.section-title-page {
+    width: 100%;
+    .page-title-main {
+        font-family: $f-eb;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 64px;
+        color: #57AE5B;
+        position: relative;
+        z-index: 300;
+        margin: 0;
+    }
+    .wrapper-content {
+        position: relative;
+        z-index: 100;
+    }
+    .style-bg-left, .style-bg-right {
+        position: absolute;
+        z-index: 10;
+        height: 100%;
+        top: 0;
+        background-repeat: no-repeat;
+    }
+
+    .style-wrapper {
+        position: relative;
+        background: #00263C;
+        width: 100%;
+
+        .style-container {
+            margin: auto;
+            padding: 216px 64px 120px 302px;
+            position: relative;
+            width: 100%;
+        }
+    }
+
+    &.title-style-1 {
+        .style-bg-left {
+            width: calc(100% - 15.6964656965%);
+            left: 0;
+            background-color: #00263C;
+            background-image: url(/images/title-pages/style-1/square-left.svg), url(/images/title-pages/style-1/square-middle.svg), url(/images/title-pages/style-1/square-right-1.svg), url(/images/title-pages/style-1/square-right-1.svg);
+            background-size: 140px, 75px 76px, 76px, 76px;
+            background-position: bottom 120px left 38px, bottom -14px left 58.9651022864%, top 35% right 17.6895306859%, bottom -26px right 5.2948255114%;
+        }
+        .style-bg-right {
+            width: 15.6964656965%;
+            right: 0;
+            background-color: #57AE5B;
+            background-image: url(/images/title-pages/style-1/square-right.svg);
+            background-size: 123px;
+            background-position: top 43px left 55px;
+            .border-bottom {
+                height: 24px;
+                width: 100%;
+                background: #2F8132;
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+            }
+        }
+
+        &.title-style-introduce {
+            .style-bg-left {
+                background-image: url(/images/title-pages/style-2/square-left.svg), url(/images/title-pages/style-2/square-right.svg);
+                background-size: 140px, 75px 76px, 76px, 76px;
+                background-position: bottom -29px left -50px, bottom 56px right 20.3703703704%;;
+            }
+        }
+    }
+    &.title-style-new-detail {
+        .style-wrapper {
+            .style-container {
+                padding: 0;
+                padding-top: 96px;
+            }
+        }
+        .style-bg-left {
+            width: calc(100% - 15.6964656965%);
+            left: 0;
+            background-color: #00263C;
+        }
+        .style-bg-right {
+            width: 15.6964656965%;
+            right: 0;
+            background-color: #57AE5B;
+            .border-bottom {
+                height: 24px;
+                width: 100%;
+                background: #2F8132;
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 1439px) {
+    .section-title-page {
+        .page-title-main {
+            font-size: 40px;
+            line-height: 100%;
+        }
+
+        .style-wrapper {
+            .style-container {
+                padding: 216px 64px 104px 232px;
+            }
+        }
+
+        &.title-style-1 {
+            .style-bg-left {
+                width: calc(100% - 15.6964656965%);
+                left: 0;
+                background-color: #00263C;
+                background-image: url(/images/title-pages/style-1/square-big-left-1.svg), url(/images/title-pages/style-1/square-left.svg), ;
+                background-size: 140px 140px, 104px;
+                background-position: bottom -37px left -43px, bottom 84px right 164px;
+            }
+            .style-bg-right {
+                background-size: 94px 88px;
+                background-position: top 108px left 61px;
+                .border-bottom {
+                    height: 16px;
+                }
+            }
+
+            &.title-style-introduce {
+                .style-bg-left {
+                    background-image: url(/images/title-pages/style-2/square-left-1.svg), url(/images/title-pages/style-2/square-middle.svg), url(/images/title-pages/style-2/square-right-2.svg);
+                    background-size: 140px, 75px 76px, 76px;
+                    background-position: bottom -40% left -4%, bottom 33px right 29.2134831461%, bottom 50% right 84px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .section-title-page {
+        .page-title-main {
+            font-size: 32px;
+        }
+
+        .style-wrapper {
+            .style-container {
+                padding: 120px 24px 64px;
+            }
+        }
+
+        &.title-style-1 {
+            .style-bg-left {
+                width: 100%;
+                background-color: #00263C;
+                background-image: url(/images/title-pages/style-1/square-big-left-1.svg), url(/images/title-pages/style-1/square-left.svg), ;
+                background-size: 140px 140px, 104px;
+                background-position: bottom -94px left -55px, bottom 50.6111111111% right 19.0051020408%;
+            }
+            .style-bg-right {
+                display: none;
+            }
+
+            &.title-style-introduce {
+                .style-bg-left {
+                    width: 100%;
+                    background-color: #00263C;
+                    background-image: url(/images/title-pages/style-1/square-big-left-1.svg), url(/images/title-pages/style-1/square-left.svg), ;
+                    background-size: 140px 140px, 104px;
+                    background-position: bottom -94px left -55px, bottom 50.6111111111% right 19.0051020408%;
+                }
+            }
+        }
+
+        &.title-style-new-detail {
+            .style-wrapper {
+                .style-container {
+                    padding: 0;
+                    padding-top: 88px;
+                }
+            }
+
+            .style-bg-left {
+                width: 100%;
+            }
+
+            .style-bg-right {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .section-title-page {
+        .page-title-main {
+            font-size: 24px;
+        }
+
+        .style-wrapper {
+            .style-container {
+                padding: 120px 18px 32px;
+            }
+        }
+
+        &.title-style-1 {
+            .style-bg-left {
+                background-image: none;
+            }
+
+            &.title-style-introduce {
+                .style-bg-left {
+                    background-image: none;
+                }
+            }
+        }
+    }
+}

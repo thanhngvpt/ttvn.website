@@ -1,0 +1,248 @@
+.top-page-slide {
+	padding-top: 210px;
+	padding-bottom: 123px;
+
+	.item-top-slide {
+		display: flex;
+		align-items: center;
+		.text-slide {
+			width: 742px;
+			margin-left: calc(50% - 658px);
+			margin-right: 70px;
+		}
+
+		.title {
+			font-family: "EB Garamond", serif;
+			font-weight: 600;
+			font-size: 32px;
+			line-height: 64px;
+			text-transform: uppercase;
+			margin-bottom: 16px;
+			color: #ffffff;
+		}
+		.content {
+			font-family: "EB Garamond", serif;
+			font-weight: 600;
+			font-size: 72px;
+			line-height: 84px;
+			color: #57AE5B;
+			margin-bottom: 40px;
+		}
+		.description {
+			font-size: 20px;
+			line-height: 32px;
+			color: #95B5C8;
+			margin-bottom: 56px;
+
+			span {
+				text-decoration: none;
+				font-weight: bold;
+			}
+		}
+		a {
+			display: flex;
+			color: #000000;
+			align-items: center;
+			background-color: #57AE5B;
+			justify-content: center;
+			color: #000000;
+			text-decoration: none;
+			
+			span {
+				margin-left: 10px;
+			}
+		}
+		.img-top-slide {
+			width: calc(50% - 154px);
+			position: relative;
+			.top-bg {
+				background: rgba(0, 13, 0, 0.16);
+				position: absolute;
+				top: 24px;
+				left: -24px;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+			}
+			.top-slider {
+				z-index: 100
+			}
+		}
+	}
+	.slick-dots {
+		background-color: initial;
+		background-color: initial;
+		position: relative;
+		top: inherit;
+		left: inherit;
+		bottom: inherit;
+		right: inherit;
+		margin-top: 48px;
+	}
+}
+
+.top-page-slide {
+    .slick-slide {
+        .img-top-slide {
+            display: none;
+        }
+
+        &.slick-current {
+            .img-top-slide {
+                display: block;
+            }
+        }
+    }
+}
+.top-page-slide .item-top-slide a {
+    width: 210px;
+    height: 48px;
+}
+
+@media (max-width: 1439px) {
+    .top-page-slide {
+        padding-top: 150px;
+	    padding-bottom: 145px;
+		.slick-slide {
+			.img-top-slide {
+				display: none;
+			}
+
+			&.slick-current {
+				.img-top-slide {
+					display: block;
+				}
+			}
+		}
+		.slick-dots {
+			left: calc(50% - 468px);
+			bottom: 250px;
+		}
+		.item-top-slide {
+			.text-slide {
+				width: 578px;
+				margin-left: calc(50% - 468px);
+				margin-right: 78px;
+
+				.title {
+					font-size: 24px;
+					line-height: 24px;
+				}
+				.content {
+					font-size: 55px;
+					line-height: 56px;
+					margin-bottom: 16px;
+				}
+				.description {
+					font-size: 16px;
+					line-height: 31px;
+					margin-bottom: 40px;
+				}
+				a {
+					width: 210px;
+					height: 48px;
+				}
+			}
+			.img-top-slide {
+				width: calc(50% - 178px);
+			}
+		}
+
+		.slick-dots {
+			background-color: initial;
+			background-color: initial;
+			position: relative;
+			top: inherit;
+			left: inherit;
+			bottom: inherit;
+			right: inherit;
+			margin-top: 40px;
+		}
+	}
+}
+
+@media (max-width: 1023px) {
+    .top-page-slide {
+		padding-top: 144px;
+		padding-bottom: 88px;
+
+		.item-top-slide {
+			.text-slide {
+				width: 360px;
+				margin-right: 18px;
+				margin-left: calc(50% - 368px);
+
+				.title {
+					font-size: 24px;
+					line-height: 24px;
+				}
+				.content {
+					font-size: 48px;
+					line-height: 56px;
+					margin-bottom: 8px;
+				}
+				.description {
+					font-size: 16px;
+					line-height: 31px;
+					width: 80%;
+				}
+				a {
+					width: 210px;
+					height: 48px;
+				}
+			}
+			.img-top-slide {
+				width: calc(50% - 8px);
+			}
+		}
+		.slick-dots {
+			background-color: initial;
+			background-color: initial;
+			position: relative;
+			top: inherit;
+			left: inherit;
+			bottom: inherit;
+			right: inherit;
+			margin-top: 40px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+    .top-page-slide {
+		padding-top: 120px;
+		padding-bottom: 102px;
+
+		.slick-dots {
+			display: none;
+		}
+		.item-top-slide {
+			.text-slide {
+				margin: 0 18px;
+				width: 100%;
+
+				.title {
+					font-size: 24px;
+					line-height: 24px;
+				}
+				.content {
+					font-size: 40px;
+					line-height: 56px;
+					margin-bottom: 8px;
+				}
+				.description {
+					font-size: 14px;
+					line-height: 31px;
+					margin-bottom: 32px;
+				}
+				a {
+					width: 210px;
+					height: 48px;
+				}
+			}
+			.img-top-slide {
+				display: none;
+			}
+		}
+	}
+}
