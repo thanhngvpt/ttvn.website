@@ -1,8 +1,9 @@
 @extends('pages.web.layouts.app')
 
-@section('title-navbar')
-	Liên hệ
+@section('nav-header')
+	@include('pages.web.partials.title-style-1', ['content' => 'Liên hệ'])
 @endsection
+
 
 @section('title')
 @foreach ($meta as $item)

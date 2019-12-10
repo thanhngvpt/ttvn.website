@@ -6,6 +6,11 @@
     </div>
 @endsection
 
+
+@section('nav-header')
+	@include('pages.web.partials.title-style-introduce', ['content' => 'Giới thiệu tập đoàn'])
+@endsection
+
 @section('title')
 @foreach ($meta as $item)
     <?php 

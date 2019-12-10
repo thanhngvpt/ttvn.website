@@ -8,6 +8,11 @@
 {{@$news->meta_title}}
 @endsection
 
+
+@section('nav-header')
+	@include('pages.web.partials.title-new-detail')
+@endsection
+
 @section('content')
 	<div id="news-detail-page">
 		<div class="area-detail-news">
