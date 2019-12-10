@@ -160,63 +160,7 @@ footer {
 	}
 }
 
-#news-page {
-	.pagination {
-		margin-bottom: 160px;
-	}
-}
 
-
-
-#news-page {
-	background-color: #ffffff;
-	border-bottom: 1px solid #eeeeee;
-	.item-slide {
-		text-decoration: none;
-	}
-
-	.item-slide-news {
-		display: flex;
-		justify-content: space-between;
-	}
-	.img-slide-news {
-		width: 760px;
-	}
-	.content-slide-news {
-		width: 496px;
-		align-self: center;
-	}
-	.title-slide-news {
-		font-size: 32px;
-		line-height: 48px;
-		font-weight: 600;
-		font-family: "EB Garamond", serif;
-		color: #222222;
-		margin-bottom: 16px;
-		overflow: hidden;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-	}
-	.des-slide-news {
-		font-size: 16px;
-		line-height: 25px;
-		color: #515151;
-		margin-bottom: 24px;
-		overflow: hidden;
-	    display: -webkit-box;
-	    -webkit-line-clamp: 3;
-	    -webkit-box-orient: vertical;
-	}
-	.date-slide-news {
-		font-size: 14px;
-		line-height: 22px;
-		color: #7E7E7E;
-	}
-	.list-news {
-		padding-top: 74px;
-	}
-}
 main {
 	.slick-dots {
 		background-color: #ffffff;
@@ -953,14 +897,6 @@ main {
 		margin-left: auto;
 		margin-right: auto;
 	}
-	#news-page {
-		.list-news {
-			.col-xl-4 {
-				padding: 0 12px;
-			}
-		}
-	}
-	
 	
 	.img-topfield {
 		text-align: center;
@@ -990,19 +926,6 @@ main {
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
-	#news-page {
-		.nav-tabs {
-			margin-bottom: 60px;
-		}
-		.item-news {
-			margin-bottom: 48px;
-		}
-		.pagination {
-			margin-top: 8px;
-			margin-bottom: 88px;
-		}
-	}
-	
 	.office-column {
 		padding-left: 50px;
 
@@ -1034,20 +957,6 @@ main {
 	footer {
 		.title-col-footer {
 			font-size: 16px;
-		}
-	}
-	#news-page {
-		.img-slide-news {
-			width: 534px;
-		}
-		.content-slide-news {
-			width: 376px;
-		}
-		.prev-arrow {
-			left: -30px;
-		}
-		.next-arrow {
-			right: -30px;
 		}
 	}
 	
@@ -1245,28 +1154,6 @@ main {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-	
-	#news-page {
-		.list-news {
-			margin-left: -7px;
-			margin-right: -7px;
-
-			.col-xl-4 {
-				padding: 0 8px;
-			}
-		}
-		.item-news {
-			margin-bottom: 48px;
-
-			.title-news {
-				font-size: 16px;
-			}
-		}
-		.pagination {
-			margin-bottom: 56px;
-		}
-	}
-	
 	footer {
 		.title-col-footer {
 			font-size: 16px;
@@ -1317,36 +1204,7 @@ main {
 			padding-bottom: 56px;
 		}
 	}
-	#news-page {
-		.img-slide-news {
-			width: 360px;
-		}
-		.content-slide-news {
-			width: 359px;
-		}
-		.title-slide-news {
-			font-size: 24px;
-			line-height: 32px;
-		}
-		.prev-arrow {
-			z-index: 2;
-			left: 0;
-			padding: 12px 8px;
-			background-color: #eee;
-			top: 32%;
-		}
-		.next-arrow {
-			z-index: 2;
-			right: 0;
-			padding: 12px 8px;
-			background-color: #eee;
-			top: 32%;
-		}
-	}
-	
-	
-	
-	
+
 	// cut field page
 	.des-leader {
 		> div {
@@ -1732,69 +1590,7 @@ main {
 			padding-top: 40px;
 		}
 	}
-	#news-page {
-		.pagination {
-			margin-top: -8px;
-			margin-bottom: 56px;
-		}
-		.list-news {
-			padding-top: 50px;
-		}
-		.title-slide-news {
-			font-size: 24px;
-			line-height: 32px;
-		}
-		.item-slide-news {
-			display: block;
-		}
-		.img-slide-news {
-			width: 100%;
-		}
-		.content-slide-news {
-			width: 100%;
-			margin-top: 24px;
-		}
-		.slick-dots {
-			text-align: center;
-		}
-		.prev-arrow {
-			left: 5px;
-			z-index: 1;
-			top: 19%;
-		}
-		.next-arrow {
-			right: 5px;
-			z-index: 1;
-			top: 19%;
-		}
-		.navtab-custom {
-			overflow-x: auto;
-			margin-bottom: 32px;
-		}
-		.nav-tabs {
-			width: 700px;
-			margin-bottom: 12px;
-
-			.nav-item {
-				text-align: center;
-
-				.nav-link {
-					font-size: 16px;
-					line-height: 22px;
-					font-weight: normal;
-
-					&::before {
-						margin-bottom: 10px;
-					}
-					&.active {
-						&::before {
-							margin-bottom: 10px;
-						}
-					}
-				}
-			}
-		}
-	}
+	
 	.top-news {
 		.tab-pane {
 			padding-left: 0;
@@ -2248,3 +2044,4 @@ $z-navbar: 9999;
 @import './pages/list-job';
 @import './pages/job-detail';
 @import './pages/jobs';
+@import './pages/new_page';

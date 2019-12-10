@@ -27,7 +27,7 @@ class JobSubmitRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|alpha_numeric|min:8|max:11',
+            'phone' => 'required|alpha_num|min:8|max:11',
             'file' => 'required'
         ];
     }
