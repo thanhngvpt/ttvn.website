@@ -42,8 +42,8 @@ class ContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.email' => 'Vui lòng nhập đúng email em',
-            'email.required' => 'Vui lòng nhập đúng email rq',
+            'email.email' => 'Vui lòng nhập đúng email',
+            'email.required' => 'Vui lòng nhập đúng email',
             'name.required' => 'Vui lòng nhập họ và tên',
             'phone.required' => 'Vui lòng nhập số điện thoại từ 8-11 số',
             'phone.alpha_num' => 'Vui lòng nhập số điện thoại từ 8-11 số',

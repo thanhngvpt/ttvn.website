@@ -93,37 +93,41 @@ class JobController extends Controller
 
     public function postCV(JobSubmitRequest $request)
     {
-        $input = $request->only([
-            'name', 'email', 'phone'
-        ]);
+        try {
+            $input = $request->only([
+                'name', 'email', 'phone'
+            ]);
 
-        $slug = $request->get('slug');
-        $input['link_job'] = route('job.details', ['slug' => $slug]);
-        $candidates = Cadidate::create($input);
-        if($request->hasFile('file')) {
-            $file = $request->file('file');
-            
-            $filePath = $this->fileUploadService->upload(
-                'file',
-                $file,
-                [
-                    'entity_type' => 'banner_cover_image',
-                    'entity_id'   => $candidates->id,
-                    'title'       => $request->input('title_page', ''),
-                ]
-            );
-
-            if ($filePath) {
-                $candidates->file = $filePath;
-                $candidates->save();
-            } 
+            $slug = $request->get('slug');
+            $input['link_job'] = route('job.details', ['slug' => $slug]);
+            $candidates = Cadidate::create($input);
+            if($request->hasFile('file')) {
+                $file = $request->file('file');
                 
-        }  
+                $filePath = $this->fileUploadService->upload(
+                    'file',
+                    $file,
+                    [
+                        'entity_type' => 'banner_cover_image',
+                        'entity_id'   => $candidates->id,
+                        'title'       => $request->input('title_page', ''),
+                    ]
+                );
 
-        if (empty($candidates)) {
-            return back()->with('error','Gửi thông tin thất bại');
+                if ($filePath) {
+                    $candidates->file = $filePath;
+                    $candidates->save();
+                } 
+                    
+            }  
+
+            if (empty($candidates)) {
+                throw new \Exception('Gửi thông tin thất bại', 400);
+            }
+
+            return response()->json('Bạn đã gửi thông tin thành công!');
+        } catch (\Exception $e) {
+            return response()->json('Gửi thông tin thất bại', 400);
         }
-
-        return back()->with('success','Bạn đã gửi thông tin thành công!');
     }
 }
