@@ -110,7 +110,7 @@
 				margin-bottom: 40px;
 			}
 			.btn-upload-file-apply {
-				margin-bottom: 3px;
+				margin-bottom: 32px;
 			}
 		}
 	}
@@ -187,6 +187,7 @@
 			padding-left: 18px;
 			padding-right: 18px;
 			width: 100%;
+			margin: 0;
 		}
 		.area-apply {
             padding: 40px 16px 44px 16px;
@@ -200,13 +201,21 @@
 			}
 			.input-apply-group {
 				display: block;
+				margin-bottom: 24px;
 
 				input {
 					width: 100%;
 					margin-bottom: 16px;
+					float: none;
+					&:first-child, &:last-child, &:nth-child(2), &:nth-child(3) {
+						margin-bottom: 16px;
+					}
 				}
 				.btn-upload-file-apply {
 					margin-bottom: 0;
+					width: 100%;
+					float: none;
+					display: inline-block;
 				}
 			}
 		}

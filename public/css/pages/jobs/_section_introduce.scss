@@ -10,6 +10,7 @@
         text-align: center;
         margin-top: 56px;
         white-space: normal;
+        word-break: break-word;
     }
     
     .des-job-page {
@@ -71,6 +72,12 @@
 @media (max-width: 767px) {
     .section-introduce {
         padding: 24px 0 48px;
+
+        .title-job-page {
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 32px;
+        }
 
         .btn-list-job {
             margin-top: 32px;

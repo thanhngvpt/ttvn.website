@@ -297,7 +297,7 @@
                 dots: true,
                 arrows: false,
                 rows: 0,
-                autoplay: false,
+                autoplay: true,
                 autoplaySpeed: 3000,
                 appendDots: '.top-page-slider-dots',
                 responsive: [
@@ -333,7 +333,7 @@
                 rows: 0,
                 responsive: [
                     {
-                        breakpoint: 1023,
+                        breakpoint: 1024,
                         settings: 'unslick'
                     }
                 ]
@@ -371,7 +371,7 @@
                             rows: 0,
                             responsive: [
                                 {
-                                    breakpoint: 1023,
+                                    breakpoint: 1024,
                                     settings: 'unslick'
                                 },
                             ]
