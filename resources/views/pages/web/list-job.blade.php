@@ -199,6 +199,8 @@
 					dataType:"json",
 					beforeSend: function() {
 						$('.box-search-result').hide();
+						$('#submit-search').html(`<i class="fas fa-spinner fa-pulse"></i>`);
+						$('#form-search .form-control, #form-search button, #form-search select').prop('disabled', true);
 					},
 					data: {
 						_token: "{!! csrf_token() !!}",
@@ -213,7 +215,14 @@
 						$('.count-num').text(parseInt(res.count) > 9 ? res.count : '0' + res.count);
 						$('.box-search-result').show();
 					}
+				}).done(function() {
+					$('#submit-search').html(`Tìm kiếm`);
+					$('#form-search .form-control, #form-search button, #form-search select').prop('disabled', false);
 				});
+
+				setTimeout(function() {
+					$('#form-search .form-control, #form-search button, #form-search select').prop('disabled', false);
+				}, 300);
 			})
 
 			$(document).on('click', '.next-page', function() {

@@ -62,29 +62,29 @@
 			<div class="container">
 				<div class="slide-relation-news">
 					@foreach($new_relations as $new_relation)
-					<a href="{!! action('Web\NewsController@details', [$new_relation->newCategory->slug, $new_relation->slug]) !!}" class="item-news">
-						<div class="item-news-wrapper">
-							<div class="img-news">
-								@if(!empty($new_relation->present()->coverImage()))
-									<img src="{!! $new_relation->present()->coverImage()->present()->url !!}" class="img-fluid" />
-								@endif
+						<a href="{!! action('Web\NewsController@details', [$new_relation->newCategory->slug, $new_relation->slug]) !!}" class="item-news">
+							<div class="item-news-wrapper">
+								<div class="img-news">
+									@if(!empty($new_relation->present()->coverImage()))
+										<img src="{!! $new_relation->present()->coverImage()->present()->url !!}" class="img-fluid" />
+									@endif
+								</div>
+								<div class="content-news">
+									<div class="cate-news">
+											{{@$new_relation->newCategory->name}}
+									</div>
+									<div class="title-news">
+											{{$new_relation->name}}
+									</div>
+									<div class="des-news">
+											{{$new_relation->sapo}}
+									</div>
+									<div class="date-news">
+											{!!  date('d/m/Y', (strtotime( $new_relation->created_at))) !!}
+									</div>
+								</div>
 							</div>
-							<div class="content-news">
-								<div class="cate-news">
-										{{@$new_relation->newCategory->name}}
-								</div>
-								<div class="title-news">
-										{{$new_relation->name}}
-								</div>
-								<div class="des-news">
-										{{$new_relation->sapo}}
-								</div>
-								<div class="date-news">
-										{!!  date('d/m/Y', (strtotime( $new_relation->created_at))) !!}
-								</div>
-							</div>
-						</div>
-					</a>
+						</a>
 					@endforeach
 				</div>
 			</div>
@@ -96,24 +96,27 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.slide-relation-news').slick({
-				infinite: true,
+				infinite: false,
 				slidesToShow: 3,
-				slidesToScroll: 1,
+				slidesToScroll: 3,
 				dots: true,
+				accessibility: true,
 				prevArrow: '<img src="{{ asset("images/arrow-left-ad.svg") }}" class="img-fluid prev-arrow" />',
 				nextArrow: '<img src="{{ asset("images/arrow-right-ad.svg") }}" class="img-fluid next-arrow" />',
+				rows: 0,
 				responsive: [
 					{
-						breakpoint: 1023,
+						breakpoint: 1024,
 						settings: {
-							slidesToShow: 2.1,
-							slidesToScroll: 2
+							slidesToShow: 2.5,
+							slidesToScroll: 2,
+							arrows: false
 						}
 					},
 					{
-						breakpoint: 767,
+						breakpoint: 768,
 						settings: {
-							slidesToShow: 1.1,
+							slidesToShow: 1.5,
 							slidesToScroll: 1,
 							arrows: false
 						}
