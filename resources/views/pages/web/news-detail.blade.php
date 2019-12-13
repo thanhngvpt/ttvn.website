@@ -118,9 +118,11 @@
 						settings: {
 							slidesToShow: 1.5,
 							slidesToScroll: 1,
-							arrows: false
+							arrows: false,
+							dots: false
 						}
-					}
+					},
+					
 				]
 			});
 

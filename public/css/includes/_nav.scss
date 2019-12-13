@@ -17,6 +17,7 @@
         flex-wrap: nowrap;
 
         .navbar-brand {
+            line-height: 0;
             margin: 0 145px 0 0;
             padding: 0;
             min-width: 92px;
@@ -373,12 +374,12 @@
 @media (max-width: 767px) {
     .navbar-top-area {
         .navbar {
-            padding: 30px 18px;
+            padding: 20px 18px;
         }
 
         #collapsibleNavbar {
             position: fixed;
-            top: 84px;
+            top: 64px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -389,7 +390,7 @@
             overflow: hidden;
             overflow-y: auto;
             z-index: $z-navbar;
-            height: calc(100vh - 84px);
+            height: calc(100vh - 64px);
         }
     }
 }

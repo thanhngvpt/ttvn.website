@@ -33,12 +33,12 @@
 		<div class="container">
 			<div class="navtab-custom">
 				<ul class="nav nav-tabs">
-					<li class="nav-item category-click" data-category-id="0">
-						<a class="nav-link @if($category_slug == 'all') active @endif" data-category-slug="all" data-category-id="0" data-toggle="tab" href="#news-tab-0">Tất cả</a>
+					<li class="nav-item category-click  @if($category_slug == 'all') active @endif" data-category-id="0">
+						<a class="nav-link" data-category-slug="all" data-category-id="0" data-toggle="tab" href="#news-tab-0">Tất cả</a>
 					</li>
 					@foreach($categories as $category)
-					<li class="nav-item category-click" data-category-id="{{$category->id}}">
-						<a class="nav-link @if($category_slug == $category->slug) active @endif" data-toggle="tab" data-category-slug="{{$category->slug}}" data-category-id="{{$category->id}}" href="#news-tab-{{$category->id}}">{{$category->name}}</a>
+					<li class="nav-item category-click @if($category_slug == $category->slug) active @endif" data-category-id="{{$category->id}}">
+						<a class="nav-link" data-toggle="tab" data-category-slug="{{$category->slug}}" data-category-id="{{$category->id}}" href="#news-tab-{{$category->id}}">{{$category->name}}</a>
 					</li>
 					@endforeach
 				</ul>
@@ -218,8 +218,10 @@
 			});
 		})
 
-		$(document).on('click', '.category-click', function() {
+		$(document).on('click', '.category-click', function(e) {
 			let category_id = $(this).data('category-id')
+			$('.category-click').removeClass('active')
+			$(e.currentTarget).addClass('active');
 			
 			$.ajax({
 				url: "{{action('Web\NewsController@getNewsViaCategory')}}",
@@ -240,7 +242,6 @@
 					});
 					setTimeout(function() {
 						$('.slick-slider').slick("setPosition")
-
 					}, 300)
 				}
 			});

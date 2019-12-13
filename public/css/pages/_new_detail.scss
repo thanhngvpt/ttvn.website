@@ -96,8 +96,6 @@
 		.content-news {
 			padding: 24px;
 			
-			
-
 			.cate-news {
 				margin-top: 0;
 			}
@@ -190,6 +188,7 @@
 		}
 		.relation-news {
 			padding-top: 48px;
+			padding-bottom: 48px;
 
 			.title-relation-news {
 				margin-bottom: 16px;
@@ -200,13 +199,13 @@
 
         .title-news-detail {
             font-size: 20px;
-            line-height: 32px;
+			line-height: 32px;
             font-weight: $fz-op-semibold;
         }
         
         .content-detail-news {
             font-size: 20px;
-            line-height: 32px;
+			line-height: 32px;
             font-weight: normal;
             padding-bottom: 5px;
             img {
