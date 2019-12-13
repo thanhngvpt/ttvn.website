@@ -3,7 +3,26 @@
     border-bottom: 1px solid #eeeeee;
     .pagination {
 		margin-bottom: 160px;
-    }
+	}
+	
+	.navtab-custom {
+		.nav-tabs {
+
+		}
+		.nav-item {
+			border-top: solid 8px transparent;
+			transition: all ease .2s;
+			&.active, &:hover {
+				border-top: solid 8px #57AE5B;
+			}
+			.nav-link {
+				padding-top: 27px;
+				&::before {
+					display: none;
+				}
+			}
+		}
+	}
     
 	.item-slide {
 		text-decoration: none;
@@ -61,7 +80,14 @@
                 white-space: nowrap;
             }
         }
-    }
+	}
+	
+	.item-news {
+		.des-news {
+			-webkit-line-clamp: 3;
+			max-height: 66px;
+		}
+	}
 }
 
 @media (max-width: 1439px) {
@@ -69,9 +95,7 @@
 		.nav-tabs {
 			margin-bottom: 60px;
 		}
-		.item-news {
-			margin-bottom: 48px;
-		}
+
 		.pagination {
 			margin-top: 8px;
 			margin-bottom: 88px;

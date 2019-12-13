@@ -229,6 +229,7 @@
 					font-size: 40px;
 					line-height: 56px;
 					margin-bottom: 8px;
+					max-width: 80%;
 				}
 				.description {
 					font-size: 14px;
@@ -242,6 +243,36 @@
 			}
 			.img-top-slide {
 				display: none;
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+    .top-page-slide {
+		.item-top-slide {
+			.text-slide {
+				.content {
+					max-width: 70%;
+				}
+				.description {
+					max-width: 70%;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 320px) {
+    .top-page-slide {
+		.item-top-slide {
+			.text-slide {
+				.content {
+					max-width: 100%;
+				}
+				.description {
+					max-width: 100%;
+				}
 			}
 		}
 	}
