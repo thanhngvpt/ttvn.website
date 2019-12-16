@@ -181,12 +181,12 @@
   				slidesToShow: 1,
   				slidesToScroll: 1,
   				dots: true,
-				autoplay: false,
+				autoplay: true,
 				autoplaySpeed: 3000,
 				rows: 0,
   				prevArrow: '<div class="slick-news-control prev-arrow"><img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid" /></div>',
   				nextArrow: '<div class="slick-news-control next-arrow"><img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid" /></div>'
-			  });
+			});
 
 			$('.nav-link').on('show.bs.tab', function(){
 				$('.slick-slider').slick("setPosition")
@@ -198,7 +198,7 @@
 			});
 
 			function repositionSlickArrows() {
-				
+
 			}
 		});
 
