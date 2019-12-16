@@ -98,7 +98,7 @@ class NewsController extends Controller
     {
         $page = 1;
         $categories = NewCategory::orderBy('order', 'asc')->get();
-        $hot_news = TableNew::where('new_category_id', $categories[0]->id)->where('display', 1)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
+        $hot_news = TableNew::where('display', 1)->where('is_enabled', 1)->orderBy('order', 'esc')->orderBy('id', 'desc')->take(4)->get();
         $data = $this->newRepo->getByNewsCategory($page, 0);
        
         return view('pages.web.news', [
