@@ -51,9 +51,9 @@
 						@foreach($hot_news as $hot_new)
 						<a class="item-slide cursor-pointer" href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}">
 							<div class="item-slide-news">
-								<div class="img-slide-news">
-										@if(!empty($hot_new->present()->coverImage()))
-									<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
+								<div class="img-slide-news" @if(!empty($hot_new->present()->coverImage())) style="background-image: url({!! $hot_new->present()->coverImage()->present()->url !!});" @endif>
+									@if(!empty($hot_new->present()->coverImage()))
+										<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
 									@endif
 								</div>
 								<div class="content-slide-news">
@@ -67,9 +67,9 @@
 						@endforeach
 					</div>
 					<div class="news-content">
-						<div class="row list-news">
+						<div class="list-news">
 							@foreach($data['news'] as $item)
-							<div class="col-xl-4 col-md-6">
+							<div class="col-item-news">
 								<a class="item-news" href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}">
 									<div class="img-news">
 											@if(!empty($item->present()->coverImage()))
@@ -181,11 +181,11 @@
   				slidesToShow: 1,
   				slidesToScroll: 1,
   				dots: true,
-				autoplay: true,
+				autoplay: false,
 				autoplaySpeed: 3000,
 				rows: 0,
-  				prevArrow: '<img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid prev-arrow" />',
-  				nextArrow: '<img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid next-arrow" />'
+  				prevArrow: '<div class="slick-news-control prev-arrow"><img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid" /></div>',
+  				nextArrow: '<div class="slick-news-control next-arrow"><img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid" /></div>'
 			  });
 
 			$('.nav-link').on('show.bs.tab', function(){
@@ -195,7 +195,11 @@
 			$('[data-link]').on('click', function(e) {
 				if ($(this).attr('data-link'))
 					location.href = $(this).attr('data-link')
-			})
+			});
+
+			function repositionSlickArrows() {
+				
+			}
 		});
 
 		$(document).on('click', '.child-item', function() {
@@ -237,8 +241,8 @@
 						slidesToShow: 1,
 						slidesToScroll: 1,
 						dots: true,
-						prevArrow: '<img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid prev-arrow" />',
-						nextArrow: '<img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid next-arrow" />'
+						prevArrow: '<div class="slick-news-control prev-arrow"><img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid" /></div>',
+						nextArrow: '<div class="slick-news-control next-arrow"><img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid" /></div>'
 					});
 					setTimeout(function() {
 						$('.slick-slider').slick("setPosition")
