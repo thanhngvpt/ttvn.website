@@ -2,7 +2,7 @@
     @foreach($hot_news as $hot_new)
     <div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
         <div class="item-slide-news">
-            <div class="img-slide-news">
+            <div class="img-slide-news" @if(!empty($hot_new->present()->coverImage())) style="background-image: url({!! $hot_new->present()->coverImage()->present()->url !!});" @endif>
                     @if(!empty($hot_new->present()->coverImage()))
                 <img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
                 @endif

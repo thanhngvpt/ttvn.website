@@ -26,6 +26,7 @@
                 <div class="text-slide">
                     <div class="title">Tập đoàn</div>
                     <div class="content">Trường Thành Việt Nam</div>
+                    <div class="content content-mb">Trường Thành<br/>Việt Nam</div>
                     <div class="description">
                         Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
                     </div>
@@ -314,6 +315,11 @@
             function showVideo() {
                 current = $('.top-slider').slick('slickCurrentSlide');
                 item = $('.top-slider img.slick-active');
+                if ($(window).width() <= 767) {
+                    $('.text-slide .btn-success').show();
+                    return false
+                }
+                
                 $('.text-slide .btn-success').hide();
                 if (item.hasClass('item-video')) {
                     $('.text-slide .btn-success').show();

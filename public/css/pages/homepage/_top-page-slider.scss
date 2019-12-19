@@ -27,6 +27,10 @@
 			line-height: 84px;
 			color: #57AE5B;
 			margin-bottom: 40px;
+			display: block;
+			&.content-mb {
+				display: none;
+			}
 		}
 		.description {
 			font-size: 20px;
@@ -217,6 +221,12 @@
 			display: none;
 		}
 		.item-top-slide {
+			.content {
+				display: none;
+				&.content-mb {
+					display: block;
+				}
+			}
 			.text-slide {
 				margin: 0 18px;
 				width: 100%;
@@ -252,9 +262,6 @@
     .top-page-slide {
 		.item-top-slide {
 			.text-slide {
-				.content {
-					max-width: 70%;
-				}
 				.description {
 					max-width: 70%;
 				}
