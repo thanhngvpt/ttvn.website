@@ -188,6 +188,123 @@
   				nextArrow: '<div class="slick-news-control next-arrow"><img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid" /></div>'
 			});
 
+			function repositionArrow() {
+				width = window.innerWidth
+				activeSlide = $('.tab-pane.active .news-slide .slick-current.slick-active')
+				control = $('.tab-pane.active .slick-news-control')
+				controlHeight = control.height();
+				img = activeSlide.find('.img-slide-news img');
+				height = img.height();
+				_top = (height/2 - controlHeight/2) + 'px'
+				control.css({top: _top})
+			}
+
+
+			repositionArrow();
+			$('.news-slide').on('afterChange', function(e) {
+				repositionArrow();
+			})
+
+			$(window).on('resize', function() {
+				repositionArrow();
+				setTimeout(function () {
+					repositionArrow();
+				}, 100)
+			})
+
+			$(document).on('click', '.child-item', function() {
+				let next_page = $(this).data('page-number');
+				let slug = $('.tab-pane.active').data('category-slug')
+
+				$.ajax({
+					url: "/tin-tuc/"+slug,
+					type: "GET",
+					data: {
+						_token: "{!! csrf_token() !!}",
+						page: next_page,
+					},
+					success: function (res) {
+						$('.news-content').html(res)
+						$('html, body').animate({
+							scrollTop: $(".news-content").offset().top
+						}, 500);
+					}
+				});
+			})
+
+			$(document).on('click', '.category-click', function(e) {
+				let category_id = $(this).data('category-id')
+				$('.category-click').removeClass('active')
+				$(e.currentTarget).addClass('active');
+				
+				$.ajax({
+					url: "{{action('Web\NewsController@getNewsViaCategory')}}",
+					type: "GET",
+					data: {
+						_token: "{!! csrf_token() !!}",
+						category_id: category_id
+					},
+					success: function (res) {
+						$('#news-tab-'+ category_id).html(res)
+						$('.news-slide').not('.slick-initialized').slick({
+							infinite: true,
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							dots: true,
+							prevArrow: '<div class="slick-news-control prev-arrow"><img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid" /></div>',
+							nextArrow: '<div class="slick-news-control next-arrow"><img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid" /></div>'
+						});
+						repositionArrow();
+						setTimeout(function() {
+							$('.slick-slider').slick("setPosition")
+							repositionArrow();
+						}, 300)
+					}
+				});
+			})
+
+			$(document).on('click', '.next-page', function() {
+				let current_page = $('.page-item.active').data('page-number');
+				let next_page = parseInt(current_page) + 1;
+
+				let slug = $('.tab-pane.active').data('category-slug')
+				$.ajax({
+					url: "/tin-tuc/"+slug,
+					type: "GET",
+					data: {
+						_token: "{!! csrf_token() !!}",
+						page: next_page,
+					},
+					success: function (res) {
+						$('.news-content').html(res)
+						$('html, body').animate({
+							scrollTop: $(".news-content").offset().top
+						}, 500);
+					}
+				});
+			})
+
+			$(document).on('click', '.previous-page', function() {
+				let current_page = $('.page-item.active').data('page-number');
+				let next_page = parseInt(current_page) - 1;
+
+				let slug = $('.tab-pane.active').data('category-slug')
+				$.ajax({
+					url: "/tin-tuc/"+slug,
+					type: "GET",
+					data: {
+						_token: "{!! csrf_token() !!}",
+						page: next_page,
+					},
+					success: function (res) {
+						$('.news-content').html(res)
+						$('html, body').animate({
+							scrollTop: $(".news-content").offset().top
+						}, 500);
+					}
+				});
+			})
+
 			$('.nav-link').on('show.bs.tab', function(){
 				$('.slick-slider').slick("setPosition")
 			});
@@ -196,101 +313,6 @@
 				if ($(this).attr('data-link'))
 					location.href = $(this).attr('data-link')
 			});
-
-			function repositionSlickArrows() {
-
-			}
 		});
-
-		$(document).on('click', '.child-item', function() {
-			let next_page = $(this).data('page-number');
-			let slug = $('.tab-pane.active').data('category-slug')
-
-			$.ajax({
-				url: "/tin-tuc/"+slug,
-				type: "GET",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					page: next_page,
-				},
-				success: function (res) {
-					$('.news-content').html(res)
-					$('html, body').animate({
-						scrollTop: $(".news-content").offset().top
-					}, 500);
-				}
-			});
-		})
-
-		$(document).on('click', '.category-click', function(e) {
-			let category_id = $(this).data('category-id')
-			$('.category-click').removeClass('active')
-			$(e.currentTarget).addClass('active');
-			
-			$.ajax({
-				url: "{{action('Web\NewsController@getNewsViaCategory')}}",
-				type: "GET",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					category_id: category_id
-				},
-				success: function (res) {
-					$('#news-tab-'+ category_id).html(res)
-					$('.news-slide').not('.slick-initialized').slick({
-						infinite: true,
-						slidesToShow: 1,
-						slidesToScroll: 1,
-						dots: true,
-						prevArrow: '<div class="slick-news-control prev-arrow"><img src="{{ asset("images/arrow-left.svg") }}" class="img-fluid" /></div>',
-						nextArrow: '<div class="slick-news-control next-arrow"><img src="{{ asset("images/arrow-right.svg") }}" class="img-fluid" /></div>'
-					});
-					setTimeout(function() {
-						$('.slick-slider').slick("setPosition")
-					}, 300)
-				}
-			});
-		})
-
-		$(document).on('click', '.next-page', function() {
-			let current_page = $('.page-item.active').data('page-number');
-			let next_page = parseInt(current_page) + 1;
-
-			let slug = $('.tab-pane.active').data('category-slug')
-			$.ajax({
-				url: "/tin-tuc/"+slug,
-				type: "GET",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					page: next_page,
-				},
-				success: function (res) {
-					$('.news-content').html(res)
-					$('html, body').animate({
-						scrollTop: $(".news-content").offset().top
-					}, 500);
-				}
-			});
-		})
-
-		$(document).on('click', '.previous-page', function() {
-			let current_page = $('.page-item.active').data('page-number');
-			let next_page = parseInt(current_page) - 1;
-
-			let slug = $('.tab-pane.active').data('category-slug')
-			$.ajax({
-				url: "/tin-tuc/"+slug,
-				type: "GET",
-				data: {
-					_token: "{!! csrf_token() !!}",
-					page: next_page,
-				},
-				success: function (res) {
-					$('.news-content').html(res)
-					$('html, body').animate({
-						scrollTop: $(".news-content").offset().top
-					}, 500);
-				}
-			});
-		})
 	</script>
 @endsection

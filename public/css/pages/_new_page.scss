@@ -38,7 +38,7 @@
 	}
 
 	.news-slide {
-		padding-bottom: 112px;
+		padding-bottom: 114px;
 		position: relative;
 
 		.prev-arrow, .next-arrow {
@@ -46,12 +46,10 @@
 			z-index: 10;
 		}
 		.prev-arrow {
-			left: -32px;
-			transform: translate(-100%, 0);
+			left: -57px;
 		}
 		.next-arrow {
-			right: -32px;
-			transform: translate(100%, 0);
+			right: -57px;
 		}
 
 		.title-slide-news {
@@ -125,6 +123,11 @@
 	.item-news {
 		margin-bottom: 0;
 		display: inline-block;
+		.title-news {
+			font-weight: bold;
+			font-size: 20px;
+			line-height: 32px;
+		}
 		.des-news {
 			-webkit-line-clamp: 3;
 			max-height: 66px;
@@ -152,6 +155,10 @@
 			margin-bottom: 64px;
 		}
 	}
+
+	.slick-dotted.slick-slider {
+		margin-bottom: 0;
+	}
 }
 
 @media (max-width: 1439px) {
@@ -166,14 +173,12 @@
 		}
 
 		.news-slide {
-			padding-bottom: 88px;
+			padding-bottom: 90px;
 			.prev-arrow {
-				left: -24px;
-				transform: translate(-100%, 0);
+				left: -48px;
 			}
 			.next-arrow {
-				right: -24px;
-				transform: translate(100%, 0);
+				right: -48px;
 			}
 
 			.img-slide-news {
@@ -203,6 +208,11 @@
 		}
 
 		.item-news {
+			.title-news {
+				font-weight: bold;
+				font-size: 16px;
+				line-height: 22px;
+			}
 			.cate-news {
 				margin-top: 16px;
 				margin-bottom: 16px;
@@ -226,7 +236,7 @@
 		}
 
 		.news-slide {
-			padding-bottom: 80px;
+			padding-bottom: 82px;
 			.prev-arrow, .next-arrow {
 				width: 32px;
 				height: 90px;
@@ -235,8 +245,6 @@
 				justify-content: center;
 				background: rgba(34, 34, 34, .08);
 				border-radius: 4px;
-				top: 0;
-				transform: translate(0px, 100%);
 			}
 			.prev-arrow {
 				left: 0;
@@ -264,6 +272,11 @@
 				// margin: 24px 0 56px;
 				bottom: 56px;
 			}
+
+			.title-slide-news {
+				font-size: 24px;
+				line-height: 32px;
+			}
 		}
 
 		.list-news {
@@ -279,7 +292,9 @@
 
 		.item-news {
 			.title-news {
+				font-weight: bold;
 				font-size: 16px;
+				line-height: 22px;
 			}
 		}
 		.pagination {
@@ -300,7 +315,7 @@
 		}
 		.navtab-custom {
 			overflow-x: auto;
-			margin-bottom: 40px;
+			margin-bottom: 44px;
 			.nav-item {
 				flex: none;
 				display: inline-block;
@@ -315,10 +330,9 @@
 		}
 
 		.news-slide {
-			padding-bottom: 80px;
 			.prev-arrow, .next-arrow {
 				top: 0%;
-				transform: translate(0px, 50%);
+				transform: none;
 			}
 			.prev-arrow {
 				left: 0;
@@ -367,6 +381,14 @@
 		}
 		.item-slide-news {
 			display: block;
+		}
+
+		.item-news {
+			.title-news {
+				font-weight: bold;
+				font-size: 16px;
+				line-height: 22px;
+			}
 		}
 	}
 }

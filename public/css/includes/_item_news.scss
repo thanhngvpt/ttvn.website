@@ -49,7 +49,7 @@
 			margin-bottom: 8px;
 		}
 		.title-news {
-			margin-bottom: 16px !important;
+			margin-bottom: 16px;
 		}
 	}
 }
@@ -57,9 +57,9 @@
 @media (max-width: 767px) {
     .item-news {
 		.title-news {
-			font-size: 14px !important;
-			line-height: 25px !important;
-            margin-bottom: 16px !important;
+			font-size: 14px;
+			line-height: 25px;
+            margin-bottom: 16px;
             max-height: 50px;
 		}
 		.cate-news {
