@@ -122,6 +122,13 @@ body {
     }
 }
 
+.cursor-normal {
+    cursor: unset;
+    * {
+        cursor: unset;
+    }
+}
+
 .pagination {
 	justify-content: center;
 
