@@ -13,9 +13,9 @@
             </a>
         @endforeach
     </div>
-    <div class="text-center">
-        <a href="{!! action('Web\NewsController@index', 'all') !!}" class="btn btn-outline-success btn-see-more-news">
-            Xem tất cả
-        </a>
-    </div>
+</div>
+<div class="text-center">
+    <a href="{!! action('Web\NewsController@index', 'all') !!}" class="btn btn-outline-success btn-see-more-news">
+        Xem tất cả
+    </a>
 </div>

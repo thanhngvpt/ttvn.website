@@ -144,6 +144,144 @@
                 line-height: 32px;
                 color: #000000;
                 padding: 0 16px;
+                > .detail-leader {
+                    margin: 0;
+                }
+
+                > .scroll-element {
+                    background: none;
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+                    position: absolute;
+                    z-index: 10;
+                    
+                    div {
+                        background: none;
+                        border: none;
+                        margin: 0;
+                        padding: 0;
+                        position: absolute;
+                        z-index: 10;
+                        display: block;
+                        height: 100%;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                    }
+                    
+                    &.scroll-x {
+                        bottom: 2px;
+                        height: 7px;
+                        left: 0;
+                        min-width: 100%;
+                        width: 100%;
+                    }
+                    
+                    &.scroll-y {
+                        height: 100%;
+                        min-height: 100%;
+                        right: 2px;
+                        top: 0;
+                        width: 7px;
+                    }
+                    
+                    .scroll-element_outer {
+                        opacity: 0.3;
+                        border-radius: 12px;
+                    }
+                    
+                    .scroll-element_size {
+                        background-color: #cccccc;
+                        opacity: 0;
+                        border-radius: 12px;
+                        transition: opacity 0.2s;
+                    }
+                    
+                    .scroll-bar {
+                        background-color: #6c6e71;
+                        -webkit-border-radius: 7px;
+                        -moz-border-radius: 7px;
+                        border-radius: 7px;
+                    }
+                    
+                    &.scroll-x .scroll-bar {
+                        bottom: 0;
+                        height: 7px;
+                        min-width: 24px;
+                        top: auto;
+                    }
+                    
+                    &.scroll-y .scroll-bar {
+                        left: auto;
+                        min-height: 24px;
+                        right: 0;
+                        width: 7px;
+                    }
+                    
+                    &.scroll-x .scroll-element_outer {
+                        bottom: 0;
+                        top: auto;
+                        left: 2px;
+                        transition: height 0.2s;
+                    }
+                    
+                    &.scroll-y .scroll-element_outer {
+                        left: auto;
+                        right: 0;
+                        top: 2px;
+                        transition: width 0.2s;
+                    }
+                    
+                    &.scroll-x .scroll-element_size {
+                        left: -4px;
+                    }
+                    
+                    &.scroll-y .scroll-element_size {
+                        top: -4px;
+                    }
+                    
+                    &.scroll-x.scroll-scrolly_visible .scroll-element_size {
+                        left: -11px;
+                    }
+                    
+                    &.scroll-y.scroll-scrollx_visible .scroll-element_size {
+                        top: -11px;
+                    }
+                    
+                    &:hover .scroll-element_outer, &.scroll-draggable .scroll-element_outer {
+                        overflow: hidden;
+                        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+                        filter: alpha(opacity = 70);
+                        opacity: 0.7;
+                    }
+                    
+                    &:hover .scroll-element_outer .scroll-element_size, &.scroll-draggable .scroll-element_outer .scroll-element_size {
+                        opacity: 1;
+                    }
+                    
+                    &:hover .scroll-element_outer .scroll-bar, &.scroll-draggable .scroll-element_outer .scroll-bar {
+                        height: 100%;
+                        width: 100%;
+                        -webkit-border-radius: 12px;
+                        -moz-border-radius: 12px;
+                        border-radius: 12px;
+                    }
+                    
+                    &.scroll-x {
+                        &:hover .scroll-element_outer, &.scroll-draggable .scroll-element_outer {
+                        height: 20px;
+                        min-height: 7px;
+                        }
+                    }
+                    
+                    &.scroll-y {
+                        &:hover .scroll-element_outer, &.scroll-draggable .scroll-element_outer {
+                        min-width: 7px;
+                        width: 20px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -210,7 +348,11 @@
                 }
 
                 .detail-leader {
+                    max-width: 100%;
                     padding: 0 62px;
+                    > .detail-leader {
+                        margin: 0;
+                    }
                 }
             }
         }
@@ -346,7 +488,7 @@
 
                 .detail-leader {
                     max-height: 350px;
-                    max-width: 648px;
+                    max-width: calc(100% - 48px);
                     overflow: auto;
                     margin: 32px auto auto;
                     font-family: $f-opensan;
@@ -355,6 +497,9 @@
                     font-size: 16px;
                     line-height: 32px;
                     color: #000000;
+                    > .detail-leader {
+                        margin: 0;
+                    }
                 }
             }
         }

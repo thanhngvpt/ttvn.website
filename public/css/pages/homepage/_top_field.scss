@@ -5,6 +5,7 @@
 	background-repeat: no-repeat;
 	background-size: 32px;
 	background-position: left 10.13513514% bottom 86px;
+	background-color: white;
 
 	.title-top-field {
 		margin-bottom: 24px;
@@ -49,11 +50,12 @@
 	}
 	.item-top-field {
 		display: block;
-		padding: 40px 40px 56px 40px;
+		padding: 48px 40px 57px 40px;
 		border-radius: 100px 10px 100px 10px;
-		border: 1px solid #eeeeee;
 		transition: transform 0.3s ease-out;
 		height: 100%;
+		background: #FFFFFF;
+		border: 2px solid #F7F7F7;
 		.img-topfield {
 			img {
 				max-width: 220px;
@@ -84,6 +86,7 @@
 		.item-top-field {
 			padding-left: 32px;
 			padding-right: 32px;
+			border-radius: 100px 15px 100px 15px;
 			.img-topfield {
 				img {
 					max-width: 170px;
@@ -113,8 +116,8 @@
 		background-image: none;
 		
 		.item-top-field {
-			padding-left: 32px;
-			padding-right: 30px;
+			border-radius: 50px 15px 50px 15px;
+			padding: 32px 30px 32px 32px;
 			.img-topfield {
 				img {
 					max-width: 140px;
@@ -144,6 +147,48 @@
 			line-height: 22px;
 			height: 88px;
 			overflow: hidden;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.top-field {
+		// padding-bottom: 56px;
+		// padding-top: 32px;
+
+		.list-top-field {
+			.item-top-field {
+				padding: 48px 24px 76px;
+				min-height: 364px;
+				box-shadow: 0px 32px 56px rgba(0, 0, 0, 0.08);
+
+				.img-topfield {
+					text-align: center;
+					border-radius: 50px 15px 50px 15px;
+					margin-bottom: 24px;
+					img {
+						max-height: 160px;
+						display: inline-block;
+						max-width: 140px;
+						min-height: inherit;
+					}
+				}
+			}
+
+			.col-md-4 {
+				margin-bottom: 24px;
+				max-width: 88.75%;
+				margin-left: auto;
+				margin-right: auto;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.des-topfield {
+			max-width: 80%;
+			margin: auto;
 		}
 	}
 }

@@ -258,7 +258,7 @@ class="background-white introduce-page"
                         <div class="container">
                             <div class="partner-slider">
                                 @foreach($partners as $partner)
-                                    <a href="{{$partner->link ? $partner->link : 'javascript::void(0);'}}" @if($partner->link) target="_blank" @endif title="{{ $partner->name }}" class="partner-item">
+                                    <a href="{{$partner->link ? $partner->link : 'javascript::void(0);'}}" @if($partner->link) target="_blank" @endif title="{{ $partner->name }}" class="partner-item @if(!$partner->link) cursor-normal @endif">
                                             @if(!empty($partner->present()->coverImage()))
                                         <img src="{!! $partner->present()->coverImage()->present()->url !!}" class="img-fluid" />
                                         @endif
@@ -300,7 +300,7 @@ class="background-white introduce-page"
                         <div class="list-leaders">
                             <div class="leaders-slider">
                                 @foreach($leader_ships as $key => $leader_ship)
-                                    <div class="leaders-slide-item" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
+                                    <div class="leaders-slide-item cursor-pointer" data-toggle="modal" data-target="#show-detail-leader-{{$leader_ship->id}}">
                                         <div class="item-wrapper">
                                             <div class="leaders-thumb">
                                                     @if(!empty($leader_ship->present()->coverImage()))
@@ -349,8 +349,10 @@ class="background-white introduce-page"
                                                     {{$leader_ship->position}}
                                                 </div>
                                             </div>
-                                            <div class="detail-leader">
-                                                <p>{!! $leader_ship->file_text !!}</p>
+                                            <div class="detail-leader position-relative">
+                                                <div class="detail-leader-content">
+                                                    <p>{!! $leader_ship->file_text !!}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -367,10 +369,12 @@ class="background-white introduce-page"
 @section('page-styles')
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="/static/web/default/plugins/jquery.scrollbar/jquery.scrollbar.css">
 @endsection
 
 @section('page-scripts')
 	<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="/static/web/default/plugins/jquery.scrollbar/jquery.scrollbar.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 
@@ -671,62 +675,11 @@ class="background-white introduce-page"
                 scrollToTarget(target);
             });
 
-            function drawBackgroundHeader() {
-                container = $('.title-page .container');
-                targetBg = $('.navbar-top-area');
 
-                offset = container.offset().left
-                calculateWidth = container.width();
+            $('.detail-leader').scrollbar();
 
-                breakPoint = (calculateWidth + offset) + 'px';
-                backgroundGradient = `linear-gradient(90deg, #00263C 0%, #00263C ${breakPoint}, #57AE5B ${breakPoint}, #57AE5B 100%)`;
-                configs = {
-                    1440: {
-                        bgDefault: `url('/images/introduce/square-header1.svg'), url('/images/introduce/square-header2.svg'), url('/images/introduce/square-header3.svg'), url('/images/introduce/header-green.svg')`,
-                        position: 'bottom -10% left -50px, top 50% right 30%',
-                        p3: {
-                            x: 43,
-                            y: 55
-                        }
-                    },
-                    1024: {
-                        bgDefault: `url('/images/introduce/square-header1-lg.svg'), url('/images/introduce/square-header2.svg'), url('/images/introduce/square-header3.svg'), url('/images/introduce/header-green.svg')`,
-                        position: 'left 0 bottom -40%, top 55% right 30%',
-                        p3: {
-                            x: 61,
-                            y: 108
-                        },
-                    }
-                }
-
-                position = ''
-                bg = ''
-                size = ''
-                Object.keys(configs).forEach(function(size) {
-                    if (window.screenWidth >= size) {
-                        data = configs[size]
-                        position = data.position;
-                        bg = `${data.bgDefault}, ${backgroundGradient}`;
-
-                        p3x = parseInt(breakPoint) + parseInt(data.p3.x)
-                        position += `, ${p3x}px  ${data.p3.y}px, bottom -4px left ${breakPoint}, 100%`
-                    }
-                })
-                obj = {
-                    'background-image': bg,
-                    'background-position': position
-                }
-
-                if (window.screenWidth >= 1024) {
-                    targetBg.css(obj);
-                } else {
-                    targetBg.attr('style', '')
-                }
-            }
-
-            drawBackgroundHeader();
-            $(window).on('resize', function() {
-                drawBackgroundHeader();
+            $('.modal-member-detail').on('shown.bs.modal', function (e) {
+                console.log('show modal', $(this))
             })
             
 		});
