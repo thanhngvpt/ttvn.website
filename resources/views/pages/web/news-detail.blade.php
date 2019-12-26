@@ -16,43 +16,58 @@
 @section('content')
 	<div id="news-detail-page">
 		<div class="area-detail-news">
-			<a class="tag-news" href="{!! action('Web\NewsController@index', @$news->newCategory->slug) !!}">
-				{{@$news->newCategory->name}}
-			</a>
-			<div class="title-news-detail">
-				{{$news->name}}
-			</div>
-			<div class="date-detail-news">
-				{!!  date('d/m/Y', (strtotime( $news->created_at))) !!}
-			</div>
-			<div class="content-detail-news">
-				{!! $news->content !!}
-			</div>
-			<div class="share-detail-news clearfix">
-				<div class="float-left">
-					<span class="tags-secondary">
-						{{@$news->newCategory->name}}
-					</span>
+			<div class="content-area">
+				<a class="tag-news" href="{!! action('Web\NewsController@index', @$news->newCategory->slug) !!}">
+					{{@$news->newCategory->name}}
+				</a>
+				<div class="title-news-detail">
+					{{$news->name}}
 				</div>
-				{{-- <div class="float-right">
-					<ul class="news-social">
-						<li>
-							<a href="{{@$footer->fb_link}}">
-								<img src="{{ asset('images/icon-facebook-share.svg') }}" class="img-fluid" />
-							</a>
-						</li>
-						<li>
-							<a href="mailto:{{@$footer->email}}">
-								<img src="{{ asset('images/icon-google-share.svg') }}" class="img-fluid" />
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="{{ asset('images/icon-instagram-share.svg') }}" class="img-fluid" />
-							</a>
-						</li>
-					</ul>
-				</div> --}}
+				<div class="date-detail-news">
+					{!!  date('d/m/Y', (strtotime( $news->created_at))) !!}
+				</div>
+				<div class="content-sapo">
+					{!! $news->sapo !!}
+				</div>
+			</div>
+			@if(!empty($news->present()->coverImage()))
+				<div class="news-thumb">
+					<div class="news-thumb-wrapper" style="background-image: url({!! $news->present()->coverImage()->present()->url !!});">
+						<img src="{!! $news->present()->coverImage()->present()->url !!}" alt="" class="img-fluid">
+					</div>
+				</div>
+			@endif
+			<div class="content-area">
+				<div class="content-detail-news">
+					{!! $news->content !!}
+				</div>
+			
+				<div class="share-detail-news clearfix">
+					<div class="float-left">
+						<span class="tags-secondary">
+							{{@$news->newCategory->name}}
+						</span>
+					</div>
+					{{-- <div class="float-right">
+						<ul class="news-social">
+							<li>
+								<a href="{{@$footer->fb_link}}">
+									<img src="{{ asset('images/icon-facebook-share.svg') }}" class="img-fluid" />
+								</a>
+							</li>
+							<li>
+								<a href="mailto:{{@$footer->email}}">
+									<img src="{{ asset('images/icon-google-share.svg') }}" class="img-fluid" />
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="{{ asset('images/icon-instagram-share.svg') }}" class="img-fluid" />
+								</a>
+							</li>
+						</ul>
+					</div> --}}
+				</div>
 			</div>
 		</div>
 		<div class="relation-news">

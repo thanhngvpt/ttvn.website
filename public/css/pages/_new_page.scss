@@ -51,6 +51,10 @@
 		.next-arrow {
 			right: -57px;
 		}
+		.tag-news, .title-slide-news, .des-slide-news, .date-slide-news {
+			display: block;
+			float: left;
+		}
 
 		.title-slide-news {
 			font-size: 32px;
@@ -118,11 +122,26 @@
 	.item-slide-news {
 		display: flex;
 		justify-content: space-between;
+
+		a {
+			text-decoration: none;
+			outline: none;
+		}
 	}
 	
 	.item-news {
 		margin-bottom: 0;
 		display: inline-block;
+		a {
+			text-decoration: none;
+			outline: none;
+		}
+
+		.img-news, .title-news, .des-news, .cate-news, .date-news {
+			display: inline-block;
+			float: left;
+		}
+
 		.title-news {
 			font-weight: bold;
 			font-size: 20px;
@@ -260,7 +279,7 @@
 				background-size: cover;
 				background-position: center;
 				img {
-					opacity: 0;
+					// opacity: 0;
 				}
 			}
 			.content-slide-news {
