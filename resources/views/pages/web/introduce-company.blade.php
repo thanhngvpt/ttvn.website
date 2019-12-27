@@ -656,11 +656,57 @@ class="background-white introduce-page"
                         }
                     },
                 ]
+            });
+
+            function setItemLeaderHeight() {
+                slides = $('.leaders-slider .slick-slide.slick-active');
+                $('.leaders-slider .leaders-slide-item').css({height: 'inherit'});
+                _height = 0;
+                $.each(slides, function(key, row) {
+                    items = $(row).find('.leaders-slide-item');
+                    $.each(items, function(key, item) {
+                        _height = $(item).height() > _height ? $(item).height() : _height;
+                    })
+                })
+
+                if ($(window).width() <= 768) {
+                    items = $('.leaders-slider .leaders-slide-item');
+                    _height = 0;
+                    $.each(items, function(key, item) {
+                        _height = $(item).height() > _height ? $(item).height() : _height
+                    })
+
+                    $('.leaders-slider .leaders-slide-item').css({height: _height + 'px'});
+                    return true;
+                }
+                
+                setTimeout(function() {
+                    slides = $('.leaders-slider .slick-slide');
+                    $.each(slides, function(key, row) {
+                        items = $(row).find('.leaders-slide-item');
+                        $.each(items, function(key, item) {
+                            $(item).css({height: _height + 'px'})
+                        })
+                    })
+                }, 1)
+            }
+
+            isSet = false;
+            $('.leaders-slider').on('setPosition', function () {
+                setItemLeaderHeight();
+            });
+
+            $(window).on('resize', function() {
+                setItemLeaderHeight();
+                setTimeout(function() {
+                    setItemLeaderHeight();
+                }, 1)
             })
 
             $('.tab-controls .nav-link').on('show.bs.tab', function() {
                 $('.values-content-slider, .values-thumb-slider, .history-content-slider, .history-thumb-slider, .partner-slider, .leaders-slider').slick('setPosition');
                 setTimeout(function() {
+                    drawTimelineProgress();
                     $('.values-content-slider, .values-thumb-slider, .history-content-slider, .history-thumb-slider, .partner-slider, .leaders-slider').slick('setPosition');
                 }, 200)
             })

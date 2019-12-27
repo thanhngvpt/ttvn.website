@@ -1,52 +1,52 @@
 <div class="news-slide">
     @foreach($hot_news as $hot_new)
-    <div class="item-slide" onclick="location.href='{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}'">
+    <div class="item-slide">
         <div class="item-slide-news">
-            <div class="img-slide-news" @if(!empty($hot_new->present()->coverImage())) style="background-image: url({!! $hot_new->present()->coverImage()->present()->url !!});" @endif>
-                    @if(!empty($hot_new->present()->coverImage()))
-                <img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
+            <a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="img-slide-news" @if(!empty($hot_new->present()->coverImage())) style="background-image: url({!! $hot_new->present()->coverImage()->present()->url !!});" @endif>
+                @if(!empty($hot_new->present()->coverImage()))
+                    <img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
                 @endif
-            </div>
+            </a>
             <div class="content-slide-news">
-                <button class="btn tag-news">
+                <a href="{!! route('news.category', $hot_new->newCategory->slug) !!}" class="btn tag-news">
                     {{@$hot_new->newCategory->name}}
-                </button>
-                <div class="title-slide-news">
+                </a>
+                <a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="title-slide-news">
                         {{$hot_new->name}}
-                </div>
-                <div class="des-slide-news">
+                </a>
+                <a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="des-slide-news">
                         {!!$hot_new->sapo!!}
-                </div>
-                <div class="date-slide-news">
+                </a>
+                <a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">
                         {!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
-                </div>
+                </a>
             </div>
         </div>
     </div>
     @endforeach
 </div>
     <div class="news-content">
-        <div class="row list-news">
+        <div class="list-news">
             @foreach($data['news'] as $item)
-            <div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}'">
+            <div class="col-item-news">
                 <div class="item-news">
-                    <div class="img-news">
+                    <a href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="img-news">
                             @if(!empty($item->present()->coverImage()))
                         <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
                         @endif
-                    </div>
-                    <div class="cate-news">
+                    </a>
+                    <a href="{!! route('news.category', $hot_new->newCategory->slug) !!}" class="cate-news">
                             {{@$item->newCategory->name}}
-                    </div>
-                    <div class="title-news">
+                    </a>
+                    <a  href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="title-news">
                             {{$item->name}}
-                    </div>
-                    <div class="des-news">
+                    </a>
+                    <a  href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="des-news">
                             {!!$item->sapo!!}
-                    </div>
-                    <div class="date-news">
+                    </a>
+                    <a  href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="date-news">
                             {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
-                    </div>
+                    </a>
                 </div>
             </div>
             @endforeach
