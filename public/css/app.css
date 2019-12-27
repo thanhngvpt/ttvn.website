@@ -5422,7 +5422,8 @@ body {
       right: -57px; }
     #news-page .news-slide .tag-news, #news-page .news-slide .title-slide-news, #news-page .news-slide .des-slide-news, #news-page .news-slide .date-slide-news {
       display: block;
-      float: left; }
+      float: left;
+      width: 100%; }
     #news-page .news-slide .title-slide-news {
       font-size: 32px;
       line-height: 48px;
@@ -5489,8 +5490,9 @@ body {
       text-decoration: none;
       outline: none; }
     #news-page .item-news .img-news, #news-page .item-news .title-news, #news-page .item-news .des-news, #news-page .item-news .cate-news, #news-page .item-news .date-news {
-      display: inline-block;
-      float: left; }
+      display: block;
+      float: left;
+      width: 100%; }
     #news-page .item-news .title-news {
       font-weight: bold;
       font-size: 20px;

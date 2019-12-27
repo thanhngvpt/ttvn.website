@@ -54,6 +54,7 @@
 		.tag-news, .title-slide-news, .des-slide-news, .date-slide-news {
 			display: block;
 			float: left;
+			width: 100%;
 		}
 
 		.title-slide-news {
@@ -138,8 +139,9 @@
 		}
 
 		.img-news, .title-news, .des-news, .cate-news, .date-news {
-			display: inline-block;
+			display: block;
 			float: left;
+			width: 100%;
 		}
 
 		.title-news {
