@@ -112,7 +112,7 @@
 
             .info-leader {
                 .leader-data {
-                    width: 300px;
+                    max-width: 350px;
                     margin: 24px auto auto;
                     text-align: center;
                     .name-leader {
@@ -133,6 +133,9 @@
                         color: #9E9E9E;
                         margin-top: 16px;
                         text-transform: uppercase;
+                        max-width: 252px;
+                        margin-left: auto;
+                        margin-right: auto;
                     }
                 }
             }
@@ -475,7 +478,7 @@
 
                 .info-leader {
                     .leader-data {
-                        width: 252px;
+                        max-width: 350px;
                         margin: 24px auto auto;
                         text-align: center;
                         .name-leader {
@@ -496,6 +499,9 @@
                             color: #9E9E9E;
                             margin-top: 10px;
                             text-transform: uppercase;
+                            max-width: 252px;
+                            margin-left: auto;
+                            margin-right: auto;
                         }
                     }
                 }

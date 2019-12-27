@@ -2600,7 +2600,7 @@ body {
       height: 262px;
       margin: auto; }
   .introduce-page .modal-member-detail .modal-body .info-leader .leader-data {
-    width: 300px;
+    max-width: 350px;
     margin: 24px auto auto;
     text-align: center; }
     .introduce-page .modal-member-detail .modal-body .info-leader .leader-data .name-leader {
@@ -2618,7 +2618,10 @@ body {
       line-height: 25px;
       color: #9E9E9E;
       margin-top: 16px;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      max-width: 252px;
+      margin-left: auto;
+      margin-right: auto; }
   .introduce-page .modal-member-detail .modal-body .detail-leader {
     overflow: auto;
     margin: 34px auto auto;
@@ -2840,7 +2843,7 @@ body {
         height: 264px;
         margin: auto; }
     .introduce-page .modal-member-detail .modal-body .info-leader .leader-data {
-      width: 252px;
+      max-width: 350px;
       margin: 24px auto auto;
       text-align: center; }
       .introduce-page .modal-member-detail .modal-body .info-leader .leader-data .name-leader {
@@ -2858,7 +2861,10 @@ body {
         line-height: 25px;
         color: #9E9E9E;
         margin-top: 10px;
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        max-width: 252px;
+        margin-left: auto;
+        margin-right: auto; }
     .introduce-page .modal-member-detail .modal-body .detail-leader {
       max-height: 350px;
       max-width: calc(100% - 48px);

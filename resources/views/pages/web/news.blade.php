@@ -49,7 +49,7 @@
 				<div class="tab-pane @if($category_slug == 'all') active show @endif" data-category-slug="all" data-category-id="0" id="news-tab-0">
 					<div class="news-slide">
 						@foreach($hot_news as $hot_new)
-						<div class="item-slide cursor-pointer">
+						<div class="item-slide">
 							<div class="item-slide-news">
 								<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="img-slide-news" @if(!empty($hot_new->present()->coverImage())) style="background-image: url({!! $hot_new->present()->coverImage()->present()->url !!});" @endif>
 									@if(!empty($hot_new->present()->coverImage()))
@@ -57,7 +57,7 @@
 									@endif
 								</a>
 								<div class="content-slide-news">
-									<a href="{!! route('news.category', $hot_new->newCategory->slug) !!}" class="btn tag-news">{{@$hot_new->newCategory->name}}</a>
+									<div class="btn tag-news cursor-normal">{{@$hot_new->newCategory->name}}</div>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="title-slide-news">{{$hot_new->name}}</a>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="des-slide-news">{!!$hot_new->sapo!!}</a>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">{!! date('d/m/Y', (strtotime( $hot_new->created_at))) !!}</a>
@@ -106,9 +106,9 @@
 									@endif
 								</a>
 								<div class="content-slide-news">
-									<a href="{!! route('news.category', $hot_new->newCategory->slug) !!}" class="btn tag-news">
+									<div class="btn tag-news cursor-normal">
 										{{@$hot_new->newCategory->name}}
-									</a>
+									</div>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="title-slide-news">
 											{{$hot_new->name}}
 									</a>

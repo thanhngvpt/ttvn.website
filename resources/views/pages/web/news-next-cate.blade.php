@@ -8,9 +8,9 @@
                 @endif
             </a>
             <div class="content-slide-news">
-                <a href="{!! route('news.category', $hot_new->newCategory->slug) !!}" class="btn tag-news">
+                <div class="btn tag-news cursor-normal">
                     {{@$hot_new->newCategory->name}}
-                </a>
+                </div>
                 <a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="title-slide-news">
                         {{$hot_new->name}}
                 </a>
