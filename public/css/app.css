@@ -2566,9 +2566,8 @@ body {
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 78px;
-  max-width: calc(100% - 36px);
   margin-left: auto;
-  margin-left: right; }
+  margin-right: auto; }
 
 .introduce-page .modal-member-detail .modal-body {
   position: relative;
