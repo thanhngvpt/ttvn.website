@@ -2565,7 +2565,10 @@ body {
 .introduce-page .modal-member-detail .modal-content {
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 78px; }
+  margin-bottom: 78px;
+  max-width: calc(100% - 36px);
+  margin-left: auto;
+  margin-left: right; }
 
 .introduce-page .modal-member-detail .modal-body {
   position: relative;
@@ -2597,7 +2600,7 @@ body {
       height: 262px;
       margin: auto; }
   .introduce-page .modal-member-detail .modal-body .info-leader .leader-data {
-    width: 252px;
+    width: 300px;
     margin: 24px auto auto;
     text-align: center; }
     .introduce-page .modal-member-detail .modal-body .info-leader .leader-data .name-leader {
@@ -2753,7 +2756,8 @@ body {
   .introduce-page .modal-member-detail .modal-dialog {
     margin: 50px auto; }
   .introduce-page .modal-member-detail .modal-content {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    max-width: calc(100% - 50px); }
   .introduce-page .modal-member-detail .modal-body {
     padding-bottom: 47px; }
     .introduce-page .modal-member-detail .modal-body .img-detail-list img {
@@ -2777,7 +2781,11 @@ body {
   .introduce-page .tab-controls {
     margin-bottom: 88px; }
     .introduce-page .tab-controls .nav-tabs .nav-item .nav-link::before {
-      margin-bottom: 27px; } }
+      margin-bottom: 27px; }
+  .introduce-page .modal-member-detail .modal-body .detail-leader {
+    max-height: 350px;
+    max-width: calc(100% - 48px);
+    padding: 0 80px; } }
 
 @media (min-width: 1366px) {
   .introduce-page .tab-controls {
@@ -2854,6 +2862,7 @@ body {
     .introduce-page .modal-member-detail .modal-body .detail-leader {
       max-height: 350px;
       max-width: calc(100% - 48px);
+      padding: 0 80px;
       overflow: auto;
       margin: 32px auto auto;
       font-family: "Open Sans", sans-serif;
@@ -3295,9 +3304,10 @@ body {
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
-      -webkit-transition: all ease-in-out .2s;
-      -o-transition: all ease-in-out .2s;
-      transition: all ease-in-out .2s; }
+      -webkit-transition: all ease-in-out .1s;
+      -o-transition: all ease-in-out .1s;
+      transition: all ease-in-out .1s;
+      position: relative; }
     .section-history .history-timeline .timeline-list .timeline-item {
       font-family: "Open Sans", sans-serif;
       font-weight: 700;
@@ -3308,6 +3318,24 @@ body {
       cursor: pointer; }
       .section-history .history-timeline .timeline-list .timeline-item.active, .section-history .history-timeline .timeline-list .timeline-item:hover {
         color: white; }
+    .section-history .history-timeline .timeline-list .timeline-barinner-outline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      padding: 0 10px; }
+      .section-history .history-timeline .timeline-list .timeline-barinner-outline .timeline-barinner-process {
+        width: 100%;
+        height: 100%;
+        background: #004A74; }
+      .section-history .history-timeline .timeline-list .timeline-barinner-outline .timeline-barinner-process-inner {
+        width: 100%;
+        background: #57AE5B;
+        height: 100%;
+        -webkit-transition: all ease-in-out .4s;
+        -o-transition: all ease-in-out .4s;
+        transition: all ease-in-out .4s; }
     .section-history .history-timeline .timeline-bar .container {
       padding: 0; }
     .section-history .history-timeline .timeline-bar .timeline-rounder {
@@ -3664,7 +3692,7 @@ body {
         font-style: normal;
         font-weight: 600;
         font-size: 16px;
-        line-height: 100%;
+        line-height: 20px;
         color: white; }
       .section-leaders .list-leaders .leaders-slide-item .role-company {
         font-family: "Open Sans", sans-serif;
@@ -3720,7 +3748,8 @@ body {
       .section-leaders .list-leaders .leaders-slide-item:hover .item-wrapper {
         background: #57AE5B; }
       .section-leaders .list-leaders .leaders-slide-item .name-leader {
-        font-size: 20px; }
+        font-size: 20px;
+        line-height: 24px; }
       .section-leaders .list-leaders .leaders-slide-item .role-company {
         font-size: 16px;
         line-height: 25px; }
@@ -3779,7 +3808,7 @@ body {
           transition: all ease .2s; }
         .section-leaders .list-leaders .leaders-slide-item .name-leader {
           font-size: 20px;
-          line-height: 100%;
+          line-height: 24px;
           color: #222222; }
         .section-leaders .list-leaders .leaders-slide-item .role-company {
           font-size: 16px;
@@ -4514,7 +4543,7 @@ body {
     line-height: 32px;
     font-weight: 600; }
   .page-detail-title .content-detail-news {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 32px;
     font-weight: normal;
     padding-bottom: 5px; }

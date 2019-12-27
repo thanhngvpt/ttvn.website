@@ -79,6 +79,9 @@
             border-radius: 8px;
             overflow: hidden;
             margin-bottom: 78px;
+            max-width: calc(100% - 36px);
+            margin-left: auto;
+            margin-left: right;
         }
         .modal-body {
             position: relative;
@@ -109,7 +112,7 @@
 
             .info-leader {
                 .leader-data {
-                    width: 252px;
+                    width: 300px;
                     margin: 24px auto auto;
                     text-align: center;
                     .name-leader {
@@ -336,6 +339,7 @@
             }
             .modal-content {
                 margin-bottom: 0;
+                max-width: calc(100% - 50px);
             }
 
             .modal-body {
@@ -383,6 +387,16 @@
                             margin-bottom: 27px;
                         }
                     }
+                }
+            }
+        }
+
+        .modal-member-detail {
+            .modal-body {
+                .detail-leader {
+                    max-height: 350px;
+                    max-width: calc(100% - 48px);
+                    padding: 0 80px;
                 }
             }
         }
@@ -489,6 +503,7 @@
                 .detail-leader {
                     max-height: 350px;
                     max-width: calc(100% - 48px);
+                    padding: 0 80px;
                     overflow: auto;
                     margin: 32px auto auto;
                     font-family: $f-opensan;

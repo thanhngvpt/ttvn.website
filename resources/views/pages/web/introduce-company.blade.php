@@ -197,7 +197,7 @@ class="background-white introduce-page"
                         <div class="timeline-list">
                             <div class="container wrapper">
                                 @foreach($histories as $key => $history)
-                                <div class="timeline-item">{!! $history->date_start !!}</div>
+                                <div class="timeline-item item{{Illuminate\Support\Str::slug($history->date_start, '_')}}">{!! $history->date_start !!}</div>
                                 @endforeach
                             </div>
                         </div>
@@ -375,6 +375,7 @@ class="background-white introduce-page"
 @section('page-scripts')
 	<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="/static/web/default/plugins/jquery.scrollbar/jquery.scrollbar.js"></script>
+    <script src="/static/web/default/plugins/jquery.visible/jquery.visible.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 
@@ -468,7 +469,15 @@ class="background-white introduce-page"
                 asNavFor: '.history-thumb-slider',
                 appendArrows: '.slick-append-arrows',
                 prevArrow: `<button class="btn-slick-rounded btn-prev"><svg viewBox="0 0 86 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="85" height="45" rx="7.5"/><path d="M45 28L41 24L45 20" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`,
-                nextArrow: `<button class="btn-slick-rounded btn-prev"><svg viewBox="0 0 86 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="85" height="45" rx="7.5"/><path d="M42 20L46 24L42 28" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`
+                nextArrow: `<button class="btn-slick-rounded btn-prev"><svg viewBox="0 0 86 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="85" height="45" rx="7.5"/><path d="M42 20L46 24L42 28" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            adaptiveHeight: true,
+                        }
+                    },
+                ]
             });
 
             $('.history-thumb-slider').slick({
@@ -481,7 +490,7 @@ class="background-white introduce-page"
                 asNavFor: '.history-content-slider',
             });
             
-            function drawTimelineProgress() {
+            function drawTimelineProgress(type) {
                 timeBar = $('.timeline-bar');
                 timeProgress = $('.timeline-progress');
                 timeRounder = $('.timeline-rounder');
@@ -497,22 +506,30 @@ class="background-white introduce-page"
                         $(item).removeClass('active')
                     }
                 })
-
-                currentIndex = currentIndex <= 0 ? 1 : currentIndex + 1
-
                 
-                barItemWidth = timeRounder.width()/years.length
+                scrollTimeline();
 
-                currentProgress = barItemWidth * currentIndex
-
-                if (window.screenWidth < 768) {
-                        padding = parseInt($('.timeline-list .container').css('padding-left'));
-                        currentProgress += currentIndex <= 0 ? padding * 2 : padding / 2
+                _is_last_show = $('.timeline-list .timeline-item:last-child').visible()
+                
+                // if on mobile
+                if ($(window).width() >= 768 || _is_last_show) {
+                    currentIndex = currentIndex <= 0 ? 1 : currentIndex + 1
+                    barItemWidth = timeRounder.width()/years.length
+                    currentProgress = barItemWidth * currentIndex
+                    timeProgress.css({width: (currentProgress) + 'px'});
+                    return false
                 }
 
-                timeProgress.css({width: (currentProgress) + 'px'});
-
-                scrollTimeline();
+                // calculate with bar
+                setTimeout(function() {
+                    _c_index = $('.history-content-slider').slick('slickCurrentSlide');
+                    _c_item = $(years[_c_index]);
+                    _n_item = _c_item.next('.timeline-item');
+                    _n_offset = _n_item && _n_item.length ? _n_item.offset().left : 0
+                    _w_item = $(_c_item).width();
+                    _w_new = _n_item && _n_item.length ? _n_offset + 'px' : '100%'
+                    timeProgress.css({width: _w_new});
+                }, 110)
             }
 
             function scrollTimeline(next) {
@@ -524,37 +541,73 @@ class="background-white introduce-page"
 
                 item = years[0]
                 itemWidth = item.clientWidth
+                itemPadding = parseInt(years.css('padding-left'));
                 padding = parseInt(container.css('padding-left')) * 2;
 
                 totalWidth = itemWidth * years.length + padding
-                
-                offsetX = (itemWidth/2) * currentIndex
+
+                offsetX = (itemWidth/2) * currentIndex - itemPadding
+                offsetX = currentIndex >= 0 ? offsetX : 0
+
+                // new
+                _current_item = $(years[currentIndex])
+                _is_last = currentIndex == years.length - 1
+                _next_item = $(_current_item).next('.timeline-item')
+                _is_next_visible = _is_last ? $(_current_item).visible() : $(_next_item).visible()
+
+                // set transform
                 space = 'inherit'
                 if (totalWidth < window.screenWidth) {
                     offsetX = 0
                     space = 'space-around'
                 }
 
+                if (!_is_next_visible) {
+                    offsetX = $(window).width() - (itemWidth * (currentIndex+2) + padding)
+                    offsetX = offsetX >= 0 ? 0 : offsetX
+                    container.css({
+                        transform: `translate(${offsetX}px, 0)`,
+                        justifyContent: space
+                    })
+                    return false
+                }
+                
+                if (currentIndex == 0) {
+                    offsetX = 0
+                }
+
+                
                 container.css({
                     transform: `translate(-${offsetX}px, 0)`,
                     justifyContent: space
                 })
             }
 
-            drawTimelineProgress();
+            canChange = true
+            drawTimelineProgress('default');
 
             $('.history-thumb-slider').on('afterChange', function(e, slick, currentSlide) {
-                drawTimelineProgress(currentSlide);
+                if (canChange)
+                    drawTimelineProgress('change');
+            });
+
+            $('.history-thumb-slider').on('swipe', function(e, slick, currentSlide) {
+                canChange = true
+            });
+
+            $('.history-content-slider').on('swipe', function(e, slick, currentSlide) {
+                canChange = true
             });
 
             $('.timeline-list .timeline-item').on('click', function(e) {
                 index = $('.timeline-list .timeline-item').index($(this));
                 $('.history-content-slider').slick('slickGoTo', index)
-                drawTimelineProgress()
+                drawTimelineProgress('click')
+                canChange = false
             });
 
             $(window).on('resize', function() {
-                drawTimelineProgress();
+                drawTimelineProgress('resize');
             })
 
             // ====== partner slider
