@@ -23,6 +23,7 @@ class Partner extends Base
         'cover_image_id',
         'name',
         'link',
+        'order'
     ];
 
     /**

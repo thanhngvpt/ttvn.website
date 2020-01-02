@@ -102,6 +102,7 @@ class PartnerController extends Controller
                             'cover_image_id',
                             'name',
                             'link',
+                            'order'
                         ]
         );
         $partner = $this->partnerRepository->create($input);
@@ -185,6 +186,7 @@ class PartnerController extends Controller
                             'cover_image_id',
                             'name',
                             'link',
+                            'order'
                         ]
         );
         $partner = $this->partnerRepository->update($partner, $input);

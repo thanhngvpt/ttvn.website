@@ -91,7 +91,7 @@ class="background-white introduce-page"
                                 <div class="info-summary">
                                     <h2 class="section-title title-border-bot">Tầm nhìn - Sứ mệnh</h2>
                                     <div class="mission-desc">
-                                        <p>{{$introduce->mission}}</p>
+                                        {!! $introduce->mission !!}
                                     </div>
                                 </div>
                             </div>

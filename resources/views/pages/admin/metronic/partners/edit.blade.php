@@ -132,6 +132,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
+                                <label for="order">Order</label>
+                                <input type="number" step="1" class="form-control m-input" name="order" id="order" placeholder="Order" value="{{ old('order') ? old('order') : $partner->order }}">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">

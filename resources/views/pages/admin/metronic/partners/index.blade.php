@@ -117,6 +117,7 @@
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
                                                                                                                                                                                                         <th>{!! \PaginationHelper::sort('name', trans('admin.pages.partners.columns.name')) !!}</th>
                                     <th>{!! \PaginationHelper::sort('link', trans('admin.pages.partners.columns.link')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('order', 'Order') !!}</th>
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
@@ -126,8 +127,9 @@
                                 @foreach( $partners as $partner )
                                     <tr>
                                         <td>{{ $partner->id }}</td>
-                                                                                                                                                                                                                        <td>{{ $partner->name }}</td>
+                                        <td>{{ $partner->name }}</td>
                                         <td>{{ $partner->link }}</td>
+                                        <td>{{ $partner->order }}</td>
                                         <td>
                                             <a href="{!! action('Admin\PartnerController@show', $partner->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                                 <i class="la la-edit"></i>

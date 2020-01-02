@@ -3690,15 +3690,29 @@ body {
         -webkit-box-shadow: 0px 32px 56px rgba(0, 0, 0, 0.16);
         box-shadow: 0px 32px 56px rgba(0, 0, 0, 0.16); }
       .section-leaders .list-leaders .leaders-slide-item .leaders-info {
-        padding: 24px 43px;
-        text-align: center; }
+        padding: 24px 15px;
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center; }
       .section-leaders .list-leaders .leaders-slide-item .name-leader {
         font-family: "EB Garamond", serif;
         font-style: normal;
         font-weight: 600;
         font-size: 16px;
         line-height: 20px;
-        color: white; }
+        color: white;
+        white-space: nowrap; }
       .section-leaders .list-leaders .leaders-slide-item .role-company {
         font-family: "Open Sans", sans-serif;
         font-style: normal;

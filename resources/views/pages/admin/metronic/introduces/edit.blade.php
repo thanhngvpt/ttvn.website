@@ -4,6 +4,8 @@
 @stop
 
 @section('styles')
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/css/froala_style.min.css' rel='stylesheet' type='text/css' />
     <style>
         .row {
             margin-bottom: 15px;
@@ -22,6 +24,7 @@
 
 @section('scripts')
     <script src="{!! \URLHelper::asset('libs/metronic/demo/default/custom/crud/forms/validation/form-controls.js', 'admin') !!}"></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/js/froala_editor.pkgd.min.js'></script>
     <script>
         $(document).ready(function () {
             $('#mission-image').change(function (event) {
@@ -41,6 +44,34 @@
                 autoclose: true,
                 pickerPosition: 'bottom-left',
                 format: 'yyyy/mm/dd hh:ii'
+            });
+
+            $('#froala-editor').froalaEditor({
+                toolbarInline: false,
+                pastePlain: true,
+                heightMin: 200,
+                heightMax: 500,
+                imageUploadURL: Boilerplate.imageUploadUrl,
+                imageUploadParams: Boilerplate.imageUploadParams,
+                imageManagerLoadURL: Boilerplate.imagesLoadURL,
+                imageManagerLoadParams: Boilerplate.imagesLoadParams,
+                imageManagerDeleteURL: Boilerplate.imageDeleteURL,
+                imageManagerDeleteParams: Boilerplate.imageDeleteParams,
+                imageManagerDeleteMethod: "DELETE"
+            }).on('froalaEditor.initialized', function (e, editor) {
+
+            }).on('froalaEditor.focus', function (e, editor) {
+
+            }).on('froalaEditor.image.inserted', function (e, editor, img) {
+                img.attr("width", "100%");
+                console.log(img);
+            }).on('froalaEditor.image.error', function (e, editor, error) {
+                console.log(error);
+            }).on('froalaEditor.image.removed', function (e, editor, $img) {
+                var params = {};
+                params.url = $img.attr('src');
+                editor.options.imageDeleteParams = params;
+                editor.deleteImage($img);
             });
         });
     </script>
@@ -177,10 +208,11 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-10">
                             <div class="form-group m-form__group row @if ($errors->has('mission')) has-danger @endif">
                                 <label for="mission">Tầm nhìn sứ mệnh</label>
-                                <input type="text" class="form-control m-input" name="mission" id="mission" required value="{{ old('mission') ? old('mission') : $introduce->mission }}">
+                                {{-- <input type="text" class="form-control m-input" name="mission" id="mission" required value="{{ old('mission') ? old('mission') : $introduce->mission }}"> --}}
+                                <textarea name="mission" id="froala-editor" class="form-control m-input" required id="mission" rows="3">{{ old('mission') ? old('mission') : $introduce->mission }}</textarea>
                             </div>
                         </div>
                     </div>
