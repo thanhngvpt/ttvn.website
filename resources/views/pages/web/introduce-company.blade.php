@@ -614,7 +614,7 @@ class="background-white introduce-page"
             $('.partner-slider').slick({
                 dots: true,
                 arrows: false,
-                infinite: true,
+                infinite: false,
                 rows: 0,
                 autoplay: true,
                 autoplaySpeed: 3000,
