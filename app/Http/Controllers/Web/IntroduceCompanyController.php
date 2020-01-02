@@ -21,7 +21,7 @@ class IntroduceCompanyController extends Controller
         $save_values = SaveValue::take(12)->get();
         $histories  = History::get();
         $leader_ships = LeaderShip::orderBy('order', 'asc')->get();
-        $partners = Partner::orderBy('order', 'asc')->get();
+        $partners = Partner::orderBy('order', 'desc')->get();
 
         return view('pages.web.introduce-company', [
             'introduce' => $introduce,
@@ -39,7 +39,7 @@ class IntroduceCompanyController extends Controller
         $save_values = SaveValue::take(12)->get();
         $histories  = History::get();
         $leader_ships = LeaderShip::orderBy('order', 'asc')->get();
-        $partners = Partner::orderBy('order', 'asc')->get();
+        $partners = Partner::orderBy('order', 'desc')->get();
 
         return view('pages.web.introduce-company', [
             'introduce' => $introduce,
