@@ -358,7 +358,6 @@ class="background-white page-scope-activities"
                 }
 
                 $('.tab-pane.active .tech-column-three').css({transform: `translate(${three_x}, ${three_y}) rotate(${_rotate}deg)`});
-                console.log({transform: `translate(${three_x}, ${three_y}) rotate: ${_rotate}deg`});
             } else {
                 $('.tab-pane.active .tech-column-three').prop('style', '');
             }
