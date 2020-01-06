@@ -1587,8 +1587,7 @@ body {
   display: none; }
 
 #field-page .section-head .section-title {
-  padding-bottom: 40px;
-  padding-top: 32px; }
+  padding: 120px 18px 32px; }
 
 #field-page .tab-controls {
   margin-bottom: 48px; }
@@ -1756,6 +1755,12 @@ body {
       -webkit-box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
       border-radius: 8px; }
+      .section-projects .section-body .slide-projects .item-wrapper .slide-item-thumb {
+        border-radius: 8px;
+        overflow: hidden; }
+        .section-projects .section-body .slide-projects .item-wrapper .slide-item-thumb img {
+          width: 100%;
+          border-radius: 8px; }
       .section-projects .section-body .slide-projects .item-wrapper .slide-item-content {
         padding: 24px; }
       .section-projects .section-body .slide-projects .item-wrapper .slide-item-title {
@@ -1779,7 +1784,7 @@ body {
     background-size: 104px;
     background-repeat: no-repeat; }
     #field-page .section-head .section-title {
-      padding-bottom: 64px; }
+      padding: 120px 24px 64px; }
   #field-page .tab-controls {
     margin-bottom: 88px; }
     #field-page .tab-controls .nav-link {
@@ -1872,6 +1877,8 @@ body {
     line-height: 25px; } }
 
 @media (min-width: 1024px) {
+  .page-scope-activities .section-page {
+    padding-top: 0; }
   #field-page {
     background: url(/images/scope-activities/head/bg-1.svg), url(/images/scope-activities/head/bg-2.svg);
     background-position: top 2% right 0%, top 2% left -20%;
@@ -1879,8 +1886,7 @@ body {
     #field-page .section-head {
       background: none; }
       #field-page .section-head .section-title {
-        padding-bottom: 88px;
-        padding-top: 100px; }
+        padding: 192px 64px 104px 232px; }
     #field-page .tab-controls {
       margin-bottom: 178px; }
     #field-page .tech-intro .text-information {
@@ -1964,8 +1970,7 @@ body {
       background-position: top 50% right 20%, top 50% left -6%;
       background-repeat: no-repeat; }
       #field-page .section-head .section-title {
-        padding-bottom: 120px;
-        padding-top: 120px; }
+        padding: 216px 64px 120px 302px; }
     #field-page .tab-controls {
       margin-bottom: 130px; }
     #field-page .tech-intro .text-information {
@@ -2008,13 +2013,13 @@ body {
         -webkit-transform: none;
         -ms-transform: none;
         transform: none;
-        padding-bottom: 48px;
         left: inherit;
         top: inherit;
         right: inherit;
         background: url("/images/scope-activities/head/bg-4.svg");
         background-position: top center;
-        background-repeat: no-repeat; }
+        background-repeat: no-repeat;
+        margin-left: 64px; }
         #field-page .tech-frame .tech-list .tech-column-three img {
           width: 475px;
           max-width: 100%; }

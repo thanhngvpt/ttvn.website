@@ -14,9 +14,7 @@ class="background-white page-scope-activities"
 @section('content')
 	<div id="field-page" class="section-page section">
         <div class="section-head">
-            <div class="container">
-                <h1 class="section-title">Lĩnh vực hoạt động</h1>
-            </div>
+            <h1 class="section-title">Lĩnh vực hoạt động</h1>
         </div>
 
         <div class="tab-controls">
@@ -33,7 +31,7 @@ class="background-white page-scope-activities"
 
         <div class="tab-content">
             @foreach($fields as $key => $field)
-                <div class="tab-pane @if($slug==$field->slug) active @endif" id="field-tab-{{$field->id}}">
+                <div class="tab-pane @if($slug==$field->slug) active @endif" id="field-tab-{{$field->id}}" data-slug="{{ $field->slug }}">
                     <div class="tech-intro">
                         <div class="text-information">
                             <div class="container">
@@ -222,32 +220,62 @@ class="background-white page-scope-activities"
             maxWidth = $('.tab-pane.active .tech-frame').width();
             maxHeight = $('.tab-pane.active .tech-frame').height();
             outterHeight = $('.tab-pane.active .tech-frame').outerHeight()
+            windowWidth = $(window).width();
+            lastItemHeight = $('.tab-pane.active .tech-column-two').height();
 
             configs = {
                 0: {
                     offset: maxHeight - 376,
-                    botOffset: -110
+                    botOffset: -110,
+                    rateTop: 1,
+                    rateBot: 1,
+                    willRateTop: false,
+                    haveShadown: false,
                 },
                 768: {
                     offset: 165,
-                    botOffset: -175
+                    botOffset: -175,
+                    rateTop: 0.1555793991,
+                    rateBot: 0.1824034335,
+                    willRateTop: true,
+                    haveShadown: false,
                 },
                 1024: {
                     offset: 150,
                     botOffset: 70,
+                    rateTop: 1,
+                    rateBot: 1,
+                    willRateTop: false,
+                    haveShadown: true,
+                    rateShadown: 0.8030746706,
+                    offsetShadown1: 1,
+                    offsetShadown2: 1,
                 },
                 1440: {
                     offset: 40,
-                    botOffset: 0
+                    botOffset: 0,
+                    rateTop: 1,
+                    rateBot: 1,
+                    willRateTop: false,
+                    haveShadown: true,
+                    rateShadown: 0.8030746706,
+                    offsetShadown1: 1,
+                    offsetShadown2: 1,
                 }
             }
 
             var offset = 0;
             var endY = maxHeight
+            var haveShadown = false;
+            var widthShadown = 0;
+            var offsetShadown1 = 0;
+            var offsetShadown2 = 0;
             Object.keys(configs).forEach(function(width) {
                 if (maxWidth >= width) {
-                    offset = configs[width].offset
+                    offset = configs[width].willRateTop ? maxHeight * configs[width].rateTop : configs[width].offset;
                     endY = maxHeight + configs[width].botOffset
+                    haveShadown = configs[width].haveShadown;
+                    widthShadown = haveShadown ? windowWidth * configs[width].rateShadown : 0;
                 }
             })
 
@@ -262,18 +290,78 @@ class="background-white page-scope-activities"
             widthBlur = maxWidth * 0.5701663202
             offset1 = widthBlur*0.3573381951
             offset2 = widthBlur*0.07657247037
+
+            /*
+            shapeShadown = `
+                <rect class="cls-2" width="${widthBlur}" height="${widthBlur}" style="transform: rotate(${rotate}deg) translate(34%, -${offset2}px);"></rect>
+                <rect class="cls-2" width="${widthBlur}" height="${widthBlur}" style="transform: rotate(${rotate}deg) translate(57%, -25%);"></rect>
+            `;
+            */
+            shapeShadown = `
+                <rect class="cls-2" width="${windowWidth}" height="${widthShadown}" style="transform: rotate(${rotate}deg) translate(34%, -${offset2}px);"></rect>
+                <rect class="cls-2" width="${widthShadown}" height="${widthShadown}" style="transform: rotate(${rotate}deg) translate(70%, -${offset2*3.5}px);"></rect>
+            `;
+
+            if (windowWidth < 768) {
+                totalColHeight = $('.tab-pane.active .tech-list').height();
+                colSecondHeight = $('.tab-pane.active .tech-column-two').height();
+                offsetSecondTop = 90;
+                offsetSecondBottom = 108;
+                startY = totalColHeight - colSecondHeight + offsetSecondTop;
+            }
+
+            if (!haveShadown) {
+                shapeShadown = '';
+            }
             
 
             html = `
                 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${endX} ${outterHeight}">
                     <defs><style>.cls-1{fill:#f6f7f6;}.cls-2{fill:rgba(255,255,255,.1);}</style></defs>
-                    <rect class="cls-2" width="${widthBlur}" height="${widthBlur}" style="transform: rotate(${rotate}deg) translate(34%, -${offset2}px);"></rect>
-                    <rect class="cls-2" width="${widthBlur}" height="${widthBlur}" style="transform: rotate(${rotate}deg) translate(57%, -25%);"></rect>
-                    <polygon class="cls-1" points="${startX} ${startY} ${endX} ${endY} ${endX} ${outterHeight}  0 ${endPoint} 0 ${startY}"/>
+                    ${shapeShadown}
+                    <polygon class="cls-1" points="${startX} ${startY} ${endX} ${endY} ${endX} ${outterHeight} 0 ${endPoint} 0 ${startY}"/>
                 </svg>
             `;
 
             appendArea.html(html)
+
+            // offset column three
+            tab_slug = $('.tab-pane.active').attr('data-slug');
+            is_bds = tab_slug == 'bat-dong-san';
+            var three_x = '-80%';
+            var three_y = 0;
+            var _rotate = 0;
+            if (windowWidth >= 1440) {
+                $('.tab-pane.active .tech-column-three').prop('style', '');
+                if (is_bds) {
+                    $('.tab-pane.active .tech-column-three').css({
+                        paddingBottom: '48px'
+                    });
+                }
+            } else if (windowWidth >= 1366) {
+                if (is_bds) {
+                    three_y = '-10%';
+                    three_x = '-50%';
+                    _rotate = 2;
+                } else {
+                    _rotate = 2;
+                }
+
+                $('.tab-pane.active .tech-column-three').css({transform: `translate(${three_x}, ${three_y}) rotate(${_rotate}deg)`});
+            } else if (windowWidth >= 1024) {
+                if (is_bds) {
+                    three_y = '-10%';
+                    three_x = '-50%';
+                    _rotate = 10;
+                } else {
+                    _rotate = 5;
+                }
+
+                $('.tab-pane.active .tech-column-three').css({transform: `translate(${three_x}, ${three_y}) rotate(${_rotate}deg)`});
+                console.log({transform: `translate(${three_x}, ${three_y}) rotate: ${_rotate}deg`});
+            } else {
+                $('.tab-pane.active .tech-column-three').prop('style', '');
+            }
         }
 
         function repositionTabs()
@@ -339,6 +427,10 @@ class="background-white page-scope-activities"
             repositionTabs();
             $('.tab-controls .nav-link').on('shown.bs.tab', function(e) {
                 repositionTabs();
+                drawBackgroundTriangle();
+                setTimeout(function() {
+                    drawBackgroundTriangle();
+                }, 300);
             })
         })
 	</script>
