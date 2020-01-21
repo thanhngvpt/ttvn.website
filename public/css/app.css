@@ -4345,6 +4345,9 @@ body {
 .top-news .slide-top-news .slick-track {
   padding-bottom: 56px; }
 
+.top-news .slide-top-news .item-news .content-news .title-news {
+  height: 50px; }
+
 @media (max-width: 1439px) {
   .top-news .title-top-news {
     font-size: 40px; }
