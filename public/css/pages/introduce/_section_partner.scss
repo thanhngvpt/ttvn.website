@@ -27,8 +27,11 @@
     .partner-slider {
         .partner-item {
             text-align: center;
+            display: flex;
+            align-items: center;
             img {
                 display: inline-block;
+                margin: auto;
             }
         }
     }
@@ -37,6 +40,16 @@
         li {
             padding: 10px 0;
         }
+    }
+
+    .slick-track
+    {
+        display: flex !important;
+    }
+
+    .slick-slide
+    {
+        height: inherit !important;
     }
 }
 

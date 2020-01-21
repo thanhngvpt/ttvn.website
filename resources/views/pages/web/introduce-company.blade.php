@@ -260,7 +260,7 @@ class="background-white introduce-page"
                                 @foreach($partners as $partner)
                                     <a href="{{$partner->link ? $partner->link : 'javascript::void(0);'}}" @if($partner->link) target="_blank" @endif title="{{ $partner->name }}" class="partner-item @if(!$partner->link) cursor-normal @endif">
                                             @if(!empty($partner->present()->coverImage()))
-                                        <img src="{!! $partner->present()->coverImage()->present()->url !!}" class="img-fluid" />
+                                        <img src="{!! $partner->present()->coverImage()->present()->url !!}" class="img-fluid"/>
                                         @endif
                                     </a> 
                                 @endforeach
@@ -611,6 +611,7 @@ class="background-white introduce-page"
             })
 
             // ====== partner slider
+
             $('.partner-slider').slick({
                 dots: true,
                 arrows: false,
@@ -620,12 +621,14 @@ class="background-white introduce-page"
                 autoplaySpeed: 3000,
                 slidesToShow: 6,
                 slidesToScroll: 6,
+                variableWidth: false,
                 responsive: [
                     {
                         breakpoint: 1440,
                         settings: {
                             slidesToShow: 6,
                             slidesToScroll: 6,
+                            variableWidth: false,
                         }
                     },
                     {
@@ -634,15 +637,17 @@ class="background-white introduce-page"
                             slidesToShow: 4.3,
                             slidesToScroll: 4,
                             arrows: false,
-                            dots: false
+                            dots: false,
+                            variableWidth: false,
                         }
                     },
                     {
                         breakpoint: 768,
                         settings: {
                             slidesToShow: 2.4,
-                            slidesToScroll: 1,
-                            dots: false
+                            slidesToScroll: 2,
+                            dots: false,
+                            variableWidth: false,
                         }
                     },
                     {
@@ -650,7 +655,8 @@ class="background-white introduce-page"
                         settings: {
                             slidesToShow: 2.4,
                             slidesToScroll: 1,
-                            dots: false
+                            dots: false,
+                            variableWidth: false,
                         }
                     }
                 ]

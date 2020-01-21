@@ -3554,11 +3554,24 @@ body {
     .section-partners .section-head .section-subtitle {
       display: none; }
   .section-partners .partner-slider .partner-item {
-    text-align: center; }
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
     .section-partners .partner-slider .partner-item img {
-      display: inline-block; }
+      display: inline-block;
+      margin: auto; }
   .section-partners .slick-dots li {
     padding: 10px 0; }
+  .section-partners .slick-track {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important; }
+  .section-partners .slick-slide {
+    height: inherit !important; }
 
 @media (min-width: 768px) {
   .section-partners {
