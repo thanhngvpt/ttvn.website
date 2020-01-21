@@ -249,7 +249,7 @@ class="background-white introduce-page"
                 <div class="section section-intro section-partners">
                     <div class="section-head">
                         <div class="container">
-                            <h2 class="section-title">Đối tác đồng hành</h2>
+                            <h2 class="section-title">Đối tác</h2>
                             <p class="section-subtitle">{{$introduce->content_intro}}</p>
                         </div>
                     </div>
