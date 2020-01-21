@@ -4,6 +4,8 @@
 @stop
 
 @section('styles')
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/css/froala_style.min.css' rel='stylesheet' type='text/css' />
     <style>
         .row {
             margin-bottom: 15px;
@@ -25,6 +27,7 @@
 @stop
 
 @section('scripts')
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.5/js/froala_editor.pkgd.min.js'></script>
     <script src="{!! \URLHelper::asset('libs/metronic/demo/default/custom/crud/forms/validation/form-controls.js', 'admin') !!}"></script>
     <script>
         $(document).ready(function () {
@@ -66,8 +69,24 @@
 
                 $('#slug').val(slug)
             })
+
+            Boilerplate.imageUploadUrl = "{!! URL::action('Admin\TableNewController@postImage') !!}";
+            Boilerplate.imageUploadParams = {
+            "article_id" : "{!! empty($tableNew->id) ? 0 : $tableNew->id !!}",
+            "_token": "{!! csrf_token() !!}"
+            };
+            Boilerplate.imagesLoadURL = "{!! URL::action('Admin\TableNewController@getImages') !!}";
+            Boilerplate.imagesLoadParams = {
+                "article_id" : "{!! empty($tableNew->id) ? 0 : $tableNew->id !!}"
+            };
+            Boilerplate.imageDeleteURL = "{!! URL::action('Admin\TableNewController@deleteImage') !!}";
+            Boilerplate.imageDeleteParams = {
+                "_token": "{!! csrf_token() !!}",
+                "article_id" : "{!! empty($tableNew->id) ? 0 : $tableNew->id !!}"
+            };
         });
     </script>
+    <script src="{{ \URLHelper::asset('js/pages/articles/edit.js', 'admin/metronic') }}"></script>
 @stop
 
 @section('title')
@@ -177,7 +196,8 @@
                         <div class="col-md-10">
                             <div class="form-group m-form__group row @if ($errors->has('home_content')) has-danger @endif">
                                 <label for="home_content">Nội dung mô tả ngắn trang chủ (*)</label>
-                                <input type="text" class="form-control m-input" name="home_content" id="home_content" required value="{{ old('home_content') ? old('home_content') : $field->home_content }}">
+                                {{-- <input type="text" class="form-control m-input" name="home_content" id="home_content" required value="{{ old('home_content') ? old('home_content') : $field->home_content }}"> --}}
+                                <textarea name="home_content" id="froala-editor" class="form-control m-input" rows="3" required>{{ old('home_content') ? old('home_content') : $field->home_content }}</textarea>
                             </div>
                         </div>
                     </div>

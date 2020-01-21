@@ -3997,7 +3997,7 @@ body {
       .top-page-slide .item-top-slide .content.content-mb {
         display: none; }
     .top-page-slide .item-top-slide .description {
-      font-size: 20px;
+      font-size: 30px;
       line-height: 32px;
       color: #95B5C8;
       margin-bottom: 56px; }
@@ -4210,7 +4210,8 @@ body {
     line-height: 25px;
     text-align: center;
     color: #626262;
-    height: 75px; }
+    height: 75px;
+    padding: 0 20px; }
   .top-field .item-top-field {
     display: block;
     padding: 48px 40px 57px 40px;
@@ -4288,7 +4289,8 @@ body {
       font-size: 14px;
       line-height: 22px;
       height: 88px;
-      overflow: hidden; } }
+      overflow: hidden;
+      padding: 0; } }
 
 @media (max-width: 767px) {
   .top-field .list-top-field .item-top-field {
@@ -4314,7 +4316,8 @@ body {
       margin-bottom: 0; }
   .top-field .des-topfield {
     max-width: 80%;
-    margin: auto; } }
+    margin: auto;
+    padding: 0; } }
 
 .top-news .nav-tabs {
   padding: 0 186px;

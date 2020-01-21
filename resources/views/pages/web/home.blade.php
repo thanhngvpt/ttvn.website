@@ -28,7 +28,7 @@
                     <div class="content">Trường Thành Việt Nam</div>
                     <div class="content content-mb">Trường Thành<br/>Việt Nam</div>
                     <div class="description">
-                        Quy tụ <span>nhân tài</span>, gắn kết <span>nhân tâm</span>, nâng tầm <span>trí tuệ</span> và chia sẻ <span>thành công</span>
+                        Đồng hành cùng phát triển
                     </div>
                     @if (!empty($video))
                     <a href="{{$video->video_url}}" class="btn btn-success" style="display: none">
@@ -90,7 +90,7 @@
                                 <img src="{{ asset('images/arrow-right-active-new.svg') }}" class="img-fluid" />
                             </div>
                             <div class="des-topfield">
-                                {{$field->home_content}}
+                                {!! $field->home_content !!}
                             </div>
                         </a>
                     </div>

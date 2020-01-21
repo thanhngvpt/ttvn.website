@@ -8,6 +8,10 @@
 {{@$news->meta_title}}
 @endsection
 
+@push('meta')
+	<meta name="description" content="{!! $news->meta_description !!}"/>
+@endpush
+
 
 @section('nav-header')
 	@include('pages.web.partials.title-new-detail')
@@ -30,13 +34,13 @@
 					{!! $news->sapo !!}
 				</div>
 			</div>
-			@if(!empty($news->present()->coverImage()))
+			{{-- @if(!empty($news->present()->coverImage()))
 				<div class="news-thumb">
 					<div class="news-thumb-wrapper" style="background-image: url({!! $news->present()->coverImage()->present()->url !!});">
 						<img src="{!! $news->present()->coverImage()->present()->url !!}" alt="" class="img-fluid">
 					</div>
 				</div>
-			@endif
+			@endif --}}
 			<div class="content-area">
 				<div class="content-detail-news">
 					{!! $news->content !!}
