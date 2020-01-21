@@ -46,8 +46,12 @@
 		line-height: 25px;
 		text-align: left;
 		color: #626262;
-		height: 75px;
+		// height: 75px;
 		padding: 0 20px;
+		ul {
+			margin: 0;
+			padding: 0;	
+		}
 	}
 	.item-top-field {
 		display: block;
@@ -146,9 +150,13 @@
 		.des-topfield {
 			font-size: 14px;
 			line-height: 22px;
-			height: 88px;
+			// height: 88px;
 			overflow: hidden;
 			padding: 0;
+			ul {
+				margin: 0;
+				padding: 0;	
+			}
 		}
 	}
 }

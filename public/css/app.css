@@ -4210,8 +4210,10 @@ body {
     line-height: 25px;
     text-align: left;
     color: #626262;
-    height: 75px;
     padding: 0 20px; }
+    .top-field .des-topfield ul {
+      margin: 0;
+      padding: 0; }
   .top-field .item-top-field {
     display: block;
     padding: 48px 40px 57px 40px;
@@ -4288,9 +4290,11 @@ body {
     .top-field .des-topfield {
       font-size: 14px;
       line-height: 22px;
-      height: 88px;
       overflow: hidden;
-      padding: 0; } }
+      padding: 0; }
+      .top-field .des-topfield ul {
+        margin: 0;
+        padding: 0; } }
 
 @media (max-width: 767px) {
   .top-field .list-top-field .item-top-field {
