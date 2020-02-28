@@ -104,7 +104,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('hn_name')) has-danger @endif">
                                         <label for="hn_name">@lang('admin.pages.footers.columns.hn_name')</label>
-                                        <input type="text" class="form-control m-input" name="hn_name" id="hn_name" required placeholder="@lang('admin.pages.footers.columns.hn_name')" value="{{ old('hn_name') ? old('hn_name') : $footer->hn_name }}">
+                                        <input type="text" class="form-control m-input" name="hn_name" id="hn_name" placeholder="@lang('admin.pages.footers.columns.hn_name')" value="{{ old('hn_name') ? old('hn_name') : $footer->hn_name }}">
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('hn_address')) has-danger @endif">
                                         <label for="hn_address">@lang('admin.pages.footers.columns.hn_address')</label>
-                                        <input type="text" class="form-control m-input" name="hn_address" id="hn_address" required placeholder="@lang('admin.pages.footers.columns.hn_address')" value="{{ old('hn_address') ? old('hn_address') : $footer->hn_address }}">
+                                        <input type="text" class="form-control m-input" name="hn_address" id="hn_address" placeholder="@lang('admin.pages.footers.columns.hn_address')" value="{{ old('hn_address') ? old('hn_address') : $footer->hn_address }}">
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('hn_phone')) has-danger @endif">
                                         <label for="hn_phone">@lang('admin.pages.footers.columns.hn_phone')</label>
-                                        <input type="text" class="form-control m-input" name="hn_phone" id="hn_phone" required placeholder="@lang('admin.pages.footers.columns.hn_phone')" value="{{ old('hn_phone') ? old('hn_phone') : $footer->hn_phone }}">
+                                        <input type="text" class="form-control m-input" name="hn_phone" id="hn_phone" placeholder="@lang('admin.pages.footers.columns.hn_phone')" value="{{ old('hn_phone') ? old('hn_phone') : $footer->hn_phone }}">
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('hn_fax')) has-danger @endif">
                                         <label for="hn_fax">@lang('admin.pages.footers.columns.hn_fax')</label>
-                                        <input type="text" class="form-control m-input" name="hn_fax" id="hn_fax" required placeholder="@lang('admin.pages.footers.columns.hn_fax')" value="{{ old('hn_fax') ? old('hn_fax') : $footer->hn_fax }}">
+                                        <input type="text" class="form-control m-input" name="hn_fax" id="hn_fax" placeholder="@lang('admin.pages.footers.columns.hn_fax')" value="{{ old('hn_fax') ? old('hn_fax') : $footer->hn_fax }}">
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('other_name')) has-danger @endif">
                                         <label for="other_name">@lang('admin.pages.footers.columns.other_name')</label>
-                                        <input type="text" class="form-control m-input" name="other_name" id="other_name" required placeholder="@lang('admin.pages.footers.columns.other_name')" value="{{ old('other_name') ? old('other_name') : $footer->other_name }}">
+                                        <input type="text" class="form-control m-input" name="other_name" id="other_name" placeholder="@lang('admin.pages.footers.columns.other_name')" value="{{ old('other_name') ? old('other_name') : $footer->other_name }}">
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('other_address')) has-danger @endif">
                                         <label for="other_address">@lang('admin.pages.footers.columns.other_address')</label>
-                                        <input type="text" class="form-control m-input" name="other_address" id="other_address" required placeholder="@lang('admin.pages.footers.columns.other_address')" value="{{ old('other_address') ? old('other_address') : $footer->other_address }}">
+                                        <input type="text" class="form-control m-input" name="other_address" id="other_address" placeholder="@lang('admin.pages.footers.columns.other_address')" value="{{ old('other_address') ? old('other_address') : $footer->other_address }}">
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('other_phone')) has-danger @endif">
                                         <label for="other_phone">@lang('admin.pages.footers.columns.other_phone')</label>
-                                        <input type="text" class="form-control m-input" name="other_phone" id="other_phone" required placeholder="@lang('admin.pages.footers.columns.other_phone')" value="{{ old('other_phone') ? old('other_phone') : $footer->other_phone }}">
+                                        <input type="text" class="form-control m-input" name="other_phone" id="other_phone" placeholder="@lang('admin.pages.footers.columns.other_phone')" value="{{ old('other_phone') ? old('other_phone') : $footer->other_phone }}">
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('other_fax')) has-danger @endif">
                                         <label for="other_fax">@lang('admin.pages.footers.columns.other_fax')</label>
-                                        <input type="text" class="form-control m-input" name="other_fax" id="other_fax" required placeholder="@lang('admin.pages.footers.columns.other_fax')" value="{{ old('other_fax') ? old('other_fax') : $footer->other_fax }}">
+                                        <input type="text" class="form-control m-input" name="other_fax" id="other_fax" placeholder="@lang('admin.pages.footers.columns.other_fax')" value="{{ old('other_fax') ? old('other_fax') : $footer->other_fax }}">
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('fb_link')) has-danger @endif">
                                         <label for="fb_link">@lang('admin.pages.footers.columns.fb_link')</label>
-                                        <input type="text" class="form-control m-input" name="fb_link" id="fb_link" required placeholder="@lang('admin.pages.footers.columns.fb_link')" value="{{ old('fb_link') ? old('fb_link') : $footer->fb_link }}">
+                                        <input type="text" class="form-control m-input" name="fb_link" id="fb_link" placeholder="@lang('admin.pages.footers.columns.fb_link')" value="{{ old('fb_link') ? old('fb_link') : $footer->fb_link }}">
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('skype_link')) has-danger @endif">
                                         <label for="skype_link">@lang('admin.pages.footers.columns.skype_link')</label>
-                                        <input type="text" class="form-control m-input" name="skype_link" id="skype_link" required placeholder="@lang('admin.pages.footers.columns.skype_link')" value="{{ old('skype_link') ? old('skype_link') : $footer->skype_link }}">
+                                        <input type="text" class="form-control m-input" name="skype_link" id="skype_link" placeholder="@lang('admin.pages.footers.columns.skype_link')" value="{{ old('skype_link') ? old('skype_link') : $footer->skype_link }}">
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +184,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('email')) has-danger @endif">
                                         <label for="email">@lang('admin.pages.footers.columns.email')</label>
-                                        <input type="text" class="form-control m-input" name="email" id="email" required placeholder="@lang('admin.pages.footers.columns.email')" value="{{ old('email') ? old('email') : $footer->email }}">
+                                        <input type="text" class="form-control m-input" name="email" id="email" placeholder="@lang('admin.pages.footers.columns.email')" value="{{ old('email') ? old('email') : $footer->email }}">
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
                                         <label for="order">@lang('admin.pages.footers.columns.order')</label>
-                                        <input type="text" class="form-control m-input" name="order" id="order" required placeholder="@lang('admin.pages.footers.columns.order')" value="{{ old('order') ? old('order') : $footer->order }}">
+                                        <input type="text" class="form-control m-input" name="order" id="order" placeholder="@lang('admin.pages.footers.columns.order')" value="{{ old('order') ? old('order') : $footer->order }}">
                                     </div>
                                 </div>
                             </div>

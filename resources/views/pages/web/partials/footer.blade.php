@@ -10,6 +10,13 @@
 						
 							@foreach ($footerHQs as $footerHQ)
 								<div class="row footer-row @if($loop->first) mb-3 @endif">
+									@if (
+										empty($footerHQ->hn_name) 
+										&& empty($footerHQ->hn_address)
+										&& empty($footerHQ->hn_phone)
+										&& empty($footerHQ->hn_fax)
+									)
+									@else
 									<div class="col-md-6 col-lg-5 col-footer">
 										<div class="title-col-footer">
 											{{@$footerHQ->hn_name}}
@@ -35,6 +42,14 @@
 											</div>
 										</div>
 									</div>
+									@endif
+									@if (
+										empty($footerHQ->other_name) 
+										&& empty($footerHQ->other_address)
+										&& empty($footerHQ->other_phone)
+										&& empty($footerHQ->other_fax)
+									)
+									@else
 									<div class="col-md-6 col-lg-7 col-footer office-column">
 										<div class="title-col-footer">
 											{{@$footerHQ->other_name}}
@@ -60,6 +75,8 @@
 											</div>
 										</div>
 									</div>
+									@endif
+
 								</div>
 							@endforeach
 						
