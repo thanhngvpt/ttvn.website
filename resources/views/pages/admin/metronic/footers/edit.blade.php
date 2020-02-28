@@ -188,6 +188,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group m-form__group row @if ($errors->has('order')) has-danger @endif">
+                                        <label for="order">@lang('admin.pages.footers.columns.order')</label>
+                                        <input type="text" class="form-control m-input" name="order" id="order" required placeholder="@lang('admin.pages.footers.columns.order')" value="{{ old('order') ? old('order') : $footer->order }}">
+                                    </div>
+                                </div>
+                            </div>
                                                             </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">

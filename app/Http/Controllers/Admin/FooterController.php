@@ -90,6 +90,7 @@ class FooterController extends Controller
                             'fb_link',
                             'skype_link',
                             'email',
+                            'order',
                         ]
         );
 
@@ -165,6 +166,7 @@ class FooterController extends Controller
                             'fb_link',
                             'skype_link',
                             'email',
+                            'order',
                         ]
         );
 

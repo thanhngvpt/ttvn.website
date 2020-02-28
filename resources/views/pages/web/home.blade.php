@@ -178,25 +178,27 @@
                         <div class="area-top-news">
                             <div class="slide-top-news">
                                 @foreach($news as $item)
-                                <a href="{{action('Web\NewsController@details',[$item->newCategory->slug, $item->slug])}}" class="item-news">
-                                    <div class="wrapper">
-                                        <div class="img-news">
-                                            @if(!empty($item->present()->coverImage()))
-                                            <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" /> @endif
+                                    @if ($item->newCategory)
+                                    <a href="{{action('Web\NewsController@details',[$item->newCategory->slug, $item->slug])}}" class="item-news">
+                                        <div class="wrapper">
+                                            <div class="img-news">
+                                                @if(!empty($item->present()->coverImage()))
+                                                <img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" /> @endif
+                                            </div>
+                                            <div class="content-news">
+                                                <div class="cate-news">
+                                                    {{@$item->newCategory->name}}
+                                                </div>
+                                                <div class="title-news">
+                                                    {{$item->name}}
+                                                </div>
+                                                <div class="date-news">
+                                                    {!! date('d/m/Y', (strtotime( $item->created_at))) !!}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="content-news">
-                                            <div class="cate-news">
-                                                {{@$item->newCategory->name}}
-                                            </div>
-                                            <div class="title-news">
-                                                {{$item->name}}
-                                            </div>
-                                            <div class="date-news">
-                                                {!! date('d/m/Y', (strtotime( $item->created_at))) !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>

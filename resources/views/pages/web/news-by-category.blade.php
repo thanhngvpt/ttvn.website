@@ -1,6 +1,7 @@
 <div class="area-top-news">
     <div class="slide-top-news">
         @foreach($news as $item)
+            @if ($item->newCategory)
             <a href="#" class="item-news" onclick="location.href='{!! action('Web\NewsController@details',[$item->newCategory->slug, $item->slug]) !!}'">
                 <div class="wrapper">
                     <div class="img-news"><img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" /></div>
@@ -11,6 +12,7 @@
                     </div>
                 </div>
             </a>
+            @endif
         @endforeach
     </div>
 </div>

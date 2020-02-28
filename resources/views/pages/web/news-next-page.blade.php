@@ -1,5 +1,6 @@
 <div class="row list-news">
         @foreach($data['news'] as $item)
+        @if ($item->newCategory)
         <div class="col-xl-4 col-md-6" onclick="location.href='{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}'">
             <div class="item-news">
                 <div class="img-news">
@@ -21,6 +22,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
     </div>
     <ul class="pagination">

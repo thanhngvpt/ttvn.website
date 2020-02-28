@@ -2,6 +2,7 @@
     @foreach($hot_news as $hot_new)
     <div class="item-slide">
         <div class="item-slide-news">
+            @if ($hot_new->newCategory)
             <a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="img-slide-news" @if(!empty($hot_new->present()->coverImage())) style="background-image: url({!! $hot_new->present()->coverImage()->present()->url !!});" @endif>
                 @if(!empty($hot_new->present()->coverImage()))
                     <img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
@@ -21,6 +22,7 @@
                         {!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
                 </a>
             </div>
+            @endif
         </div>
     </div>
     @endforeach
@@ -29,6 +31,7 @@
         <div class="list-news">
             @foreach($data['news'] as $item)
             <div class="col-item-news">
+                @if ($item->newCategory)
                 <div class="item-news">
                     <a href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="img-news">
                             @if(!empty($item->present()->coverImage()))
@@ -48,6 +51,7 @@
                             {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
                     </a>
                 </div>
+                @endif
             </div>
             @endforeach
         </div>

@@ -666,15 +666,17 @@ class="background-white introduce-page"
                 dots: true,
                 arrows: false,
                 infinite: false,
-                slidesToShow: 2,
-                slidesToScroll: 2,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                slidesPerRow: 2,
                 rows: 2,
                 responsive: [
                     {
                         breakpoint: 1440,
                         settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            slidesPerRow: 2,
                             rows: 2
                         }
                     },
@@ -683,6 +685,7 @@ class="background-white introduce-page"
                         settings: {
                             slidesToShow: 2.5,
                             slidesToScroll: 2,
+                            slidesPerRow: 1,
                             rows: 1,
                             dots: false
                         }
@@ -692,6 +695,7 @@ class="background-white introduce-page"
                         settings: {
                             slidesToShow: 1.2,
                             slidesToScroll: 1,
+                            slidesPerRow: 1,
                             rows: 1,
                             dots: false,
                         }
@@ -701,6 +705,7 @@ class="background-white introduce-page"
                         settings: {
                             slidesToShow: 1.2,
                             slidesToScroll: 1,
+                            slidesPerRow: 1,
                             rows: 1,
                             dots: false
                         }
@@ -710,6 +715,7 @@ class="background-white introduce-page"
                         settings: {
                             slidesToShow: 1.2,
                             slidesToScroll: 1,
+                            slidesPerRow: 1,
                             rows: 1,
                             dots: false
                         }

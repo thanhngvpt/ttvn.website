@@ -1068,6 +1068,14 @@ main {
 		.title-col-footer {
 			font-size: 16px;
 		}
+
+		.footer-row {
+			display: none;
+
+			&:first-child {
+				display: flex;
+			}
+		}
 	}
 	.container {
 		max-width: 736px;
@@ -1477,6 +1485,14 @@ main {
 
 		.logo-footer {
 			padding-top: 40px;
+		}
+
+		.footer-row {
+			display: none;
+
+			&:first-child {
+				display: flex;
+			}
 		}
 	}
 	

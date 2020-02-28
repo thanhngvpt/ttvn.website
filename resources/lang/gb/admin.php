@@ -421,6 +421,7 @@ return [
                 'fb_link' => 'Fb_link',
                 'skype_link' => 'Skype_link',
                 'email' => 'Email',
+                'order' => 'Order',
             ],
         ],
         'contacts'   => [

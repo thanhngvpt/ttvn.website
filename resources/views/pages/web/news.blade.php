@@ -51,6 +51,7 @@
 						@foreach($hot_news as $hot_new)
 						<div class="item-slide">
 							<div class="item-slide-news">
+								@if ($hot_new->newCategory)
 								<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="img-slide-news" @if(!empty($hot_new->present()->coverImage())) style="background-image: url({!! $hot_new->present()->coverImage()->present()->url !!});" @endif>
 									@if(!empty($hot_new->present()->coverImage()))
 										<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
@@ -62,6 +63,7 @@
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="des-slide-news">{!!$hot_new->sapo!!}</a>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">{!! date('d/m/Y', (strtotime( $hot_new->created_at))) !!}</a>
 								</div>
+								@endif
 							</div>
 						</div>
 						@endforeach
@@ -70,6 +72,7 @@
 						<div class="list-news">
 							@foreach($data['news'] as $item)
 							<div class="col-item-news">
+								@if ($item->newCategory)
 								<a class="item-news" href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}">
 									<div class="img-news">
 											@if(!empty($item->present()->coverImage()))
@@ -81,6 +84,7 @@
 									<div class="des-news">{!!$item->sapo!!}</div>
 									<div class="date-news">{!! date('d/m/Y', (strtotime( $item->created_at))) !!}</div>
 								</a>
+								@endif
 							</div>
 							@endforeach
 						</div>
@@ -100,6 +104,7 @@
 						@foreach($hot_news as $hot_new)
 						<div class="item-slide">
 							<div class="item-slide-news">
+								@if ($hot_new->newCategory)
 								<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="img-slide-news" @if(!empty($hot_new->present()->coverImage())) style="background-image: url({!! $hot_new->present()->coverImage()->present()->url !!});" @endif>
 									@if(!empty($hot_new->present()->coverImage()))
 										<img src="{!! $hot_new->present()->coverImage()->present()->url !!}" class="img-fluid">
@@ -119,6 +124,7 @@
 											{!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
 									</a>
 								</div>
+								@endif
 							</div>
 						</div>
 						@endforeach
@@ -128,6 +134,7 @@
 							@foreach($data['news'] as $item)
 							<div class="col-item-news">
 								<div class="item-news">
+									@if ($item->newCategory)
 									<a href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="img-news">
 										@if(!empty($item->present()->coverImage()))
 											<img src="{!! $item->present()->coverImage()->present()->url !!}" class="img-fluid" />
@@ -145,6 +152,7 @@
 									<a href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="date-news">
 											{!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
 									</a>
+									@endif
 								</div>
 							</div>
 							@endforeach

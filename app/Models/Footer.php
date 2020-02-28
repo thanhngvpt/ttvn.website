@@ -31,6 +31,7 @@ class Footer extends Base
         'fb_link',
         'skype_link',
         'email',
+        'order'
     ];
 
     /**
@@ -73,6 +74,7 @@ class Footer extends Base
             'fb_link' => $this->fb_link,
             'skype_link' => $this->skype_link,
             'email' => $this->email,
+            'order' => $this->order
         ];
     }
 

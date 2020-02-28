@@ -21,9 +21,11 @@
 	<div id="news-detail-page">
 		<div class="area-detail-news">
 			<div class="content-area">
-				<a class="tag-news" href="{!! action('Web\NewsController@index', @$news->newCategory->slug) !!}">
-					{{@$news->newCategory->name}}
-				</a>
+				@if (!empty($news->newCategory))
+					<a class="tag-news" href="{!! action('Web\NewsController@index', @$news->newCategory->slug) !!}">
+						{{@$news->newCategory->name}}
+					</a>
+				@endif
 				<div class="title-news-detail">
 					{{$news->name}}
 				</div>
@@ -48,9 +50,11 @@
 			
 				<div class="share-detail-news clearfix">
 					<div class="float-left">
-						<span class="tags-secondary">
-							{{@$news->newCategory->name}}
-						</span>
+						@if (!empty($news->newCategory))
+							<span class="tags-secondary">
+								{{@$news->newCategory->name}}
+							</span>
+						@endif
 					</div>
 					{{-- <div class="float-right">
 						<ul class="news-social">
@@ -81,6 +85,7 @@
 			<div class="container">
 				<div class="slide-relation-news">
 					@foreach($new_relations as $new_relation)
+						@if (!empty($new_relation->newCategory))
 						<a href="{!! action('Web\NewsController@details', [$new_relation->newCategory->slug, $new_relation->slug]) !!}" class="item-news">
 							<div class="item-news-wrapper">
 								<div class="img-news">
@@ -104,6 +109,7 @@
 								</div>
 							</div>
 						</a>
+						@endif
 					@endforeach
 				</div>
 			</div>

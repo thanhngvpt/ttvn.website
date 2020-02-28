@@ -861,6 +861,12 @@ main .nav-tabs {
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   footer .title-col-footer {
     font-size: 16px; }
+  footer .footer-row {
+    display: none; }
+    footer .footer-row:first-child {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
   .container {
     max-width: 736px;
     padding-left: 0;
@@ -1131,6 +1137,12 @@ main .nav-tabs {
     padding-bottom: 60px; }
     footer .logo-footer {
       padding-top: 40px; }
+    footer .footer-row {
+      display: none; }
+      footer .footer-row:first-child {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; }
   .slide-top-news {
     width: -webkit-max-content;
     width: -moz-max-content;
