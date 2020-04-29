@@ -19,8 +19,7 @@
                 </div>
                 <div class="date-news">
                     @php
-                        $added_at = !empty($item->added_on) ? $item->added_on : null;
-                        $added_at = !$added_at && !empty($item->created_at) ? $item->created_at : null;
+                        $added_at = !empty($item->added_on) ? $item->added_on : $item->created_at;
                     @endphp
                         {!!  date('d/m/Y', (strtotime( $added_at))) !!}
                 </div>

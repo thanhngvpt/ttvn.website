@@ -62,8 +62,7 @@
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="title-slide-news">{{$hot_new->name}}</a>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="des-slide-news">{!!$hot_new->sapo!!}</a>
 									@php
-										$added_at = !empty($hot_new->added_on) ? $hot_new->added_on : null;
-										$added_at = !$added_at && !empty($hot_new->created_at) ? $hot_new->created_at : null;
+										$added_at = !empty($hot_new->added_on) ? $hot_new->added_on : $hot_new->created_at;
 									@endphp
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">{!! date('d/m/Y', (strtotime( $added_at))) !!}</a>
 								</div>
@@ -87,8 +86,7 @@
 									<div class="title-news">{{$item->name}}</div>
 									<div class="des-news">{!!$item->sapo!!}</div>
 									@php
-										$added_at = !empty($item->added_on) ? $item->added_on : null;
-										$added_at = !$added_at && !empty($item->created_at) ? $item->created_at : null;
+										$added_at = !empty($item->added_on) ? $item->added_on : $item->created_at;
 									@endphp
 									<div class="date-news">{!! date('d/m/Y', (strtotime( $added_at))) !!}</div>
 								</a>
@@ -130,8 +128,7 @@
 									</a>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">
 										@php
-											$added_at = !empty($hot_new->added_on) ? $hot_new->added_on : null;
-											$added_at = !$added_at && !empty($hot_new->created_at) ? $hot_new->created_at : null;
+											$added_at = !empty($hot_new->added_on) ? $hot_new->added_on : $hot_new->created_at;
 										@endphp
 											{!!  date('d/m/Y', (strtotime( $added_at))) !!}
 									</a>
@@ -163,8 +160,7 @@
 									</a>
 									<a href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="date-news">
 										@php
-											$added_at = !empty($item->added_on) ? $item->added_on : null;
-											$added_at = !$added_at && !empty($item->created_at) ? $item->created_at : null;
+											$added_at = !empty($item->added_on) ? $item->added_on : $item->created_at;
 										@endphp
 											{!!  date('d/m/Y', (strtotime( $added_at))) !!}
 									</a>
