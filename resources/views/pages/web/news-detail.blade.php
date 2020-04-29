@@ -32,7 +32,7 @@
 				<div class="date-detail-news">
 					@php
                         $added_at = !empty($news->added_on) ? $news->added_on : null;
-                        $added_at = !empty($news->created_at) ? $news->created_at : null;
+                        $added_at = !$added_at && !empty($news->created_at) ? $news->created_at : null;
                     @endphp
 					{!!  date('d/m/Y', (strtotime( $added_at))) !!}
 				</div>
@@ -110,7 +110,7 @@
 									<div class="date-news">
 										@php
 											$added_at = !empty($new_relation->added_on) ? $new_relation->added_on : null;
-											$added_at = !empty($new_relation->created_at) ? $new_relation->created_at : null;
+											$added_at = !$added_at && !empty($new_relation->created_at) ? $new_relation->created_at : null;
 										@endphp
 											{!!  date('d/m/Y', (strtotime( $added_at))) !!}
 									</div>
