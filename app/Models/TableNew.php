@@ -28,6 +28,7 @@ class TableNew extends Base
         'content',
         'auth',
         'is_enabled',
+        'added_on'
     ];
 
     /**
@@ -37,7 +38,9 @@ class TableNew extends Base
      */
     protected $hidden = [];
 
-    protected $dates  = [];
+    protected $dates  = [
+        'added_on',
+    ];
 
     protected $presenter = \App\Presenters\TableNewPresenter::class;
 

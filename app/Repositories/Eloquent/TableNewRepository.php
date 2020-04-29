@@ -22,7 +22,7 @@ class TableNewRepository extends SingleKeyModelRepository implements TableNewRep
         $count = $query->count();
         $total_page = intval($count / $page_size) + (($count % $page_size) == 0 ? 0 : 1);
         
-        $news = $query->orderBy('id', 'desc')->limit($page_size)->offset($offset)->get();
+        $news = $query->orderBy('order', 'desc')->limit($page_size)->offset($offset)->get();
 
         return [
             'news' => $news,

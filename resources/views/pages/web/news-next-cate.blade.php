@@ -19,7 +19,11 @@
                         {!!$hot_new->sapo!!}
                 </a>
                 <a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">
-                        {!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
+                    @php
+                        $added_at = !empty($hot_new->added_on) ? $hot_new->added_on : null;
+                        $added_at = !empty($hot_new->created_at) ? $hot_new->created_at : null;
+                    @endphp
+                        {!!  date('d/m/Y', (strtotime( $added_at))) !!}
                 </a>
             </div>
             @endif
@@ -48,7 +52,11 @@
                             {!!$item->sapo!!}
                     </a>
                     <a  href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="date-news">
-                            {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
+                        @php
+                            $added_at = !empty($item->added_on) ? $item->added_on : null;
+                            $added_at = !empty($item->created_at) ? $item->created_at : null;
+                        @endphp
+                            {!!  date('d/m/Y', (strtotime( $added_at))) !!}
                     </a>
                 </div>
                 @endif

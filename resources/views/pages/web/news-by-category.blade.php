@@ -8,7 +8,11 @@
                     <div class="content-news">
                         <div class="cate-news">{{@$item->newCategory->name}}</div>
                         <div class="title-news">{{$item->name}}</div>
-                        <div class="date-news">{!!  date('d/m/Y', (strtotime( $item->created_at))) !!}</div>
+                        @php
+                            $added_at = !empty($item->added_on) ? $item->added_on : null;
+                            $added_at = !empty($item->created_at) ? $item->created_at : null;
+                        @endphp
+                        <div class="date-news">{!!  date('d/m/Y', (strtotime( $added_at))) !!}</div>
                     </div>
                 </div>
             </a>

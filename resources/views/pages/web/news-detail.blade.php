@@ -30,7 +30,11 @@
 					{{$news->name}}
 				</div>
 				<div class="date-detail-news">
-					{!!  date('d/m/Y', (strtotime( $news->created_at))) !!}
+					@php
+                        $added_at = !empty($news->added_on) ? $news->added_on : null;
+                        $added_at = !empty($news->created_at) ? $news->created_at : null;
+                    @endphp
+					{!!  date('d/m/Y', (strtotime( $added_at))) !!}
 				</div>
 				<div class="content-sapo">
 					{!! $news->sapo !!}
@@ -104,7 +108,11 @@
 											{{$new_relation->sapo}}
 									</div>
 									<div class="date-news">
-											{!!  date('d/m/Y', (strtotime( $new_relation->created_at))) !!}
+										@php
+											$added_at = !empty($new_relation->added_on) ? $new_relation->added_on : null;
+											$added_at = !empty($new_relation->created_at) ? $new_relation->created_at : null;
+										@endphp
+											{!!  date('d/m/Y', (strtotime( $added_at))) !!}
 									</div>
 								</div>
 							</div>

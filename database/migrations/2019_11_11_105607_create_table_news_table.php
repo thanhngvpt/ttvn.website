@@ -27,7 +27,6 @@ class CreatetableNewsTable extends Migration
             $table->text('content')->nullable();
             $table->string('auth')->nullable();
             $table->boolean('is_enabled')->default(true);
-
             $table->timestamps();
         });
 

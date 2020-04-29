@@ -193,10 +193,20 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group m-form__group row @if ($errors->has('meta_title')) has-danger @endif">
                                 <label for="meta_title">Meta title</label>
                                 <input type="text" class="form-control m-input" name="meta_title" id="meta_title" value="{{ old('meta_title') ? old('meta_title') : $tableNew->meta_title }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group row @if ($errors->has('added_on')) has-danger @endif">
+                                <label for="meta_title">Created At (m/d/Y)</label>
+                                @php
+                                    $added_on = !empty($tableNew) && !empty($tableNew->created_at) ? $tableNew->created_at->format('Y-m-d') : null;
+                                    $added_on = !empty($tableNew) && !empty($tableNew->added_on) ? $tableNew->added_on->format('Y-m-d') : null;
+                                @endphp
+                                <input type="date" class="form-control m-input" name="added_on" id="added_on" value="{{ old('added_on') ? old('added_on') : $added_on }}">
                             </div>
                         </div>
                     </div>

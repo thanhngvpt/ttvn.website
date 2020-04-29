@@ -61,7 +61,11 @@
 									<div class="btn tag-news cursor-normal">{{@$hot_new->newCategory->name}}</div>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="title-slide-news">{{$hot_new->name}}</a>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="des-slide-news">{!!$hot_new->sapo!!}</a>
-									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">{!! date('d/m/Y', (strtotime( $hot_new->created_at))) !!}</a>
+									@php
+										$added_at = !empty($hot_new->added_on) ? $hot_new->added_on : null;
+										$added_at = !empty($hot_new->created_at) ? $hot_new->created_at : null;
+									@endphp
+									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">{!! date('d/m/Y', (strtotime( $added_at))) !!}</a>
 								</div>
 								@endif
 							</div>
@@ -82,7 +86,11 @@
 									<div class="cate-news">{{@$item->newCategory->name}}</div>
 									<div class="title-news">{{$item->name}}</div>
 									<div class="des-news">{!!$item->sapo!!}</div>
-									<div class="date-news">{!! date('d/m/Y', (strtotime( $item->created_at))) !!}</div>
+									@php
+										$added_at = !empty($item->added_on) ? $item->added_on : null;
+										$added_at = !empty($item->created_at) ? $item->created_at : null;
+									@endphp
+									<div class="date-news">{!! date('d/m/Y', (strtotime( $added_at))) !!}</div>
 								</a>
 								@endif
 							</div>
@@ -121,7 +129,11 @@
 											{!!$hot_new->sapo!!}
 									</a>
 									<a href="{!! action('Web\NewsController@details', [$hot_new->newCategory->slug, $hot_new->slug]) !!}" class="date-slide-news">
-											{!!  date('d/m/Y', (strtotime( $hot_new->created_at))) !!}
+										@php
+											$added_at = !empty($hot_new->added_on) ? $hot_new->added_on : null;
+											$added_at = !empty($hot_new->created_at) ? $hot_new->created_at : null;
+										@endphp
+											{!!  date('d/m/Y', (strtotime( $added_at))) !!}
 									</a>
 								</div>
 								@endif
@@ -150,7 +162,11 @@
 											{!!$item->sapo!!}
 									</a>
 									<a href="{!! action('Web\NewsController@details', [$item->newCategory->slug, $item->slug]) !!}" class="date-news">
-											{!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
+										@php
+											$added_at = !empty($item->added_on) ? $item->added_on : null;
+											$added_at = !empty($item->created_at) ? $item->created_at : null;
+										@endphp
+											{!!  date('d/m/Y', (strtotime( $added_at))) !!}
 									</a>
 									@endif
 								</div>

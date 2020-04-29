@@ -115,7 +115,8 @@ class TableNewController extends Controller
                 'meta_description',
                 'sapo',
                 'content',
-                'auth'
+                'auth',
+                'added_on'
             ]
         );
 
@@ -209,6 +210,7 @@ class TableNewController extends Controller
                 'sapo',
                 'content',
                 'auth',
+                'added_on',
             ]
         );
 

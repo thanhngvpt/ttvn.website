@@ -18,7 +18,11 @@
                         {!!$item->sapo!!}
                 </div>
                 <div class="date-news">
-                        {!!  date('d/m/Y', (strtotime( $item->created_at))) !!}
+                    @php
+                        $added_at = !empty($item->added_on) ? $item->added_on : null;
+                        $added_at = !empty($item->created_at) ? $item->created_at : null;
+                    @endphp
+                        {!!  date('d/m/Y', (strtotime( $added_at))) !!}
                 </div>
             </div>
         </div>
