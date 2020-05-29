@@ -10,12 +10,12 @@
 
 @section('title')
 @foreach ($meta as $item)
-    <?php 
+    <?php
 	$url = trim( $item->link, "/" );
     ?>
 	@if(Request::url() === $url)
 		{{$item->meta_title}}
-	@endif	
+	@endif
 @endforeach
 @endsection
 
@@ -130,9 +130,6 @@
 					</div>
 					@endforeach
 			</div>
-			<div class="download-cv">
-				Ứng viên có thể tải mẫu ứng tuyển <a href="#">Tại đây</a>
-			</div>
 			@if($data['total_page'] > 1)
 			<ul class="pagination arrow-pagination">
 				<li class="page-item previous-page"><a class="page-link"><i class="fas fa-chevron-left"></i></a></li>
@@ -152,8 +149,8 @@
             $.each(masterData, function (key, value) {
                 provinces.push(value.name);
 			});
-			$.each(provinces, function(key, value) {   
-				$('#province').append($("<option></option>").attr("value",value).text(value)); 
+			$.each(provinces, function(key, value) {
+				$('#province').append($("<option></option>").attr("value",value).text(value));
 		   	});
 
 			function scrollToTop(topPos) {
@@ -165,7 +162,7 @@
 				let category_id = $('#category').val()
 				let province = $('#province').val()
 				let keyword = $('#keyword').val()
-			
+
 				$.ajax({
 					url: "{{action('Web\JobController@listJob')}}",
 					type: "GET",
@@ -192,7 +189,7 @@
 				let category_id = $('#category').val()
 				let province = $('#province').val()
 				let keyword = $('#keyword').val()
-			
+
 				$.ajax({
 					url: "{{action('Web\JobController@listJob')}}",
 					type: "GET",
@@ -232,7 +229,7 @@
 				let category_id = $('#category').val()
 				let province = $('#province').val()
 				let keyword = $('#keyword').val()
-			
+
 				$.ajax({
 					url: "{{action('Web\JobController@listJob')}}",
 					type: "GET",
@@ -261,7 +258,7 @@
 				let category_id = $('#category').val()
 				let province = $('#province').val()
 				let keyword = $('#keyword').val()
-			
+
 				$.ajax({
 					url: "{{action('Web\JobController@listJob')}}",
 					type: "GET",
@@ -286,6 +283,6 @@
 				location.href = $(this).attr('data-link')
 			})
 		})
-		
+
 	</script>
 @endsection
