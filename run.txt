@@ -1,0 +1,7 @@
+1. install dependencies by `composer install`
+2. create new user and new db then grant that db permission to that user https://github.com/laravel/framework/issues/27742
+3. php artisan migrate 
+4. cp .env.example .env then config data to valid 
+5. php artisan db:seed
+6. npm run development
+7. php artisan serve
